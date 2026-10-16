@@ -1,0 +1,4405 @@
+{
+  "categories": [
+    {
+      "id": "classic-hot-iced",
+      "name": "Classic hot & iced",
+      "position": 0,
+      "enabled": true
+    },
+    {
+      "id": "cold-brew-iced-coffee",
+      "name": "Cold brew & iced coffee",
+      "position": 1,
+      "enabled": true
+    },
+    {
+      "id": "non-coffee",
+      "name": "Non-coffee drinks",
+      "position": 2,
+      "enabled": true
+    },
+    {
+      "id": "frappes",
+      "name": "Frappes",
+      "position": 3,
+      "enabled": true
+    },
+    {
+      "id": "cold-coffee",
+      "name": "Cold coffee",
+      "position": 4,
+      "enabled": true
+    },
+    {
+      "id": "smoothies",
+      "name": "Smoothies",
+      "position": 5,
+      "enabled": true
+    },
+    {
+      "id": "refreshing-teas",
+      "name": "Refreshing teas",
+      "position": 6,
+      "enabled": true
+    },
+    {
+      "id": "mocktails",
+      "name": "Mocktails",
+      "position": 7,
+      "enabled": true
+    },
+    {
+      "id": "other-mixed",
+      "name": "Signature coolers",
+      "position": 8,
+      "enabled": true
+    },
+    {
+      "id": "bagel",
+      "name": "Bagels",
+      "position": 9,
+      "enabled": true
+    },
+    {
+      "id": "sandwiches-wrap",
+      "name": "Sandwiches & wraps",
+      "position": 10,
+      "enabled": true
+    },
+    {
+      "id": "toast",
+      "name": "Toast",
+      "position": 11,
+      "enabled": true
+    },
+    {
+      "id": "salad",
+      "name": "Salads",
+      "position": 12,
+      "enabled": true
+    },
+    {
+      "id": "omelettes",
+      "name": "Omelettes",
+      "position": 13,
+      "enabled": true
+    },
+    {
+      "id": "starters",
+      "name": "Starters",
+      "position": 14,
+      "enabled": true
+    },
+    {
+      "id": "combo",
+      "name": "Breakfast & combos",
+      "position": 15,
+      "enabled": true
+    },
+    {
+      "id": "pasta",
+      "name": "Pasta",
+      "position": 16,
+      "enabled": true
+    },
+    {
+      "id": "manual-brews",
+      "name": "Manual brews",
+      "position": 17,
+      "enabled": true
+    }
+  ],
+  "products": [
+    {
+      "id": "source-04",
+      "name": "Cappuccino",
+      "categoryId": "classic-hot-iced",
+      "description": "Espresso with steamed milk and a generous layer of milk foam.",
+      "price": 22500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-04.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": true,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CAPPUCCINO",
+      "recipeSourceRows": "Ingredients!A6:D8",
+      "ingredients": [
+        "Coffee grounds",
+        "Espresso",
+        "Milk"
+      ],
+      "nutrition": {
+        "status": "estimated",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+        "grams": {
+          "fat": 5.4,
+          "fibre": 0.0,
+          "sugar": 8.3,
+          "protein": 5.2
+        }
+      }
+    },
+    {
+      "id": "source-03",
+      "name": "Latte",
+      "categoryId": "classic-hot-iced",
+      "description": "Espresso softened with steamed milk for a smooth, milky coffee.",
+      "price": 23500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-03.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": true,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "LATTE",
+      "recipeSourceRows": "Ingredients!A9:D11",
+      "ingredients": [
+        "Coffee grounds",
+        "Espresso",
+        "Milk"
+      ],
+      "nutrition": {
+        "status": "estimated",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+        "grams": {
+          "fat": 5.4,
+          "fibre": 0.0,
+          "sugar": 8.3,
+          "protein": 5.2
+        }
+      }
+    },
+    {
+      "id": "source-08",
+      "name": "Flat White",
+      "categoryId": "classic-hot-iced",
+      "description": "Espresso and steamed milk with a fine microfoam finish.",
+      "price": 26500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-08.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "FLAT WHITE",
+      "recipeSourceRows": "Ingredients!A12:D14",
+      "ingredients": [
+        "Coffee grounds",
+        "Espresso",
+        "Milk"
+      ],
+      "nutrition": {
+        "status": "estimated",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+        "grams": {
+          "fat": 5.4,
+          "fibre": 0.0,
+          "sugar": 8.3,
+          "protein": 5.2
+        }
+      }
+    },
+    {
+      "id": "source-12",
+      "name": "Americano",
+      "categoryId": "classic-hot-iced",
+      "description": "Espresso lengthened with hot water for a straightforward black coffee.",
+      "price": 21000,
+      "testPrice": false,
+      "image": "/images/menu/items/source-12.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "AMERICANO",
+      "recipeSourceRows": "Ingredients!A15:D17",
+      "ingredients": [
+        "Coffee grounds",
+        "Espresso",
+        "Hot water"
+      ],
+      "nutrition": {
+        "status": "estimated",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+        "grams": {
+          "fat": 0.1,
+          "fibre": 0.0,
+          "sugar": 0.0,
+          "protein": 0.0
+        }
+      }
+    },
+    {
+      "id": "recipe-mocha",
+      "name": "Mocha",
+      "categoryId": "classic-hot-iced",
+      "description": "Espresso, chocolate powder and chocolate sauce brought together with milk.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-mocha.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "MOCHA",
+      "recipeSourceRows": "Ingredients!A18:D22",
+      "ingredients": [
+        "Coffee grounds",
+        "Espresso",
+        "Chocolate powder",
+        "Chocolate sauce",
+        "Milk"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-macchiato",
+      "name": "Macchiato",
+      "categoryId": "classic-hot-iced",
+      "description": "Espresso topped with milk foam for a short, coffee-forward cup.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-macchiato.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "MACCHIATO",
+      "recipeSourceRows": "Ingredients!A23:D25",
+      "ingredients": [
+        "Coffee grounds",
+        "Espresso",
+        "Milk foam"
+      ],
+      "nutrition": {
+        "status": "estimated",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+        "grams": {
+          "fat": 1.4,
+          "fibre": 0.0,
+          "sugar": 2.1,
+          "protein": 1.3
+        }
+      }
+    },
+    {
+      "id": "source-14",
+      "name": "Cortado",
+      "categoryId": "classic-hot-iced",
+      "description": "A small espresso-and-milk coffee with a balanced, mellow finish.",
+      "price": 20500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-14.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CORTADO",
+      "recipeSourceRows": "Ingredients!A26:D28",
+      "ingredients": [
+        "Coffee grounds",
+        "Espresso",
+        "Milk"
+      ],
+      "nutrition": {
+        "status": "estimated",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+        "grams": {
+          "fat": 2.1,
+          "fibre": 0.0,
+          "sugar": 3.1,
+          "protein": 2.0
+        }
+      }
+    },
+    {
+      "id": "source-24",
+      "name": "Affogato",
+      "categoryId": "classic-hot-iced",
+      "description": "Espresso paired with ice cream for a coffee-meets-dessert treat.",
+      "price": 26500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-24.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "AFFOGATO",
+      "recipeSourceRows": "Ingredients!A29:D31",
+      "ingredients": [
+        "Coffee grounds",
+        "Espresso",
+        "Ice cream"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-iced-americano",
+      "name": "Iced Americano",
+      "categoryId": "classic-hot-iced",
+      "description": "Espresso poured over ice and water for a chilled black coffee.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-iced-americano.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "ICED AMERICANO",
+      "recipeSourceRows": "Ingredients!A32:D35",
+      "ingredients": [
+        "Coffee grounds",
+        "Espresso",
+        "Ice cubes",
+        "Water"
+      ],
+      "nutrition": {
+        "status": "estimated",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+        "grams": {
+          "fat": 0.1,
+          "fibre": 0.0,
+          "sugar": 0.0,
+          "protein": 0.0
+        }
+      }
+    },
+    {
+      "id": "recipe-iced-latte",
+      "name": "Iced Latte",
+      "categoryId": "classic-hot-iced",
+      "description": "Espresso and milk served over ice for an easy, refreshing coffee.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-iced-latte.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "ICED LATTE",
+      "recipeSourceRows": "Ingredients!A36:D39",
+      "ingredients": [
+        "Coffee grounds",
+        "Espresso",
+        "Ice cubes",
+        "Milk"
+      ],
+      "nutrition": {
+        "status": "estimated",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+        "grams": {
+          "fat": 3.4,
+          "fibre": 0.0,
+          "sugar": 5.2,
+          "protein": 3.3
+        }
+      }
+    },
+    {
+      "id": "recipe-iced-mocha-dry-shake",
+      "name": "Iced Mocha",
+      "categoryId": "classic-hot-iced",
+      "description": "A chilled mix of espresso, milk, chocolate powder and chocolate sauce.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-iced-mocha-dry-shake.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "ICED MOCHA (DRY SHAKE)",
+      "recipeSourceRows": "Ingredients!A40:D45",
+      "ingredients": [
+        "Coffee grounds",
+        "Espresso",
+        "Ice cubes",
+        "Chocolate powder",
+        "Chocolate sauce",
+        "Milk"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "source-19",
+      "name": "Old Fashioned",
+      "categoryId": "cold-brew-iced-coffee",
+      "description": "Cold brew and orange juice over ice, finished with an orange slice.",
+      "price": 29500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-19.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "OLD FASHIONED",
+      "recipeSourceRows": "Ingredients!A46:D49",
+      "ingredients": [
+        "Orange juice",
+        "Ice cubes",
+        "Cold brew",
+        "Orange slice"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "source-01",
+      "name": "Classic Cold Brew",
+      "categoryId": "cold-brew-iced-coffee",
+      "description": "Cold brew served over ice for a simple chilled coffee.",
+      "price": 26500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-01.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": true,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CLASSIC COLD BREW",
+      "recipeSourceRows": "Ingredients!A50:D51",
+      "ingredients": [
+        "Ice cubes",
+        "Cold brew"
+      ],
+      "nutrition": {
+        "status": "estimated",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+        "grams": {
+          "fat": 0.0,
+          "fibre": 0.0,
+          "sugar": 0.0,
+          "protein": 0.1
+        }
+      }
+    },
+    {
+      "id": "recipe-mango-cold-brew",
+      "name": "Mango Cold Brew",
+      "categoryId": "cold-brew-iced-coffee",
+      "description": "Cold brew with mango syrup over ice for a fruity coffee twist.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-mango-cold-brew.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "MANGO COLD BREW",
+      "recipeSourceRows": "Ingredients!A52:D54",
+      "ingredients": [
+        "Ice cubes",
+        "Mango syrup",
+        "Cold brew"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-espresso-tonic",
+      "name": "Espresso Tonic",
+      "categoryId": "cold-brew-iced-coffee",
+      "description": "Espresso meets tonic water and ice in a bright, sparkling coffee.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-espresso-tonic.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "ESPRESSO TONIC",
+      "recipeSourceRows": "Ingredients!A55:D58",
+      "ingredients": [
+        "Coffee grounds",
+        "Ice cubes",
+        "Tonic water",
+        "Espresso"
+      ],
+      "nutrition": {
+        "status": "estimated",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+        "grams": {
+          "fat": 0.1,
+          "fibre": 0.0,
+          "sugar": 9.2,
+          "protein": 0.0
+        }
+      }
+    },
+    {
+      "id": "recipe-strawberry-iced-latte",
+      "name": "Strawberry Iced Latte",
+      "categoryId": "cold-brew-iced-coffee",
+      "description": "Espresso, milk and strawberry syrup over ice with a strawberry-rim garnish.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-strawberry-iced-latte.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "STRAWBERRY ICED LATTE",
+      "recipeSourceRows": "Ingredients!A59:D64",
+      "ingredients": [
+        "Coffee grounds",
+        "Strawberry rim garnish",
+        "Strawberry syrup",
+        "Ice cubes",
+        "Milk",
+        "Espresso"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-iced-spanish-latte",
+      "name": "Iced Spanish Latte",
+      "categoryId": "cold-brew-iced-coffee",
+      "description": "Espresso and milk over ice, sweetened with condensed milk.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-iced-spanish-latte.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "ICED SPANISH LATTE",
+      "recipeSourceRows": "Ingredients!A65:D69",
+      "ingredients": [
+        "Coffee grounds",
+        "Condenced milk",
+        "Milk",
+        "Ice cubes",
+        "Espresso"
+      ],
+      "nutrition": {
+        "status": "estimated",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+        "grams": {
+          "fat": 6.2,
+          "fibre": 0.0,
+          "sugar": 22.9,
+          "protein": 5.9
+        }
+      }
+    },
+    {
+      "id": "recipe-iced-chai-latte-dry-shake",
+      "name": "Iced Chai Latte",
+      "categoryId": "cold-brew-iced-coffee",
+      "description": "Espresso, masala chai and milk served over ice.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-iced-chai-latte-dry-shake.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "ICED CHAI LATTE ( DRY SHAKE)",
+      "recipeSourceRows": "Ingredients!A70:D74",
+      "ingredients": [
+        "Coffee grounds",
+        "Ice cubes",
+        "Masala chai",
+        "Milk",
+        "Espresso"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-chai-latte-hot",
+      "name": "Chai Latte ( Hot)",
+      "categoryId": "cold-brew-iced-coffee",
+      "description": "Espresso and masala chai combined with milk for a spiced coffee.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-chai-latte-hot.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CHAI LATTE ( HOT)",
+      "recipeSourceRows": "Ingredients!A75:D78",
+      "ingredients": [
+        "Coffee grounds",
+        "Espresso",
+        "Masala chai",
+        "Milk"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-french-vanilla-iced-latte",
+      "name": "French Vanilla Iced Latte",
+      "categoryId": "cold-brew-iced-coffee",
+      "description": "Espresso and milk over ice with a touch of vanilla syrup.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-french-vanilla-iced-latte.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "FRENCH VANILLA ICED LATTE",
+      "recipeSourceRows": "Ingredients!A79:D83",
+      "ingredients": [
+        "Coffee grounds",
+        "Vanilla syrup",
+        "Ice cubes",
+        "Milk",
+        "Espresso"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "source-11",
+      "name": "Vietnamese Iced Coffee",
+      "categoryId": "cold-brew-iced-coffee",
+      "description": "Espresso and condensed milk over ice, finished with cinnamon.",
+      "price": 27000,
+      "testPrice": false,
+      "image": "/images/menu/items/source-11.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "VIETNAMESE ICED COFFEE (DRY SHAKE)",
+      "recipeSourceRows": "Ingredients!A84:D88",
+      "ingredients": [
+        "Coffee grounds",
+        "Ice cubes",
+        "Condensed milk",
+        "Espresso",
+        "Cinnamon powder"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-dirty-matcha-latte-iced-dry-shake",
+      "name": "Dirty Matcha Latte Iced",
+      "categoryId": "cold-brew-iced-coffee",
+      "description": "Espresso, matcha powder and milk served over ice.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-dirty-matcha-latte-iced-dry-shake.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "DIRTY MATCHA LATTE ICED (DRY SHAKE)",
+      "recipeSourceRows": "Ingredients!A89:D93",
+      "ingredients": [
+        "Coffee grounds",
+        "Espresso",
+        "Matcha powder",
+        "Ice cubes",
+        "Milk"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-orange-iced-americano",
+      "name": "Orange Iced Americano",
+      "categoryId": "cold-brew-iced-coffee",
+      "description": "Espresso with orange juice and tonic water over ice, finished with orange.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-orange-iced-americano.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "ORANGE ICED AMERICANO",
+      "recipeSourceRows": "Ingredients!A94:D98",
+      "ingredients": [
+        "Orange juice",
+        "Ice cubes",
+        "Tonic water",
+        "Espresso",
+        "Orange slice"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-iced-coffee-lemonade",
+      "name": "Iced Coffee Lemonade",
+      "categoryId": "cold-brew-iced-coffee",
+      "description": "Espresso, lemon juice and water over ice for a citrus coffee refresher.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-iced-coffee-lemonade.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "ICED COFFEE LEMONADE",
+      "recipeSourceRows": "Ingredients!A99:D103",
+      "ingredients": [
+        "Coffee grounds",
+        "Ice cubes",
+        "Lemon juice",
+        "Water",
+        "Espresso"
+      ],
+      "nutrition": {
+        "status": "estimated",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+        "grams": {
+          "fat": 0.1,
+          "fibre": 0.1,
+          "sugar": 0.5,
+          "protein": 0.1
+        }
+      }
+    },
+    {
+      "id": "recipe-dirty-matcha-latte-hot",
+      "name": "Dirty Matcha Latte (Hot)",
+      "categoryId": "cold-brew-iced-coffee",
+      "description": "Matcha powder and milk paired with espresso for a warm coffee-and-tea blend.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-dirty-matcha-latte-hot.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "DIRTY MATCHA LATTE (HOT)",
+      "recipeSourceRows": "Ingredients!A104:D107",
+      "ingredients": [
+        "Coffee grounds",
+        "Espresso",
+        "Matcha powder",
+        "Milk"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-spanish-latte-hot",
+      "name": "Spanish Latte (Hot)",
+      "categoryId": "cold-brew-iced-coffee",
+      "description": "Espresso with milk and condensed milk for a sweet, milky cup.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-spanish-latte-hot.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "SPANISH LATTE (HOT)",
+      "recipeSourceRows": "Ingredients!A108:D111",
+      "ingredients": [
+        "Coffee grounds",
+        "Espresso",
+        "Condensed milk",
+        "Milk"
+      ],
+      "nutrition": {
+        "status": "estimated",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+        "grams": {
+          "fat": 7.7,
+          "fibre": 0.0,
+          "sugar": 22.5,
+          "protein": 7.3
+        }
+      }
+    },
+    {
+      "id": "recipe-french-vanilla-latte-hot",
+      "name": "French Vanilla Latte (Hot)",
+      "categoryId": "cold-brew-iced-coffee",
+      "description": "Espresso and milk with vanilla syrup for a gently sweet coffee.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-french-vanilla-latte-hot.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "FRENCH VANILLA LATTE (HOT)",
+      "recipeSourceRows": "Ingredients!A112:D115",
+      "ingredients": [
+        "Coffee grounds",
+        "Espresso",
+        "Vanilla syrup",
+        "Milk"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "source-09",
+      "name": "Hot Chocolate",
+      "categoryId": "non-coffee",
+      "description": "Chocolate powder and chocolate syrup combined with milk.",
+      "price": 24500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-09.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "HOT CHOCOLATE",
+      "recipeSourceRows": "Ingredients!A116:D118",
+      "ingredients": [
+        "Chocolate powder",
+        "Chocolate syrup",
+        "Milk"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "source-07",
+      "name": "Cold Chocolate",
+      "categoryId": "non-coffee",
+      "description": "Chocolate powder, chocolate syrup and milk served chilled over ice.",
+      "price": 26500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-07.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "COLD CHOCOLATE ( DRY SHAKE)",
+      "recipeSourceRows": "Ingredients!A119:D122",
+      "ingredients": [
+        "Ice cubes",
+        "Chocolate powder",
+        "Chocolate syrup",
+        "Milk"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-cookie-crumble-frappe",
+      "name": "Cookie Crumble Frappe",
+      "categoryId": "frappes",
+      "description": "An espresso, milk and ice-cream frappe with cookies, whipped cream and chocolate syrup.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-cookie-crumble-frappe.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "COOKIE CRUMBLE FRAPPE",
+      "recipeSourceRows": "Ingredients!A123:D129",
+      "ingredients": [
+        "Ice cubes",
+        "Espresso",
+        "Cookies",
+        "Ice cream",
+        "Frappe mix",
+        "Milk",
+        "Whipped cream",
+        "Chocolate syrup"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-choco-chip-frappe",
+      "name": "Choco Chip Frappe",
+      "categoryId": "frappes",
+      "description": "An espresso, milk and ice-cream frappe with chocolate chips, whipped cream and chocolate syrup.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-choco-chip-frappe.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CHOCO CHIP FRAPPE",
+      "recipeSourceRows": "Ingredients!A130:D136",
+      "ingredients": [
+        "Ice cubes",
+        "Espresso",
+        "Chocolate chips",
+        "Ice cream",
+        "Frappe mix",
+        "Milk",
+        "Whipped cream",
+        "Chocolate syrup"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "source-06",
+      "name": "Classic Cold Coffee",
+      "categoryId": "cold-coffee",
+      "description": "Espresso, milk and frappe mix blended with ice and sugar syrup.",
+      "price": 26500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-06.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": true,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CLASSIC COLD COFFEE",
+      "recipeSourceRows": "Ingredients!A137:D141",
+      "ingredients": [
+        "Ice cubes",
+        "Espresso",
+        "Sugar syrup",
+        "Frappe mix",
+        "Milk"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "source-02",
+      "name": "Hazelnut Cold Coffee",
+      "categoryId": "cold-coffee",
+      "description": "Espresso, milk and frappe mix with hazelnut syrup and ice.",
+      "price": 27500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-02.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": true,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "HAZELNUT COLD COFFEE",
+      "recipeSourceRows": "Ingredients!A142:D146",
+      "ingredients": [
+        "Ice cubes",
+        "Espresso",
+        "Hazelnut syrup",
+        "Frappe mix",
+        "Milk"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "source-05",
+      "name": "Caramel Cold Coffee",
+      "categoryId": "cold-coffee",
+      "description": "Espresso, milk and frappe mix with caramel syrup, whipped cream and chocolate syrup.",
+      "price": 28500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-05.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": true,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CARAMEL COLD COFFEE",
+      "recipeSourceRows": "Ingredients!A147:D152",
+      "ingredients": [
+        "Ice cubes",
+        "Espresso",
+        "Caramel syrup",
+        "Frappe mix",
+        "Milk",
+        "Whipped cream",
+        "Chocolate syrup"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-very-berry-smoothie",
+      "name": "Very Berry Smoothie",
+      "categoryId": "smoothies",
+      "description": "Blueberry yoghurt, oats and fresh blueberries with a chia-seed garnish.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-very-berry-smoothie.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "VERY BERRY SMOOTHIE",
+      "recipeSourceRows": "Ingredients!A153:D156",
+      "ingredients": [
+        "Blueberry yoghurt",
+        "Oats",
+        "Fresh blueberry",
+        "Chia seeds",
+        "Fresh blueberries"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-protein-power-smoothie",
+      "name": "Protein Power Smoothie",
+      "categoryId": "smoothies",
+      "description": "A banana, peanut butter and whey smoothie with milk, cocoa, oats, seeds and muesli.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-protein-power-smoothie.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "PROTEIN POWER SMOOTHIE",
+      "recipeSourceRows": "Ingredients!A157:D167",
+      "ingredients": [
+        "Peanut butter",
+        "Whey protein",
+        "Milk",
+        "Cocoa powder",
+        "Banana",
+        "Ice cubes",
+        "Oats",
+        "Pumpkin seeds",
+        "Chia seeds",
+        "Sunflower seeds",
+        "Muesli"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-chia-iced-tea",
+      "name": "Chia Iced Tea",
+      "categoryId": "refreshing-teas",
+      "description": "Iced tea with lemon, honey and chia seeds, finished with lemon and mint.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-chia-iced-tea.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CHIA ICED TEA",
+      "recipeSourceRows": "Ingredients!A168:D174",
+      "ingredients": [
+        "Tea powder",
+        "Hot water",
+        "Lemon juice",
+        "Ice cubes",
+        "Honey",
+        "Chia seeds",
+        "Lemon",
+        "Mint"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-lemon-mint-iced-tea",
+      "name": "Lemon Mint Iced Tea",
+      "categoryId": "refreshing-teas",
+      "description": "Iced tea with lemon juice and honey, garnished with lemon and mint.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-lemon-mint-iced-tea.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "LEMON MINT ICED TEA",
+      "recipeSourceRows": "Ingredients!A175:D180",
+      "ingredients": [
+        "Tea powder",
+        "Hot water",
+        "Lemon juice",
+        "Ice cubes",
+        "Honey",
+        "Lemon",
+        "Mint"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-peach-mint-iced-tea",
+      "name": "Peach Mint Iced Tea",
+      "categoryId": "refreshing-teas",
+      "description": "Iced tea with peach syrup, lemon juice and mint leaves.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-peach-mint-iced-tea.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "PEACH MINT ICED TEA",
+      "recipeSourceRows": "Ingredients!A181:D187",
+      "ingredients": [
+        "Tea powder",
+        "Hot water",
+        "Mint leaves",
+        "Lemon juice",
+        "Peach syrup",
+        "Ice cubes",
+        "Lemon",
+        "Mint"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-peach-iced-tea",
+      "name": "Peach Iced Tea",
+      "categoryId": "refreshing-teas",
+      "description": "Iced tea with peach syrup and lemon juice, finished with lemon and mint.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-peach-iced-tea.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "PEACH ICED TEA",
+      "recipeSourceRows": "Ingredients!A188:D193",
+      "ingredients": [
+        "Tea powder",
+        "Hot water",
+        "Lemon juice",
+        "Peach syrup",
+        "Ice cubes",
+        "Lemon",
+        "Mint"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-passion-mint-iced-tea",
+      "name": "Passion Mint Iced Tea",
+      "categoryId": "refreshing-teas",
+      "description": "Iced tea with passion syrup, lemon juice and mint leaves.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-passion-mint-iced-tea.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "PASSION MINT ICED TEA",
+      "recipeSourceRows": "Ingredients!A194:D199",
+      "ingredients": [
+        "Tea powder",
+        "Hot water",
+        "Mint leaves",
+        "Lemon juice",
+        "Passion syrup",
+        "Ice cubes"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-lemon-hot-tea",
+      "name": "Lemon Hot Tea",
+      "categoryId": "refreshing-teas",
+      "description": "Warm tea with lemon juice and honey.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-lemon-hot-tea.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "LEMON HOT TEA",
+      "recipeSourceRows": "Ingredients!A200:D203",
+      "ingredients": [
+        "Tea powder",
+        "Hot water",
+        "Lemon juice",
+        "Honey"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-mint-hot-tea",
+      "name": "Mint Hot Tea",
+      "categoryId": "refreshing-teas",
+      "description": "Warm tea with mint leaves and honey.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-mint-hot-tea.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "MINT HOT TEA",
+      "recipeSourceRows": "Ingredients!A204:D207",
+      "ingredients": [
+        "Tea powder",
+        "Hot water",
+        "Mint leaves",
+        "Honey"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-virgin-mojito",
+      "name": "Virgin Mojito",
+      "categoryId": "mocktails",
+      "description": "Lemon and mint with mojito mint syrup, Sprite and soda over ice.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-virgin-mojito.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "VIRGIN MOJITO",
+      "recipeSourceRows": "Ingredients!A208:D213",
+      "ingredients": [
+        "Lemon",
+        "Mint",
+        "Mojito mint syrup",
+        "Ice cubes",
+        "Sprite",
+        "Soda"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-watermelon-mocktail",
+      "name": "Watermelon Mocktail",
+      "categoryId": "mocktails",
+      "description": "Watermelon syrup and lemon juice with Sprite and soda, finished with lemon and mint.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-watermelon-mocktail.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "WATERMELON MOCKTAIL",
+      "recipeSourceRows": "Ingredients!A214:D219",
+      "ingredients": [
+        "Watermelon syrup",
+        "Ice cubes",
+        "Lemon juice",
+        "Sprite",
+        "Soda",
+        "Lemon",
+        "Mint"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-passion-fruit-mocktail",
+      "name": "Passion Fruit Mocktail",
+      "categoryId": "mocktails",
+      "description": "Passion syrup and lemon juice with Sprite and soda, finished with lemon and mint.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-passion-fruit-mocktail.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "PASSION FRUIT MOCKTAIL",
+      "recipeSourceRows": "Ingredients!A220:D225",
+      "ingredients": [
+        "Passion syrup",
+        "Ice cubes",
+        "Lemon juice",
+        "Sprite",
+        "Soda",
+        "Lemon",
+        "Mint"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-mango-mocktail",
+      "name": "Mango Mocktail",
+      "categoryId": "mocktails",
+      "description": "Mango syrup and lemon juice with Sprite and soda, finished with lemon and mint.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-mango-mocktail.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "MANGO MOCKTAIL",
+      "recipeSourceRows": "Ingredients!A226:D231",
+      "ingredients": [
+        "Mango syrup",
+        "Ice cubes",
+        "Lemon juice",
+        "Sprite",
+        "Soda",
+        "Lemon",
+        "Mint"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-green-apple-mocktail",
+      "name": "Green Apple Mocktail",
+      "categoryId": "mocktails",
+      "description": "Green apple syrup and lemon juice with Sprite and soda, finished with lemon and mint.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-green-apple-mocktail.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "GREEN APPLE MOCKTAIL",
+      "recipeSourceRows": "Ingredients!A232:D237",
+      "ingredients": [
+        "Green apple syrup",
+        "Ice cubes",
+        "Lemon juice",
+        "Sprite",
+        "Soda",
+        "Lemon",
+        "Mint"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-deep-blue-sea",
+      "name": "Deep Blue Sea",
+      "categoryId": "other-mixed",
+      "description": "Blue curacao and blueberry crush with lemon, mint, Sprite and soda over ice.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-deep-blue-sea.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "DEEP BLUE SEA",
+      "recipeSourceRows": "Ingredients!A238:D245",
+      "ingredients": [
+        "Blue curacao",
+        "Blueberry crush",
+        "Ice cubes",
+        "Lemon juice",
+        "Mint leaves",
+        "Sprite",
+        "Soda",
+        "Lemon",
+        "Mint"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-green-sea",
+      "name": "Green Sea",
+      "categoryId": "other-mixed",
+      "description": "Green apple and kiwi crush with lemon, mint, Sprite and soda over ice.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-green-sea.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "GREEN SEA",
+      "recipeSourceRows": "Ingredients!A246:D253",
+      "ingredients": [
+        "Green apple crush",
+        "Kiwi crush",
+        "Ice cubes",
+        "Lemon juice",
+        "Mint leaves",
+        "Sprite",
+        "Soda",
+        "Lemon",
+        "Mint"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-goddess",
+      "name": "Goddess",
+      "categoryId": "other-mixed",
+      "description": "Pineapple and green apple crush with lemon, mint, Sprite and soda over ice.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-goddess.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "GODDESS",
+      "recipeSourceRows": "Ingredients!A254:D261",
+      "ingredients": [
+        "Pineapple crush",
+        "Green apple crush",
+        "Ice cubes",
+        "Lemon juice",
+        "Mint leaves",
+        "Sprite",
+        "Soda",
+        "Lemon",
+        "Mint"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-sunset",
+      "name": "Sunset",
+      "categoryId": "other-mixed",
+      "description": "Orange juice and watermelon syrup with lemon, mint, Sprite and soda over ice.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-sunset.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "SUNSET",
+      "recipeSourceRows": "Ingredients!A262:D269",
+      "ingredients": [
+        "Orange juice",
+        "Watermelon syrup",
+        "Ice cubes",
+        "Lemon juice",
+        "Mint leaves",
+        "Sprite",
+        "Soda",
+        "Lemon",
+        "Mint",
+        "Orange"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-the-classic-schmear",
+      "name": "The Classic Schmear",
+      "categoryId": "bagel",
+      "description": "A bagel with cream cheese, rocket leaves, cherry tomatoes and salted butter.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-the-classic-schmear.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "THE CLASSIC SCHMEAR",
+      "recipeSourceRows": "Ingredients!A270:D274",
+      "ingredients": [
+        "Bagel bread",
+        "Cream cheese",
+        "Rocket leaves",
+        "Cherry tomatoes",
+        "Salted butter"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-sunrise-egg-bagel",
+      "name": "Sunrise Egg Bagel",
+      "categoryId": "bagel",
+      "description": "A bagel with egg, cream cheese, rocket leaves and cherry tomatoes.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-sunrise-egg-bagel.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Egg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "SUNRISE EGG BAGEL",
+      "recipeSourceRows": "Ingredients!A275:D281",
+      "ingredients": [
+        "Bagel bread",
+        "Cream cheese",
+        "Rocket leaves",
+        "Cherry tomatoes",
+        "Egg",
+        "Salt and pepper",
+        "Salted butter"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "source-29",
+      "name": "Ham & Cheese Bagel",
+      "categoryId": "bagel",
+      "description": "A bagel with smoked chicken ham, cream cheese, rocket leaves and cherry tomatoes.",
+      "price": 31500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-29.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Non-veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "HAM & CHEESE BAGEL",
+      "recipeSourceRows": "Ingredients!A282:D287",
+      "ingredients": [
+        "Bagel bread",
+        "Cream cheese",
+        "Rocket leaves",
+        "Cherry tomatoes",
+        "Smoked chicken ham",
+        "Salted butter"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-mexican-paneer-bagel",
+      "name": "Mexican Paneer Bagel",
+      "categoryId": "bagel",
+      "description": "A bagel with Mexican-marinated paneer, cream cheese, rocket leaves and cherry tomatoes.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-mexican-paneer-bagel.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "MEXICAN PANEER BAGEL",
+      "recipeSourceRows": "Ingredients!A288:D294",
+      "ingredients": [
+        "Bagel bread",
+        "Cream cheese",
+        "Rocket leaves",
+        "Cherry tomatoes",
+        "Paneer",
+        "Mexican marination",
+        "Salted butter"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-smoked-paneer",
+      "name": "Smoked Paneer",
+      "categoryId": "sandwiches-wrap",
+      "description": "Smoke-marinated paneer, lettuce, bell pepper and cheese in panini or a wrap, with peri peri mayo and fries.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-smoked-paneer.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [],
+      "dietaryReview": true,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "SMOKED PANEER",
+      "recipeSourceRows": "Ingredients!A295:D307",
+      "ingredients": [
+        "Panini bread / wrap",
+        "Peri peri mayo",
+        "Iceberg and green lettuce",
+        "Paneer",
+        "Smoke marination",
+        "Bell pepper",
+        "Salt and pepper",
+        "Cheese slice",
+        "Oil",
+        "Ketchup",
+        "Mayo",
+        "French fries"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "source-23",
+      "name": "Smoke Chicken",
+      "categoryId": "sandwiches-wrap",
+      "description": "Smoke-marinated chicken, lettuce, caramelised onion and cheese in panini or a wrap, with peri peri mayo and fries.",
+      "price": 31500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-23.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Non-veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "SMOKE CHICKEN",
+      "recipeSourceRows": "Ingredients!A308:D320",
+      "ingredients": [
+        "Panini bread / wrap",
+        "Peri peri mayo",
+        "Iceberg and green lettuce",
+        "Chicken",
+        "Smoke marination",
+        "Caramelised onion",
+        "Salt and pepper",
+        "Cheese slice",
+        "Oil",
+        "French fries",
+        "Ketchup",
+        "Mayo"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "source-15",
+      "name": "Egg Salad Sandwich",
+      "categoryId": "sandwiches-wrap",
+      "description": "Egg, hummus, lettuce, cucumber, onion, jalapeno, olives and cheese in panini or a wrap, served with fries.",
+      "price": 29500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-15.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Egg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "EGG SALAD SANDWICH",
+      "recipeSourceRows": "Ingredients!A321:D337",
+      "ingredients": [
+        "Panini bread / wrap",
+        "Hummus",
+        "Iceberg and green lettuce",
+        "Egg",
+        "Butter",
+        "Fresh cream",
+        "Salt and pepper",
+        "Onion",
+        "English cucumber",
+        "Jalapeno",
+        "Olives",
+        "Cheese slice",
+        "Ketchup",
+        "Mayo",
+        "French fries",
+        "Oil"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-mixed-exotic-veggies",
+      "name": "Mixed Exotic Veggies",
+      "categoryId": "sandwiches-wrap",
+      "description": "Broccoli, zucchini, bell pepper, onion and cheese in panini or a wrap, with mayo, lettuce and fries.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-mixed-exotic-veggies.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [],
+      "dietaryReview": true,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "MIXED EXOTIC VEGGIES",
+      "recipeSourceRows": "Ingredients!A338:D351",
+      "ingredients": [
+        "Panini bread / wrap",
+        "Plain mayo",
+        "Iceberg and green lettuce",
+        "Broccoli",
+        "Zucchini",
+        "Bell pepper",
+        "Onion",
+        "Garlic",
+        "Oil",
+        "Cheese slice",
+        "Ketchup",
+        "Mayo",
+        "French fries"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-the-rustic-whisper",
+      "name": "The Rustic Whisper",
+      "categoryId": "sandwiches-wrap",
+      "description": "A panini with mushroom, spinach, bell pepper, onion and cheese, served with lettuce, mayo and fries.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-the-rustic-whisper.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [],
+      "dietaryReview": true,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "THE RUSTIC WHISPER",
+      "recipeSourceRows": "Ingredients!A352:D365",
+      "ingredients": [
+        "Panini bread",
+        "Plain mayo",
+        "Iceberg and green lettuce",
+        "Mushroom",
+        "Spinach",
+        "Bell pepper",
+        "Onion",
+        "Garlic",
+        "Oil",
+        "Cheese slice",
+        "Ketchup",
+        "Mayo",
+        "French fries"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "source-16",
+      "name": "Guacamole Toast",
+      "categoryId": "toast",
+      "description": "Sourdough with avocado, beet-feta hummus, vegetables, lemon, olives and a spiced finish.",
+      "price": 31500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-16.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "GUACAMOLE TOAST",
+      "recipeSourceRows": "Ingredients!A366:D378",
+      "ingredients": [
+        "Sourdough bread",
+        "Beet feta hummus",
+        "Avocado",
+        "Onion",
+        "Tomato",
+        "Bell pepper",
+        "Lemon",
+        "Salt",
+        "Pepper",
+        "Chilli flakes",
+        "Spanish paprika",
+        "Cherry tomato",
+        "Black olives"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-chilli-cheese-toast",
+      "name": "Chilli Cheese Toast",
+      "categoryId": "toast",
+      "description": "Sourdough topped with mozzarella, onion, bell pepper, jalapeno, olives and green chilli.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-chilli-cheese-toast.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CHILLI CHEESE TOAST",
+      "recipeSourceRows": "Ingredients!A379:D390",
+      "ingredients": [
+        "Sourdough bread",
+        "Mozzarella cheese",
+        "Onion",
+        "Bell pepper",
+        "Jalapeno",
+        "Olives",
+        "Green chilli",
+        "Pepper",
+        "Chilli flakes",
+        "Oregano dried",
+        "Oregano seasoning"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-egg-scrambled-open-toast",
+      "name": "Egg Scrambled Open Toast",
+      "categoryId": "toast",
+      "description": "Sourdough with scrambled egg, fresh cream and herb butter, finished with basil oil, chilli oil and microgreens.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-egg-scrambled-open-toast.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Egg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "EGG SCRAMBLED OPEN TOAST",
+      "recipeSourceRows": "Ingredients!A391:D398",
+      "ingredients": [
+        "Sourdough bread",
+        "Egg",
+        "Fresh cream",
+        "Herb butter",
+        "Salted butter",
+        "Basil oil",
+        "Micro greens",
+        "Chilli oil"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-egg-boiled-open-toast",
+      "name": "Egg Boiled Open Toast",
+      "categoryId": "toast",
+      "description": "Sourdough with boiled egg and herb butter, finished with basil oil, chilli oil and microgreens.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-egg-boiled-open-toast.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Egg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "EGG BOILED OPEN TOAST",
+      "recipeSourceRows": "Ingredients!A399:D407",
+      "ingredients": [
+        "Sourdough bread",
+        "Egg",
+        "Herb butter",
+        "Salted butter",
+        "Basil oil",
+        "Micro greens",
+        "Chilli oil"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-paneer-scrambled",
+      "name": "Paneer Scrambled",
+      "categoryId": "toast",
+      "description": "Sourdough with scrambled paneer, onion, bell pepper and fresh cream, finished with microgreens and basil oil.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-paneer-scrambled.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "PANEER SCRAMBLED",
+      "recipeSourceRows": "Ingredients!A408:D418",
+      "ingredients": [
+        "Sourdough bread",
+        "Paneer",
+        "Salted butter",
+        "Herb butter",
+        "Onion",
+        "Bell pepper",
+        "Salt",
+        "Pepper",
+        "Fresh cream",
+        "Micro greens",
+        "Basil oil"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-paneer-steamed",
+      "name": "Paneer Steamed",
+      "categoryId": "toast",
+      "description": "Sourdough with paneer, herb butter, lettuce and Cajun spice, finished with microgreens and basil oil.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-paneer-steamed.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "PANEER STEAMED",
+      "recipeSourceRows": "Ingredients!A419:D429",
+      "ingredients": [
+        "Sourdough bread",
+        "Herb butter",
+        "Paneer",
+        "Onion powder",
+        "Garlic powder",
+        "Cajun spice",
+        "Salt",
+        "Pepper",
+        "Green lettuce",
+        "Micro greens",
+        "Basil oil"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-mushroom",
+      "name": "Mushroom",
+      "categoryId": "toast",
+      "description": "Sourdough with mushroom and garlic, finished with microgreens and basil oil.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-mushroom.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "MUSHROOM",
+      "recipeSourceRows": "Ingredients!A430:D437",
+      "ingredients": [
+        "Sourdough bread",
+        "Mushroom",
+        "Garlic",
+        "Salt",
+        "Pepper",
+        "Caremelized",
+        "Micro greens",
+        "Basil oil"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-chicken-barbeque",
+      "name": "Chicken Barbeque",
+      "categoryId": "toast",
+      "description": "Sourdough with marinated chicken, garlic and barbeque sauce, finished with microgreens and basil oil.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-chicken-barbeque.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Non-veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CHICKEN BARBEQUE",
+      "recipeSourceRows": "Ingredients!A438:D448",
+      "ingredients": [
+        "Sourdough bread",
+        "Marinated chicken",
+        "Garlic",
+        "Salt",
+        "Pepper",
+        "Onion powder",
+        "Garlic powder",
+        "Barbeque sauce",
+        "Ketchup",
+        "Micro greens",
+        "Basil oil"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-chicken-peri-peri",
+      "name": "Chicken Peri Peri",
+      "categoryId": "toast",
+      "description": "Sourdough with marinated chicken, garlic, peri peri seasoning and cayenne pepper.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-chicken-peri-peri.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Non-veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CHICKEN PERI PERI",
+      "recipeSourceRows": "Ingredients!A449:D457",
+      "ingredients": [
+        "Sourdough bread",
+        "Marinated chicken",
+        "Garlic",
+        "Salt",
+        "Pepper",
+        "Peri peri seasoning",
+        "Cayenne pepper powder",
+        "Micro greens",
+        "Basil oil"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-chicken-cajun",
+      "name": "Chicken Cajun",
+      "categoryId": "toast",
+      "description": "Sourdough with marinated chicken, garlic, Cajun seasoning and cayenne pepper.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-chicken-cajun.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Non-veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CHICKEN CAJUN",
+      "recipeSourceRows": "Ingredients!A458:D466",
+      "ingredients": [
+        "Sourdough bread",
+        "Marinated chicken",
+        "Garlic",
+        "Salt",
+        "Pepper",
+        "Cayenne pepper powder",
+        "Cajun seasoning",
+        "Micro greens",
+        "Basil oil"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-crispy-corn-salad",
+      "name": "Crispy Corn Salad",
+      "categoryId": "salad",
+      "description": "Sweet corn and mixed vegetables with salad dressing, cucumber and sesame seeds.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-crispy-corn-salad.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CRISPY CORN SALAD",
+      "recipeSourceRows": "Ingredients!A467:D479",
+      "ingredients": [
+        "Salad dressing base",
+        "Sweet corn",
+        "Maida",
+        "Corn flour",
+        "Salt",
+        "Pepper",
+        "Baby corn",
+        "French beans",
+        "Carrot",
+        "Bell pepper",
+        "Green peas",
+        "English cucumber",
+        "Sesame seeds"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-smoked-chicken-salad",
+      "name": "Smoked Chicken Salad",
+      "categoryId": "salad",
+      "description": "Smoke-marinated chicken with broccoli, cucumber, bell pepper and mixed lettuce.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-smoked-chicken-salad.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Non-veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "SMOKED CHICKEN SALAD",
+      "recipeSourceRows": "Ingredients!A480:D487",
+      "ingredients": [
+        "Salad dressing",
+        "Smoke marinated chicken",
+        "Broccoli",
+        "English cucumber",
+        "Bell pepper",
+        "Green lettuce",
+        "Iceberg"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-ceaser-salad",
+      "name": "Ceaser Salad",
+      "categoryId": "salad",
+      "description": "Green and iceberg lettuce with Caesar dressing, croutons, cherry tomato and Parmesan.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-ceaser-salad.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [],
+      "dietaryReview": true,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CEASER SALAD",
+      "recipeSourceRows": "Ingredients!A488:D494",
+      "ingredients": [
+        "Caesar dressing",
+        "Lettuce green",
+        "Iceberg lettuce",
+        "Croutons",
+        "Cherry tomato",
+        "Parmesan cheese"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-mexican-salad",
+      "name": "Mexican Salad",
+      "categoryId": "salad",
+      "description": "Lettuce, chickpeas, kidney beans, sweet corn and vegetables with Mexican dressing.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-mexican-salad.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "MEXICAN SALAD",
+      "recipeSourceRows": "Ingredients!A495:D504",
+      "ingredients": [
+        "Mexican dressing",
+        "Lettuce",
+        "Onion",
+        "Cherry tomatoes",
+        "English cucumber",
+        "Bell pepper",
+        "Chickpeas",
+        "Rajma beans",
+        "Sweet corn"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-quinoa-salad",
+      "name": "Quinoa Salad",
+      "categoryId": "salad",
+      "description": "Quinoa, chickpeas and vegetables with mint, parsley, sesame, lemon and Dijon mustard dressing.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-quinoa-salad.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "QUINOA SALAD",
+      "recipeSourceRows": "Ingredients!A505:D521",
+      "ingredients": [
+        "Quinoa",
+        "English cucumber",
+        "Cherry tomatoes",
+        "Bell pepper",
+        "Onion",
+        "Chickpeas",
+        "Mint",
+        "Parsley",
+        "Toasted sesame seeds",
+        "Olive oil",
+        "Lemon juice",
+        "Garlic",
+        "Dried oregano",
+        "Salt",
+        "Black pepper",
+        "Cumin powder",
+        "Dijon mustard"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-french-omelette",
+      "name": "French Omelette",
+      "categoryId": "omelettes",
+      "description": "A seasoned egg omelette served with bread and butter.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-french-omelette.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Egg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "FRENCH OMELETTE",
+      "recipeSourceRows": "Ingredients!A522:D528",
+      "ingredients": [
+        "Egg",
+        "Salt",
+        "Pepper",
+        "Oil",
+        "Jumbo bread",
+        "Butter"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-spanish-omelette",
+      "name": "Spanish Omelette",
+      "categoryId": "omelettes",
+      "description": "An egg omelette with onion and potato wedges, served with bread and butter.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-spanish-omelette.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Egg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "SPANISH OMELETTE",
+      "recipeSourceRows": "Ingredients!A529:D537",
+      "ingredients": [
+        "Egg",
+        "Onion",
+        "Potato wedges",
+        "Oil",
+        "Jumbo bread",
+        "Butter",
+        "Salt",
+        "Pepper"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-mushroom-and-sundried-tomato-omelette",
+      "name": "Mushroom And Sundried Tomato Omelette",
+      "categoryId": "omelettes",
+      "description": "An egg omelette with mushroom and sundried tomato, served with bread and butter.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-mushroom-and-sundried-tomato-omelette.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Egg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "MUSHROOM AND SUNDRIED TOMATO OMELETTE",
+      "recipeSourceRows": "Ingredients!A538:D546",
+      "ingredients": [
+        "Egg",
+        "Mushroom",
+        "Sundried tomato",
+        "Salt",
+        "Pepper",
+        "Oil",
+        "Jumbo bread",
+        "Butter"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "source-26",
+      "name": "Baked Chicken Omelette",
+      "categoryId": "omelettes",
+      "description": "A baked egg omelette with marinated chicken and mozzarella, served with bread and butter.",
+      "price": 31000,
+      "testPrice": false,
+      "image": "/images/menu/items/source-26.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Non-veg",
+        "Egg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "BAKED CHICKEN OMELETTE",
+      "recipeSourceRows": "Ingredients!A547:D555",
+      "ingredients": [
+        "Egg",
+        "Marinated chicken",
+        "Salt",
+        "Pepper",
+        "Oil",
+        "Mozzarella cheese",
+        "Jumbo bread",
+        "Butter"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-veg-corquettes",
+      "name": "Veg Corquettes",
+      "categoryId": "starters",
+      "description": "Vegetable croquettes served with a dip and lettuce.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-veg-corquettes.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "VEG CORQUETTES",
+      "recipeSourceRows": "Ingredients!A556:D559",
+      "ingredients": [
+        "Vegetable croquettes",
+        "Dip",
+        "Lettuce"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-classic-bruschetta",
+      "name": "Classic Bruschetta",
+      "categoryId": "starters",
+      "description": "Baguette topped with tomato, garlic, basil, olives and Parmesan, with balsamic vinegar and lemon.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-classic-bruschetta.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CLASSIC BRUSCHETTA",
+      "recipeSourceRows": "Ingredients!A560:D569",
+      "ingredients": [
+        "Baguette bread",
+        "Tomato",
+        "Garlic",
+        "Balsamic vinegar",
+        "Lemon",
+        "Salt",
+        "Pepper",
+        "Basil",
+        "Black olives",
+        "Parmesan cheese"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-tomato-avocado-bruschetta",
+      "name": "Tomato Avocado Bruschetta",
+      "categoryId": "starters",
+      "description": "Baguette topped with tomato, avocado, garlic, basil, olives and Parmesan.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-tomato-avocado-bruschetta.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "TOMATO AVOCADO BRUSCHETTA",
+      "recipeSourceRows": "Ingredients!A570:D580",
+      "ingredients": [
+        "Baguette bread",
+        "Tomato",
+        "Avocado",
+        "Garlic",
+        "Balsamic vinegar",
+        "Lemon",
+        "Salt",
+        "Pepper",
+        "Basil",
+        "Black olives",
+        "Parmesan cheese"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-spinach-corn-cheese-bruschetta",
+      "name": "Spinach Corn Cheese Bruschetta",
+      "categoryId": "starters",
+      "description": "Baguette with spinach, corn and cream cheese, seasoned with onion and garlic powder.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-spinach-corn-cheese-bruschetta.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "SPINACH CORN CHEESE BRUSCHETTA",
+      "recipeSourceRows": "Ingredients!A581:D589",
+      "ingredients": [
+        "Baguette bread",
+        "Corn",
+        "Spinach",
+        "Cream cheese",
+        "Salt",
+        "Pepper",
+        "Onion powder",
+        "Garlic powder"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-french-fries-normal",
+      "name": "French Fries Normal",
+      "categoryId": "starters",
+      "description": "French fries seasoned with salt and served with ketchup.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-french-fries-normal.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "FRENCH FRIES NORMAL",
+      "recipeSourceRows": "Ingredients!A590:D593",
+      "ingredients": [
+        "French fries frozen",
+        "Salt",
+        "Ketchup"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-french-fries-peri-peri",
+      "name": "French Fries Peri Peri",
+      "categoryId": "starters",
+      "description": "French fries with peri peri seasoning, served with ketchup.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-french-fries-peri-peri.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "FRENCH FRIES PERI PERI",
+      "recipeSourceRows": "Ingredients!A594:D597",
+      "ingredients": [
+        "French fries frozen",
+        "Peri peri",
+        "Ketchup"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "source-28",
+      "name": "Cheese Balls",
+      "categoryId": "starters",
+      "description": "Mozzarella bites with onion, bell pepper, olives and herbs, served with peri peri mayo.",
+      "price": 26000,
+      "testPrice": false,
+      "image": "/images/menu/items/source-28.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [],
+      "dietaryReview": true,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CHEESE BALLS",
+      "recipeSourceRows": "Ingredients!A598:D610",
+      "ingredients": [
+        "Mozzarella cheese",
+        "Onion",
+        "Bell pepper",
+        "Olives",
+        "Basil",
+        "Dried oregano",
+        "Oregano seasoning",
+        "Pepper",
+        "Maida",
+        "Cornflour",
+        "Salt",
+        "Peri peri mayo"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-nachos-with-salsa",
+      "name": "Nachos With Salsa",
+      "categoryId": "starters",
+      "description": "Nachos served with salsa and sour cream.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-nachos-with-salsa.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "NACHOS WITH SALSA",
+      "recipeSourceRows": "Ingredients!A611:D614",
+      "ingredients": [
+        "Nachos",
+        "Salsa",
+        "Sour cream"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-nachos-with-chicken-loaded",
+      "name": "Nachos With Chicken Loaded",
+      "categoryId": "starters",
+      "description": "Nachos with marinated chicken, salsa and sour cream.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-nachos-with-chicken-loaded.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Non-veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "NACHOS WITH CHICKEN LOADED",
+      "recipeSourceRows": "Ingredients!A615:D619",
+      "ingredients": [
+        "Nachos",
+        "Marinated chicken",
+        "Salsa",
+        "Sour cream"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-nachos-with-cheese-loaded",
+      "name": "Nachos With Cheese Loaded",
+      "categoryId": "starters",
+      "description": "Nachos with mozzarella, salsa and sour cream.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-nachos-with-cheese-loaded.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "NACHOS WITH CHEESE LOADED",
+      "recipeSourceRows": "Ingredients!A620:D624",
+      "ingredients": [
+        "Nachos",
+        "Mozzarella cheese",
+        "Salsa",
+        "Sour cream"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-loaded-mexican-loaded",
+      "name": "Loaded Mexican Loaded",
+      "categoryId": "starters",
+      "description": "Nachos loaded with chickpeas, kidney beans, sweet corn, vegetables, salsa and sour cream.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-loaded-mexican-loaded.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "LOADED MEXICAN LOADED",
+      "recipeSourceRows": "Ingredients!A625:D637",
+      "ingredients": [
+        "Nachos",
+        "Onion",
+        "Bell pepper",
+        "Chickpeas",
+        "Rajma beans",
+        "Sweet corn",
+        "Sweet paprika",
+        "Cayenne pepper",
+        "Salt and pepper",
+        "Oil",
+        "Salsa",
+        "Sour cream"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "source-27",
+      "name": "Champion Breakfast",
+      "categoryId": "combo",
+      "description": "Eggs, chicken sausage, baked beans, vegetables and potatoes, served with bread and butter.",
+      "price": 41500,
+      "testPrice": false,
+      "image": "/images/menu/items/source-27.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Non-veg",
+        "Egg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CHAMPION BREAKFAST",
+      "recipeSourceRows": "Ingredients!A638:D653",
+      "ingredients": [
+        "Egg",
+        "Fresh cream",
+        "Butter",
+        "Chicken sausage",
+        "Baked beans",
+        "Zucchini",
+        "Broccoli",
+        "Bell pepper",
+        "Potato",
+        "Tomato",
+        "Oil",
+        "Salt",
+        "Pepper",
+        "Jumbo bread"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-weekend-dominator",
+      "name": "Weekend Dominator",
+      "categoryId": "combo",
+      "description": "Paneer, hash brown, baked beans, vegetables and potatoes, served with bread and butter.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-weekend-dominator.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "WEEKEND DOMINATOR",
+      "recipeSourceRows": "Ingredients!A654:D667",
+      "ingredients": [
+        "Paneer",
+        "Hash brown",
+        "Baked beans",
+        "Zucchini",
+        "Broccoli",
+        "Bell pepper",
+        "Potato",
+        "Tomato",
+        "Oil",
+        "Salt",
+        "Pepper",
+        "Jumbo bread",
+        "Butter"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-scrambled-egg-delight",
+      "name": "Scrambled Egg Delight",
+      "categoryId": "combo",
+      "description": "Scrambled egg with cream and butter, mushroom, spinach, hash brown, tomato and bread.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-scrambled-egg-delight.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Egg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "SCRAMBLED EGG DELIGHT",
+      "recipeSourceRows": "Ingredients!A668:D679",
+      "ingredients": [
+        "Egg",
+        "Fresh cream",
+        "Butter",
+        "Mushroom",
+        "Spinach",
+        "Garlic",
+        "Oil",
+        "Hash brown",
+        "Tomato",
+        "Jumbo bread"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-scrambled-paneer-delight",
+      "name": "Scrambled Paneer Delight",
+      "categoryId": "combo",
+      "description": "Scrambled paneer with vegetables, cream and turmeric, served with mushroom, spinach, hash brown and bread.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-scrambled-paneer-delight.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "SCRAMBLED PANEER DELIGHT",
+      "recipeSourceRows": "Ingredients!A680:D696",
+      "ingredients": [
+        "Paneer",
+        "Bell pepper",
+        "Onion",
+        "Oil",
+        "Leek and celery",
+        "Fresh cream",
+        "Salt",
+        "Pepper",
+        "Turmeric",
+        "Mushroom",
+        "Spinach",
+        "Garlic",
+        "Hash brown",
+        "Tomato",
+        "Jumbo bread",
+        "Butter"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-american-breakfast",
+      "name": "American Breakfast",
+      "categoryId": "combo",
+      "description": "Eggs and chicken ham with baked beans, vegetables and potatoes, served with sourdough and butter.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-american-breakfast.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Non-veg",
+        "Egg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "AMERICAN BREAKFAST",
+      "recipeSourceRows": "Ingredients!A697:D711",
+      "ingredients": [
+        "Egg",
+        "Chicken ham",
+        "Zucchini",
+        "Broccoli",
+        "Bell pepper",
+        "Potato",
+        "Fresh cream",
+        "Salt",
+        "Pepper",
+        "Butter",
+        "Baked beans",
+        "Sourdough bread",
+        "Oil"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-seafood-platter",
+      "name": "Seafood Platter",
+      "categoryId": "combo",
+      "description": "Lemon-marinated basa fish and prawns with egg, vegetables, garlic, bread and butter.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-seafood-platter.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Non-veg",
+        "Egg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "SEAFOOD PLATTER",
+      "recipeSourceRows": "Ingredients!A712:D724",
+      "ingredients": [
+        "Lemon-marinated basa fish",
+        "Egg",
+        "Cucumber",
+        "Onion",
+        "Lettuce",
+        "Prawns",
+        "Bell pepper",
+        "Oil",
+        "Garlic",
+        "Salt and pepper",
+        "Jumbo bread",
+        "Butter"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-french-toast",
+      "name": "French Toast",
+      "categoryId": "combo",
+      "description": "Brioche with egg, milk, cinnamon and vanilla, served with butter and maple syrup.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-french-toast.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Egg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "FRENCH TOAST",
+      "recipeSourceRows": "Ingredients!A725:D732",
+      "ingredients": [
+        "Brioche bread",
+        "Egg",
+        "Sugar",
+        "Cinnamon powder",
+        "Vanilla essence",
+        "Milk",
+        "Butter",
+        "Maple syrup"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-pancake",
+      "name": "Pancake",
+      "categoryId": "combo",
+      "description": "Pancakes made with egg, milk, flour and vanilla, served with maple syrup.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-pancake.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Egg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "PANCAKE",
+      "recipeSourceRows": "Ingredients!A733:D741",
+      "ingredients": [
+        "Egg",
+        "Sugar",
+        "Vanilla essence",
+        "Milk",
+        "Maida",
+        "Baking powder",
+        "Salt",
+        "Baking soda",
+        "Maple syrup"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-aglio-olio",
+      "name": "Aglio Olio",
+      "categoryId": "pasta",
+      "description": "Spaghetti with olive oil, garlic, vegetables, chilli flakes, herbs, olives and Parmesan, served with garlic bread.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-aglio-olio.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "AGLIO OLIO",
+      "recipeSourceRows": "Ingredients!A742:D759",
+      "ingredients": [
+        "Olive oil",
+        "Garlic",
+        "Leek",
+        "Celery",
+        "Bell pepper",
+        "Zucchini",
+        "Broccoli",
+        "Chilli flakes",
+        "Spaghetti",
+        "Salt",
+        "Pepper",
+        "Dried oregano",
+        "Oregano seasoning",
+        "Basil leaves",
+        "Black sliced olives",
+        "Parmesan cheese",
+        "Garlic bread"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-pesto",
+      "name": "Pesto",
+      "categoryId": "pasta",
+      "description": "Pesto paste and white sauce with vegetables, herbs, olives and Parmesan, served with garlic bread.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-pesto.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "PESTO",
+      "recipeSourceRows": "Ingredients!A760:D777",
+      "ingredients": [
+        "Oil",
+        "Garlic",
+        "Leek",
+        "Celery",
+        "Zucchini",
+        "Broccoli",
+        "Bell pepper",
+        "Pesto paste",
+        "White sauce",
+        "Salt",
+        "Pepper",
+        "Dried oregano",
+        "Oregano seasoning",
+        "Chilli flakes",
+        "Black sliced olives",
+        "Parmesan",
+        "Garlic bread"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-pasta-al-funghi",
+      "name": "Pasta Al Funghi",
+      "categoryId": "pasta",
+      "description": "Penne with shiitake paste, white sauce, white wine and mushroom, finished with Parmesan and garlic bread.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-pasta-al-funghi.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "PASTA AL FUNGHI",
+      "recipeSourceRows": "Ingredients!A778:D794",
+      "ingredients": [
+        "Oil",
+        "Garlic",
+        "Leek",
+        "Celery",
+        "White wine",
+        "Shiitake paste",
+        "White sauce",
+        "Salt",
+        "Pepper",
+        "Chilli flakes",
+        "Dried oregano",
+        "Oregano seasoning",
+        "Penne pasta",
+        "Mushroom for garnish",
+        "Parmesan",
+        "Garlic bread"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-mac-and-cheese",
+      "name": "Mac And Cheese",
+      "categoryId": "pasta",
+      "description": "White sauce with cheddar cheese powder, mozzarella, onion, leeks and celery, served with garlic bread.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-mac-and-cheese.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "MAC AND CHEESE",
+      "recipeSourceRows": "Ingredients!A795:D807",
+      "ingredients": [
+        "Oil",
+        "Leeks",
+        "Celery",
+        "Onion",
+        "White sauce",
+        "Cheddar cheese powder",
+        "Salt",
+        "Pepper",
+        "Oregano",
+        "Oregano seasoning",
+        "Mozzarella cheese",
+        "Garlic bread"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-creamy-alfredo",
+      "name": "Creamy Alfredo",
+      "categoryId": "pasta",
+      "description": "White sauce with mixed vegetables, herbs, olives and Parmesan, served with garlic bread.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-creamy-alfredo.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CREAMY ALFREDO",
+      "recipeSourceRows": "Ingredients!A808:D823",
+      "ingredients": [
+        "Oil",
+        "Leeks",
+        "Celery",
+        "Onion",
+        "White sauce",
+        "Bell pepper",
+        "Zucchini",
+        "Broccoli",
+        "Salt",
+        "Pepper",
+        "Oregano",
+        "Oregano seasoning",
+        "Black sliced olives",
+        "Parmesan cheese",
+        "Garlic bread"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-pour-over",
+      "name": "Pour Over",
+      "categoryId": "manual-brews",
+      "description": "Coffee beans brewed with water using the pour-over method.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-pour-over.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "POUR OVER",
+      "recipeSourceRows": "Ingredients!A824:D825",
+      "ingredients": [
+        "Coffee beans",
+        "Water"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-aero-press",
+      "name": "Aero Press",
+      "categoryId": "manual-brews",
+      "description": "Coffee beans brewed with water using an AeroPress.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-aero-press.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "AERO PRESS",
+      "recipeSourceRows": "Ingredients!A826:D827",
+      "ingredients": [
+        "Coffee beans",
+        "Water"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-french-press",
+      "name": "French Press",
+      "categoryId": "manual-brews",
+      "description": "Coffee beans brewed with water using a French press.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-french-press.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "FRENCH PRESS",
+      "recipeSourceRows": "Ingredients!A828:D829",
+      "ingredients": [
+        "Coffee beans",
+        "Water"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-syphon",
+      "name": "Syphon",
+      "categoryId": "manual-brews",
+      "description": "Coffee beans brewed with water using a syphon brewer.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-syphon.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "SYPHON",
+      "recipeSourceRows": "Ingredients!A830:D831",
+      "ingredients": [
+        "Coffee beans",
+        "Water"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-moka-pot",
+      "name": "Moka Pot",
+      "categoryId": "manual-brews",
+      "description": "Coffee beans brewed with water using a moka pot.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-moka-pot.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "MOKA POT",
+      "recipeSourceRows": "Ingredients!A832:D833",
+      "ingredients": [
+        "Coffee beans",
+        "Water"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    },
+    {
+      "id": "recipe-chemex",
+      "name": "Chemex",
+      "categoryId": "manual-brews",
+      "description": "Coffee beans brewed with water using a Chemex.",
+      "price": 10000,
+      "testPrice": true,
+      "image": "/images/menu/items/recipe-chemex.webp",
+      "imageAtlas": false,
+      "imagePosition": "center",
+      "available": true,
+      "inventory": null,
+      "archived": false,
+      "featured": false,
+      "variants": [],
+      "addons": [],
+      "dietary": [
+        "Veg"
+      ],
+      "dietaryReview": false,
+      "source": "Outlet recipe workbook",
+      "recipeSourceName": "CHEMEX",
+      "recipeSourceRows": "Ingredients!A834:D835",
+      "ingredients": [
+        "Coffee beans",
+        "Water"
+      ],
+      "nutrition": {
+        "status": "unavailable",
+        "basis": "Per recipe serving, before customisations",
+        "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+      }
+    }
+  ]
+}

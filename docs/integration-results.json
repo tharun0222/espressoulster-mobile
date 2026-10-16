@@ -1,0 +1,8 @@
+{
+  "tests": 66,
+  "passed": 66,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "scope": "Local built Worker with test identities; synthetic fixtures never deployed"
+}

@@ -1,0 +1,824 @@
+{
+  "ESPRESSO": {
+    "fdcId": "171891",
+    "food": "Beverages, coffee, brewed, espresso, restaurant-prepared",
+    "density": 1,
+    "gramsPer100g": {
+      "fibre": 0.0,
+      "fat": 0.18,
+      "protein": 0.12,
+      "sugar": 0.0
+    }
+  },
+  "MILK": {
+    "fdcId": "171265",
+    "food": "Milk, whole, 3.25% milkfat, with added vitamin D",
+    "density": 1.03,
+    "gramsPer100g": {
+      "fat": 3.25,
+      "sugar": 5.05,
+      "fibre": 0.0,
+      "protein": 3.15
+    }
+  },
+  "MILK FOAM": {
+    "fdcId": "171265",
+    "food": "Milk, whole, 3.25% milkfat, with added vitamin D",
+    "density": 1.03,
+    "gramsPer100g": {
+      "fat": 3.25,
+      "sugar": 5.05,
+      "fibre": 0.0,
+      "protein": 3.15
+    }
+  },
+  "COLD BREW": {
+    "fdcId": "171890",
+    "food": "Beverages, coffee, brewed, prepared with tap water",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 0.0,
+      "protein": 0.12,
+      "fat": 0.02,
+      "fibre": 0.0
+    }
+  },
+  "WATER": {
+    "fdcId": "174158",
+    "food": "Water, bottled, generic",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 0.0,
+      "fibre": 0.0,
+      "fat": 0.0,
+      "sugar": 0.0
+    }
+  },
+  "HOT WATER": {
+    "fdcId": "174158",
+    "food": "Water, bottled, generic",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 0.0,
+      "fibre": 0.0,
+      "fat": 0.0,
+      "sugar": 0.0
+    }
+  },
+  "ICE CUBE": {
+    "fdcId": "174158",
+    "food": "Water, bottled, generic",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 0.0,
+      "fibre": 0.0,
+      "fat": 0.0,
+      "sugar": 0.0
+    }
+  },
+  "ICE CUBES": {
+    "fdcId": "174158",
+    "food": "Water, bottled, generic",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 0.0,
+      "fibre": 0.0,
+      "fat": 0.0,
+      "sugar": 0.0
+    }
+  },
+  "SODA": {
+    "fdcId": "174158",
+    "food": "Water, bottled, generic",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 0.0,
+      "fibre": 0.0,
+      "fat": 0.0,
+      "sugar": 0.0
+    }
+  },
+  "HONEY": {
+    "fdcId": "169640",
+    "food": "Honey",
+    "density": 1.42,
+    "gramsPer100g": {
+      "protein": 0.3,
+      "fibre": 0.2,
+      "fat": 0.0,
+      "sugar": 82.12
+    }
+  },
+  "SUGAR": {
+    "fdcId": "169655",
+    "food": "Sugars, granulated",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 0.0,
+      "fat": 0.0,
+      "sugar": 99.8,
+      "fibre": 0.0
+    }
+  },
+  "LEMON JUICE": {
+    "fdcId": "167747",
+    "food": "Lemon juice, raw",
+    "density": 1.03,
+    "gramsPer100g": {
+      "protein": 0.35,
+      "fibre": 0.3,
+      "sugar": 2.52,
+      "fat": 0.24
+    }
+  },
+  "ORANGE JUICE": {
+    "fdcId": "169098",
+    "food": "Orange juice, raw (Includes foods for USDA's Food Distribution Program)",
+    "density": 1.04,
+    "gramsPer100g": {
+      "sugar": 8.4,
+      "protein": 0.7,
+      "fibre": 0.2,
+      "fat": 0.2
+    }
+  },
+  "CONDENSED MILK": {
+    "fdcId": "171275",
+    "food": "Milk, canned, condensed, sweetened",
+    "density": 1.3,
+    "gramsPer100g": {
+      "sugar": 54.4,
+      "fat": 8.7,
+      "protein": 7.91,
+      "fibre": 0.0
+    }
+  },
+  "CONDENCED MILK": {
+    "fdcId": "171275",
+    "food": "Milk, canned, condensed, sweetened",
+    "density": 1.3,
+    "gramsPer100g": {
+      "sugar": 54.4,
+      "fat": 8.7,
+      "protein": 7.91,
+      "fibre": 0.0
+    }
+  },
+  "TONIC WATER": {
+    "fdcId": "171869",
+    "food": "Beverages, carbonated, tonic water",
+    "density": 1.04,
+    "gramsPer100g": {
+      "sugar": 8.8,
+      "fibre": 0.0,
+      "protein": 0.0,
+      "fat": 0.0
+    }
+  },
+  "SPRITE": {
+    "fdcId": "173205",
+    "food": "Beverages, carbonated, lemon-lime soda, no caffeine",
+    "density": 1.04,
+    "gramsPer100g": {
+      "fibre": 0.0,
+      "fat": 0.0,
+      "protein": 0.09,
+      "sugar": 10.38
+    }
+  },
+  "SPRIT": {
+    "fdcId": "173205",
+    "food": "Beverages, carbonated, lemon-lime soda, no caffeine",
+    "density": 1.04,
+    "gramsPer100g": {
+      "fibre": 0.0,
+      "fat": 0.0,
+      "protein": 0.09,
+      "sugar": 10.38
+    }
+  },
+  "FRESH CREAM": {
+    "fdcId": "170859",
+    "food": "Cream, fluid, heavy whipping",
+    "density": 1.0,
+    "gramsPer100g": {
+      "fat": 36.08,
+      "sugar": 2.92,
+      "protein": 2.84,
+      "fibre": 0.0
+    }
+  },
+  "COCOA POWDER": {
+    "fdcId": "169593",
+    "food": "Cocoa, dry powder, unsweetened",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 1.75,
+      "fibre": 37.0,
+      "protein": 19.6,
+      "fat": 13.7
+    }
+  },
+  "BUTTER": {
+    "fdcId": "173410",
+    "food": "Butter, salted",
+    "density": 1,
+    "gramsPer100g": {
+      "fibre": 0.0,
+      "fat": 81.11,
+      "protein": 0.85,
+      "sugar": 0.06
+    }
+  },
+  "BUTTER SALTED": {
+    "fdcId": "173410",
+    "food": "Butter, salted",
+    "density": 1,
+    "gramsPer100g": {
+      "fibre": 0.0,
+      "fat": 81.11,
+      "protein": 0.85,
+      "sugar": 0.06
+    }
+  },
+  "SALTED BUTTER": {
+    "fdcId": "173410",
+    "food": "Butter, salted",
+    "density": 1,
+    "gramsPer100g": {
+      "fibre": 0.0,
+      "fat": 81.11,
+      "protein": 0.85,
+      "sugar": 0.06
+    }
+  },
+  "SALTED BTTER": {
+    "fdcId": "173410",
+    "food": "Butter, salted",
+    "density": 1,
+    "gramsPer100g": {
+      "fibre": 0.0,
+      "fat": 81.11,
+      "protein": 0.85,
+      "sugar": 0.06
+    }
+  },
+  "BUTTER CHIPLET": {
+    "fdcId": "173410",
+    "food": "Butter, salted",
+    "density": 1,
+    "gramsPer100g": {
+      "fibre": 0.0,
+      "fat": 81.11,
+      "protein": 0.85,
+      "sugar": 0.06
+    }
+  },
+  "EGG": {
+    "fdcId": "171287",
+    "food": "Egg, whole, raw, fresh",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 12.56,
+      "sugar": 0.37,
+      "fat": 9.51,
+      "fibre": 0.0
+    }
+  },
+  "SOUR DOUGH BREAD": {
+    "fdcId": "172675",
+    "food": "Bread, french or vienna (includes sourdough)",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 10.75,
+      "fibre": 2.2,
+      "fat": 2.42,
+      "sugar": 4.62
+    }
+  },
+  "SOURDOUGH BREAD": {
+    "fdcId": "172675",
+    "food": "Bread, french or vienna (includes sourdough)",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 10.75,
+      "fibre": 2.2,
+      "fat": 2.42,
+      "sugar": 4.62
+    }
+  },
+  "BAGUETTE BREAD": {
+    "fdcId": "172675",
+    "food": "Bread, french or vienna (includes sourdough)",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 10.75,
+      "fibre": 2.2,
+      "fat": 2.42,
+      "sugar": 4.62
+    }
+  },
+  "JUMBO BREAD": {
+    "fdcId": "174924",
+    "food": "Bread, white, commercially prepared (includes soft bread crumbs)",
+    "density": 1,
+    "gramsPer100g": {
+      "fibre": 2.7,
+      "fat": 3.33,
+      "sugar": 5.67,
+      "protein": 8.85
+    }
+  },
+  "OATS": {
+    "fdcId": "169705",
+    "food": "Oats (Includes foods for USDA's Food Distribution Program)",
+    "density": 1,
+    "gramsPer100g": {
+      "fibre": 10.6,
+      "protein": 16.89,
+      "fat": 6.9
+    }
+  },
+  "CHIA SEEDS": {
+    "fdcId": "170554",
+    "food": "Seeds, chia seeds, dried",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 16.54,
+      "fibre": 34.4,
+      "fat": 30.74
+    }
+  },
+  "PUMPKIN SEEDS": {
+    "fdcId": "169415",
+    "food": "Seeds, pumpkin and squash seed kernels, roasted, with salt added",
+    "density": 1,
+    "gramsPer100g": {
+      "fibre": 6.5,
+      "protein": 29.84,
+      "sugar": 1.29,
+      "fat": 49.05
+    }
+  },
+  "SUNFLOWER SEEDS": {
+    "fdcId": "168594",
+    "food": "Seeds, sunflower seed kernels, toasted, with salt added",
+    "density": 1,
+    "gramsPer100g": {
+      "fibre": 11.5,
+      "fat": 56.8,
+      "protein": 17.21
+    }
+  },
+  "BANANA": {
+    "fdcId": "173944",
+    "food": "Bananas, raw",
+    "density": 1,
+    "gramsPer100g": {
+      "fibre": 2.6,
+      "protein": 1.09,
+      "sugar": 12.23,
+      "fat": 0.33
+    }
+  },
+  "FRESH BLUEBERRY": {
+    "fdcId": "171711",
+    "food": "Blueberries, raw",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 9.96,
+      "fat": 0.33,
+      "fibre": 2.4,
+      "protein": 0.74
+    }
+  },
+  "PEANUT BUTTER": {
+    "fdcId": "172470",
+    "food": "Peanut butter, smooth style, without salt",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 22.21,
+      "fibre": 5.0,
+      "sugar": 10.49,
+      "fat": 51.36
+    }
+  },
+  "ONION": {
+    "fdcId": "170000",
+    "food": "Onions, raw",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 4.24,
+      "fat": 0.1,
+      "protein": 1.1,
+      "fibre": 1.7
+    }
+  },
+  "GARLIC": {
+    "fdcId": "169230",
+    "food": "Garlic, raw",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 1.0,
+      "fibre": 2.1,
+      "protein": 6.36,
+      "fat": 0.5
+    }
+  },
+  "BELLPEPPER": {
+    "fdcId": "170108",
+    "food": "Peppers, sweet, red, raw",
+    "density": 1,
+    "gramsPer100g": {
+      "fibre": 2.1,
+      "sugar": 4.2,
+      "protein": 0.99,
+      "fat": 0.3
+    }
+  },
+  "BELL PEPPER": {
+    "fdcId": "170108",
+    "food": "Peppers, sweet, red, raw",
+    "density": 1,
+    "gramsPer100g": {
+      "fibre": 2.1,
+      "sugar": 4.2,
+      "protein": 0.99,
+      "fat": 0.3
+    }
+  },
+  "BELLBEPPER": {
+    "fdcId": "170108",
+    "food": "Peppers, sweet, red, raw",
+    "density": 1,
+    "gramsPer100g": {
+      "fibre": 2.1,
+      "sugar": 4.2,
+      "protein": 0.99,
+      "fat": 0.3
+    }
+  },
+  "BELLPEPER": {
+    "fdcId": "170108",
+    "food": "Peppers, sweet, red, raw",
+    "density": 1,
+    "gramsPer100g": {
+      "fibre": 2.1,
+      "sugar": 4.2,
+      "protein": 0.99,
+      "fat": 0.3
+    }
+  },
+  "BROCOLLI": {
+    "fdcId": "170379",
+    "food": "Broccoli, raw",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 1.7,
+      "fat": 0.37,
+      "protein": 2.82,
+      "fibre": 2.6
+    }
+  },
+  "TOMATO": {
+    "fdcId": "170457",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 2.63,
+      "fat": 0.2,
+      "fibre": 1.2,
+      "protein": 0.88
+    }
+  },
+  "CHERRY TOMATO": {
+    "fdcId": "170457",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 2.63,
+      "fat": 0.2,
+      "fibre": 1.2,
+      "protein": 0.88
+    }
+  },
+  "CHERRY TOMATOES": {
+    "fdcId": "170457",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 2.63,
+      "fat": 0.2,
+      "fibre": 1.2,
+      "protein": 0.88
+    }
+  },
+  "PARMESAN": {
+    "fdcId": "170848",
+    "food": "Cheese, parmesan, hard",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 0.11,
+      "fat": 25.0,
+      "fibre": 0.0,
+      "protein": 35.75
+    }
+  },
+  "PARMESAN CHEESE": {
+    "fdcId": "170848",
+    "food": "Cheese, parmesan, hard",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 0.11,
+      "fat": 25.0,
+      "fibre": 0.0,
+      "protein": 35.75
+    }
+  },
+  "CREAM CHEESE": {
+    "fdcId": "173418",
+    "food": "Cheese, cream",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 6.15,
+      "fat": 34.44,
+      "sugar": 3.76,
+      "fibre": 0.0
+    }
+  },
+  "MOZZERELLA CHEESE": {
+    "fdcId": "170845",
+    "food": "Cheese, mozzarella, whole milk",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 22.17,
+      "sugar": 0.0,
+      "fat": 22.14,
+      "fibre": 0.0
+    }
+  },
+  "MOZZERELA CHEESE": {
+    "fdcId": "170845",
+    "food": "Cheese, mozzarella, whole milk",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 22.17,
+      "sugar": 0.0,
+      "fat": 22.14,
+      "fibre": 0.0
+    }
+  },
+  "MAYO": {
+    "fdcId": "171009",
+    "food": "Salad dressing, mayonnaise, regular",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 0.96,
+      "fat": 74.85,
+      "fibre": 0.0,
+      "sugar": 0.57
+    }
+  },
+  "PLAIN MAYO": {
+    "fdcId": "171009",
+    "food": "Salad dressing, mayonnaise, regular",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 0.96,
+      "fat": 74.85,
+      "fibre": 0.0,
+      "sugar": 0.57
+    }
+  },
+  "MUSHROOM": {
+    "fdcId": "169251",
+    "food": "Mushrooms, white, raw",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 1.98,
+      "fibre": 1.0,
+      "fat": 0.34,
+      "protein": 3.09
+    }
+  },
+  "ENGLISH CUCUMBER": {
+    "fdcId": "168409",
+    "food": "Cucumber, with peel, raw",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 1.67,
+      "fat": 0.11,
+      "fibre": 0.5,
+      "protein": 0.65
+    }
+  },
+  "CUCUMBER": {
+    "fdcId": "168409",
+    "food": "Cucumber, with peel, raw",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 1.67,
+      "fat": 0.11,
+      "fibre": 0.5,
+      "protein": 0.65
+    }
+  },
+  "SPINACH": {
+    "fdcId": "168462",
+    "food": "Spinach, raw",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 2.86,
+      "fibre": 2.2,
+      "sugar": 0.42,
+      "fat": 0.39
+    }
+  },
+  "ICEBERG": {
+    "fdcId": "169248",
+    "food": "Lettuce, iceberg (includes crisphead types), raw",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 1.97,
+      "fibre": 1.2,
+      "protein": 0.9,
+      "fat": 0.14
+    }
+  },
+  "LETTUCE": {
+    "fdcId": "169248",
+    "food": "Lettuce, iceberg (includes crisphead types), raw",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 1.97,
+      "fibre": 1.2,
+      "protein": 0.9,
+      "fat": 0.14
+    }
+  },
+  "ICEBERG LETTUCE": {
+    "fdcId": "169248",
+    "food": "Lettuce, iceberg (includes crisphead types), raw",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 1.97,
+      "fibre": 1.2,
+      "protein": 0.9,
+      "fat": 0.14
+    }
+  },
+  "GREEN LETTUCE": {
+    "fdcId": "169248",
+    "food": "Lettuce, iceberg (includes crisphead types), raw",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 1.97,
+      "fibre": 1.2,
+      "protein": 0.9,
+      "fat": 0.14
+    }
+  },
+  "LETTUCE GREEN": {
+    "fdcId": "169248",
+    "food": "Lettuce, iceberg (includes crisphead types), raw",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 1.97,
+      "fibre": 1.2,
+      "protein": 0.9,
+      "fat": 0.14
+    }
+  },
+  "ICEBERG+GREEN LETTUCE": {
+    "fdcId": "169248",
+    "food": "Lettuce, iceberg (includes crisphead types), raw",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 1.97,
+      "fibre": 1.2,
+      "protein": 0.9,
+      "fat": 0.14
+    }
+  },
+  "AVOCADO": {
+    "fdcId": "171705",
+    "food": "Avocados, raw, all commercial varieties",
+    "density": 1,
+    "gramsPer100g": {
+      "protein": 2.0,
+      "fibre": 6.7,
+      "fat": 14.66,
+      "sugar": 0.66
+    }
+  },
+  "OLIVE OIL": {
+    "fdcId": "171413",
+    "food": "Oil, olive, salad or cooking",
+    "density": 0.91,
+    "gramsPer100g": {
+      "fat": 100.0,
+      "protein": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.0
+    }
+  },
+  "BASIL OIL": {
+    "fdcId": "171413",
+    "food": "Oil, olive, salad or cooking",
+    "density": 0.91,
+    "gramsPer100g": {
+      "fat": 100.0,
+      "protein": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.0
+    }
+  },
+  "CHILLI OIL": {
+    "fdcId": "171413",
+    "food": "Oil, olive, salad or cooking",
+    "density": 0.91,
+    "gramsPer100g": {
+      "fat": 100.0,
+      "protein": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.0
+    }
+  },
+  "OIL": {
+    "fdcId": "172336",
+    "food": "Oil, canola",
+    "density": 0.92,
+    "gramsPer100g": {
+      "fat": 100.0,
+      "protein": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.0
+    }
+  },
+  "PEPPER": {
+    "fdcId": "170931",
+    "food": "Spices, pepper, black",
+    "density": 1,
+    "gramsPer100g": {
+      "fat": 3.26,
+      "sugar": 0.64,
+      "protein": 10.39,
+      "fibre": 25.3
+    }
+  },
+  "BLACK PEPPR": {
+    "fdcId": "170931",
+    "food": "Spices, pepper, black",
+    "density": 1,
+    "gramsPer100g": {
+      "fat": 3.26,
+      "sugar": 0.64,
+      "protein": 10.39,
+      "fibre": 25.3
+    }
+  },
+  "OREGANO": {
+    "fdcId": "171328",
+    "food": "Spices, oregano, dried",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 4.09,
+      "fat": 4.28,
+      "fibre": 42.5,
+      "protein": 9.0
+    }
+  },
+  "DRIED OREGANO": {
+    "fdcId": "171328",
+    "food": "Spices, oregano, dried",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 4.09,
+      "fat": 4.28,
+      "fibre": 42.5,
+      "protein": 9.0
+    }
+  },
+  "OREGANO DRIED": {
+    "fdcId": "171328",
+    "food": "Spices, oregano, dried",
+    "density": 1,
+    "gramsPer100g": {
+      "sugar": 4.09,
+      "fat": 4.28,
+      "fibre": 42.5,
+      "protein": 9.0
+    }
+  },
+  "SALT": {
+    "fdcId": "173468",
+    "food": "Salt, table",
+    "density": 1,
+    "gramsPer100g": {
+      "fibre": 0.0,
+      "protein": 0.0,
+      "fat": 0.0,
+      "sugar": 0.0
+    }
+  }
+}

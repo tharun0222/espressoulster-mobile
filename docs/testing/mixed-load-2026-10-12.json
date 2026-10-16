@@ -1,0 +1,12 @@
+{
+  "scope": "Local built Worker, mixed bootstrap/orders/cart/quote traffic; no real payments or production traffic",
+  "requests": 600,
+  "concurrency": 30,
+  "success": 600,
+  "errors": 0,
+  "p50ms": 192.77240250005434,
+  "p95ms": 254.42408000003525,
+  "maxms": 274.4154429999526,
+  "elapsedSeconds": 4.006614344000127,
+  "failures": []
+}

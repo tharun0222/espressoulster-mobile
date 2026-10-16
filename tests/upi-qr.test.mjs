@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {parseUpiQr} from '../lib/upi-qr.ts';
+test('UPI QR preserves payment recipient and amount without navigating to website URLs',()=>{const p=parseUpiQr('upi://pay?pa=cafe@bank&pn=Cafe&am=25.50&cu=INR&url=https://bad.test');assert.equal(p.pa,'cafe@bank');assert.equal(p.amount,'25.50');assert.equal(new URL(p.href).searchParams.has('url'),false)});
+test('Rejects invalid recipients, amounts and non-UPI codes',()=>{for(const raw of ['https://bad.test','upi://pay?pa=bad','upi://pay?pa=cafe@bank&am=-1','upi://pay?pa=cafe@bank&am=0','upi://pay?pa=cafe@bank&cu=USD','upi://other?pa=cafe@bank'])assert.throws(()=>parseUpiQr(raw))});
+test('Static payment QR permits the customer to enter the amount in their UPI app',()=>assert.equal(parseUpiQr('upi://pay?pa=cafe@bank').amount,null));

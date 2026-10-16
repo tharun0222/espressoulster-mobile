@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createHmac} from 'node:crypto';
+import {razorpayTestConfig,verifyRazorpaySignature,validateRazorpayTestPayment,validateRazorpayTestOrder} from '../lib/razorpay-test-security.ts';
+const config={PUBLIC_TEST_MODE:'true',RAZORPAY_TEST_KEY_ID:'rzp_test_abc123',RAZORPAY_TEST_KEY_SECRET:'test-secret'};
+test('Only configured public sandbox accepts test keys',()=>{assert.equal(razorpayTestConfig(config).keyId,'rzp_test_abc123');for(const patch of [{PUBLIC_TEST_MODE:'false'},{RAZORPAY_TEST_KEY_ID:'rzp_live_abc123'},{RAZORPAY_TEST_KEY_SECRET:''},{RAZORPAY_TEST_KEY_ID:''}])assert.throws(()=>razorpayTestConfig({...config,...patch}));});
+const sig=createHmac('sha256','test-secret').update('order_abc|pay_abc').digest('hex');
+test('Valid signature binds server order and payment IDs',async()=>{await verifyRazorpaySignature('order_abc','pay_abc',sig,'test-secret');});
+test('Tampered order, payment, signature and secret fail verification',async()=>{for(const args of [['order_other','pay_abc',sig,'test-secret'],['order_abc','pay_other',sig,'test-secret'],['order_abc','pay_abc','0'.repeat(64),'test-secret'],['order_abc','pay_abc',sig,'wrong-secret'],['order_abc','../payment',sig,'test-secret'],['order_abc','pay_abc','x','test-secret']])await assert.rejects(()=>verifyRazorpaySignature(...args));});
+const expected={provider_order_id:'order_abc',amount:22500,currency:'INR'};
+const payment={id:'pay_abc',order_id:'order_abc',amount:22500,currency:'INR',status:'captured',captured:true,amount_refunded:0};
+test('Only matching captured and non-refunded provider payment passes',()=>{validateRazorpayTestPayment(payment,expected,'pay_abc');for(const patch of [{id:'pay_other'},{order_id:'order_other'},{amount:1},{currency:'USD'},{status:'authorized'},{captured:false},{amount_refunded:22500}])assert.throws(()=>validateRazorpayTestPayment({...payment,...patch},expected,'pay_abc'));});
+test('Provider-created order must match amount, currency and receipt',()=>{const order={id:'order_abc',amount:22500,currency:'INR',receipt:'test-CH-ABC12345',status:'created'};validateRazorpayTestOrder(order,22500,order.receipt);for(const patch of [{id:'invalid'},{amount:1},{currency:'USD'},{receipt:'other'},{status:'paid'}])assert.throws(()=>validateRazorpayTestOrder({...order,...patch},22500,order.receipt));});

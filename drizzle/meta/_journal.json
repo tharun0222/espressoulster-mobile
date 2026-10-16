@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1791521506840,
+      "tag": "0000_orange_unicorn",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1791521634456,
+      "tag": "0001_mixed_silk_fever",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1791521734399,
+      "tag": "0002_careful_scorpion",
+      "breakpoints": true
+    }
+  ]
+}

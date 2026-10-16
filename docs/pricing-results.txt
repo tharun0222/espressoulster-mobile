@@ -1,0 +1,29 @@
+✔ source import preserves all 30 names and 3 categories without invented prices (1.494222ms)
+✔ minor-unit subtotal and tax (1.584922ms)
+✔ variant, add-on, and quantity pricing (0.255691ms)
+✔ client-supplied price is ignored (0.197044ms)
+✔ percentage discount is applied before tax (0.272709ms)
+✔ fixed discount cannot exceed subtotal (0.203728ms)
+✔ delivery fee is server-configured (0.216649ms)
+✔ disabled fulfillment is rejected (0.447715ms)
+✔ empty cart rejected (0.238107ms)
+✔ unpriced item rejected (0.309424ms)
+✔ unavailable and archived items rejected (0.240798ms)
+✔ disabled category rejected (0.159222ms)
+✔ invalid and missing variants rejected (0.202453ms)
+✔ unknown and duplicate add-ons rejected (0.21317ms)
+✔ fractional, negative, zero, and excessive quantities rejected (0.224219ms)
+✔ aggregate stock checks across variants (0.201198ms)
+✔ duplicate cart lines rejected (0.125935ms)
+✔ unknown, expired, and below-minimum offers rejected (0.264626ms)
+✔ product validation protects money and option identifiers (0.406286ms)
+✔ safe image URLs and verified dietary label vocabulary (0.296068ms)
+✔ valid order transitions match fulfillment (0.261413ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20.373076

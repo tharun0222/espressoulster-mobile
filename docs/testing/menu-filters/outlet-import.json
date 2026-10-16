@@ -1,0 +1,1228 @@
+{
+  "sourceWorkbook": "FInal Espressoulster-Beverage-Recipes.xlsx",
+  "recipes": 110,
+  "categories": 18,
+  "dietaryCounts": {
+    "Veg": 84,
+    "Egg": 10,
+    "Non-veg": 7,
+    "Needs confirmation": 5,
+    "Non-veg + Egg": 4
+  },
+  "matchedPrices": 21,
+  "temporaryTestPrices": 89,
+  "temporaryTestPriceRupees": 100,
+  "dietaryReview": [
+    "SMOKED PANEER",
+    "MIXED EXOTIC VEGGIES",
+    "THE RUSTIC WHISPER",
+    "CEASER SALAD",
+    "CHEESE BALLS"
+  ],
+  "items": [
+    {
+      "id": "source-04",
+      "name": "Cappuccino",
+      "category": "classic-hot-iced",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 225.0,
+      "testPrice": false,
+      "source": "Ingredients!A6:D8"
+    },
+    {
+      "id": "source-03",
+      "name": "Latte",
+      "category": "classic-hot-iced",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 235.0,
+      "testPrice": false,
+      "source": "Ingredients!A9:D11"
+    },
+    {
+      "id": "source-08",
+      "name": "Flat White",
+      "category": "classic-hot-iced",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 265.0,
+      "testPrice": false,
+      "source": "Ingredients!A12:D14"
+    },
+    {
+      "id": "source-12",
+      "name": "Americano",
+      "category": "classic-hot-iced",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 210.0,
+      "testPrice": false,
+      "source": "Ingredients!A15:D17"
+    },
+    {
+      "id": "recipe-mocha",
+      "name": "Mocha",
+      "category": "classic-hot-iced",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A18:D22"
+    },
+    {
+      "id": "recipe-macchiato",
+      "name": "Macchiato",
+      "category": "classic-hot-iced",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A23:D25"
+    },
+    {
+      "id": "source-14",
+      "name": "Cortado",
+      "category": "classic-hot-iced",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 205.0,
+      "testPrice": false,
+      "source": "Ingredients!A26:D28"
+    },
+    {
+      "id": "source-24",
+      "name": "Affogato",
+      "category": "classic-hot-iced",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 265.0,
+      "testPrice": false,
+      "source": "Ingredients!A29:D31"
+    },
+    {
+      "id": "recipe-iced-americano",
+      "name": "Iced Americano",
+      "category": "classic-hot-iced",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A32:D35"
+    },
+    {
+      "id": "recipe-iced-latte",
+      "name": "Iced Latte",
+      "category": "classic-hot-iced",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A36:D39"
+    },
+    {
+      "id": "recipe-iced-mocha-dry-shake",
+      "name": "Iced Mocha",
+      "category": "classic-hot-iced",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A40:D45"
+    },
+    {
+      "id": "source-19",
+      "name": "Old Fashioned",
+      "category": "cold-brew-iced-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 295.0,
+      "testPrice": false,
+      "source": "Ingredients!A46:D49"
+    },
+    {
+      "id": "source-01",
+      "name": "Classic Cold Brew",
+      "category": "cold-brew-iced-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 265.0,
+      "testPrice": false,
+      "source": "Ingredients!A50:D51"
+    },
+    {
+      "id": "recipe-mango-cold-brew",
+      "name": "Mango Cold Brew",
+      "category": "cold-brew-iced-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A52:D54"
+    },
+    {
+      "id": "recipe-espresso-tonic",
+      "name": "Espresso Tonic",
+      "category": "cold-brew-iced-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A55:D58"
+    },
+    {
+      "id": "recipe-strawberry-iced-latte",
+      "name": "Strawberry Iced Latte",
+      "category": "cold-brew-iced-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A59:D64"
+    },
+    {
+      "id": "recipe-iced-spanish-latte",
+      "name": "Iced Spanish Latte",
+      "category": "cold-brew-iced-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A65:D69"
+    },
+    {
+      "id": "recipe-iced-chai-latte-dry-shake",
+      "name": "Iced Chai Latte",
+      "category": "cold-brew-iced-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A70:D74"
+    },
+    {
+      "id": "recipe-chai-latte-hot",
+      "name": "Chai Latte ( Hot)",
+      "category": "cold-brew-iced-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A75:D78"
+    },
+    {
+      "id": "recipe-french-vanilla-iced-latte",
+      "name": "French Vanilla Iced Latte",
+      "category": "cold-brew-iced-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A79:D83"
+    },
+    {
+      "id": "source-11",
+      "name": "Vietnamese Iced Coffee",
+      "category": "cold-brew-iced-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 270.0,
+      "testPrice": false,
+      "source": "Ingredients!A84:D88"
+    },
+    {
+      "id": "recipe-dirty-matcha-latte-iced-dry-shake",
+      "name": "Dirty Matcha Latte Iced",
+      "category": "cold-brew-iced-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A89:D93"
+    },
+    {
+      "id": "recipe-orange-iced-americano",
+      "name": "Orange Iced Americano",
+      "category": "cold-brew-iced-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A94:D98"
+    },
+    {
+      "id": "recipe-iced-coffee-lemonade",
+      "name": "Iced Coffee Lemonade",
+      "category": "cold-brew-iced-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A99:D103"
+    },
+    {
+      "id": "recipe-dirty-matcha-latte-hot",
+      "name": "Dirty Matcha Latte (Hot)",
+      "category": "cold-brew-iced-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A104:D107"
+    },
+    {
+      "id": "recipe-spanish-latte-hot",
+      "name": "Spanish Latte (Hot)",
+      "category": "cold-brew-iced-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A108:D111"
+    },
+    {
+      "id": "recipe-french-vanilla-latte-hot",
+      "name": "French Vanilla Latte (Hot)",
+      "category": "cold-brew-iced-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A112:D115"
+    },
+    {
+      "id": "source-09",
+      "name": "Hot Chocolate",
+      "category": "non-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 245.0,
+      "testPrice": false,
+      "source": "Ingredients!A116:D118"
+    },
+    {
+      "id": "source-07",
+      "name": "Cold Chocolate",
+      "category": "non-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 265.0,
+      "testPrice": false,
+      "source": "Ingredients!A119:D122"
+    },
+    {
+      "id": "recipe-cookie-crumble-frappe",
+      "name": "Cookie Crumble Frappe",
+      "category": "frappes",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A123:D129"
+    },
+    {
+      "id": "recipe-choco-chip-frappe",
+      "name": "Choco Chip Frappe",
+      "category": "frappes",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A130:D136"
+    },
+    {
+      "id": "source-06",
+      "name": "Classic Cold Coffee",
+      "category": "cold-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 265.0,
+      "testPrice": false,
+      "source": "Ingredients!A137:D141"
+    },
+    {
+      "id": "source-02",
+      "name": "Hazelnut Cold Coffee",
+      "category": "cold-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 275.0,
+      "testPrice": false,
+      "source": "Ingredients!A142:D146"
+    },
+    {
+      "id": "source-05",
+      "name": "Caramel Cold Coffee",
+      "category": "cold-coffee",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 285.0,
+      "testPrice": false,
+      "source": "Ingredients!A147:D152"
+    },
+    {
+      "id": "recipe-very-berry-smoothie",
+      "name": "Very Berry Smoothie",
+      "category": "smoothies",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A153:D156"
+    },
+    {
+      "id": "recipe-protein-power-smoothie",
+      "name": "Protein Power Smoothie",
+      "category": "smoothies",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A157:D167"
+    },
+    {
+      "id": "recipe-chia-iced-tea",
+      "name": "Chia Iced Tea",
+      "category": "refreshing-teas",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A168:D174"
+    },
+    {
+      "id": "recipe-lemon-mint-iced-tea",
+      "name": "Lemon Mint Iced Tea",
+      "category": "refreshing-teas",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A175:D180"
+    },
+    {
+      "id": "recipe-peach-mint-iced-tea",
+      "name": "Peach Mint Iced Tea",
+      "category": "refreshing-teas",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A181:D187"
+    },
+    {
+      "id": "recipe-peach-iced-tea",
+      "name": "Peach Iced Tea",
+      "category": "refreshing-teas",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A188:D193"
+    },
+    {
+      "id": "recipe-passion-mint-iced-tea",
+      "name": "Passion Mint Iced Tea",
+      "category": "refreshing-teas",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A194:D199"
+    },
+    {
+      "id": "recipe-lemon-hot-tea",
+      "name": "Lemon Hot Tea",
+      "category": "refreshing-teas",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A200:D203"
+    },
+    {
+      "id": "recipe-mint-hot-tea",
+      "name": "Mint Hot Tea",
+      "category": "refreshing-teas",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A204:D207"
+    },
+    {
+      "id": "recipe-virgin-mojito",
+      "name": "Virgin Mojito",
+      "category": "mocktails",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A208:D213"
+    },
+    {
+      "id": "recipe-watermelon-mocktail",
+      "name": "Watermelon Mocktail",
+      "category": "mocktails",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A214:D219"
+    },
+    {
+      "id": "recipe-passion-fruit-mocktail",
+      "name": "Passion Fruit Mocktail",
+      "category": "mocktails",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A220:D225"
+    },
+    {
+      "id": "recipe-mango-mocktail",
+      "name": "Mango Mocktail",
+      "category": "mocktails",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A226:D231"
+    },
+    {
+      "id": "recipe-green-apple-mocktail",
+      "name": "Green Apple Mocktail",
+      "category": "mocktails",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A232:D237"
+    },
+    {
+      "id": "recipe-deep-blue-sea",
+      "name": "Deep Blue Sea",
+      "category": "other-mixed",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A238:D245"
+    },
+    {
+      "id": "recipe-green-sea",
+      "name": "Green Sea",
+      "category": "other-mixed",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A246:D253"
+    },
+    {
+      "id": "recipe-goddess",
+      "name": "Goddess",
+      "category": "other-mixed",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A254:D261"
+    },
+    {
+      "id": "recipe-sunset",
+      "name": "Sunset",
+      "category": "other-mixed",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A262:D269"
+    },
+    {
+      "id": "recipe-the-classic-schmear",
+      "name": "The Classic Schmear",
+      "category": "bagel",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A270:D274"
+    },
+    {
+      "id": "recipe-sunrise-egg-bagel",
+      "name": "Sunrise Egg Bagel",
+      "category": "bagel",
+      "dietary": [
+        "Egg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A275:D281"
+    },
+    {
+      "id": "source-29",
+      "name": "Ham & Cheese Bagel",
+      "category": "bagel",
+      "dietary": [
+        "Non-veg"
+      ],
+      "price": 315.0,
+      "testPrice": false,
+      "source": "Ingredients!A282:D287"
+    },
+    {
+      "id": "recipe-mexican-paneer-bagel",
+      "name": "Mexican Paneer Bagel",
+      "category": "bagel",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A288:D294"
+    },
+    {
+      "id": "recipe-smoked-paneer",
+      "name": "Smoked Paneer",
+      "category": "sandwiches-wrap",
+      "dietary": [],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A295:D307"
+    },
+    {
+      "id": "source-23",
+      "name": "Smoke Chicken",
+      "category": "sandwiches-wrap",
+      "dietary": [
+        "Non-veg"
+      ],
+      "price": 315.0,
+      "testPrice": false,
+      "source": "Ingredients!A308:D320"
+    },
+    {
+      "id": "source-15",
+      "name": "Egg Salad Sandwich",
+      "category": "sandwiches-wrap",
+      "dietary": [
+        "Egg"
+      ],
+      "price": 295.0,
+      "testPrice": false,
+      "source": "Ingredients!A321:D337"
+    },
+    {
+      "id": "recipe-mixed-exotic-veggies",
+      "name": "Mixed Exotic Veggies",
+      "category": "sandwiches-wrap",
+      "dietary": [],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A338:D351"
+    },
+    {
+      "id": "recipe-the-rustic-whisper",
+      "name": "The Rustic Whisper",
+      "category": "sandwiches-wrap",
+      "dietary": [],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A352:D365"
+    },
+    {
+      "id": "source-16",
+      "name": "Guacamole Toast",
+      "category": "toast",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 315.0,
+      "testPrice": false,
+      "source": "Ingredients!A366:D378"
+    },
+    {
+      "id": "recipe-chilli-cheese-toast",
+      "name": "Chilli Cheese Toast",
+      "category": "toast",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A379:D390"
+    },
+    {
+      "id": "recipe-egg-scrambled-open-toast",
+      "name": "Egg Scrambled Open Toast",
+      "category": "toast",
+      "dietary": [
+        "Egg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A391:D398"
+    },
+    {
+      "id": "recipe-egg-boiled-open-toast",
+      "name": "Egg Boiled Open Toast",
+      "category": "toast",
+      "dietary": [
+        "Egg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A399:D407"
+    },
+    {
+      "id": "recipe-paneer-scrambled",
+      "name": "Paneer Scrambled",
+      "category": "toast",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A408:D418"
+    },
+    {
+      "id": "recipe-paneer-steamed",
+      "name": "Paneer Steamed",
+      "category": "toast",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A419:D429"
+    },
+    {
+      "id": "recipe-mushroom",
+      "name": "Mushroom",
+      "category": "toast",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A430:D437"
+    },
+    {
+      "id": "recipe-chicken-barbeque",
+      "name": "Chicken Barbeque",
+      "category": "toast",
+      "dietary": [
+        "Non-veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A438:D448"
+    },
+    {
+      "id": "recipe-chicken-peri-peri",
+      "name": "Chicken Peri Peri",
+      "category": "toast",
+      "dietary": [
+        "Non-veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A449:D457"
+    },
+    {
+      "id": "recipe-chicken-cajun",
+      "name": "Chicken Cajun",
+      "category": "toast",
+      "dietary": [
+        "Non-veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A458:D466"
+    },
+    {
+      "id": "recipe-crispy-corn-salad",
+      "name": "Crispy Corn Salad",
+      "category": "salad",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A467:D479"
+    },
+    {
+      "id": "recipe-smoked-chicken-salad",
+      "name": "Smoked Chicken Salad",
+      "category": "salad",
+      "dietary": [
+        "Non-veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A480:D487"
+    },
+    {
+      "id": "recipe-ceaser-salad",
+      "name": "Ceaser Salad",
+      "category": "salad",
+      "dietary": [],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A488:D494"
+    },
+    {
+      "id": "recipe-mexican-salad",
+      "name": "Mexican Salad",
+      "category": "salad",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A495:D504"
+    },
+    {
+      "id": "recipe-quinoa-salad",
+      "name": "Quinoa Salad",
+      "category": "salad",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A505:D521"
+    },
+    {
+      "id": "recipe-french-omelette",
+      "name": "French Omelette",
+      "category": "omelettes",
+      "dietary": [
+        "Egg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A522:D528"
+    },
+    {
+      "id": "recipe-spanish-omelette",
+      "name": "Spanish Omelette",
+      "category": "omelettes",
+      "dietary": [
+        "Egg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A529:D537"
+    },
+    {
+      "id": "recipe-mushroom-and-sundried-tomato-omelette",
+      "name": "Mushroom And Sundried Tomato Omelette",
+      "category": "omelettes",
+      "dietary": [
+        "Egg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A538:D546"
+    },
+    {
+      "id": "source-26",
+      "name": "Baked Chicken Omelette",
+      "category": "omelettes",
+      "dietary": [
+        "Non-veg",
+        "Egg"
+      ],
+      "price": 310.0,
+      "testPrice": false,
+      "source": "Ingredients!A547:D555"
+    },
+    {
+      "id": "recipe-veg-corquettes",
+      "name": "Veg Corquettes",
+      "category": "starters",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A556:D559"
+    },
+    {
+      "id": "recipe-classic-bruschetta",
+      "name": "Classic Bruschetta",
+      "category": "starters",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A560:D569"
+    },
+    {
+      "id": "recipe-tomato-avocado-bruschetta",
+      "name": "Tomato Avocado Bruschetta",
+      "category": "starters",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A570:D580"
+    },
+    {
+      "id": "recipe-spinach-corn-cheese-bruschetta",
+      "name": "Spinach Corn Cheese Bruschetta",
+      "category": "starters",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A581:D589"
+    },
+    {
+      "id": "recipe-french-fries-normal",
+      "name": "French Fries Normal",
+      "category": "starters",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A590:D593"
+    },
+    {
+      "id": "recipe-french-fries-peri-peri",
+      "name": "French Fries Peri Peri",
+      "category": "starters",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A594:D597"
+    },
+    {
+      "id": "source-28",
+      "name": "Cheese Balls",
+      "category": "starters",
+      "dietary": [],
+      "price": 260.0,
+      "testPrice": false,
+      "source": "Ingredients!A598:D610"
+    },
+    {
+      "id": "recipe-nachos-with-salsa",
+      "name": "Nachos With Salsa",
+      "category": "starters",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A611:D614"
+    },
+    {
+      "id": "recipe-nachos-with-chicken-loaded",
+      "name": "Nachos With Chicken Loaded",
+      "category": "starters",
+      "dietary": [
+        "Non-veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A615:D619"
+    },
+    {
+      "id": "recipe-nachos-with-cheese-loaded",
+      "name": "Nachos With Cheese Loaded",
+      "category": "starters",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A620:D624"
+    },
+    {
+      "id": "recipe-loaded-mexican-loaded",
+      "name": "Loaded Mexican Loaded",
+      "category": "starters",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A625:D637"
+    },
+    {
+      "id": "source-27",
+      "name": "Champion Breakfast",
+      "category": "combo",
+      "dietary": [
+        "Non-veg",
+        "Egg"
+      ],
+      "price": 415.0,
+      "testPrice": false,
+      "source": "Ingredients!A638:D653"
+    },
+    {
+      "id": "recipe-weekend-dominator",
+      "name": "Weekend Dominator",
+      "category": "combo",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A654:D667"
+    },
+    {
+      "id": "recipe-scrambled-egg-delight",
+      "name": "Scrambled Egg Delight",
+      "category": "combo",
+      "dietary": [
+        "Egg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A668:D679"
+    },
+    {
+      "id": "recipe-scrambled-paneer-delight",
+      "name": "Scrambled Paneer Delight",
+      "category": "combo",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A680:D696"
+    },
+    {
+      "id": "recipe-american-breakfast",
+      "name": "American Breakfast",
+      "category": "combo",
+      "dietary": [
+        "Non-veg",
+        "Egg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A697:D711"
+    },
+    {
+      "id": "recipe-seafood-platter",
+      "name": "Seafood Platter",
+      "category": "combo",
+      "dietary": [
+        "Non-veg",
+        "Egg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A712:D724"
+    },
+    {
+      "id": "recipe-french-toast",
+      "name": "French Toast",
+      "category": "combo",
+      "dietary": [
+        "Egg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A725:D732"
+    },
+    {
+      "id": "recipe-pancake",
+      "name": "Pancake",
+      "category": "combo",
+      "dietary": [
+        "Egg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A733:D741"
+    },
+    {
+      "id": "recipe-aglio-olio",
+      "name": "Aglio Olio",
+      "category": "pasta",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A742:D759"
+    },
+    {
+      "id": "recipe-pesto",
+      "name": "Pesto",
+      "category": "pasta",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A760:D777"
+    },
+    {
+      "id": "recipe-pasta-al-funghi",
+      "name": "Pasta Al Funghi",
+      "category": "pasta",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A778:D794"
+    },
+    {
+      "id": "recipe-mac-and-cheese",
+      "name": "Mac And Cheese",
+      "category": "pasta",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A795:D807"
+    },
+    {
+      "id": "recipe-creamy-alfredo",
+      "name": "Creamy Alfredo",
+      "category": "pasta",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A808:D823"
+    },
+    {
+      "id": "recipe-pour-over",
+      "name": "Pour Over",
+      "category": "manual-brews",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A824:D825"
+    },
+    {
+      "id": "recipe-aero-press",
+      "name": "Aero Press",
+      "category": "manual-brews",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A826:D827"
+    },
+    {
+      "id": "recipe-french-press",
+      "name": "French Press",
+      "category": "manual-brews",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A828:D829"
+    },
+    {
+      "id": "recipe-syphon",
+      "name": "Syphon",
+      "category": "manual-brews",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A830:D831"
+    },
+    {
+      "id": "recipe-moka-pot",
+      "name": "Moka Pot",
+      "category": "manual-brews",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A832:D833"
+    },
+    {
+      "id": "recipe-chemex",
+      "name": "Chemex",
+      "category": "manual-brews",
+      "dietary": [
+        "Veg"
+      ],
+      "price": 100.0,
+      "testPrice": true,
+      "source": "Ingredients!A834:D835"
+    }
+  ]
+}

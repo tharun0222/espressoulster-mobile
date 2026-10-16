@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {simulatePayment} from '../lib/test-payment.ts';
+const order={id:'test-order',total:26500,currency:'INR',status:'pending',payment_status:'unpaid'};
+for(const [outcome,status] of [['success','paid'],['failure','failed'],['cancelled','cancelled']])test(outcome+' is isolated from real payment',()=>{const before=JSON.stringify(order);const r=simulatePayment(order,outcome);assert.equal(r.simulatedStatus,status);assert.equal(r.actualPaymentStatus,'unpaid');assert.equal(r.realMoneyCollected,false);assert.equal(r.testOnly,true);assert.equal(r.amount,26500);assert.equal(JSON.stringify(order),before)});
+for(const outcome of ['paid','__proto__',null,{},''])test('invalid outcome '+JSON.stringify(outcome),()=>assert.throws(()=>simulatePayment(order,outcome)));
+for(const patch of [{total:-1},{total:1.5},{currency:'USD'},{payment_status:'paid'},{status:'cancelled'},{status:'completed'}])test('invalid order '+JSON.stringify(patch),()=>assert.throws(()=>simulatePayment({...order,...patch},'success')));

@@ -1,0 +1,16 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {configuration,sha256,verifyWebhookAuthorization,checkoutUrl,validateCompleted} from '../lib/payment-security.ts';
+const config={PAYMENT_PROVIDER:'phonepe',PAYMENT_MODE:'test',PAYMENT_APP_ORIGIN:'https://coffee.example',PHONEPE_CLIENT_ID:'sandbox',PHONEPE_CLIENT_VERSION:'1',PHONEPE_CLIENT_SECRET:'secret',PHONEPE_WEBHOOK_USERNAME:'webhook',PHONEPE_WEBHOOK_PASSWORD:'long-webhook-password'};
+test('payments fail closed without credentials',()=>assert.throws(()=>configuration({})));
+test('sandbox configuration accepted',()=>assert.equal(configuration(config).mode,'test'));
+for(const change of [{PAYMENT_MODE:'other'},{PAYMENT_PROVIDER:'disabled'},{PHONEPE_CLIENT_SECRET:''},{PHONEPE_CLIENT_VERSION:'bad'},{PHONEPE_WEBHOOK_PASSWORD:'short'},{PAYMENT_APP_ORIGIN:'http://coffee.example'},{PAYMENT_APP_ORIGIN:'https://coffee.example/path'},{PAYMENT_APP_ORIGIN:'https://user:pass@coffee.example'}]) test('reject invalid configuration '+JSON.stringify(change),()=>assert.throws(()=>configuration({...config,...change})));
+test('live mode requires explicit activation',()=>{assert.throws(()=>configuration({...config,PAYMENT_MODE:'live'}));assert.equal(configuration({...config,PAYMENT_MODE:'live',PAYMENT_LIVE_ENABLED:'true'}).mode,'live')});
+test('valid webhook authorization accepted',async()=>{const signature=await sha256('webhook:long-webhook-password');await verifyWebhookAuthorization('webhook','long-webhook-password',signature)});
+for(const signature of [null,42,'','0'.repeat(64),'a'.repeat(65)]) test('forged webhook rejected '+String(signature),async()=>assert.rejects(verifyWebhookAuthorization('webhook','long-webhook-password',signature)));
+test('wrong webhook secret rejected',async()=>assert.rejects(verifyWebhookAuthorization('webhook','wrong-secret',await sha256('webhook:long-webhook-password'))));
+test('checkout environment hosts enforced',()=>{assert.ok(checkoutUrl('https://mercury-uat.phonepe.com/pay','test'));assert.ok(checkoutUrl('https://mercury.phonepe.com/pay','live'));for(const url of ['https://mercury.phonepe.com/pay','http://mercury-uat.phonepe.com/pay','https://mercury-uat.phonepe.com.evil.example/pay','https://user:pass@mercury-uat.phonepe.com/pay','https://mercury-uat.phonepe.com:444/pay'])assert.throws(()=>checkoutUrl(url,'test'))});
+const expected={provider_order_id:'OMO123',amount:10000,currency:'INR'},payment={state:'COMPLETED',orderId:'OMO123',amount:10000};
+test('matching completed payment accepted',()=>assert.equal(validateCompleted(payment,expected),'OMO123'));
+for(const change of [{state:'PENDING'},{orderId:'OMO456'},{orderId:'../bad'},{amount:9999},{amount:'10000'}]) test('mismatched payment rejected '+JSON.stringify(change),()=>assert.throws(()=>validateCompleted({...payment,...change},expected)));
+test('unexpected currency rejected',()=>assert.throws(()=>validateCompleted(payment,{...expected,currency:'USD'})));

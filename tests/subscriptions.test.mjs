@@ -1,0 +1,15 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {subscriptionSummary} from '../lib/subscription-calculations.ts';
+const now=Date.parse('2026-10-09T06:00:00Z'),plan={id:'test',planName:'Coffee pass',totalCredits:8,usedCredits:0,amountPaid:159900,startsAt:'2026-10-09T00:00:00Z',expiresAt:'2026-11-08T00:00:00Z',revoked:false};
+test('no purchase gives zero balance, never eight free coffees',()=>assert.deepEqual(subscriptionSummary([],now).summary,{totalCredits:0,usedCredits:0,remainingCredits:0,amountPaid:0,averagePerCoffee:null,progressPercent:0,nextExpiry:null,activePlans:0}));
+test('new verified pass has eight coffees',()=>assert.equal(subscriptionSummary([plan],now).summary.remainingCredits,8));
+test('two redemptions leave six coffees and 25 percent used',()=>{const s=subscriptionSummary([{...plan,usedCredits:2}],now).summary;assert.equal(s.remainingCredits,6);assert.equal(s.usedCredits,2);assert.equal(s.progressPercent,25);assert.equal(s.averagePerCoffee,19988);});
+test('fully redeemed pass shows eight of eight and zero remaining',()=>{const r=subscriptionSummary([{...plan,usedCredits:8}],now);assert.equal(r.summary.usedCredits,8);assert.equal(r.summary.remainingCredits,0);assert.equal(r.subscriptions[0].status,'exhausted')});
+test('expiry is exclusive at the exact expiry instant',()=>assert.equal(subscriptionSummary([plan],Date.parse(plan.expiresAt)).summary.remainingCredits,0));
+test('expiry one millisecond in future is still valid',()=>assert.equal(subscriptionSummary([plan],Date.parse(plan.expiresAt)-1).summary.remainingCredits,8));
+test('future pass cannot be redeemed early',()=>assert.equal(subscriptionSummary([plan],Date.parse(plan.startsAt)-1).summary.remainingCredits,0));
+test('revoked pass contributes no balance',()=>assert.equal(subscriptionSummary([{...plan,revoked:true}],now).summary.remainingCredits,0));
+test('overdrawn ledger is flagged for review and never negative',()=>{const s=subscriptionSummary([{...plan,usedCredits:9}],now);assert.equal(s.subscriptions[0].status,'review');assert.equal(s.summary.remainingCredits,0)});
+test('multiple valid passes aggregate independently of expired passes',()=>{const s=subscriptionSummary([{...plan,usedCredits:2},{...plan,id:'second',usedCredits:1},{...plan,id:'expired',expiresAt:'2026-10-09T01:00:00Z'}],now).summary;assert.equal(s.totalCredits,16);assert.equal(s.remainingCredits,13);assert.equal(s.usedCredits,3);assert.equal(s.amountPaid,319800)});
+for(const changes of [{usedCredits:-1},{usedCredits:1.5},{totalCredits:0},{amountPaid:-100},{expiresAt:'bad date'},{expiresAt:plan.startsAt}])test('invalid ledger rejected '+JSON.stringify(changes),()=>assert.throws(()=>subscriptionSummary([{...plan,...changes}],now)));
