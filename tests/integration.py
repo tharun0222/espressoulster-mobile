@@ -2,9 +2,11 @@
 Direct Worker identity headers simulate trusted dispatcher identities locally.
 The public Sites dispatcher is responsible for stripping user-supplied headers.
 """
-import unittest,urllib.request,urllib.error,json,uuid,concurrent.futures,pathlib,time,inspect
+import os,unittest,urllib.request,urllib.error,json,uuid,concurrent.futures,pathlib,time,inspect
 TRACE=[]
-BASE='http://127.0.0.1:8787'
+PORT=int(os.environ.get('COFFEE_INTEGRATION_PORT','8787'))
+if not 1024 <= PORT <= 65535: raise ValueError('Use a valid local integration test port')
+BASE='http://127.0.0.1:'+str(PORT)
 ADMIN=('local_seedy','seedy@sites.test')
 def request(path,method='GET',data=None,user=ADMIN,extra=None,raw=None):
  headers={'Content-Type':'application/json'}
@@ -60,7 +62,7 @@ class StoreTests(unittest.TestCase):
   self.assertEqual(request('auth/phone/logout','POST',{},user=None)[0],200)
  def test_02_unauthenticated_private_data(self):
   for path in ['cart','orders','profile','favorites','addresses','suggestions','admin/overview']:
-   with self.subTest(path=path):self.assertEqual(request(path,user=None)[0],401)
+   with self.subTest(path=path):self.assertEqual(request(path,user=None)[0],403 if path.startswith('admin/') else 401)
  def test_03_customer_cannot_manage_store(self):
   for path,method,data in [('admin/overview','GET',None),('admin/products','POST',self.p),('admin/categories','POST',{}),('admin/settings','PUT',{}),('admin/import','POST',{'products':[]})]:
    with self.subTest(path=path):self.assertEqual(request(path,method,data,self.a)[0],403)
@@ -340,10 +342,11 @@ class StoreTests(unittest.TestCase):
    self.assertEqual(r.status,200);cookie=r.headers['Set-Cookie'];self.assertIn('HttpOnly',cookie);self.assertIn('SameSite=Strict',cookie)
   identity={'Cookie':cookie.split(';')[0]}
   self.assertEqual(request('admin/overview',user=None,extra=identity)[0],200)
-  self.assertEqual(request('bootstrap',user=None,extra=identity)[1]['user']['authProvider'],'admin-password')
+  # Admin cookies grant admin access only, never a customer identity.
+  self.assertIsNone(request('bootstrap',user=None,extra=identity)[1]['user'])
   self.assertEqual(request('auth/admin/logout','POST',{},user=None,extra=identity)[0],200)
-  self.assertEqual(request('admin/overview',user=None,extra=identity)[0],401)
-  self.assertEqual(request('admin/overview',user=None,extra={'Cookie':'espresso_admin='+'a'*64})[0],401)
+  self.assertEqual(request('admin/overview',user=None,extra=identity)[0],403)
+  self.assertEqual(request('admin/overview',user=None,extra={'Cookie':'espresso_admin='+'a'*64})[0],403)
  def test_65_admin_password_rejection_and_rate_limit(self):
   for i in range(10):
    self.assertEqual(request('auth/admin/login','POST',{'username':'qaadmin','password':'wrong'},user=None,extra={'cf-connecting-ip':self.id+'-rate'})[0],401)

@@ -1,3 +1,6 @@
+import TableBooking from '../table-booking';
+import ProductOptions from './product-options';
+import ProductRecipeEditor from './product-recipe-editor';
 "use client";
 import AdminSubscriptions from "./admin-subscriptions";
 import { useState, useEffect, useRef } from "react";
@@ -95,6 +98,7 @@ function CustomerOrders({ customer, currency }: {customer: any; currency: string
 }
 export default function AdminApp() {
   const orderRequest = useRef(0);
+  const overviewRequest = useRef(0);
   const [tab, setTab] = useState("overview"),
     [data, setData] = useState<any>(null),
     [error, setError] = useState(""),
@@ -112,25 +116,33 @@ export default function AdminApp() {
     [approving, setApproving] = useState(""),
     [orderRows, setOrderRows] = useState<any[]>([]),
     [moreOrders, setMoreOrders] = useState(false),
-    [loadingOrders, setLoadingOrders] = useState(false);
+    [loadingOrders, setLoadingOrders] = useState(false),
+    [loadingOverview, setLoadingOverview] = useState(false);
   useDialogAccessibility(!!editing || !!category, () => {
     setEditing(null);
     setCategory(null);
   });
   async function load() {
+    const request = ++overviewRequest.current;
+    setLoadingOverview(true);
+    setError("");
     try {
       const b = await api("admin/overview");
+      if (request !== overviewRequest.current) return;
       setData(b);
       if (!settings) {
         setSettings(b.settings);
         setOffers(JSON.stringify(b.settings.offers, null, 2));
       }
     } catch (e: any) {
-      setError(e.message);
+      if (request === overviewRequest.current) setError(e.message);
+    } finally {
+      if (request === overviewRequest.current) setLoadingOverview(false);
     }
   }
   useEffect(() => {
-    load();
+    void load();
+    return () => { overviewRequest.current++; };
   }, []);
   async function loadOrders(append = false) {
     const request = ++orderRequest.current;
@@ -154,8 +166,10 @@ export default function AdminApp() {
     }
   }
   useEffect(() => {
-    if (tab === "orders") loadOrders();
-    return () => { orderRequest.current++; };
+    if (tab !== "orders") return;
+    setLoadingOrders(true);
+    const timer = setTimeout(() => { void loadOrders(); }, 200);
+    return () => { clearTimeout(timer); orderRequest.current++; };
   }, [tab, search, status, data]);
   async function run(fn: () => Promise<any>, success = "Saved") {
     setBusy(true);
@@ -180,6 +194,7 @@ export default function AdminApp() {
   }
   const currency = data?.settings.currency || "INR";
   const nav = [
+    { id: "bookings", label: "Table bookings", icon: Users },
     { id: "overview", label: "Overview", icon: LayoutDashboard },
     { id: "products", label: "Products", icon: Coffee },
     { id: "categories", label: "Categories", icon: Tags },
@@ -234,13 +249,13 @@ export default function AdminApp() {
           Sign out
         </button>
       </aside>
-      <main className="admin-main">
+      <main className="admin-main" aria-busy={loadingOverview}>
         <header className="admin-header">
           <div>
             <span className="eyebrow">YOUR CAFÉ, AT A GLANCE</span>
             <h1>{nav.find((n) => n.id === tab)?.label}</h1>
           </div>
-          <button className="secondary" onClick={load}>
+          <button className="secondary" disabled={loadingOverview || busy} onClick={load}>
             <RefreshCw size={15} />
             Refresh
           </button>
@@ -263,12 +278,13 @@ export default function AdminApp() {
           <div className="empty-state">
             <Coffee size={40} />
             <h2>Opening the café dashboard…</h2>
-            <button className="primary" onClick={load}>
+            <button className="primary" disabled={loadingOverview} onClick={load}>
               Try again
             </button>
           </div>
         ) : (
           <>
+            {tab === "bookings" && <TableBooking admin/>}
             {tab === "overview" && (
               <>
                 <div className="stat-grid">
@@ -1211,13 +1227,13 @@ export default function AdminApp() {
                       }
                     />
                   </label>
-                  <h3>Advertisement banners</h3>
+                  <h3>Subscription offers &amp; Ads</h3>
                   <p className="fine-print">Add as many banners as you need. Only enabled banners with an image appear on Home. No banners are shown while this list is empty. Save store settings to publish your changes.</p>
                   {!(settings.promotionBanners||[]).length&&<label className="admin-banner-image-picker"><span className="banner-picker-symbol" aria-hidden="true">＋</span><strong>Choose banner image</strong><span>Upload a photo or offer artwork from your device</span><small>PNG, JPG or WebP · up to 3 MB</small><input type="file" aria-label="Choose first banner image" disabled={busy} accept="image/png,image/jpeg,image/webp" onChange={async e=>{const file=e.target.files?.[0];if(!file)return;const input=e.currentTarget;await run(async()=>{if(file.size>3*1024*1024)throw Error("Choose an image smaller than 3 MB.");const form=new FormData();form.set("file",file);const result=await api("upload","POST",form);setSettings((current:any)=>({...current,promotionBanners:[...(current.promotionBanners||[]),{id:crypto.randomUUID(),image:result.url,tag:"",title:"",copy:"",action:"",search:"",destination:"menu",enabled:true}]}));},"Image uploaded. Save store settings to show your banner.");input.value="";}}/></label>}
-                  <button type="button" className="secondary" onClick={()=>setSettings({...settings,promotionBanners:[...(settings.promotionBanners||[]),{id:crypto.randomUUID(),image:"",tag:"",title:"",copy:"",action:"",search:"",destination:"menu",enabled:false}]})}>Add advertisement banner</button>
+                  <div className="admin-ad-actions">{[{label:'Add subscription offer',destination:'subscriptions'},{label:'Add ad',destination:'menu'}].map(option=><button key={option.destination} type="button" className="secondary" onClick={()=>setSettings((current:any)=>({...current,promotionBanners:[...(current.promotionBanners||[]),{id:crypto.randomUUID(),image:"",tag:"",title:"",copy:"",action:"",search:"",destination:option.destination,enabled:false}]}))}>{option.label}</button>)}</div>
                   {(settings.promotionBanners||[]).map((banner:any,index:number)=>{
                     const update=(patch:any)=>setSettings((current:any)=>({...current,promotionBanners:current.promotionBanners.map((item:any)=>item.id===banner.id?{...item,...patch}:item)}));
-                    return <fieldset key={banner.id} className="admin-ad-banner"><legend>Advertisement {index+1}</legend>
+                    return <fieldset key={banner.id} className="admin-ad-banner"><legend>{banner.destination==='subscriptions'?'Subscription offer':'Ad'}</legend>
                       <label>Show banner<input type="checkbox" checked={banner.enabled} onChange={e=>update({enabled:e.target.checked})}/></label>
                       <label className="admin-banner-image-picker">{banner.image?<img src={banner.image} alt="Advertisement preview"/>:<span className="banner-picker-symbol" aria-hidden="true">＋</span>}<strong>{banner.image?"Change banner image":"Choose banner image"}</strong><span>PNG, JPG or WebP · up to 3 MB</span><input type="file" aria-label={"Choose image for advertisement "+(index+1)} disabled={busy} accept="image/png,image/jpeg,image/webp" onChange={async e=>{const file=e.target.files?.[0];if(!file)return;const input=e.currentTarget;await run(async()=>{if(file.size>3*1024*1024)throw Error("Choose an image smaller than 3 MB.");const form=new FormData();form.set("file",file);const result=await api("upload","POST",form);update({image:result.url});},"Banner uploaded. Save settings to apply.");input.value="";}}/></label>
                       <details className="admin-banner-url"><summary>Use an image link instead</summary><label>Image URL<input type="url" value={banner.image.startsWith("/")?"":banner.image} placeholder={banner.image.startsWith("/")?"Uploaded image selected":"https://…"} onChange={e=>update({image:e.target.value})}/></label></details>
@@ -1225,13 +1241,13 @@ export default function AdminApp() {
                       <label>Headline (optional)<input maxLength={200} value={banner.title} onChange={e=>update({title:e.target.value})}/></label>
                       <label>Description (optional)<textarea maxLength={500} value={banner.copy} onChange={e=>update({copy:e.target.value})}/></label>
                       <label>Button text (optional)<input maxLength={60} value={banner.action} onChange={e=>update({action:e.target.value})}/></label>
-                      <label>Button destination<select value={banner.destination} onChange={e=>update({destination:e.target.value})}><option value="menu">Menu</option><option value="subscriptions">Subscriptions</option></select></label>
+                      <label>Button destination<select value={banner.destination} onChange={e=>update({destination:e.target.value})}><option value="menu">Menu</option><option value="subscriptions">Subscription offers</option></select></label>
                       {banner.destination==="menu"&&<label>Menu search (optional)<input maxLength={150} value={banner.search} onChange={e=>update({search:e.target.value})}/></label>}
                       <div className="admin-ad-actions">{index>0&&<button type="button" onClick={()=>{const list=[...settings.promotionBanners];[list[index-1],list[index]]=[list[index],list[index-1]];setSettings({...settings,promotionBanners:list});}}>Move up</button>}<button type="button" onClick={()=>setSettings({...settings,promotionBanners:settings.promotionBanners.filter((item:any)=>item.id!==banner.id)})}>Remove banner</button></div>
                     </fieldset>;
                   })}
                 </section>
-                <button className="primary save-settings" disabled={busy}>
+                <section className="admin-panel"><h2>Coffee club rules</h2><p>Configure your future rewards programme. These rules are saved as a draft; reward issuance and redemption are not activated by this form.</p>{[{key:'qualifyingRupees',label:'Minimum qualifying order (₹)',max:100000},{key:'silverOrders',label:'Orders to reach the second tier',max:1000},{key:'goldOrders',label:'Orders to reach the highest tier',max:1000},{key:'silverCashbackPercent',label:'Second-tier reward percentage',max:100},{key:'goldCashbackPercent',label:'Highest-tier reward percentage',max:100},{key:'referralRupees',label:'Referral benefit (₹)',max:10000},{key:'birthdayRupees',label:'Birthday benefit (₹)',max:10000}].map(field=><label key={field.key}>{field.label}<input type="number" min="0" max={field.max} step="1" value={settings.clubRules?.[field.key]??''} placeholder="Not configured" onChange={e=>setSettings({...settings,clubRules:{...(settings.clubRules||{}),[field.key]:e.target.value===''?null:Number(e.target.value)}})}/></label>)}<p>One coffee per day and the existing 10% subscriber app discount remain unchanged. Wallet and gift-card payments remain sandbox-only.</p></section><button className="primary save-settings" disabled={busy}>
                   {busy ? "Saving…" : "Save store settings"}
                 </button>
               </form>
@@ -1281,8 +1297,9 @@ export default function AdminApp() {
               e.preventDefault();
               const ok = await run(
                 () => {
+                  const {recipeMeasurements,recipeSuggestion,...stored}=editing;
                   const p = {
-                    ...editing,
+                    ...stored,
                     variants: JSON.parse(variants),
                     addons: JSON.parse(addons),
                   };
@@ -1470,6 +1487,8 @@ export default function AdminApp() {
                 ))}
               </div>
             </fieldset>
+            <ProductRecipeEditor key={editing.id} value={editing.recipeOverride??null} suggested={editing.recipeSuggestion||editing.recipeMeasurements} ingredients={editing.ingredients} onChange={recipeOverride=>setEditing({...editing,recipeOverride})}/>
+            <ProductOptions variants={variants} addons={addons} onVariants={setVariants} onAddons={setAddons}/>
             <div className="editor-footer">
               <button
                 type="button"

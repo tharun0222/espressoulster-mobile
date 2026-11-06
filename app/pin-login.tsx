@@ -1,4 +1,5 @@
 'use client';
+import DancingCoffee from './dancing-coffee';
 import {unlockCelebrationAudio,welcomeSound} from '../lib/celebration-audio';
 import {useState} from 'react';
 import {ArrowRight,LockKeyhole,Eye,EyeOff} from 'lucide-react';
@@ -10,7 +11,7 @@ export default function PinLogin({ready,onSuccess}:{ready:boolean;onSuccess:()=>
   const b:any=await r.json();if(!r.ok)throw Error(b.error||'Unable to sign in. Please try again.');setPin('');setConfirmPin('');welcomeSound();onSuccess();
  }catch(e){setError((e as Error).name==='TimeoutError'?'Sign-in timed out. Please try again.':(e as Error).message)}finally{setBusy(false)}}
  return <main className="phone-welcome pin-welcome">
-  <div className="phone-brand">Espressoulster<span>COFFEE</span></div>
+  <div className="welcome-brand-group">{mode==='welcome'&&<DancingCoffee/>}<div className="phone-brand">Espressoulster<span>COFFEE</span></div></div>
   <section className="phone-welcome-card" aria-label="Mobile and PIN sign-in">
    {mode!=='welcome'&&<button className="pin-back" type="button" disabled={busy} onClick={()=>switchMode('welcome')}>← Back</button>}
    {mode==='welcome'?<>

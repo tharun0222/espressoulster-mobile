@@ -1,3 +1,7 @@
+import {ensureSeedOnce} from './seed-once';
+import {menuRecipe} from './menu-recipe';
+import {cleanRecipeOverride,recipeOverrideError,resolveProductRecipe} from './product-recipe';
+import {visibleSubscriptionOrders} from './visible-subscription-orders';
 import {subscriberQuote} from './subscriber-discount';
 import {stripeTestConfig} from './stripe-security';
 import {readPinSession,pinReady} from './pin-auth-core';
@@ -31,26 +35,28 @@ export function db() {
 }
 export async function seed() {
   const d = db();
-  if(await d.prepare("SELECT id FROM settings WHERE id=?").bind("store").first())return;
-  await d.batch([
-    ...categorySeed.map((c) =>
+  return ensureSeedOnce(d,async()=>{
+    if(await d.prepare("SELECT id FROM settings WHERE id=?").bind("store").first())return;
+    await d.batch([
+      ...categorySeed.map((c) =>
+        d
+          .prepare(
+            "INSERT OR IGNORE INTO categories (id,name,position) VALUES (?,?,?)",
+          )
+          .bind(c.id, c.name, c.position),
+      ),
+      ...catalogSeed.map((p) =>
+        d
+          .prepare(
+            "INSERT OR IGNORE INTO products (id,name,category_id,price,inventory,available,archived,data) VALUES (?,?,?,?,NULL,?,0,?)",
+          )
+          .bind(p.id, p.name, p.categoryId, p.price, p.available ? 1 : 0, JSON.stringify(p)),
+      ),
       d
-        .prepare(
-          "INSERT OR IGNORE INTO categories (id,name,position) VALUES (?,?,?)",
-        )
-        .bind(c.id, c.name, c.position),
-    ),
-    ...catalogSeed.map((p) =>
-      d
-        .prepare(
-          "INSERT OR IGNORE INTO products (id,name,category_id,price,inventory,available,archived,data) VALUES (?,?,?,?,NULL,?,0,?)",
-        )
-        .bind(p.id, p.name, p.categoryId, p.price, p.available ? 1 : 0, JSON.stringify(p)),
-    ),
-    d
-      .prepare("INSERT OR IGNORE INTO settings (id,data) VALUES (?,?)")
-      .bind("store", JSON.stringify(defaultSettings)),
-  ]);
+        .prepare("INSERT OR IGNORE INTO settings (id,data) VALUES (?,?)")
+        .bind("store", JSON.stringify(defaultSettings)),
+    ]);
+  });
 }
 export async function catalog(admin = false) {
   const d = db();
@@ -67,22 +73,21 @@ export async function catalog(admin = false) {
   const savedSettings = JSON.parse(s?.data || "{}");
   if (savedSettings.brand === "My Coffee House") savedSettings.brand = defaultSettings.brand;
   return {
-    products: p.results.map((r: any) =>
-      Object.defineProperty(
+    products: p.results.map((r: any) => {
+      const stored=JSON.parse(r.data);
+      const suggested=menuRecipe(r.id,r.name);
+      return Object.defineProperty(
         {
-          ...JSON.parse(r.data),
-          id: r.id,
-          name: r.name,
-          categoryId: r.category_id,
-          price: r.price,
-          inventory: r.inventory,
-          available: !!r.available,
-          archived: !!r.archived,
+          ...stored,
+          recipeMeasurements:resolveProductRecipe(suggested,stored.recipeOverride),
+          // Unedited recipes already have the suggestion in recipeMeasurements.
+          ...(admin&&stored.recipeOverride?{recipeSuggestion:suggested}:{}),
+          id:r.id,name:r.name,categoryId:r.category_id,price:r.price,
+          inventory:r.inventory,available:!!r.available,archived:!!r.archived,
         },
-        "_raw",
-        { value: r.data },
-      ),
-    ),
+        "_raw",{value:r.data},
+      );
+    }),
     categories: c.results.map((r: any) => ({ ...r, enabled: !!r.enabled })),
     settings: { ...defaultSettings, ...savedSettings, testMode:(env as any).PUBLIC_TEST_MODE === "true" },
   };
@@ -96,7 +101,8 @@ export async function identity(required = false, administrator = false) {
   if (!administrator && (env as any).CUSTOMER_AUTH_MODE === 'pin') {
     const profile=pinReady(env)?await readPinSession(db(),(await headers()).get('cookie')):null;
     assert(!required||profile,'Please sign in with your mobile number and PIN',401);
-    return profile?{userId:profile.id,email:profile.email,fullName:profile.name,displayName:profile.name,phoneVerified:false,authProvider:'pin',admin:false,profile}:null;
+    const login=profile?await db().prepare('SELECT phone FROM pin_accounts WHERE user_id=?').bind(profile.id).first<any>():null;
+    return profile?{loginPhone:login?.phone,userId:profile.id,email:profile.email,fullName:profile.name,displayName:profile.name,phoneVerified:false,authProvider:'pin',admin:false,profile}:null;
   }
   let tester = null;
   let phoneVerified = false;
@@ -112,7 +118,7 @@ export async function identity(required = false, administrator = false) {
   const u = tester ? {userId:tester.id,email:tester.email,fullName:tester.name,displayName:tester.name} : await getChatGPTUser();
   assert(!required || u, "Please sign in to continue", 401);
   if (!u) return null;
-  const p = await db()
+  const p = tester || await db()
     .prepare("SELECT * FROM profiles WHERE id=?")
     .bind(u.userId)
     .first<any>();
@@ -207,7 +213,14 @@ export async function audit(actor: string, action: string, target: string) {
 }
 export async function saveProduct(p: any, actor: string) {
   validateProduct(p);
+  const {recipeMeasurements,recipeSuggestion,...stored}=p;
   const d = db();
+  if(Object.hasOwn(p,'recipeOverride'))stored.recipeOverride=cleanRecipeOverride(p.recipeOverride,menuRecipe(p.id,p.name));
+  else{
+    const previous=await d.prepare('SELECT data FROM products WHERE id=?').bind(p.id).first<any>();
+    const custom=previous?JSON.parse(previous.data).recipeOverride:null;
+    stored.recipeOverride=recipeOverrideError(custom)?null:cleanRecipeOverride(custom,menuRecipe(p.id,p.name));
+  }
   assert(
     await d
       .prepare("SELECT id FROM categories WHERE id=?")
@@ -227,7 +240,7 @@ export async function saveProduct(p: any, actor: string) {
       p.inventory,
       p.available ? 1 : 0,
       p.archived ? 1 : 0,
-      JSON.stringify(p),
+      JSON.stringify(stored),
     )
     .run();
   await audit(actor, "product.save", p.id);
@@ -239,7 +252,7 @@ export async function orderList(
   status = "",
 ) {
   const d = db();
-  const where: string[] = [];
+  const where: string[] = [visibleSubscriptionOrders()];
   const params: any[] = [];
   if (userId) {
     where.push("user_id=?");

@@ -1,0 +1,7115 @@
+{
+  "source-04": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A6:D8",
+    "ingredients": [
+      {
+        "name": "Coffee Grounds",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 6
+      },
+      {
+        "name": "Espresso",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 7
+      },
+      {
+        "name": "Milk",
+        "measurement": "160 ML",
+        "detail": "",
+        "sourceRow": 8
+      }
+    ],
+    "serving": "Place the saucer with one brown sugar, one white sugar, a tissue, and a stirrer",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "estimated",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+      "grams": {
+        "fat": 5.4,
+        "fibre": 0.0,
+        "sugar": 8.3,
+        "protein": 5.2
+      }
+    },
+    "missing": []
+  },
+  "source-03": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A9:D11",
+    "ingredients": [
+      {
+        "name": "Coffee Grounds",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 9
+      },
+      {
+        "name": "Espresso",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 10
+      },
+      {
+        "name": "Milk",
+        "measurement": "160 ML",
+        "detail": "",
+        "sourceRow": 11
+      }
+    ],
+    "serving": "Place the saucer with one brown sugar, one white sugar, a tissue, and a stirrer.",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "estimated",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+      "grams": {
+        "fat": 5.4,
+        "fibre": 0.0,
+        "sugar": 8.3,
+        "protein": 5.2
+      }
+    },
+    "missing": []
+  },
+  "source-08": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A12:D14",
+    "ingredients": [
+      {
+        "name": "Coffee Grounds",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 12
+      },
+      {
+        "name": "Espresso",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 13
+      },
+      {
+        "name": "Milk",
+        "measurement": "160 ML",
+        "detail": "",
+        "sourceRow": 14
+      }
+    ],
+    "serving": "Place the saucer with one brown sugar, one white sugar, a tissue, and a stirrer.",
+    "review": "Espresso: table 20 ML; method 40 ML.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": []
+  },
+  "source-12": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A15:D17",
+    "ingredients": [
+      {
+        "name": "Coffee Grounds",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 15
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 16
+      },
+      {
+        "name": "Hot Water",
+        "measurement": "160 ML",
+        "detail": "",
+        "sourceRow": 17
+      }
+    ],
+    "serving": "Place the saucer with one brown sugar, one white sugar, a tissue, and a stirrer.",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "estimated",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+      "grams": {
+        "fat": 0.1,
+        "fibre": 0.0,
+        "sugar": 0.0,
+        "protein": 0.0
+      }
+    },
+    "missing": []
+  },
+  "recipe-mocha": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A18:D22",
+    "ingredients": [
+      {
+        "name": "Coffee Grounds",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 18
+      },
+      {
+        "name": "Espresso",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 19
+      },
+      {
+        "name": "Chocolate Powder",
+        "measurement": "15 GMS",
+        "detail": "",
+        "sourceRow": 20
+      },
+      {
+        "name": "Chocolate Sauce",
+        "measurement": "5 GMS",
+        "detail": "",
+        "sourceRow": 21
+      },
+      {
+        "name": "Milk",
+        "measurement": "160 ML",
+        "detail": "",
+        "sourceRow": 22
+      }
+    ],
+    "serving": "Place the sauce with a tissue and a stirrer",
+    "review": "Chocolate sauce: table 5 GMS; method chocolate syrup 5 ML.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "CHOCOLATE POWDER",
+      "CHOCOLATE SAUCE"
+    ]
+  },
+  "recipe-macchiato": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A23:D25",
+    "ingredients": [
+      {
+        "name": "Coffee Grounds",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 23
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 24
+      },
+      {
+        "name": "Milk Foam",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 25
+      }
+    ],
+    "serving": "Place the saucer with one brown sugar, one white sugar, a tissue, and a stirrer.",
+    "review": "Table lists 40 ML milk foam; method steams 160 ML milk without specifying foam quantity.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": []
+  },
+  "source-14": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A26:D28",
+    "ingredients": [
+      {
+        "name": "Coffee Grounds",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 26
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 27
+      },
+      {
+        "name": "Milk",
+        "measurement": "60 ML",
+        "detail": "",
+        "sourceRow": 28
+      }
+    ],
+    "serving": "Place the saucer with one brown sugar, one white sugar, a tissue, and a stirrer.",
+    "review": "Milk: table 60 ML; method steams 160 ML and pours 40 ML.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": []
+  },
+  "source-24": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A29:D31",
+    "ingredients": [
+      {
+        "name": "Coffee Grounds",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 29
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 30
+      },
+      {
+        "name": "Ice Cream",
+        "measurement": "80 GMS",
+        "detail": "",
+        "sourceRow": 31
+      }
+    ],
+    "serving": "Serve it with spoon and tissue paper",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "ICE CREAM"
+    ]
+  },
+  "recipe-iced-americano": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A32:D35",
+    "ingredients": [
+      {
+        "name": "Coffee Grounds",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 32
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 33
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 34
+      },
+      {
+        "name": "Water",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 35
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "estimated",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+      "grams": {
+        "fat": 0.1,
+        "fibre": 0.0,
+        "sugar": 0.0,
+        "protein": 0.0
+      }
+    },
+    "missing": []
+  },
+  "recipe-iced-latte": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A36:D39",
+    "ingredients": [
+      {
+        "name": "Coffee Grounds",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 36
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 37
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 38
+      },
+      {
+        "name": "Milk",
+        "measurement": "100ML",
+        "detail": "",
+        "sourceRow": 39
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "estimated",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+      "grams": {
+        "fat": 3.4,
+        "fibre": 0.0,
+        "sugar": 5.2,
+        "protein": 3.3
+      }
+    },
+    "missing": []
+  },
+  "recipe-iced-mocha-dry-shake": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A40:D45",
+    "ingredients": [
+      {
+        "name": "Coffee Grounds",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 40
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 41
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 42
+      },
+      {
+        "name": "Chocolate Powder",
+        "measurement": "20 GMS",
+        "detail": "",
+        "sourceRow": 43
+      },
+      {
+        "name": "Chocolate Sauce",
+        "measurement": "7 GMS",
+        "detail": "",
+        "sourceRow": 44
+      },
+      {
+        "name": "Milk",
+        "measurement": "100ML",
+        "detail": "",
+        "sourceRow": 45
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Chocolate sauce: table 7 GMS; method chocolate syrup 5 ML.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "CHOCOLATE POWDER",
+      "CHOCOLATE SAUCE"
+    ]
+  },
+  "source-19": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A46:D49",
+    "ingredients": [
+      {
+        "name": "Orange Juice",
+        "measurement": "30 ML",
+        "detail": "",
+        "sourceRow": 46
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 47
+      },
+      {
+        "name": "Cold Brew",
+        "measurement": "100ML",
+        "detail": "",
+        "sourceRow": 48
+      },
+      {
+        "name": "Garnish",
+        "measurement": "ORANGE SLICE",
+        "detail": "ORANGE SLICE",
+        "sourceRow": 49
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "Garnish quantities/composition"
+    ]
+  },
+  "source-01": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A50:D51",
+    "ingredients": [
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 50
+      },
+      {
+        "name": "Cold Brew",
+        "measurement": "100ML",
+        "detail": "",
+        "sourceRow": 51
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "estimated",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+      "grams": {
+        "fat": 0.0,
+        "fibre": 0.0,
+        "sugar": 0.0,
+        "protein": 0.1
+      }
+    },
+    "missing": []
+  },
+  "recipe-mango-cold-brew": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A52:D54",
+    "ingredients": [
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 52
+      },
+      {
+        "name": "Mango Syrup",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 53
+      },
+      {
+        "name": "Cold Brew",
+        "measurement": "100ML",
+        "detail": "",
+        "sourceRow": 54
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Method adds a mango slice not listed in the table.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "MANGO SYRUP"
+    ]
+  },
+  "recipe-espresso-tonic": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A55:D58",
+    "ingredients": [
+      {
+        "name": "Coffee Grounds",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 55
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 56
+      },
+      {
+        "name": "Tonic Water",
+        "measurement": "100ML",
+        "detail": "",
+        "sourceRow": 57
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 58
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "estimated",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+      "grams": {
+        "fat": 0.1,
+        "fibre": 0.0,
+        "sugar": 9.2,
+        "protein": 0.0
+      }
+    },
+    "missing": []
+  },
+  "recipe-strawberry-iced-latte": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A59:D64",
+    "ingredients": [
+      {
+        "name": "Coffee Grounds",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 59
+      },
+      {
+        "name": "Garnish",
+        "measurement": "STRAWBERRY CRUST (Glass Rim)",
+        "detail": "STRAWBERRY CRUST (Glass Rim)",
+        "sourceRow": 60
+      },
+      {
+        "name": "Strawberry Syrup",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 61
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 62
+      },
+      {
+        "name": "Milk",
+        "measurement": "100ML",
+        "detail": "",
+        "sourceRow": 63
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 64
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Table says STRAWBERRY CRUST; method says STRAWBERRY CRUSH.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "Garnish quantities/composition",
+      "STRAWBERRY SYRUP"
+    ]
+  },
+  "recipe-iced-spanish-latte": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A65:D69",
+    "ingredients": [
+      {
+        "name": "Coffee Grounds",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 65
+      },
+      {
+        "name": "Condenced Milk",
+        "measurement": "25 ML",
+        "detail": "",
+        "sourceRow": 66
+      },
+      {
+        "name": "Milk",
+        "measurement": "100ML",
+        "detail": "",
+        "sourceRow": 67
+      },
+      {
+        "name": "Ice Cube",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 68
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 69
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Table spelling CONDENCED MILK retained.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "estimated",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Approximate standard-ingredient estimate; brands and preparation vary. Not laboratory tested.",
+      "grams": {
+        "fat": 6.2,
+        "fibre": 0.0,
+        "sugar": 22.9,
+        "protein": 5.9
+      }
+    },
+    "missing": []
+  },
+  "recipe-iced-chai-latte-dry-shake": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A70:D74",
+    "ingredients": [
+      {
+        "name": "Coffee Grounds",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 70
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 71
+      },
+      {
+        "name": "Masala Chai",
+        "measurement": "30 GMS",
+        "detail": "",
+        "sourceRow": 72
+      },
+      {
+        "name": "Milk",
+        "measurement": "100ML",
+        "detail": "",
+        "sourceRow": 73
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 74
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Table says MASALA CHAI; method says CHAI POWDER.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "MASALA CHAI"
+    ]
+  },
+  "recipe-chai-latte-hot": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A75:D78",
+    "ingredients": [
+      {
+        "name": "Coffee Grounds",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 75
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 76
+      },
+      {
+        "name": "Masala Chai",
+        "measurement": "20 GMS",
+        "detail": "",
+        "sourceRow": 77
+      },
+      {
+        "name": "Milk",
+        "measurement": "160ML",
+        "detail": "",
+        "sourceRow": 78
+      }
+    ],
+    "serving": "Place the saucer with one brown sugar and white sugar , with tissue and stirrer",
+    "review": "Espresso: table 40 ML; method 20 ML. MASALA CHAI called CHAI POWDER in method.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "MASALA CHAI"
+    ]
+  },
+  "recipe-french-vanilla-iced-latte": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A79:D83",
+    "ingredients": [
+      {
+        "name": "Coffee Ground",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 79
+      },
+      {
+        "name": "Vanilla Syrup",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 80
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 81
+      },
+      {
+        "name": "Milk",
+        "measurement": "100ML",
+        "detail": "",
+        "sourceRow": 82
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 83
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "VANILLA SYRUP called FRENCH VANILLA in method.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "VANILLA SYRUP"
+    ]
+  },
+  "source-11": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A84:D88",
+    "ingredients": [
+      {
+        "name": "Coffee Ground",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 84
+      },
+      {
+        "name": "Ice Cube",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 85
+      },
+      {
+        "name": "Condensed Milk",
+        "measurement": "30 GMS",
+        "detail": "",
+        "sourceRow": 86
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 87
+      },
+      {
+        "name": "Garnish",
+        "measurement": "CINNAMON POWDER",
+        "detail": "CINNAMON POWDER",
+        "sourceRow": 88
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Condensed milk: table 30 GMS; method 30 ML.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "Garnish quantities/composition"
+    ]
+  },
+  "recipe-dirty-matcha-latte-iced-dry-shake": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A89:D93",
+    "ingredients": [
+      {
+        "name": "Coffee Ground",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 89
+      },
+      {
+        "name": "Espresso",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 90
+      },
+      {
+        "name": "Matcha Powder",
+        "measurement": "3 GMS",
+        "detail": "",
+        "sourceRow": 91
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 92
+      },
+      {
+        "name": "Milk",
+        "measurement": "100ML",
+        "detail": "",
+        "sourceRow": 93
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Espresso: table 20 ML; method 40 ML. Method adds cinnamon garnish.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "MATCHA POWDER"
+    ]
+  },
+  "recipe-orange-iced-americano": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A94:D98",
+    "ingredients": [
+      {
+        "name": "Orange Juice",
+        "measurement": "30 ML",
+        "detail": "",
+        "sourceRow": 94
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 95
+      },
+      {
+        "name": "Tonic Water",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 96
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 97
+      },
+      {
+        "name": "Garnish",
+        "measurement": "ORANGE SLICE",
+        "detail": "ORANGE SLICE",
+        "sourceRow": 98
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Method uses 18 GMS coffee grounds omitted from the table.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "Garnish quantities/composition"
+    ]
+  },
+  "recipe-iced-coffee-lemonade": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A99:D103",
+    "ingredients": [
+      {
+        "name": "Coffee Ground",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 99
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 100
+      },
+      {
+        "name": "Lemon Juice",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 101
+      },
+      {
+        "name": "Water",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 102
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 103
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Method adds a lemon slice not listed in the table.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": []
+  },
+  "recipe-dirty-matcha-latte-hot": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A104:D107",
+    "ingredients": [
+      {
+        "name": "Coffee Ground",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 104
+      },
+      {
+        "name": "Espresso",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 105
+      },
+      {
+        "name": "Matcha Powder",
+        "measurement": "3 GMS",
+        "detail": "",
+        "sourceRow": 106
+      },
+      {
+        "name": "Milk",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 107
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Milk: table 100 ML; method 160 ML.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "MATCHA POWDER"
+    ]
+  },
+  "recipe-spanish-latte-hot": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A108:D111",
+    "ingredients": [
+      {
+        "name": "Coffee Ground",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 108
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 109
+      },
+      {
+        "name": "Condensed Milk",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 110
+      },
+      {
+        "name": "Milk",
+        "measurement": "160 ML",
+        "detail": "",
+        "sourceRow": 111
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Espresso: table 40 ML; method 20 ML. Condensed milk: table 20 ML; method 25 GMS.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": []
+  },
+  "recipe-french-vanilla-latte-hot": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A112:D115",
+    "ingredients": [
+      {
+        "name": "Coffee Ground",
+        "measurement": "18 GMS",
+        "detail": "",
+        "sourceRow": 112
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 113
+      },
+      {
+        "name": "Vanilla Syrup",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 114
+      },
+      {
+        "name": "Milk",
+        "measurement": "160 ML",
+        "detail": "",
+        "sourceRow": 115
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Espresso: table 40 ML; method 20 ML.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "VANILLA SYRUP"
+    ]
+  },
+  "source-09": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A116:D118",
+    "ingredients": [
+      {
+        "name": "Chocolate Powder",
+        "measurement": "20 GMS",
+        "detail": "",
+        "sourceRow": 116
+      },
+      {
+        "name": "Chocolate Syrup",
+        "measurement": "5 ML",
+        "detail": "",
+        "sourceRow": 117
+      },
+      {
+        "name": "Milk",
+        "measurement": "150 ML",
+        "detail": "",
+        "sourceRow": 118
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Milk: table 150 ML; method 160 ML. Method adds 10 ML hot water.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "CHOCOLATE POWDER",
+      "CHOCOLATE SYRUP"
+    ]
+  },
+  "source-07": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A119:D122",
+    "ingredients": [
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 119
+      },
+      {
+        "name": "Chocolate Powder",
+        "measurement": "25 GMS",
+        "detail": "",
+        "sourceRow": 120
+      },
+      {
+        "name": "Chocolate Syrup",
+        "measurement": "7 ML",
+        "detail": "",
+        "sourceRow": 121
+      },
+      {
+        "name": "Milk",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 122
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "CHOCOLATE POWDER",
+      "CHOCOLATE SYRUP"
+    ]
+  },
+  "recipe-cookie-crumble-frappe": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A123:D129",
+    "ingredients": [
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 123
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 124
+      },
+      {
+        "name": "Cookies",
+        "measurement": "2 PCS",
+        "detail": "",
+        "sourceRow": 125
+      },
+      {
+        "name": "Ice Cream",
+        "measurement": "50 GMS",
+        "detail": "",
+        "sourceRow": 126
+      },
+      {
+        "name": "Frappe Mix",
+        "measurement": "10 GMS",
+        "detail": "",
+        "sourceRow": 127
+      },
+      {
+        "name": "Milk",
+        "measurement": "60 ML",
+        "detail": "",
+        "sourceRow": 128
+      },
+      {
+        "name": "Garnish",
+        "measurement": "WHIPPED CREAM , CHOCOLATE SYRUP",
+        "detail": "WHIPPED CREAM , CHOCOLATE SYRUP",
+        "sourceRow": 129
+      }
+    ],
+    "serving": "Serve it with a tissue, a straw and a spoon.,",
+    "review": "Ice cream: table 50 GMS; method 50 ML. Method uses 18 GMS coffee grounds omitted from table.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "COOKIES",
+      "FRAPPE MIX",
+      "Garnish quantities/composition",
+      "ICE CREAM"
+    ]
+  },
+  "recipe-choco-chip-frappe": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A130:D136",
+    "ingredients": [
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 130
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 131
+      },
+      {
+        "name": "Choco Chip",
+        "measurement": "20 GMS",
+        "detail": "",
+        "sourceRow": 132
+      },
+      {
+        "name": "Ice Cream",
+        "measurement": "50 GMS",
+        "detail": "",
+        "sourceRow": 133
+      },
+      {
+        "name": "Frappe Mix",
+        "measurement": "10 GMS",
+        "detail": "",
+        "sourceRow": 134
+      },
+      {
+        "name": "Milk",
+        "measurement": "60 ML",
+        "detail": "",
+        "sourceRow": 135
+      },
+      {
+        "name": "Garnish",
+        "measurement": "WHIPPED CREAM , CHOCOLATE SYRUP",
+        "detail": "WHIPPED CREAM , CHOCOLATE SYRUP",
+        "sourceRow": 136
+      }
+    ],
+    "serving": "Serve it with a tissue, a straw and a spoon.",
+    "review": "Ice cream: table 50 GMS; method 50 ML. Method uses 18 GMS coffee grounds omitted from table.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "CHOCO CHIP",
+      "FRAPPE MIX",
+      "Garnish quantities/composition",
+      "ICE CREAM"
+    ]
+  },
+  "source-06": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A137:D141",
+    "ingredients": [
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 137
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 138
+      },
+      {
+        "name": "Sugar Syrup",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 139
+      },
+      {
+        "name": "Frappe Mix",
+        "measurement": "20 GMS",
+        "detail": "",
+        "sourceRow": 140
+      },
+      {
+        "name": "Milk",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 141
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Method uses 18 GMS coffee grounds omitted from the table.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "FRAPPE MIX",
+      "SUGAR SYRUP"
+    ]
+  },
+  "source-02": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A142:D146",
+    "ingredients": [
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 142
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 143
+      },
+      {
+        "name": "Hazelnut Syrup",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 144
+      },
+      {
+        "name": "Frappe Mix",
+        "measurement": "20 GMS",
+        "detail": "",
+        "sourceRow": 145
+      },
+      {
+        "name": "Milk",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 146
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Method uses 18 GMS coffee grounds omitted from the table.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "FRAPPE MIX",
+      "HAZELNUT SYRUP"
+    ]
+  },
+  "source-05": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A147:D152",
+    "ingredients": [
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 147
+      },
+      {
+        "name": "Espresso",
+        "measurement": "40 ML",
+        "detail": "",
+        "sourceRow": 148
+      },
+      {
+        "name": "Caramel Syrup",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 149
+      },
+      {
+        "name": "Frappe Mix",
+        "measurement": "20 GMS",
+        "detail": "",
+        "sourceRow": 150
+      },
+      {
+        "name": "Milk",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 151
+      },
+      {
+        "name": "Garnish",
+        "measurement": "WHIPPED CREAM, CHOCOLATE SYRUP",
+        "detail": "WHIPPED CREAM, CHOCOLATE SYRUP",
+        "sourceRow": 152
+      }
+    ],
+    "serving": "Serve it with a tissue, a straw and a spoon.,",
+    "review": "Milk: table 100 ML; method 60 ML. Frappe mix: table 20 GMS; method 10 GMS. Method uses 18 GMS coffee grounds omitted from table.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "CARAMEL SYRUP",
+      "FRAPPE MIX",
+      "Garnish quantities/composition"
+    ]
+  },
+  "recipe-very-berry-smoothie": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A153:D156",
+    "ingredients": [
+      {
+        "name": "Blueberry Yoghurt",
+        "measurement": "200 ML",
+        "detail": "",
+        "sourceRow": 153
+      },
+      {
+        "name": "Oats",
+        "measurement": "20 GMS",
+        "detail": "",
+        "sourceRow": 154
+      },
+      {
+        "name": "Fresh Blueberry",
+        "measurement": "50 GMS",
+        "detail": "",
+        "sourceRow": 155
+      },
+      {
+        "name": "Garnish",
+        "measurement": "CHIA SEED (2GMS) FRESH BLUEBERRY (5 PCS)",
+        "detail": "CHIA SEED (2GMS) FRESH BLUEBERRY (5 PCS)",
+        "sourceRow": 156
+      }
+    ],
+    "serving": "Serve it with a tissue and spoon",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BLUEBERRY YOGHURT",
+      "Garnish quantities/composition",
+      "OATS nutrient data"
+    ]
+  },
+  "recipe-protein-power-smoothie": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A157:D167",
+    "ingredients": [
+      {
+        "name": "Peanut Butter",
+        "measurement": "60 GMS",
+        "detail": "",
+        "sourceRow": 157
+      },
+      {
+        "name": "Whey Protein",
+        "measurement": "25 GMS",
+        "detail": "",
+        "sourceRow": 158
+      },
+      {
+        "name": "Milk",
+        "measurement": "50 ML",
+        "detail": "",
+        "sourceRow": 159
+      },
+      {
+        "name": "Cocoa Powder",
+        "measurement": "0.5GMS",
+        "detail": "",
+        "sourceRow": 160
+      },
+      {
+        "name": "Banana",
+        "measurement": "100 GMS",
+        "detail": "",
+        "sourceRow": 161
+      },
+      {
+        "name": "Ice Cube",
+        "measurement": "25/30 GMS",
+        "detail": "",
+        "sourceRow": 162
+      },
+      {
+        "name": "Oats",
+        "measurement": "30 GMS",
+        "detail": "",
+        "sourceRow": 163
+      },
+      {
+        "name": "Pumpkin Seeds",
+        "measurement": "2 GMS",
+        "detail": "",
+        "sourceRow": 164
+      },
+      {
+        "name": "Chia Seeds",
+        "measurement": "2 GMS",
+        "detail": "",
+        "sourceRow": 165
+      },
+      {
+        "name": "Sunflower Seeds",
+        "measurement": "2 GMS",
+        "detail": "",
+        "sourceRow": 166
+      },
+      {
+        "name": "Muesli",
+        "measurement": "20 GMS",
+        "detail": "",
+        "sourceRow": 167
+      }
+    ],
+    "serving": "Serve it with a tissue and spoon",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "CHIA SEEDS nutrient data",
+      "MUESLI",
+      "OATS nutrient data",
+      "SUNFLOWER SEEDS nutrient data",
+      "WHEY PROTEIN"
+    ]
+  },
+  "recipe-chia-iced-tea": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A168:D174",
+    "ingredients": [
+      {
+        "name": "Tea Powder",
+        "measurement": "5 GMS",
+        "detail": "",
+        "sourceRow": 168
+      },
+      {
+        "name": "Hot Water",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 169
+      },
+      {
+        "name": "Lemon Juice",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 170
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 171
+      },
+      {
+        "name": "Honey",
+        "measurement": "30GMS",
+        "detail": "",
+        "sourceRow": 172
+      },
+      {
+        "name": "Chia Seeds",
+        "measurement": "10GMS",
+        "detail": "",
+        "sourceRow": 173
+      },
+      {
+        "name": "Garnish",
+        "measurement": "LEMON , MINT",
+        "detail": "LEMON , MINT",
+        "sourceRow": 174
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Lemon juice: table 10 ML; method 15 ML. Honey: table 30 GMS; method 30 ML.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "CHIA SEEDS nutrient data",
+      "Garnish quantities/composition",
+      "TEA POWDER"
+    ]
+  },
+  "recipe-lemon-mint-iced-tea": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A175:D180",
+    "ingredients": [
+      {
+        "name": "Tea Powder",
+        "measurement": "5 GMS",
+        "detail": "",
+        "sourceRow": 175
+      },
+      {
+        "name": "Hot Water",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 176
+      },
+      {
+        "name": "Lemon Juice",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 177
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 178
+      },
+      {
+        "name": "Honey",
+        "measurement": "30GMS",
+        "detail": "",
+        "sourceRow": 179
+      },
+      {
+        "name": "Garnish",
+        "measurement": "LEMON , MINT",
+        "detail": "LEMON , MINT",
+        "sourceRow": 180
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Lemon juice: table 10 ML; method 15 ML. Honey: table 30 GMS; method 30 ML.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "Garnish quantities/composition",
+      "TEA POWDER"
+    ]
+  },
+  "recipe-peach-mint-iced-tea": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A181:D187",
+    "ingredients": [
+      {
+        "name": "Tea Powder",
+        "measurement": "5 GMS",
+        "detail": "",
+        "sourceRow": 181
+      },
+      {
+        "name": "Hot Water",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 182
+      },
+      {
+        "name": "Mint Leaves",
+        "measurement": "2 GMS",
+        "detail": "",
+        "sourceRow": 183
+      },
+      {
+        "name": "Lemon Juice",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 184
+      },
+      {
+        "name": "Peach Syrup",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 185
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 ML",
+        "detail": "",
+        "sourceRow": 186
+      },
+      {
+        "name": "Garnish",
+        "measurement": "LEMON , MINT",
+        "detail": "LEMON , MINT",
+        "sourceRow": 187
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Ice unit is ML in table. Mint: table 2 GMS; method 4–5 leaves.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "Garnish quantities/composition",
+      "MINT LEAVES",
+      "PEACH SYRUP",
+      "TEA POWDER"
+    ]
+  },
+  "recipe-peach-iced-tea": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A188:D193",
+    "ingredients": [
+      {
+        "name": "Tea Powder",
+        "measurement": "5 GMS",
+        "detail": "",
+        "sourceRow": 188
+      },
+      {
+        "name": "Hot Water",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 189
+      },
+      {
+        "name": "Lemon Juice",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 190
+      },
+      {
+        "name": "Peach Syrup",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 191
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 ML",
+        "detail": "",
+        "sourceRow": 192
+      },
+      {
+        "name": "Garnish",
+        "measurement": "LEMON , MINT",
+        "detail": "LEMON , MINT",
+        "sourceRow": 193
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Ice unit is ML in table.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "Garnish quantities/composition",
+      "PEACH SYRUP",
+      "TEA POWDER"
+    ]
+  },
+  "recipe-passion-mint-iced-tea": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A194:D199",
+    "ingredients": [
+      {
+        "name": "Tea Powder",
+        "measurement": "5 GMS",
+        "detail": "",
+        "sourceRow": 194
+      },
+      {
+        "name": "Hot Water",
+        "measurement": "200 ML",
+        "detail": "",
+        "sourceRow": 195
+      },
+      {
+        "name": "Mint Leaves",
+        "measurement": "2 GMS",
+        "detail": "",
+        "sourceRow": 196
+      },
+      {
+        "name": "Lemon Juice",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 197
+      },
+      {
+        "name": "Passion Syrup",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 198
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 ML",
+        "detail": "",
+        "sourceRow": 199
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Hot water: table 200 ML; method 100 ML. Ice unit is ML in table. Mint: table 2 GMS; method 4–5 leaves.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "MINT LEAVES",
+      "PASSION SYRUP",
+      "TEA POWDER"
+    ]
+  },
+  "recipe-lemon-hot-tea": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A200:D203",
+    "ingredients": [
+      {
+        "name": "Tea Powder",
+        "measurement": "5 GMS",
+        "detail": "",
+        "sourceRow": 200
+      },
+      {
+        "name": "Hot Water",
+        "measurement": "200 ML",
+        "detail": "",
+        "sourceRow": 201
+      },
+      {
+        "name": "Lemon Juice",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 202
+      },
+      {
+        "name": "Honey",
+        "measurement": "30 ML",
+        "detail": "",
+        "sourceRow": 203
+      }
+    ],
+    "serving": "",
+    "review": "Hot water: table 200 ML; method 100 ML.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "TEA POWDER"
+    ]
+  },
+  "recipe-mint-hot-tea": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A204:D207",
+    "ingredients": [
+      {
+        "name": "Tea Powder",
+        "measurement": "5 GMS",
+        "detail": "",
+        "sourceRow": 204
+      },
+      {
+        "name": "Hot Water",
+        "measurement": "200 ML",
+        "detail": "",
+        "sourceRow": 205
+      },
+      {
+        "name": "Mint Leaves",
+        "measurement": "5 GMS",
+        "detail": "",
+        "sourceRow": 206
+      },
+      {
+        "name": "Honey",
+        "measurement": "30 ML",
+        "detail": "",
+        "sourceRow": 207
+      }
+    ],
+    "serving": "Place the saucer, with tissue and stirrer",
+    "review": "Hot water: table 200 ML; method 100 ML. Mint: table 5 GMS; method 4–5 leaves.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "MINT LEAVES",
+      "TEA POWDER"
+    ]
+  },
+  "recipe-virgin-mojito": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A208:D213",
+    "ingredients": [
+      {
+        "name": "Lemon",
+        "measurement": "1/2",
+        "detail": "Half lemon; unit not stated in table.",
+        "sourceRow": 208
+      },
+      {
+        "name": "Mint",
+        "measurement": "4 PCS",
+        "detail": "",
+        "sourceRow": 209
+      },
+      {
+        "name": "Mojito Mint Syrup",
+        "measurement": "10ML",
+        "detail": "",
+        "sourceRow": 210
+      },
+      {
+        "name": "Ice Cube",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 211
+      },
+      {
+        "name": "Sprit",
+        "measurement": "50 ML",
+        "detail": "",
+        "sourceRow": 212
+      },
+      {
+        "name": "Soda",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 213
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Table spelling SPRIT retained. Table mint 4 PCS and SPRIT 50 ML; method mint 5–7 PCS and Sprite 40 ML. Lemon table 1/2; method 3–4 wedges.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "LEMON",
+      "MINT",
+      "MOJITO MINT SYRUP"
+    ]
+  },
+  "recipe-watermelon-mocktail": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A214:D219",
+    "ingredients": [
+      {
+        "name": "Watermelon Syrup",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 214
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 215
+      },
+      {
+        "name": "Lemon Juice",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 216
+      },
+      {
+        "name": "Sprite",
+        "measurement": "60 ML",
+        "detail": "",
+        "sourceRow": 217
+      },
+      {
+        "name": "Soda",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 218
+      },
+      {
+        "name": "Garnish",
+        "measurement": "LEMON, MINT",
+        "detail": "LEMON, MINT",
+        "sourceRow": 219
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Table garnish lemon and mint; method watermelon slice.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "Garnish quantities/composition",
+      "WATERMELON SYRUP"
+    ]
+  },
+  "recipe-passion-fruit-mocktail": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A220:D225",
+    "ingredients": [
+      {
+        "name": "Passion Syrup",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 220
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 221
+      },
+      {
+        "name": "Lemon Juice",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 222
+      },
+      {
+        "name": "Sprite",
+        "measurement": "60 ML",
+        "detail": "",
+        "sourceRow": 223
+      },
+      {
+        "name": "Soda",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 224
+      },
+      {
+        "name": "Garnish",
+        "measurement": "LEMON, MINT",
+        "detail": "LEMON, MINT",
+        "sourceRow": 225
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "Garnish quantities/composition",
+      "PASSION SYRUP"
+    ]
+  },
+  "recipe-mango-mocktail": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A226:D231",
+    "ingredients": [
+      {
+        "name": "Mango Syrup",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 226
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 227
+      },
+      {
+        "name": "Lemon Juice",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 228
+      },
+      {
+        "name": "Sprite",
+        "measurement": "60 ML",
+        "detail": "",
+        "sourceRow": 229
+      },
+      {
+        "name": "Soda",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 230
+      },
+      {
+        "name": "Garnish",
+        "measurement": "LEMON, MINT",
+        "detail": "LEMON, MINT",
+        "sourceRow": 231
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "Garnish quantities/composition",
+      "MANGO SYRUP"
+    ]
+  },
+  "recipe-green-apple-mocktail": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A232:D237",
+    "ingredients": [
+      {
+        "name": "Green Apple Syrup",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 232
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 233
+      },
+      {
+        "name": "Lemon Juice",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 234
+      },
+      {
+        "name": "Sprite",
+        "measurement": "60 ML",
+        "detail": "",
+        "sourceRow": 235
+      },
+      {
+        "name": "Soda",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 236
+      },
+      {
+        "name": "Garnish",
+        "measurement": "LEMON, MINT",
+        "detail": "LEMON, MINT",
+        "sourceRow": 237
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "GREEN APPLE SYRUP",
+      "Garnish quantities/composition"
+    ]
+  },
+  "recipe-deep-blue-sea": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A238:D245",
+    "ingredients": [
+      {
+        "name": "Blue Curacao",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 238
+      },
+      {
+        "name": "Blueberry Cursh",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 239
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 240
+      },
+      {
+        "name": "Lemon Juice",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 241
+      },
+      {
+        "name": "Mint Leaves",
+        "measurement": "5 NO",
+        "detail": "",
+        "sourceRow": 242
+      },
+      {
+        "name": "Sprite",
+        "measurement": "60 ML",
+        "detail": "",
+        "sourceRow": 243
+      },
+      {
+        "name": "Soda",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 244
+      },
+      {
+        "name": "Garnish",
+        "measurement": "LEMON, MINT",
+        "detail": "LEMON, MINT",
+        "sourceRow": 245
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BLUE CURACAO",
+      "BLUEBERRY CURSH",
+      "Garnish quantities/composition",
+      "MINT LEAVES"
+    ]
+  },
+  "recipe-green-sea": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A246:D253",
+    "ingredients": [
+      {
+        "name": "Green Apple Crush",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 246
+      },
+      {
+        "name": "Kiwi Crush",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 247
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS S",
+        "detail": "",
+        "sourceRow": 248
+      },
+      {
+        "name": "Lemon Juice",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 249
+      },
+      {
+        "name": "Mint Leaves",
+        "measurement": "5 NO",
+        "detail": "",
+        "sourceRow": 250
+      },
+      {
+        "name": "Sprite",
+        "measurement": "60 ML",
+        "detail": "",
+        "sourceRow": 251
+      },
+      {
+        "name": "Soda",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 252
+      },
+      {
+        "name": "Garnish",
+        "measurement": "LEMON, MINT",
+        "detail": "LEMON, MINT",
+        "sourceRow": 253
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Ice quantity source text includes trailing S (80/100 GMS S).",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "GREEN APPLE CRUSH",
+      "Garnish quantities/composition",
+      "KIWI CRUSH",
+      "MINT LEAVES"
+    ]
+  },
+  "recipe-goddess": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A254:D261",
+    "ingredients": [
+      {
+        "name": "Pineapple Crush",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 254
+      },
+      {
+        "name": "Green Apple Crush",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 255
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS S",
+        "detail": "",
+        "sourceRow": 256
+      },
+      {
+        "name": "Lemon Juice",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 257
+      },
+      {
+        "name": "Mint Leaves",
+        "measurement": "5 NO",
+        "detail": "",
+        "sourceRow": 258
+      },
+      {
+        "name": "Sprite",
+        "measurement": "60 ML",
+        "detail": "",
+        "sourceRow": 259
+      },
+      {
+        "name": "Soda",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 260
+      },
+      {
+        "name": "Garnish",
+        "measurement": "LEMON, MINT",
+        "detail": "LEMON, MINT",
+        "sourceRow": 261
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "Ice quantity source text includes trailing S (80/100 GMS S).",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "GREEN APPLE CRUSH",
+      "Garnish quantities/composition",
+      "MINT LEAVES",
+      "PINEAPPLE CRUSH"
+    ]
+  },
+  "recipe-sunset": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A262:D269",
+    "ingredients": [
+      {
+        "name": "Orange Juice",
+        "measurement": "50 ML",
+        "detail": "",
+        "sourceRow": 262
+      },
+      {
+        "name": "Watermelon Syrup",
+        "measurement": "20 ML",
+        "detail": "",
+        "sourceRow": 263
+      },
+      {
+        "name": "Ice Cubes",
+        "measurement": "80/100 GMS",
+        "detail": "",
+        "sourceRow": 264
+      },
+      {
+        "name": "Lemon Juice",
+        "measurement": "10 ML",
+        "detail": "",
+        "sourceRow": 265
+      },
+      {
+        "name": "Mint Leaves",
+        "measurement": "5 NO",
+        "detail": "",
+        "sourceRow": 266
+      },
+      {
+        "name": "Sprite",
+        "measurement": "60 ML",
+        "detail": "",
+        "sourceRow": 267
+      },
+      {
+        "name": "Soda",
+        "measurement": "100 ML",
+        "detail": "",
+        "sourceRow": 268
+      },
+      {
+        "name": "Garnish",
+        "measurement": "LEMON, MINT,ORANGE",
+        "detail": "LEMON, MINT,ORANGE",
+        "sourceRow": 269
+      }
+    ],
+    "serving": "Serve it with a tissue and straw",
+    "review": "",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "Garnish quantities/composition",
+      "MINT LEAVES",
+      "WATERMELON SYRUP"
+    ]
+  },
+  "recipe-the-classic-schmear": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A270:D274",
+    "ingredients": [
+      {
+        "name": "Bagel Bread",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 270
+      },
+      {
+        "name": "Cream Cheese",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 271
+      },
+      {
+        "name": "Rocket Leaves",
+        "measurement": "3GM",
+        "detail": "",
+        "sourceRow": 272
+      },
+      {
+        "name": "Cherry Tomatoes",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 273
+      },
+      {
+        "name": "Butter Salted",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 274
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BAGEL BREAD",
+      "CHERRY TOMATOES portion weight",
+      "ROCKET LEAVES"
+    ]
+  },
+  "recipe-sunrise-egg-bagel": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A275:D281",
+    "ingredients": [
+      {
+        "name": "Bagel Bread",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 275
+      },
+      {
+        "name": "Cream Cheese",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 276
+      },
+      {
+        "name": "Rocket Leaves",
+        "measurement": "3GM",
+        "detail": "",
+        "sourceRow": 277
+      },
+      {
+        "name": "Cherry Tomatoes",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 278
+      },
+      {
+        "name": "Egg",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 279
+      },
+      {
+        "name": "Salt + Pepper",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 280
+      },
+      {
+        "name": "Butter Salted",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 281
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BAGEL BREAD",
+      "CHERRY TOMATOES portion weight",
+      "ROCKET LEAVES",
+      "SALT + PEPPER"
+    ]
+  },
+  "source-29": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A282:D287",
+    "ingredients": [
+      {
+        "name": "Bagel Bread",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 282
+      },
+      {
+        "name": "Cream Cheese",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 283
+      },
+      {
+        "name": "Rocket Leaves",
+        "measurement": "3GM",
+        "detail": "",
+        "sourceRow": 284
+      },
+      {
+        "name": "Cherry Tomatoes",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 285
+      },
+      {
+        "name": "Smoked Chicken Ham",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 286
+      },
+      {
+        "name": "Butter Salted",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 287
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BAGEL BREAD",
+      "CHERRY TOMATOES portion weight",
+      "ROCKET LEAVES",
+      "SMOKED CHICKEN HAM"
+    ]
+  },
+  "recipe-mexican-paneer-bagel": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A288:D294",
+    "ingredients": [
+      {
+        "name": "Bagel Bread",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 288
+      },
+      {
+        "name": "Cream Cheese",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 289
+      },
+      {
+        "name": "Rocket Leaves",
+        "measurement": "3GM",
+        "detail": "",
+        "sourceRow": 290
+      },
+      {
+        "name": "Cherry Tomatoes",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 291
+      },
+      {
+        "name": "Paneer",
+        "measurement": "80GM",
+        "detail": "",
+        "sourceRow": 292
+      },
+      {
+        "name": "Mexican Marination",
+        "measurement": "30GMS",
+        "detail": "",
+        "sourceRow": 293
+      },
+      {
+        "name": "Butter Salted",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 294
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BAGEL BREAD",
+      "CHERRY TOMATOES portion weight",
+      "MEXICAN MARINATION",
+      "PANEER",
+      "ROCKET LEAVES"
+    ]
+  },
+  "recipe-smoked-paneer": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A295:D307",
+    "ingredients": [
+      {
+        "name": "Panini 5\"/Wrap",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 295
+      },
+      {
+        "name": "Peri Peri Mayo",
+        "measurement": "35GM",
+        "detail": "",
+        "sourceRow": 296
+      },
+      {
+        "name": "Iceberg+Green Lettuce",
+        "measurement": "15GM",
+        "detail": "",
+        "sourceRow": 297
+      },
+      {
+        "name": "Paneer",
+        "measurement": "75GM",
+        "detail": "",
+        "sourceRow": 298
+      },
+      {
+        "name": "Smoke Marination",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 299
+      },
+      {
+        "name": "Bellpepper",
+        "measurement": "15GM",
+        "detail": "",
+        "sourceRow": 300
+      },
+      {
+        "name": "Salt + Pepper",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 301
+      },
+      {
+        "name": "Cheese Slice",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 302
+      },
+      {
+        "name": "Oil",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 303
+      },
+      {
+        "name": "Ketchup",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 304
+      },
+      {
+        "name": "Mayo",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 305
+      },
+      {
+        "name": "French Fries",
+        "measurement": "70GM",
+        "detail": "",
+        "sourceRow": 306
+      },
+      {
+        "name": "Garnish",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 307
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided. Some ingredient quantities are missing in the source.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "CHEESE SLICE",
+      "FRENCH FRIES",
+      "Garnish quantities/composition",
+      "KETCHUP",
+      "PANEER",
+      "PANINI 5\"/WRAP",
+      "PERI PERI MAYO",
+      "SALT + PEPPER",
+      "SMOKE MARINATION"
+    ]
+  },
+  "source-23": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A308:D320",
+    "ingredients": [
+      {
+        "name": "Panini 5\"/Wrap",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 308
+      },
+      {
+        "name": "Peri Peri Mayo",
+        "measurement": "35GM",
+        "detail": "",
+        "sourceRow": 309
+      },
+      {
+        "name": "Iceberg+Green Lettuce",
+        "measurement": "15GM",
+        "detail": "",
+        "sourceRow": 310
+      },
+      {
+        "name": "Chicken",
+        "measurement": "75GM",
+        "detail": "",
+        "sourceRow": 311
+      },
+      {
+        "name": "Smoke Marination",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 312
+      },
+      {
+        "name": "Caremelized Onion",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 313
+      },
+      {
+        "name": "Salt + Pepper",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 314
+      },
+      {
+        "name": "Cheese Slice",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 315
+      },
+      {
+        "name": "Oil",
+        "measurement": "20GM",
+        "detail": "",
+        "sourceRow": 316
+      },
+      {
+        "name": "French Fries",
+        "measurement": "70GM",
+        "detail": "",
+        "sourceRow": 317
+      },
+      {
+        "name": "Ketchup",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 318
+      },
+      {
+        "name": "Mayo",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 319
+      },
+      {
+        "name": "Garnish",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 320
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided. Some ingredient quantities are missing in the source.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "CAREMELIZED ONION",
+      "CHEESE SLICE",
+      "CHICKEN",
+      "FRENCH FRIES",
+      "Garnish quantities/composition",
+      "KETCHUP",
+      "PANINI 5\"/WRAP",
+      "PERI PERI MAYO",
+      "SALT + PEPPER",
+      "SMOKE MARINATION"
+    ]
+  },
+  "source-15": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A321:D337",
+    "ingredients": [
+      {
+        "name": "Panini 5\"/Wrap",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 321
+      },
+      {
+        "name": "Hummus",
+        "measurement": "35GM",
+        "detail": "",
+        "sourceRow": 322
+      },
+      {
+        "name": "Iceberg+Green Lettuce",
+        "measurement": "15GM",
+        "detail": "",
+        "sourceRow": 323
+      },
+      {
+        "name": "Egg",
+        "measurement": "2PC",
+        "detail": "",
+        "sourceRow": 324
+      },
+      {
+        "name": "Butter",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 325
+      },
+      {
+        "name": "Fresh Cream",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 326
+      },
+      {
+        "name": "Salt Pepper",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 327
+      },
+      {
+        "name": "Onion",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 328
+      },
+      {
+        "name": "English Cucumber",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 329
+      },
+      {
+        "name": "Jalepeno",
+        "measurement": "4GM",
+        "detail": "",
+        "sourceRow": 330
+      },
+      {
+        "name": "Olives",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 331
+      },
+      {
+        "name": "Cheese Slice",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 332
+      },
+      {
+        "name": "Ketchup",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 333
+      },
+      {
+        "name": "Mayo",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 334
+      },
+      {
+        "name": "French Fries",
+        "measurement": "70GM",
+        "detail": "",
+        "sourceRow": 335
+      },
+      {
+        "name": "Oil",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 336
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 337
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "CHEESE SLICE",
+      "FRENCH FRIES",
+      "HUMMUS",
+      "JALEPENO",
+      "KETCHUP",
+      "OLIVES",
+      "PANINI 5\"/WRAP",
+      "SALT PEPPER"
+    ]
+  },
+  "recipe-mixed-exotic-veggies": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A338:D351",
+    "ingredients": [
+      {
+        "name": "Panini 5\"/Wrap",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 338
+      },
+      {
+        "name": "Plain Mayo",
+        "measurement": "35GM",
+        "detail": "",
+        "sourceRow": 339
+      },
+      {
+        "name": "Iceberg+Green Lettuce",
+        "measurement": "15GM",
+        "detail": "",
+        "sourceRow": 340
+      },
+      {
+        "name": "Brocolli",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 341
+      },
+      {
+        "name": "Zuccihini",
+        "measurement": "15GM",
+        "detail": "",
+        "sourceRow": 342
+      },
+      {
+        "name": "Bell Pepper",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 343
+      },
+      {
+        "name": "Onion",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 344
+      },
+      {
+        "name": "Garlic",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 345
+      },
+      {
+        "name": "Oil",
+        "measurement": "20GM",
+        "detail": "",
+        "sourceRow": 346
+      },
+      {
+        "name": "Cheese Slice",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 347
+      },
+      {
+        "name": "Ketchup",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 348
+      },
+      {
+        "name": "Mayo",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 349
+      },
+      {
+        "name": "French Fries",
+        "measurement": "70GM",
+        "detail": "",
+        "sourceRow": 350
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4 TSP",
+        "detail": "",
+        "sourceRow": 351
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "CHEESE SLICE",
+      "FRENCH FRIES",
+      "KETCHUP",
+      "PANINI 5\"/WRAP",
+      "ZUCCIHINI"
+    ]
+  },
+  "recipe-the-rustic-whisper": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A352:D365",
+    "ingredients": [
+      {
+        "name": "Panini 5\"",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 352
+      },
+      {
+        "name": "Plain Mayo",
+        "measurement": "35GM",
+        "detail": "",
+        "sourceRow": 353
+      },
+      {
+        "name": "Iceberg+Green Lettuce",
+        "measurement": "15GM",
+        "detail": "",
+        "sourceRow": 354
+      },
+      {
+        "name": "Mushroom",
+        "measurement": "65GM",
+        "detail": "",
+        "sourceRow": 355
+      },
+      {
+        "name": "Spinach",
+        "measurement": "20GM",
+        "detail": "",
+        "sourceRow": 356
+      },
+      {
+        "name": "Bell Pepper",
+        "measurement": "20GM",
+        "detail": "",
+        "sourceRow": 357
+      },
+      {
+        "name": "Onion",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 358
+      },
+      {
+        "name": "Garlic",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 359
+      },
+      {
+        "name": "Oil",
+        "measurement": "20GM",
+        "detail": "",
+        "sourceRow": 360
+      },
+      {
+        "name": "Cheese Slice",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 361
+      },
+      {
+        "name": "Ketchup",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 362
+      },
+      {
+        "name": "Mayo",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 363
+      },
+      {
+        "name": "French Fries",
+        "measurement": "70GM",
+        "detail": "",
+        "sourceRow": 364
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4 TPS",
+        "detail": "",
+        "sourceRow": 365
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "CHEESE SLICE",
+      "FRENCH FRIES",
+      "KETCHUP",
+      "PANINI 5\""
+    ]
+  },
+  "source-16": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A366:D378",
+    "ingredients": [
+      {
+        "name": "Sour Dough Bread",
+        "measurement": "2 SLICE",
+        "detail": "",
+        "sourceRow": 366
+      },
+      {
+        "name": "Beet Feta Hummus",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 367
+      },
+      {
+        "name": "Avocado",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 368
+      },
+      {
+        "name": "Onion",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 369
+      },
+      {
+        "name": "Tomato",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 370
+      },
+      {
+        "name": "Bellpepper",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 371
+      },
+      {
+        "name": "Lemon",
+        "measurement": "1/2 PC",
+        "detail": "",
+        "sourceRow": 372
+      },
+      {
+        "name": "Salt",
+        "measurement": "1-2GM",
+        "detail": "",
+        "sourceRow": 373
+      },
+      {
+        "name": "Pepper",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 374
+      },
+      {
+        "name": "Chilli Flakes",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 375
+      },
+      {
+        "name": "Spanish Peprika",
+        "measurement": "PINCH",
+        "detail": "PINCH",
+        "sourceRow": 376
+      },
+      {
+        "name": "Cherry Tomato",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 377
+      },
+      {
+        "name": "Black Olives",
+        "measurement": "4SLICE",
+        "detail": "",
+        "sourceRow": 378
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "AVOCADO portion weight",
+      "BEET FETA HUMMUS",
+      "BLACK OLIVES",
+      "CHERRY TOMATO portion weight",
+      "CHILLI FLAKES",
+      "LEMON",
+      "SOUR DOUGH BREAD portion weight",
+      "SPANISH PEPRIKA"
+    ]
+  },
+  "recipe-chilli-cheese-toast": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A379:D390",
+    "ingredients": [
+      {
+        "name": "Sourdough Bread",
+        "measurement": "2SLICE",
+        "detail": "",
+        "sourceRow": 379
+      },
+      {
+        "name": "Mozzerella Cheese",
+        "measurement": "100GM",
+        "detail": "",
+        "sourceRow": 380
+      },
+      {
+        "name": "Onion",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 381
+      },
+      {
+        "name": "Bellpepper",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 382
+      },
+      {
+        "name": "Jalepeno",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 383
+      },
+      {
+        "name": "Olives",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 384
+      },
+      {
+        "name": "Green Chilli",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 385
+      },
+      {
+        "name": "Pepper",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 386
+      },
+      {
+        "name": "Chilli Flakes",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 387
+      },
+      {
+        "name": "Oregano Dried",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 388
+      },
+      {
+        "name": "Oregano Seasoning",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 389
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4 TSP",
+        "detail": "",
+        "sourceRow": 390
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "CHILLI FLAKES",
+      "GREEN CHILLI",
+      "JALEPENO",
+      "OLIVES",
+      "OREGANO SEASONING",
+      "SOURDOUGH BREAD portion weight"
+    ]
+  },
+  "recipe-egg-scrambled-open-toast": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A391:D398",
+    "ingredients": [
+      {
+        "name": "Sour Dough Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 391
+      },
+      {
+        "name": "Egg",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 392
+      },
+      {
+        "name": "Fresh Cream",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 393
+      },
+      {
+        "name": "Herb Butter",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 394
+      },
+      {
+        "name": "Salted Butter",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 395
+      },
+      {
+        "name": "Basil Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 396
+      },
+      {
+        "name": "Micro Greens",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 397
+      },
+      {
+        "name": "Chilli Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 398
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "HERB BUTTER",
+      "MICRO GREENS",
+      "SOUR DOUGH BREAD portion weight"
+    ]
+  },
+  "recipe-egg-boiled-open-toast": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A399:D407",
+    "ingredients": [
+      {
+        "name": "Sour Dough Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 399
+      },
+      {
+        "name": "Egg",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 400
+      },
+      {
+        "name": "Herb Butter",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 401
+      },
+      {
+        "name": "Salted Butter",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 402
+      },
+      {
+        "name": "Basil Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 403
+      },
+      {
+        "name": "Micro Greens",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 404
+      },
+      {
+        "name": "Chilli Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 405
+      },
+      {
+        "name": "Micro Greens",
+        "measurement": "4GM",
+        "detail": "",
+        "sourceRow": 406
+      },
+      {
+        "name": "Basil Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 407
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "HERB BUTTER",
+      "MICRO GREENS",
+      "SOUR DOUGH BREAD portion weight"
+    ]
+  },
+  "recipe-paneer-scrambled": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A408:D418",
+    "ingredients": [
+      {
+        "name": "Sour Dough Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 408
+      },
+      {
+        "name": "Paneer",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 409
+      },
+      {
+        "name": "Salted Btter",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 410
+      },
+      {
+        "name": "Herby Butter",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 411
+      },
+      {
+        "name": "Onion",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 412
+      },
+      {
+        "name": "Bellbepper",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 413
+      },
+      {
+        "name": "Salt",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 414
+      },
+      {
+        "name": "Pepper",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 415
+      },
+      {
+        "name": "Fresh Cream",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 416
+      },
+      {
+        "name": "Micro Greens",
+        "measurement": "4GM",
+        "detail": "",
+        "sourceRow": 417
+      },
+      {
+        "name": "Basil Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 418
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "HERBY BUTTER",
+      "MICRO GREENS",
+      "PANEER",
+      "SOUR DOUGH BREAD portion weight"
+    ]
+  },
+  "recipe-paneer-steamed": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A419:D429",
+    "ingredients": [
+      {
+        "name": "Sour Dough Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 419
+      },
+      {
+        "name": "Herby Butter",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 420
+      },
+      {
+        "name": "Paneer",
+        "measurement": "60GM",
+        "detail": "",
+        "sourceRow": 421
+      },
+      {
+        "name": "Onion Powder",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 422
+      },
+      {
+        "name": "Garlic Powder",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 423
+      },
+      {
+        "name": "Cajun Spice",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 424
+      },
+      {
+        "name": "Salt",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 425
+      },
+      {
+        "name": "Pepper",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 426
+      },
+      {
+        "name": "Green Lettuce",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 427
+      },
+      {
+        "name": "Micro Greens",
+        "measurement": "4 GM",
+        "detail": "",
+        "sourceRow": 428
+      },
+      {
+        "name": "Basil Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 429
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "CAJUN SPICE",
+      "GARLIC POWDER",
+      "HERBY BUTTER",
+      "MICRO GREENS",
+      "ONION POWDER",
+      "PANEER",
+      "SOUR DOUGH BREAD portion weight"
+    ]
+  },
+  "recipe-mushroom": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A430:D437",
+    "ingredients": [
+      {
+        "name": "Sour Dough Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 430
+      },
+      {
+        "name": "Mushroom",
+        "measurement": "50GM",
+        "detail": "",
+        "sourceRow": 431
+      },
+      {
+        "name": "Garlic",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 432
+      },
+      {
+        "name": "Salt",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 433
+      },
+      {
+        "name": "Pepper",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 434
+      },
+      {
+        "name": "Caremelized",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 435
+      },
+      {
+        "name": "Micro Greens",
+        "measurement": "4GM",
+        "detail": "",
+        "sourceRow": 436
+      },
+      {
+        "name": "Basil Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 437
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "CAREMELIZED",
+      "MICRO GREENS",
+      "SOUR DOUGH BREAD portion weight"
+    ]
+  },
+  "recipe-chicken-barbeque": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A438:D448",
+    "ingredients": [
+      {
+        "name": "Sour Dough Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 438
+      },
+      {
+        "name": "Marinated Chicken",
+        "measurement": "50GM",
+        "detail": "",
+        "sourceRow": 439
+      },
+      {
+        "name": "Garlic",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 440
+      },
+      {
+        "name": "Salt",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 441
+      },
+      {
+        "name": "Pepper",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 442
+      },
+      {
+        "name": "Onion Powder",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 443
+      },
+      {
+        "name": "Garlic Powder",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 444
+      },
+      {
+        "name": "Bqrbeque Sauce",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 445
+      },
+      {
+        "name": "Ketchup",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 446
+      },
+      {
+        "name": "Micro Greens",
+        "measurement": "4GM",
+        "detail": "",
+        "sourceRow": 447
+      },
+      {
+        "name": "Basil Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 448
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BQRBEQUE SAUCE",
+      "GARLIC POWDER",
+      "KETCHUP",
+      "MARINATED CHICKEN",
+      "MICRO GREENS",
+      "ONION POWDER",
+      "SOUR DOUGH BREAD portion weight"
+    ]
+  },
+  "recipe-chicken-peri-peri": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A449:D457",
+    "ingredients": [
+      {
+        "name": "Sour Dough Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 449
+      },
+      {
+        "name": "Marinated Chicken",
+        "measurement": "50GM",
+        "detail": "",
+        "sourceRow": 450
+      },
+      {
+        "name": "Garlic",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 451
+      },
+      {
+        "name": "Salt",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 452
+      },
+      {
+        "name": "Pepper",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 453
+      },
+      {
+        "name": "Peri Peri Seasoning",
+        "measurement": "4GM",
+        "detail": "",
+        "sourceRow": 454
+      },
+      {
+        "name": "Cayenne Pepper Powder",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 455
+      },
+      {
+        "name": "Micro Greens",
+        "measurement": "4GM",
+        "detail": "",
+        "sourceRow": 456
+      },
+      {
+        "name": "Basil Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 457
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "CAYENNE PEPPER POWDER",
+      "MARINATED CHICKEN",
+      "MICRO GREENS",
+      "PERI PERI SEASONING",
+      "SOUR DOUGH BREAD portion weight"
+    ]
+  },
+  "recipe-chicken-cajun": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A458:D466",
+    "ingredients": [
+      {
+        "name": "Sour Dough Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 458
+      },
+      {
+        "name": "Marinated Chicken",
+        "measurement": "50GM",
+        "detail": "",
+        "sourceRow": 459
+      },
+      {
+        "name": "Garlic",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 460
+      },
+      {
+        "name": "Salt",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 461
+      },
+      {
+        "name": "Pepper",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 462
+      },
+      {
+        "name": "Cayenne Pepper Powder",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 463
+      },
+      {
+        "name": "Cajun Seasoning",
+        "measurement": "4GM",
+        "detail": "",
+        "sourceRow": 464
+      },
+      {
+        "name": "Micro Greens",
+        "measurement": "4GM",
+        "detail": "",
+        "sourceRow": 465
+      },
+      {
+        "name": "Basil Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 466
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "CAJUN SEASONING",
+      "CAYENNE PEPPER POWDER",
+      "MARINATED CHICKEN",
+      "MICRO GREENS",
+      "SOUR DOUGH BREAD portion weight"
+    ]
+  },
+  "recipe-crispy-corn-salad": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A467:D479",
+    "ingredients": [
+      {
+        "name": "Salad Dressing Base",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 467
+      },
+      {
+        "name": "Sweet Corn",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 468
+      },
+      {
+        "name": "Maida",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 469
+      },
+      {
+        "name": "Corn Flour",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 470
+      },
+      {
+        "name": "Salt",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 471
+      },
+      {
+        "name": "Pepper",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 472
+      },
+      {
+        "name": "Baby Corn",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 473
+      },
+      {
+        "name": "French Beans",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 474
+      },
+      {
+        "name": "Carrot",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 475
+      },
+      {
+        "name": "Bellpepper",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 476
+      },
+      {
+        "name": "Green Peas",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 477
+      },
+      {
+        "name": "English Cucumber",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 478
+      },
+      {
+        "name": "Seasme Seeds",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 479
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided. Some ingredient quantities are missing in the source.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "BABY CORN",
+      "BELLPEPPER quantity",
+      "CARROT",
+      "CORN FLOUR",
+      "ENGLISH CUCUMBER quantity",
+      "FRENCH BEANS",
+      "GREEN PEAS",
+      "MAIDA",
+      "PEPPER quantity",
+      "SALAD DRESSING BASE",
+      "SEASME SEEDS",
+      "SWEET CORN"
+    ]
+  },
+  "recipe-smoked-chicken-salad": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A480:D487",
+    "ingredients": [
+      {
+        "name": "Salad Dressing",
+        "measurement": "40ML",
+        "detail": "",
+        "sourceRow": 480
+      },
+      {
+        "name": "Smoke Marinated Chicken",
+        "measurement": "100GM",
+        "detail": "",
+        "sourceRow": 481
+      },
+      {
+        "name": "Brocolli",
+        "measurement": "20GM",
+        "detail": "",
+        "sourceRow": 482
+      },
+      {
+        "name": "English Cucumber",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 483
+      },
+      {
+        "name": "Bellpepper",
+        "measurement": "60GM",
+        "detail": "",
+        "sourceRow": 484
+      },
+      {
+        "name": "Green Lettuce",
+        "measurement": "50GM",
+        "detail": "",
+        "sourceRow": 485
+      },
+      {
+        "name": "Iceberg",
+        "measurement": "100GM",
+        "detail": "",
+        "sourceRow": 486
+      },
+      {
+        "name": "Garnish",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 487
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided. Some ingredient quantities are missing in the source.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "Garnish quantities/composition",
+      "SALAD DRESSING",
+      "SMOKE MARINATED CHICKEN"
+    ]
+  },
+  "recipe-ceaser-salad": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A488:D494",
+    "ingredients": [
+      {
+        "name": "Ceaser Dressing",
+        "measurement": "70GM",
+        "detail": "",
+        "sourceRow": 488
+      },
+      {
+        "name": "Lettuce Green",
+        "measurement": "50GM",
+        "detail": "",
+        "sourceRow": 489
+      },
+      {
+        "name": "Iceberg Lettuce",
+        "measurement": "100GM",
+        "detail": "",
+        "sourceRow": 490
+      },
+      {
+        "name": "Crutons",
+        "measurement": "10PC",
+        "detail": "",
+        "sourceRow": 491
+      },
+      {
+        "name": "Cherry Tomato",
+        "measurement": "2PCS",
+        "detail": "",
+        "sourceRow": 492
+      },
+      {
+        "name": "Parmesan Cheese",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 493
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 494
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "CEASER DRESSING",
+      "CHERRY TOMATO portion weight",
+      "CRUTONS"
+    ]
+  },
+  "recipe-mexican-salad": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A495:D504",
+    "ingredients": [
+      {
+        "name": "Mexican Dressing",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 495
+      },
+      {
+        "name": "Lettuce",
+        "measurement": "100GM",
+        "detail": "",
+        "sourceRow": 496
+      },
+      {
+        "name": "Onion",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 497
+      },
+      {
+        "name": "Cherry Tomatoes",
+        "measurement": "2PC",
+        "detail": "",
+        "sourceRow": 498
+      },
+      {
+        "name": "English Cucumber",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 499
+      },
+      {
+        "name": "Bell Pepper",
+        "measurement": "60GM",
+        "detail": "",
+        "sourceRow": 500
+      },
+      {
+        "name": "Chikpea",
+        "measurement": "20GM",
+        "detail": "",
+        "sourceRow": 501
+      },
+      {
+        "name": "Rajma Beans",
+        "measurement": "20GM",
+        "detail": "",
+        "sourceRow": 502
+      },
+      {
+        "name": "Sweet Corn",
+        "measurement": "15GM",
+        "detail": "",
+        "sourceRow": 503
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 504
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "CHERRY TOMATOES portion weight",
+      "CHIKPEA",
+      "MEXICAN DRESSING",
+      "RAJMA BEANS",
+      "SWEET CORN"
+    ]
+  },
+  "recipe-quinoa-salad": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A505:D521",
+    "ingredients": [
+      {
+        "name": "Quinoa",
+        "measurement": "42GM",
+        "detail": "",
+        "sourceRow": 505
+      },
+      {
+        "name": "English Cucumber",
+        "measurement": "35GM",
+        "detail": "",
+        "sourceRow": 506
+      },
+      {
+        "name": "Cherry Tomatoes",
+        "measurement": "3PC",
+        "detail": "",
+        "sourceRow": 507
+      },
+      {
+        "name": "Bellpepper",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 508
+      },
+      {
+        "name": "Onion",
+        "measurement": "12GM",
+        "detail": "",
+        "sourceRow": 509
+      },
+      {
+        "name": "Chikpea",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 510
+      },
+      {
+        "name": "Mint",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 511
+      },
+      {
+        "name": "Parsley",
+        "measurement": "3GM",
+        "detail": "",
+        "sourceRow": 512
+      },
+      {
+        "name": "Toasted Seasme Seed",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 513
+      },
+      {
+        "name": "Olive Oil",
+        "measurement": "7.5GM",
+        "detail": "",
+        "sourceRow": 514
+      },
+      {
+        "name": "Lemon Juice",
+        "measurement": "1/2 PC",
+        "detail": "",
+        "sourceRow": 515
+      },
+      {
+        "name": "Garlic",
+        "measurement": "1.5GM",
+        "detail": "",
+        "sourceRow": 516
+      },
+      {
+        "name": "Dried Oregano",
+        "measurement": "0.5GM",
+        "detail": "",
+        "sourceRow": 517
+      },
+      {
+        "name": "Salt",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 518
+      },
+      {
+        "name": "Black Peppr",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 519
+      },
+      {
+        "name": "Cumin Powder",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 520
+      },
+      {
+        "name": "Dijon Mustard",
+        "measurement": "DASH",
+        "detail": "DASH",
+        "sourceRow": 521
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "CHERRY TOMATOES portion weight",
+      "CHIKPEA",
+      "CUMIN POWDER",
+      "DIJON MUSTARD",
+      "LEMON JUICE portion weight",
+      "MINT",
+      "PARSLEY",
+      "QUINOA",
+      "TOASTED SEASME SEED"
+    ]
+  },
+  "recipe-french-omelette": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A522:D528",
+    "ingredients": [
+      {
+        "name": "Egg",
+        "measurement": "3PC",
+        "detail": "",
+        "sourceRow": 522
+      },
+      {
+        "name": "Salt",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 523
+      },
+      {
+        "name": "Pepper",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 524
+      },
+      {
+        "name": "Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 525
+      },
+      {
+        "name": "Jumbo Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 526
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 527
+      },
+      {
+        "name": "Butter Chiplet",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 528
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BUTTER CHIPLET portion weight",
+      "JUMBO BREAD portion weight"
+    ]
+  },
+  "recipe-spanish-omelette": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A529:D537",
+    "ingredients": [
+      {
+        "name": "Egg",
+        "measurement": "3PC",
+        "detail": "",
+        "sourceRow": 529
+      },
+      {
+        "name": "Onion",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 530
+      },
+      {
+        "name": "Potato Wedges",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 531
+      },
+      {
+        "name": "Oil",
+        "measurement": "20GM",
+        "detail": "",
+        "sourceRow": 532
+      },
+      {
+        "name": "Jumbo Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 533
+      },
+      {
+        "name": "Butter Chiplet",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 534
+      },
+      {
+        "name": "Salt",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 535
+      },
+      {
+        "name": "Pepper",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 536
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 537
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BUTTER CHIPLET portion weight",
+      "JUMBO BREAD portion weight",
+      "POTATO WEDGES"
+    ]
+  },
+  "recipe-mushroom-and-sundried-tomato-omelette": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A538:D546",
+    "ingredients": [
+      {
+        "name": "Egg",
+        "measurement": "3PC",
+        "detail": "",
+        "sourceRow": 538
+      },
+      {
+        "name": "Mushroom",
+        "measurement": "50GM",
+        "detail": "",
+        "sourceRow": 539
+      },
+      {
+        "name": "Sundried Tomato",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 540
+      },
+      {
+        "name": "Salt",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 541
+      },
+      {
+        "name": "Pepper",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 542
+      },
+      {
+        "name": "Oil",
+        "measurement": "15GM",
+        "detail": "",
+        "sourceRow": 543
+      },
+      {
+        "name": "Jumbo Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 544
+      },
+      {
+        "name": "Butter Chiplet",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 545
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 546
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BUTTER CHIPLET portion weight",
+      "JUMBO BREAD portion weight",
+      "SUNDRIED TOMATO"
+    ]
+  },
+  "source-26": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A547:D555",
+    "ingredients": [
+      {
+        "name": "Egg",
+        "measurement": "3PC",
+        "detail": "",
+        "sourceRow": 547
+      },
+      {
+        "name": "Marinated Chicken",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 548
+      },
+      {
+        "name": "Salt",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 549
+      },
+      {
+        "name": "Pepper",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 550
+      },
+      {
+        "name": "Oil",
+        "measurement": "20GM",
+        "detail": "",
+        "sourceRow": 551
+      },
+      {
+        "name": "Mozzerella Cheese",
+        "measurement": "25GM",
+        "detail": "",
+        "sourceRow": 552
+      },
+      {
+        "name": "Jumbo Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 553
+      },
+      {
+        "name": "Butter Chiplet",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 554
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 555
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BUTTER CHIPLET portion weight",
+      "JUMBO BREAD portion weight",
+      "MARINATED CHICKEN"
+    ]
+  },
+  "recipe-veg-corquettes": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A556:D559",
+    "ingredients": [
+      {
+        "name": "Veg Corquettes",
+        "measurement": "5PC",
+        "detail": "",
+        "sourceRow": 556
+      },
+      {
+        "name": "Dip",
+        "measurement": "15GM",
+        "detail": "",
+        "sourceRow": 557
+      },
+      {
+        "name": "Lettuce",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 558
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 559
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "DIP",
+      "VEG CORQUETTES"
+    ]
+  },
+  "recipe-classic-bruschetta": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A560:D569",
+    "ingredients": [
+      {
+        "name": "Baguette Bread",
+        "measurement": "5SLICE",
+        "detail": "",
+        "sourceRow": 560
+      },
+      {
+        "name": "Tomato",
+        "measurement": "95GM",
+        "detail": "",
+        "sourceRow": 561
+      },
+      {
+        "name": "Garlic",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 562
+      },
+      {
+        "name": "Balsamic Vinegar",
+        "measurement": "5ML",
+        "detail": "",
+        "sourceRow": 563
+      },
+      {
+        "name": "Lemon",
+        "measurement": "1/2 PC",
+        "detail": "",
+        "sourceRow": 564
+      },
+      {
+        "name": "Salt",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 565
+      },
+      {
+        "name": "Pepper",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 566
+      },
+      {
+        "name": "Basil",
+        "measurement": "5LEAVES",
+        "detail": "",
+        "sourceRow": 567
+      },
+      {
+        "name": "Black Olives",
+        "measurement": "5SLICE",
+        "detail": "",
+        "sourceRow": 568
+      },
+      {
+        "name": "Parmesan Cheese",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 569
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BAGUETTE BREAD portion weight",
+      "BALSAMIC VINEGAR",
+      "BASIL",
+      "BLACK OLIVES",
+      "LEMON"
+    ]
+  },
+  "recipe-tomato-avocado-bruschetta": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A570:D580",
+    "ingredients": [
+      {
+        "name": "Baguette Bread",
+        "measurement": "5SLICE",
+        "detail": "",
+        "sourceRow": 570
+      },
+      {
+        "name": "Tomato",
+        "measurement": "60GM",
+        "detail": "",
+        "sourceRow": 571
+      },
+      {
+        "name": "Avocado",
+        "measurement": "1/2 PC",
+        "detail": "",
+        "sourceRow": 572
+      },
+      {
+        "name": "Garlic",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 573
+      },
+      {
+        "name": "Balsamic Vinegar",
+        "measurement": "5ML",
+        "detail": "",
+        "sourceRow": 574
+      },
+      {
+        "name": "Lemon",
+        "measurement": "1/2 PC",
+        "detail": "",
+        "sourceRow": 575
+      },
+      {
+        "name": "Salt",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 576
+      },
+      {
+        "name": "Pepper",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 577
+      },
+      {
+        "name": "Basil",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 578
+      },
+      {
+        "name": "Black Olives",
+        "measurement": "5SLICE",
+        "detail": "",
+        "sourceRow": 579
+      },
+      {
+        "name": "Parmesan Cheese",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 580
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "AVOCADO portion weight",
+      "BAGUETTE BREAD portion weight",
+      "BALSAMIC VINEGAR",
+      "BASIL",
+      "BLACK OLIVES",
+      "LEMON"
+    ]
+  },
+  "recipe-spinach-corn-cheese-bruschetta": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A581:D589",
+    "ingredients": [
+      {
+        "name": "Baguette Bread",
+        "measurement": "5SLICE",
+        "detail": "",
+        "sourceRow": 581
+      },
+      {
+        "name": "Corn",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 582
+      },
+      {
+        "name": "Spinach",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 583
+      },
+      {
+        "name": "Cream Cheese",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 584
+      },
+      {
+        "name": "Salt",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 585
+      },
+      {
+        "name": "Pepper",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 586
+      },
+      {
+        "name": "Onion Powder",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 587
+      },
+      {
+        "name": "Garlic Powder",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 588
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 589
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BAGUETTE BREAD portion weight",
+      "CORN",
+      "GARLIC POWDER",
+      "ONION POWDER"
+    ]
+  },
+  "recipe-french-fries-normal": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A590:D593",
+    "ingredients": [
+      {
+        "name": "French Fries Frozen",
+        "measurement": "240GM",
+        "detail": "",
+        "sourceRow": 590
+      },
+      {
+        "name": "Salt",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 591
+      },
+      {
+        "name": "Ketchup",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 592
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 593
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "FRENCH FRIES FROZEN",
+      "KETCHUP"
+    ]
+  },
+  "recipe-french-fries-peri-peri": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A594:D597",
+    "ingredients": [
+      {
+        "name": "French Fries Frozen",
+        "measurement": "240GM",
+        "detail": "",
+        "sourceRow": 594
+      },
+      {
+        "name": "Peri Peri",
+        "measurement": "20GM",
+        "detail": "",
+        "sourceRow": 595
+      },
+      {
+        "name": "Ketchup",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 596
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 597
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "FRENCH FRIES FROZEN",
+      "KETCHUP",
+      "PERI PERI"
+    ]
+  },
+  "source-28": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A598:D610",
+    "ingredients": [
+      {
+        "name": "Mozzerella Cheese",
+        "measurement": "72GM",
+        "detail": "",
+        "sourceRow": 598
+      },
+      {
+        "name": "Onion",
+        "measurement": "15GM",
+        "detail": "",
+        "sourceRow": 599
+      },
+      {
+        "name": "Bellpepper",
+        "measurement": "15GM",
+        "detail": "",
+        "sourceRow": 600
+      },
+      {
+        "name": "Olives",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 601
+      },
+      {
+        "name": "Basil",
+        "measurement": "8LEAVES",
+        "detail": "",
+        "sourceRow": 602
+      },
+      {
+        "name": "Dried Oregano",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 603
+      },
+      {
+        "name": "Oregano Seasoning",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 604
+      },
+      {
+        "name": "Pepper",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 605
+      },
+      {
+        "name": "Maida",
+        "measurement": "20GM",
+        "detail": "",
+        "sourceRow": 606
+      },
+      {
+        "name": "Cornflour",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 607
+      },
+      {
+        "name": "Salt",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 608
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 609
+      },
+      {
+        "name": "Pri-Pri Mayo",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 610
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BASIL",
+      "CORNFLOUR",
+      "MAIDA",
+      "OLIVES",
+      "OREGANO SEASONING",
+      "PRI-PRI MAYO"
+    ]
+  },
+  "recipe-nachos-with-salsa": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A611:D614",
+    "ingredients": [
+      {
+        "name": "Nachos",
+        "measurement": "50GM",
+        "detail": "",
+        "sourceRow": 611
+      },
+      {
+        "name": "Salsa",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 612
+      },
+      {
+        "name": "Sour Cream",
+        "measurement": "20GM",
+        "detail": "",
+        "sourceRow": 613
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 614
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "NACHOS",
+      "SALSA",
+      "SOUR CREAM"
+    ]
+  },
+  "recipe-nachos-with-chicken-loaded": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A615:D619",
+    "ingredients": [
+      {
+        "name": "Nachos",
+        "measurement": "75GM",
+        "detail": "",
+        "sourceRow": 615
+      },
+      {
+        "name": "Marinated Chicken",
+        "measurement": "70GM",
+        "detail": "",
+        "sourceRow": 616
+      },
+      {
+        "name": "Salsa",
+        "measurement": "50GM",
+        "detail": "",
+        "sourceRow": 617
+      },
+      {
+        "name": "Sour Cream",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 618
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 619
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "MARINATED CHICKEN",
+      "NACHOS",
+      "SALSA",
+      "SOUR CREAM"
+    ]
+  },
+  "recipe-nachos-with-cheese-loaded": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A620:D624",
+    "ingredients": [
+      {
+        "name": "Nachos",
+        "measurement": "75GM",
+        "detail": "",
+        "sourceRow": 620
+      },
+      {
+        "name": "Mozzerella Cheese",
+        "measurement": "20GM",
+        "detail": "",
+        "sourceRow": 621
+      },
+      {
+        "name": "Salsa",
+        "measurement": "50GM",
+        "detail": "",
+        "sourceRow": 622
+      },
+      {
+        "name": "Sour Cream",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 623
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 624
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "NACHOS",
+      "SALSA",
+      "SOUR CREAM"
+    ]
+  },
+  "recipe-loaded-mexican-loaded": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A625:D637",
+    "ingredients": [
+      {
+        "name": "Nachos",
+        "measurement": "75GM",
+        "detail": "",
+        "sourceRow": 625
+      },
+      {
+        "name": "Onion",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 626
+      },
+      {
+        "name": "Bellpepper",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 627
+      },
+      {
+        "name": "Chickpea",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 628
+      },
+      {
+        "name": "Rajma Beans",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 629
+      },
+      {
+        "name": "Sweet Corn",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 630
+      },
+      {
+        "name": "Sweet Peprika",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 631
+      },
+      {
+        "name": "Cayyene Pepper",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 632
+      },
+      {
+        "name": "Salt Pepper",
+        "measurement": "4GM",
+        "detail": "",
+        "sourceRow": 633
+      },
+      {
+        "name": "Oil",
+        "measurement": "5ML",
+        "detail": "",
+        "sourceRow": 634
+      },
+      {
+        "name": "Salsa",
+        "measurement": "50GM",
+        "detail": "",
+        "sourceRow": 635
+      },
+      {
+        "name": "Saour Cream",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 636
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4 TSP",
+        "detail": "",
+        "sourceRow": 637
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "CAYYENE PEPPER",
+      "CHICKPEA",
+      "NACHOS",
+      "RAJMA BEANS",
+      "SALSA",
+      "SALT PEPPER",
+      "SAOUR CREAM",
+      "SWEET CORN",
+      "SWEET PEPRIKA"
+    ]
+  },
+  "source-27": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A638:D653",
+    "ingredients": [
+      {
+        "name": "Egg",
+        "measurement": "2PC",
+        "detail": "",
+        "sourceRow": 638
+      },
+      {
+        "name": "Fresh Cream",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 639
+      },
+      {
+        "name": "Butter",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 640
+      },
+      {
+        "name": "Chicken Sausage",
+        "measurement": "2PC",
+        "detail": "",
+        "sourceRow": 641
+      },
+      {
+        "name": "Baked Beans",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 642
+      },
+      {
+        "name": "Zuccihini",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 643
+      },
+      {
+        "name": "Brocolli",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 644
+      },
+      {
+        "name": "Bellpepper",
+        "measurement": "60GM",
+        "detail": "",
+        "sourceRow": 645
+      },
+      {
+        "name": "Potato",
+        "measurement": "60GM",
+        "detail": "",
+        "sourceRow": 646
+      },
+      {
+        "name": "Tomato",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 647
+      },
+      {
+        "name": "Oil",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 648
+      },
+      {
+        "name": "Salt",
+        "measurement": "3GM",
+        "detail": "",
+        "sourceRow": 649
+      },
+      {
+        "name": "Pepper",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 650
+      },
+      {
+        "name": "Jumbo Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 651
+      },
+      {
+        "name": "Butter Chiplet",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 652
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 653
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BAKED BEANS",
+      "BUTTER CHIPLET portion weight",
+      "CHICKEN SAUSAGE",
+      "JUMBO BREAD portion weight",
+      "POTATO",
+      "TOMATO portion weight",
+      "ZUCCIHINI"
+    ]
+  },
+  "recipe-weekend-dominator": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A654:D667",
+    "ingredients": [
+      {
+        "name": "Paneer",
+        "measurement": "Quantity not specified",
+        "detail": "Quantity not provided in source.",
+        "sourceRow": 654
+      },
+      {
+        "name": "Hash Brown",
+        "measurement": "2PC",
+        "detail": "",
+        "sourceRow": 655
+      },
+      {
+        "name": "Baked Beans",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 656
+      },
+      {
+        "name": "Zuccihini",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 657
+      },
+      {
+        "name": "Brocolli",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 658
+      },
+      {
+        "name": "Bellpepper",
+        "measurement": "60GM",
+        "detail": "",
+        "sourceRow": 659
+      },
+      {
+        "name": "Potato",
+        "measurement": "60GM",
+        "detail": "",
+        "sourceRow": 660
+      },
+      {
+        "name": "Tomato",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 661
+      },
+      {
+        "name": "Oil",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 662
+      },
+      {
+        "name": "Salt",
+        "measurement": "3GM",
+        "detail": "",
+        "sourceRow": 663
+      },
+      {
+        "name": "Pepper",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 664
+      },
+      {
+        "name": "Jumbo Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 665
+      },
+      {
+        "name": "Butter Chiplet",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 666
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 667
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided. Some ingredient quantities are missing in the source.",
+    "needsConfirmation": true,
+    "nutrition": {
+      "status": "unavailable",
+      "note": "Recipe measurements need café confirmation before nutrition can be calculated."
+    },
+    "missing": [
+      "BAKED BEANS",
+      "BUTTER CHIPLET portion weight",
+      "HASH BROWN",
+      "JUMBO BREAD portion weight",
+      "PANEER",
+      "POTATO",
+      "TOMATO portion weight",
+      "ZUCCIHINI"
+    ]
+  },
+  "recipe-scrambled-egg-delight": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A668:D679",
+    "ingredients": [
+      {
+        "name": "Egg",
+        "measurement": "2PC",
+        "detail": "",
+        "sourceRow": 668
+      },
+      {
+        "name": "Fresh Cream",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 669
+      },
+      {
+        "name": "Butter",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 670
+      },
+      {
+        "name": "Mushroom",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 671
+      },
+      {
+        "name": "Spinach",
+        "measurement": "20GM",
+        "detail": "",
+        "sourceRow": 672
+      },
+      {
+        "name": "Garlic",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 673
+      },
+      {
+        "name": "Oil",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 674
+      },
+      {
+        "name": "Hash Brown",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 675
+      },
+      {
+        "name": "Tomato",
+        "measurement": "1/2PC",
+        "detail": "",
+        "sourceRow": 676
+      },
+      {
+        "name": "Jumbo Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 677
+      },
+      {
+        "name": "Butter Chiplet",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 678
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 679
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BUTTER CHIPLET portion weight",
+      "HASH BROWN",
+      "JUMBO BREAD portion weight",
+      "TOMATO portion weight"
+    ]
+  },
+  "recipe-scrambled-paneer-delight": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A680:D696",
+    "ingredients": [
+      {
+        "name": "Paneer",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 680
+      },
+      {
+        "name": "Bellpepper",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 681
+      },
+      {
+        "name": "Onion",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 682
+      },
+      {
+        "name": "Oil",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 683
+      },
+      {
+        "name": "Leek+Celery",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 684
+      },
+      {
+        "name": "Fresh Cream",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 685
+      },
+      {
+        "name": "Salt",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 686
+      },
+      {
+        "name": "Pepper",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 687
+      },
+      {
+        "name": "Turmeric",
+        "measurement": "PINCH",
+        "detail": "PINCH",
+        "sourceRow": 688
+      },
+      {
+        "name": "Mushroom",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 689
+      },
+      {
+        "name": "Spinach",
+        "measurement": "20GM",
+        "detail": "",
+        "sourceRow": 690
+      },
+      {
+        "name": "Garlic",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 691
+      },
+      {
+        "name": "Hash Brown",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 692
+      },
+      {
+        "name": "Tomato",
+        "measurement": "1/2PC",
+        "detail": "",
+        "sourceRow": 693
+      },
+      {
+        "name": "Jumbo Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 694
+      },
+      {
+        "name": "Butter Chiplet",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 695
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 696
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BUTTER CHIPLET portion weight",
+      "HASH BROWN",
+      "JUMBO BREAD portion weight",
+      "LEEK+CELERY",
+      "PANEER",
+      "TOMATO portion weight",
+      "TURMERIC"
+    ]
+  },
+  "recipe-american-breakfast": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A697:D711",
+    "ingredients": [
+      {
+        "name": "Egg",
+        "measurement": "2PC",
+        "detail": "",
+        "sourceRow": 697
+      },
+      {
+        "name": "Chicken Ham",
+        "measurement": "2PC",
+        "detail": "",
+        "sourceRow": 698
+      },
+      {
+        "name": "Zuccihini",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 699
+      },
+      {
+        "name": "Brocolli",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 700
+      },
+      {
+        "name": "Bellpepper",
+        "measurement": "60GM",
+        "detail": "",
+        "sourceRow": 701
+      },
+      {
+        "name": "Potato",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 702
+      },
+      {
+        "name": "Fresh Cream",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 703
+      },
+      {
+        "name": "Salt",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 704
+      },
+      {
+        "name": "Pepper",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 705
+      },
+      {
+        "name": "Butter",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 706
+      },
+      {
+        "name": "Baked Beans",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 707
+      },
+      {
+        "name": "Sour Dough Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 708
+      },
+      {
+        "name": "Butter Chiplet",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 709
+      },
+      {
+        "name": "Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 710
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 711
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BAKED BEANS",
+      "BUTTER CHIPLET portion weight",
+      "CHICKEN HAM",
+      "POTATO",
+      "SOUR DOUGH BREAD portion weight",
+      "ZUCCIHINI"
+    ]
+  },
+  "recipe-seafood-platter": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A712:D724",
+    "ingredients": [
+      {
+        "name": "Basa Fish Lemon Marirante",
+        "measurement": "75GM",
+        "detail": "",
+        "sourceRow": 712
+      },
+      {
+        "name": "Egg",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 713
+      },
+      {
+        "name": "Cucumber",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 714
+      },
+      {
+        "name": "Onion",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 715
+      },
+      {
+        "name": "Lettuce",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 716
+      },
+      {
+        "name": "Prawns",
+        "measurement": "4PC",
+        "detail": "",
+        "sourceRow": 717
+      },
+      {
+        "name": "Bellpepper",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 718
+      },
+      {
+        "name": "Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 719
+      },
+      {
+        "name": "Garlic",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 720
+      },
+      {
+        "name": "Salt Pepper",
+        "measurement": "3GM",
+        "detail": "",
+        "sourceRow": 721
+      },
+      {
+        "name": "Jumbo Bread",
+        "measurement": "1SLICE",
+        "detail": "",
+        "sourceRow": 722
+      },
+      {
+        "name": "Butter",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 723
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 724
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BASA FISH LEMON MARIRANTE",
+      "JUMBO BREAD portion weight",
+      "PRAWNS",
+      "SALT PEPPER"
+    ]
+  },
+  "recipe-french-toast": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A725:D732",
+    "ingredients": [
+      {
+        "name": "Brioche Bread",
+        "measurement": "2SLICE",
+        "detail": "",
+        "sourceRow": 725
+      },
+      {
+        "name": "Egg",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 726
+      },
+      {
+        "name": "Sugar",
+        "measurement": "8GM",
+        "detail": "",
+        "sourceRow": 727
+      },
+      {
+        "name": "Cinnamon Powder",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 728
+      },
+      {
+        "name": "Venilla Essence",
+        "measurement": "3ML",
+        "detail": "",
+        "sourceRow": 729
+      },
+      {
+        "name": "Milk",
+        "measurement": "150ML",
+        "detail": "",
+        "sourceRow": 730
+      },
+      {
+        "name": "Butter",
+        "measurement": "15GM",
+        "detail": "",
+        "sourceRow": 731
+      },
+      {
+        "name": "Maple Syrup",
+        "measurement": "40ML",
+        "detail": "",
+        "sourceRow": 732
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BRIOCHE BREAD",
+      "CINNAMON POWDER",
+      "MAPLE SYRUP",
+      "VENILLA ESSENCE"
+    ]
+  },
+  "recipe-pancake": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A733:D741",
+    "ingredients": [
+      {
+        "name": "Egg",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 733
+      },
+      {
+        "name": "Sugar",
+        "measurement": "12GM",
+        "detail": "",
+        "sourceRow": 734
+      },
+      {
+        "name": "Venilla Essence",
+        "measurement": "5ML",
+        "detail": "",
+        "sourceRow": 735
+      },
+      {
+        "name": "Milk",
+        "measurement": "90GM",
+        "detail": "",
+        "sourceRow": 736
+      },
+      {
+        "name": "Maida",
+        "measurement": "75GM",
+        "detail": "",
+        "sourceRow": 737
+      },
+      {
+        "name": "Baking Powder",
+        "measurement": "3GM",
+        "detail": "",
+        "sourceRow": 738
+      },
+      {
+        "name": "Salt",
+        "measurement": "PINCH",
+        "detail": "PINCH",
+        "sourceRow": 739
+      },
+      {
+        "name": "Baking Soda",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 740
+      },
+      {
+        "name": "Maple Syrup",
+        "measurement": "30ML",
+        "detail": "",
+        "sourceRow": 741
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BAKING POWDER",
+      "BAKING SODA",
+      "MAIDA",
+      "MAPLE SYRUP",
+      "VENILLA ESSENCE"
+    ]
+  },
+  "recipe-aglio-olio": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A742:D759",
+    "ingredients": [
+      {
+        "name": "Olive Oil",
+        "measurement": "10ML",
+        "detail": "",
+        "sourceRow": 742
+      },
+      {
+        "name": "Garlic",
+        "measurement": "3GM",
+        "detail": "",
+        "sourceRow": 743
+      },
+      {
+        "name": "Leek",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 744
+      },
+      {
+        "name": "Celery",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 745
+      },
+      {
+        "name": "Bellpepper",
+        "measurement": "60GM",
+        "detail": "",
+        "sourceRow": 746
+      },
+      {
+        "name": "Zuccihini",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 747
+      },
+      {
+        "name": "Brocolli",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 748
+      },
+      {
+        "name": "Chilli Flakes",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 749
+      },
+      {
+        "name": "Speghetti",
+        "measurement": "200GM",
+        "detail": "",
+        "sourceRow": 750
+      },
+      {
+        "name": "Salt",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 751
+      },
+      {
+        "name": "Pepper",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 752
+      },
+      {
+        "name": "Dried Oregano",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 753
+      },
+      {
+        "name": "Oregano Seasoning",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 754
+      },
+      {
+        "name": "Basil Leaves",
+        "measurement": "6LEAVES",
+        "detail": "",
+        "sourceRow": 755
+      },
+      {
+        "name": "Black Sliced Olives",
+        "measurement": "6SLICES",
+        "detail": "",
+        "sourceRow": 756
+      },
+      {
+        "name": "Parmesan Cheese",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 757
+      },
+      {
+        "name": "Garlic Bread",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 758
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 759
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BASIL LEAVES",
+      "BLACK SLICED OLIVES",
+      "CELERY",
+      "CHILLI FLAKES",
+      "GARLIC BREAD",
+      "LEEK",
+      "OREGANO SEASONING",
+      "SPEGHETTI",
+      "ZUCCIHINI"
+    ]
+  },
+  "recipe-pesto": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A760:D777",
+    "ingredients": [
+      {
+        "name": "Oil",
+        "measurement": "5ML",
+        "detail": "",
+        "sourceRow": 760
+      },
+      {
+        "name": "Garlic",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 761
+      },
+      {
+        "name": "Leek",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 762
+      },
+      {
+        "name": "Celery",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 763
+      },
+      {
+        "name": "Zuccihini",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 764
+      },
+      {
+        "name": "Brocolli",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 765
+      },
+      {
+        "name": "Bellpeper",
+        "measurement": "60GM",
+        "detail": "",
+        "sourceRow": 766
+      },
+      {
+        "name": "Pesto Paste",
+        "measurement": "10GM",
+        "detail": "",
+        "sourceRow": 767
+      },
+      {
+        "name": "White Sauce",
+        "measurement": "100GM",
+        "detail": "",
+        "sourceRow": 768
+      },
+      {
+        "name": "Salt",
+        "measurement": "2GM+EE618:E619",
+        "detail": "2GM+EE618:E619",
+        "sourceRow": 769
+      },
+      {
+        "name": "Pepper",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 770
+      },
+      {
+        "name": "Dried Oregano",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 771
+      },
+      {
+        "name": "Oregano Seasoning",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 772
+      },
+      {
+        "name": "Chilli Flakes",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 773
+      },
+      {
+        "name": "Black Sliced Olives",
+        "measurement": "6SLICES",
+        "detail": "",
+        "sourceRow": 774
+      },
+      {
+        "name": "Parmesan",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 775
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4GM",
+        "detail": "",
+        "sourceRow": 776
+      },
+      {
+        "name": "Garlic Bread",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 777
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided. Source quantity contains spreadsheet reference text.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BLACK SLICED OLIVES",
+      "CELERY",
+      "CHILLI FLAKES",
+      "GARLIC BREAD",
+      "LEEK",
+      "OREGANO SEASONING",
+      "PESTO PASTE",
+      "WHITE SAUCE",
+      "ZUCCIHINI"
+    ]
+  },
+  "recipe-pasta-al-funghi": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A778:D794",
+    "ingredients": [
+      {
+        "name": "Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 778
+      },
+      {
+        "name": "Garlic",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 779
+      },
+      {
+        "name": "Leek",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 780
+      },
+      {
+        "name": "Celery",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 781
+      },
+      {
+        "name": "White Wine",
+        "measurement": "5ML",
+        "detail": "",
+        "sourceRow": 782
+      },
+      {
+        "name": "Sitake Paste",
+        "measurement": "60GM",
+        "detail": "",
+        "sourceRow": 783
+      },
+      {
+        "name": "White Sauce",
+        "measurement": "100GM",
+        "detail": "",
+        "sourceRow": 784
+      },
+      {
+        "name": "Salt",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 785
+      },
+      {
+        "name": "Pepper",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 786
+      },
+      {
+        "name": "Chilli Flakes",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 787
+      },
+      {
+        "name": "Dried Oregano",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 788
+      },
+      {
+        "name": "Oregano Seasoning",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 789
+      },
+      {
+        "name": "Penne Pasta",
+        "measurement": "150GM",
+        "detail": "",
+        "sourceRow": 790
+      },
+      {
+        "name": "Mushroom For Garnish",
+        "measurement": "1BIG PC",
+        "detail": "",
+        "sourceRow": 791
+      },
+      {
+        "name": "Parmesan",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 792
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 793
+      },
+      {
+        "name": "Garlic Bread",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 794
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "CELERY",
+      "CHILLI FLAKES",
+      "GARLIC BREAD",
+      "LEEK",
+      "MUSHROOM FOR GARNISH",
+      "OREGANO SEASONING",
+      "PENNE PASTA",
+      "SITAKE PASTE",
+      "WHITE SAUCE",
+      "WHITE WINE"
+    ]
+  },
+  "recipe-mac-and-cheese": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A795:D807",
+    "ingredients": [
+      {
+        "name": "Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 795
+      },
+      {
+        "name": "Leeks",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 796
+      },
+      {
+        "name": "Celery",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 797
+      },
+      {
+        "name": "Onion",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 798
+      },
+      {
+        "name": "White Sauce",
+        "measurement": "110GM",
+        "detail": "",
+        "sourceRow": 799
+      },
+      {
+        "name": "Cheddar Cheese Powder",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 800
+      },
+      {
+        "name": "Salt",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 801
+      },
+      {
+        "name": "Pepper",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 802
+      },
+      {
+        "name": "Oregano",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 803
+      },
+      {
+        "name": "Oregano Seasoning",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 804
+      },
+      {
+        "name": "Mozzerela Cheese",
+        "measurement": "40GM",
+        "detail": "",
+        "sourceRow": 805
+      },
+      {
+        "name": "Garlic Bread",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 806
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 807
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "CELERY",
+      "CHEDDAR CHEESE POWDER",
+      "GARLIC BREAD",
+      "LEEKS",
+      "OREGANO SEASONING",
+      "WHITE SAUCE"
+    ]
+  },
+  "recipe-creamy-alfredo": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A808:D823",
+    "ingredients": [
+      {
+        "name": "Oil",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 808
+      },
+      {
+        "name": "Leeks",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 809
+      },
+      {
+        "name": "Celery",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 810
+      },
+      {
+        "name": "Onion",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 811
+      },
+      {
+        "name": "White Sauce",
+        "measurement": "130GM",
+        "detail": "",
+        "sourceRow": 812
+      },
+      {
+        "name": "Bellpepper",
+        "measurement": "60GM",
+        "detail": "",
+        "sourceRow": 813
+      },
+      {
+        "name": "Zuccihini",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 814
+      },
+      {
+        "name": "Brocolli",
+        "measurement": "30GM",
+        "detail": "",
+        "sourceRow": 815
+      },
+      {
+        "name": "Salt",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 816
+      },
+      {
+        "name": "Pepper",
+        "measurement": "1GM",
+        "detail": "",
+        "sourceRow": 817
+      },
+      {
+        "name": "Oregano",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 818
+      },
+      {
+        "name": "Oregano Seasoning",
+        "measurement": "2GM",
+        "detail": "",
+        "sourceRow": 819
+      },
+      {
+        "name": "Black Sliced Olives",
+        "measurement": "6SLICES",
+        "detail": "",
+        "sourceRow": 820
+      },
+      {
+        "name": "Parmesan Cheese",
+        "measurement": "5GM",
+        "detail": "",
+        "sourceRow": 821
+      },
+      {
+        "name": "Garlic Bread",
+        "measurement": "1PC",
+        "detail": "",
+        "sourceRow": 822
+      },
+      {
+        "name": "Garnish",
+        "measurement": "1/4TSP",
+        "detail": "",
+        "sourceRow": 823
+      }
+    ],
+    "serving": "",
+    "review": "Preparation and serving standards not provided.",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "BLACK SLICED OLIVES",
+      "CELERY",
+      "GARLIC BREAD",
+      "LEEKS",
+      "OREGANO SEASONING",
+      "WHITE SAUCE",
+      "ZUCCIHINI"
+    ]
+  },
+  "recipe-pour-over": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A824:D825",
+    "ingredients": [
+      {
+        "name": "Coffee Beans",
+        "measurement": "23 GMS",
+        "detail": "",
+        "sourceRow": 824
+      },
+      {
+        "name": "Water",
+        "measurement": "230 ML",
+        "detail": "",
+        "sourceRow": 825
+      }
+    ],
+    "serving": "Place the saucer, with tissue and stirrer",
+    "review": "GRIND SIZE: 7.5. WATER TEMP: 96 Degree Celsius. BREW TIME: 3:30 MIN",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "Brewed coffee yield/extraction"
+    ]
+  },
+  "recipe-aero-press": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A826:D827",
+    "ingredients": [
+      {
+        "name": "Coffee Beans",
+        "measurement": "23 GMS",
+        "detail": "",
+        "sourceRow": 826
+      },
+      {
+        "name": "Water",
+        "measurement": "230 ML",
+        "detail": "",
+        "sourceRow": 827
+      }
+    ],
+    "serving": "Place the saucer, with tissue and stirrer",
+    "review": "GRIND SIZE: 6.5. WATER TEMP: 96 Degree Celsius. BREW TIME: 2:25 MIN",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "Brewed coffee yield/extraction"
+    ]
+  },
+  "recipe-french-press": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A828:D829",
+    "ingredients": [
+      {
+        "name": "Coffee Beans",
+        "measurement": "27 GMS",
+        "detail": "",
+        "sourceRow": 828
+      },
+      {
+        "name": "Water",
+        "measurement": "270 ML",
+        "detail": "",
+        "sourceRow": 829
+      }
+    ],
+    "serving": "Place the saucer, with tissue and stirrer",
+    "review": "GRIND SIZE: 11.5. WATER TEMP: 96 Degree Celsius. BREW TIME: 5 MIN",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "Brewed coffee yield/extraction"
+    ]
+  },
+  "recipe-syphon": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A830:D831",
+    "ingredients": [
+      {
+        "name": "Coffee Beans",
+        "measurement": "24 GMS",
+        "detail": "",
+        "sourceRow": 830
+      },
+      {
+        "name": "Water",
+        "measurement": "240 ML",
+        "detail": "",
+        "sourceRow": 831
+      }
+    ],
+    "serving": "Place the saucer, with tissue and stirrer",
+    "review": "GRIND SIZE: 9. WATER TEMP: 98 Degree Celsius. BREW TIME: 1:45 MIN",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "Brewed coffee yield/extraction"
+    ]
+  },
+  "recipe-moka-pot": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A832:D833",
+    "ingredients": [
+      {
+        "name": "Coffee Beans",
+        "measurement": "25 GMS",
+        "detail": "",
+        "sourceRow": 832
+      },
+      {
+        "name": "Water",
+        "measurement": "250 ML",
+        "detail": "",
+        "sourceRow": 833
+      }
+    ],
+    "serving": "Place the saucer, with tissue and stirrer",
+    "review": "GRIND SIZE: 3. WATER TEMP: 98 Degree Celsius. BREW TIME: TILL WHISTLE",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "Brewed coffee yield/extraction"
+    ]
+  },
+  "recipe-chemex": {
+    "source": "Café recipe workbook",
+    "rows": "Ingredients!A834:D835",
+    "ingredients": [
+      {
+        "name": "Coffee Beans",
+        "measurement": "25 GMS",
+        "detail": "",
+        "sourceRow": 834
+      },
+      {
+        "name": "Water",
+        "measurement": "260 ML",
+        "detail": "",
+        "sourceRow": 835
+      }
+    ],
+    "serving": "Place the saucer, with tissue and stirrer",
+    "review": "GRIND SIZE: 10.5. WATER TEMP: 96 Degree Celsius. BREW TIME: 4:45 MIN",
+    "needsConfirmation": false,
+    "nutrition": {
+      "status": "unavailable",
+      "basis": "Per recipe serving, before customisations",
+      "note": "Fat, fibre, total sugar and protein are not available yet: recipe quantities or ingredient nutrition need confirmation."
+    },
+    "missing": [
+      "Brewed coffee yield/extraction"
+    ]
+  }
+}

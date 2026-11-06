@@ -1,0 +1,10 @@
+{
+  "items": 116,
+  "allHaveMeasurements": true,
+  "allHaveSixNutrients": true,
+  "sourceRecipeItems": 110,
+  "legacyProposedRecipes": 4,
+  "roastVariants": 2,
+  "nutritionBasis": "Estimates with explicitly disclosed assumptions; not verified caf\u00e9 recipes or laboratory labels.",
+  "usdaDatasetSha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+}

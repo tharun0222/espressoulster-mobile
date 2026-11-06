@@ -1,0 +1,9 @@
+{
+  "sourceFile": "/home/headrun/FInal Espressoulster-Beverage-Recipes.xlsx",
+  "sha256": "21e635528c6e2b905d0aa7cda90925a4ef364a322c6f14541109814842218f71",
+  "recipes": 110,
+  "withSourceNotes": 93,
+  "withCompleteNutritionEstimates": 8,
+  "withNutritionInputsMissing": 102,
+  "note": "Recorded ingredient measurements are copied from the source; nutrition estimates are not exact or laboratory verified. Ranges and discrepancies are preserved."
+}

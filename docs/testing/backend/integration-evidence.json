@@ -9,7 +9,7 @@
     {
       "test": "test_01_catalog_complete",
       "status": "passed",
-      "durationSeconds": 0.0591,
+      "durationSeconds": 0.0823,
       "stepsAndExpectedAssertions": " def test_01_catalog_complete(self):\n  code,b=request('bootstrap');self.assertEqual(code,200)\n  menu=[p for p in b['products'] if p.get('source')=='Outlet recipe workbook']\n  self.assertEqual(len(menu),110);self.assertEqual(len(set(p['categoryId'] for p in menu)),18)\n  self.assertTrue(all(p['available'] and p['price']>0 for p in menu));self.assertEqual(sum(p.get('testPrice',False) for p in menu),89)\n  self.assertEqual(next(p for p in menu if p['id']=='source-01')['price'],26500)\n  self.assertTrue(all(len(p.get('description',''))>20 and p.get('ingredients') for p in menu))\n  self.assertTrue(all(p.get('nutrition',{}).get('status') in ['estimated','unavailable'] for p in menu))\n  cappuccino=next(p for p in menu if p['id']=='source-04')['nutrition']\n  self.assertEqual(cappuccino['status'],'estimated');self.assertGreater(cappuccino['grams']['protein'],0)\n  for p in menu:\n   if p['nutrition']['status']=='estimated':\n    self.assertEqual(set(p['nutrition']['grams']),{'fat','fibre','sugar','protein'})\n    self.assertTrue(all(isinstance(v,(int,float)) and v>=0 for v in p['nutrition']['grams'].values()))\n   else:self.assertNotIn('grams',p['nutrition'])\n  mocha=next(p for p in menu if p['id']=='recipe-mocha')\n  self.assertIn('Chocolate powder',mocha['ingredients']);self.assertIn('Milk',mocha['ingredients'])\n  chicken=next(p for p in menu if p['id']=='source-23')\n  self.assertIn('Chicken',chicken['ingredients'])\n",
       "actualApiTrace": [
         {
@@ -42,8 +42,8 @@
     {
       "test": "test_02_unauthenticated_private_data",
       "status": "passed",
-      "durationSeconds": 0.069,
-      "stepsAndExpectedAssertions": " def test_02_unauthenticated_private_data(self):\n  for path in ['cart','orders','profile','favorites','addresses','suggestions','admin/overview']:\n   with self.subTest(path=path):self.assertEqual(request(path,user=None)[0],401)\n",
+      "durationSeconds": 0.0873,
+      "stepsAndExpectedAssertions": " def test_02_unauthenticated_private_data(self):\n  for path in ['cart','orders','profile','favorites','addresses','suggestions','admin/overview']:\n   with self.subTest(path=path):self.assertEqual(request(path,user=None)[0],403 if path.startswith('admin/') else 401)\n",
       "actualApiTrace": [
         {
           "method": "POST",
@@ -91,7 +91,7 @@
           "method": "GET",
           "path": "/api/admin/overview",
           "identity": "anonymous",
-          "status": 401
+          "status": 403
         },
         {
           "method": "POST",
@@ -111,7 +111,7 @@
     {
       "test": "test_03_customer_cannot_manage_store",
       "status": "passed",
-      "durationSeconds": 0.0764,
+      "durationSeconds": 0.0899,
       "stepsAndExpectedAssertions": " def test_03_customer_cannot_manage_store(self):\n  for path,method,data in [('admin/overview','GET',None),('admin/products','POST',self.p),('admin/categories','POST',{}),('admin/settings','PUT',{}),('admin/import','POST',{'products':[]})]:\n   with self.subTest(path=path):self.assertEqual(request(path,method,data,self.a)[0],403)\n",
       "actualApiTrace": [
         {
@@ -168,7 +168,7 @@
     {
       "test": "test_04_client_roles_ignored",
       "status": "passed",
-      "durationSeconds": 0.0577,
+      "durationSeconds": 0.0762,
       "stepsAndExpectedAssertions": " def test_04_client_roles_ignored(self):\n  self.assertEqual(request('profile','PUT',{'name':'QA','phone':'','role':'admin','admin':True},self.a)[0],200);self.assertEqual(request('admin/overview',user=self.a)[0],403)\n",
       "actualApiTrace": [
         {
@@ -207,7 +207,7 @@
     {
       "test": "test_05_cart_persistence_and_isolation",
       "status": "passed",
-      "durationSeconds": 0.0681,
+      "durationSeconds": 0.083,
       "stepsAndExpectedAssertions": " def test_05_cart_persistence_and_isolation(self):\n  self.assertEqual(request('cart','PUT',{'items':[self.line]},self.a)[0],200);self.assertEqual(request('cart',user=self.a)[1]['items'][0]['productId'],self.id);self.assertEqual(request('cart',user=self.b)[1]['items'],[])\n",
       "actualApiTrace": [
         {
@@ -252,7 +252,7 @@
     {
       "test": "test_06_invalid_cart",
       "status": "passed",
-      "durationSeconds": 0.0441,
+      "durationSeconds": 0.0627,
       "stepsAndExpectedAssertions": " def test_06_invalid_cart(self):\n  self.assertEqual(request('cart','PUT',{'items':[{**self.line,'quantity':-1}]},self.a)[0],400)\n",
       "actualApiTrace": [
         {
@@ -285,7 +285,7 @@
     {
       "test": "test_07_profile_isolation",
       "status": "passed",
-      "durationSeconds": 0.0583,
+      "durationSeconds": 0.072,
       "stepsAndExpectedAssertions": " def test_07_profile_isolation(self):\n  request('profile','PUT',{'name':'QA Alice','phone':'9999999999'},self.a);self.assertEqual(request('profile',user=self.a)[1]['profile']['name'],'QA Alice');self.assertNotEqual(request('profile',user=self.b)[1]['profile']['name'],'QA Alice')\n",
       "actualApiTrace": [
         {
@@ -330,7 +330,7 @@
     {
       "test": "test_08_favorites_persist_and_remove",
       "status": "passed",
-      "durationSeconds": 0.0851,
+      "durationSeconds": 0.1052,
       "stepsAndExpectedAssertions": " def test_08_favorites_persist_and_remove(self):\n  request('favorites','POST',{'productId':self.id},self.a);self.assertIn(self.id,request('favorites',user=self.a)[1]['ids']);self.assertNotIn(self.id,request('favorites',user=self.b)[1]['ids']);request('favorites','POST',{'productId':self.id,'remove':True},self.a);self.assertNotIn(self.id,request('favorites',user=self.a)[1]['ids'])\n",
       "actualApiTrace": [
         {
@@ -387,7 +387,7 @@
     {
       "test": "test_09_address_ownership",
       "status": "passed",
-      "durationSeconds": 0.0811,
+      "durationSeconds": 0.0972,
       "stepsAndExpectedAssertions": " def test_09_address_ownership(self):\n  code,b=request('addresses','POST',{'label':'QA Home','address':'Local test address'},self.a);self.assertEqual(code,201);request('addresses/'+b['id'],'DELETE',user=self.b);self.assertEqual(len(request('addresses',user=self.a)[1]['addresses']),1);request('addresses/'+b['id'],'DELETE',user=self.a);self.assertEqual(request('addresses',user=self.a)[1]['addresses'],[])\n",
       "actualApiTrace": [
         {
@@ -404,7 +404,7 @@
         },
         {
           "method": "DELETE",
-          "path": "/api/addresses/08dc12a4-8fa2-44f1-b129-04da21bad20e",
+          "path": "/api/addresses/f2fade12-5a00-4e14-9bcf-9b8f7081c47a",
           "identity": "synthetic customer",
           "status": 200
         },
@@ -416,7 +416,7 @@
         },
         {
           "method": "DELETE",
-          "path": "/api/addresses/08dc12a4-8fa2-44f1-b129-04da21bad20e",
+          "path": "/api/addresses/f2fade12-5a00-4e14-9bcf-9b8f7081c47a",
           "identity": "synthetic customer",
           "status": 200
         },
@@ -444,7 +444,7 @@
     {
       "test": "test_10_order_creation_unpaid_and_stock",
       "status": "passed",
-      "durationSeconds": 0.1151,
+      "durationSeconds": 0.1259,
       "stepsAndExpectedAssertions": " def test_10_order_creation_unpaid_and_stock(self):\n  code,b=self.order();self.assertEqual(code,201,b);self.assertEqual(b['paymentStatus'],'unpaid');o=request('orders',user=self.a)[1]['orders'][0];self.assertEqual(o['total'],10000);self.assertEqual(o['items'][0]['unit_price'],10000);self.assertEqual(o['payment_status'],'unpaid');p=next(p for p in request('bootstrap')[1]['products'] if p['id']==self.id);self.assertEqual(p['inventory'],9)\n",
       "actualApiTrace": [
         {
@@ -495,7 +495,7 @@
     {
       "test": "test_11_idempotent_order",
       "status": "passed",
-      "durationSeconds": 0.0893,
+      "durationSeconds": 0.134,
       "stepsAndExpectedAssertions": " def test_11_idempotent_order(self):\n  key=str(uuid.uuid4());a=self.order(key=key);b=self.order(key=key);self.assertEqual(a[1]['id'],b[1]['id']);self.assertEqual(len(request('orders',user=self.a)[1]['orders']),1)\n",
       "actualApiTrace": [
         {
@@ -552,7 +552,7 @@
     {
       "test": "test_12_concurrent_duplicate_submit",
       "status": "passed",
-      "durationSeconds": 0.0869,
+      "durationSeconds": 0.1083,
       "stepsAndExpectedAssertions": " def test_12_concurrent_duplicate_submit(self):\n  key=str(uuid.uuid4())\n  with concurrent.futures.ThreadPoolExecutor(2) as pool:results=list(pool.map(lambda _:self.order(key=key),range(2)))\n  self.assertEqual([r[0] for r in results],[201,201],results);self.assertEqual(results[0][1]['id'],results[1][1]['id'])\n",
       "actualApiTrace": [
         {
@@ -603,7 +603,7 @@
     {
       "test": "test_13_concurrent_stock_cannot_oversell",
       "status": "passed",
-      "durationSeconds": 0.1084,
+      "durationSeconds": 0.1551,
       "stepsAndExpectedAssertions": " def test_13_concurrent_stock_cannot_oversell(self):\n  request('admin/products','POST',{**self.p,'inventory':1})\n  with concurrent.futures.ThreadPoolExecutor(2) as pool:results=list(pool.map(lambda _:self.order(),range(2)))\n  self.assertEqual(sum(r[0]==201 for r in results),1,results);self.assertTrue(all(r[0] in [201,400,409] for r in results));self.assertEqual(len(request('orders',user=self.a)[1]['orders']),1)\n",
       "actualApiTrace": [
         {
@@ -666,7 +666,7 @@
     {
       "test": "test_14_order_ownership",
       "status": "passed",
-      "durationSeconds": 0.0804,
+      "durationSeconds": 0.1131,
       "stepsAndExpectedAssertions": " def test_14_order_ownership(self):\n  _,o=self.order();self.assertEqual(request('orders',user=self.b)[1]['orders'],[]);self.assertEqual(request('orders/'+o['id'],'PATCH',{'status':'cancelled'},self.b)[0],404)\n",
       "actualApiTrace": [
         {
@@ -695,7 +695,7 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/orders/CH-84DFC864",
+          "path": "/api/orders/CH-6F343893",
           "identity": "synthetic customer",
           "status": 404
         },
@@ -717,7 +717,7 @@
     {
       "test": "test_15_client_prices_not_trusted",
       "status": "passed",
-      "durationSeconds": 0.0483,
+      "durationSeconds": 0.0807,
       "stepsAndExpectedAssertions": " def test_15_client_prices_not_trusted(self):\n  code,q=self.quote([{**self.line,'price':1,'unitPrice':1}]);self.assertEqual(code,200);self.assertEqual(q['total'],10000)\n",
       "actualApiTrace": [
         {
@@ -750,7 +750,7 @@
     {
       "test": "test_16_changed_total_rejected",
       "status": "passed",
-      "durationSeconds": 0.0667,
+      "durationSeconds": 0.1045,
       "stepsAndExpectedAssertions": " def test_16_changed_total_rejected(self):\n  code,b=self.order(expected=1);self.assertEqual(code,409,b);self.assertEqual(request('orders',user=self.a)[1]['orders'],[])\n",
       "actualApiTrace": [
         {
@@ -795,7 +795,7 @@
     {
       "test": "test_17_unpriced_product_blocked",
       "status": "passed",
-      "durationSeconds": 0.0667,
+      "durationSeconds": 0.0895,
       "stepsAndExpectedAssertions": " def test_17_unpriced_product_blocked(self):\n  request('admin/products','POST',{**self.p,'price':None,'available':False});self.assertEqual(self.quote()[0],400)\n",
       "actualApiTrace": [
         {
@@ -834,7 +834,7 @@
     {
       "test": "test_18_unavailable_product_blocked",
       "status": "passed",
-      "durationSeconds": 0.0633,
+      "durationSeconds": 0.088,
       "stepsAndExpectedAssertions": " def test_18_unavailable_product_blocked(self):\n  request('admin/products','POST',{**self.p,'available':False});self.assertEqual(self.quote()[0],400)\n",
       "actualApiTrace": [
         {
@@ -873,7 +873,7 @@
     {
       "test": "test_19_archive_preserves_order_snapshot",
       "status": "passed",
-      "durationSeconds": 0.1033,
+      "durationSeconds": 0.1484,
       "stepsAndExpectedAssertions": " def test_19_archive_preserves_order_snapshot(self):\n  _,o=self.order();request('admin/products','POST',{**self.p,'name':'Renamed QA','price':50000,'archived':True});order=request('orders',user=self.a)[1]['orders'][0];self.assertEqual(order['items'][0]['name'],self.p['name']);self.assertEqual(order['items'][0]['unit_price'],10000);self.assertEqual(self.quote()[0],400)\n",
       "actualApiTrace": [
         {
@@ -930,7 +930,7 @@
     {
       "test": "test_20_variant_addon_server_pricing",
       "status": "passed",
-      "durationSeconds": 0.0593,
+      "durationSeconds": 0.0928,
       "stepsAndExpectedAssertions": " def test_20_variant_addon_server_pricing(self):\n  request('admin/products','POST',{**self.p,'variants':[{'id':'large','name':'Large','price':2000}],'addons':[{'id':'shot','name':'Shot','price':1500}]});self.line.update(variantId='large',addonIds=['shot']);self.assertEqual(self.quote()[1]['total'],13500)\n",
       "actualApiTrace": [
         {
@@ -969,7 +969,7 @@
     {
       "test": "test_21_taxes_promotions_and_fee",
       "status": "passed",
-      "durationSeconds": 0.0644,
+      "durationSeconds": 0.0936,
       "stepsAndExpectedAssertions": " def test_21_taxes_promotions_and_fee(self):\n  s={**self.originalSettings,'taxBps':500,'deliveryEnabled':True,'deliveryFee':3000,'offers':[{'code':'QA10','type':'percent','value':1000,'enabled':True,'minimum':0}]};self.assertEqual(request('admin/settings','PUT',s)[0],200);code,q=self.quote(fulfillment='delivery',code='QA10');self.assertEqual(code,200);self.assertEqual(q['total'],12450)\n",
       "actualApiTrace": [
         {
@@ -1008,7 +1008,7 @@
     {
       "test": "test_22_cancel_restock_once",
       "status": "passed",
-      "durationSeconds": 0.1129,
+      "durationSeconds": 0.1667,
       "stepsAndExpectedAssertions": " def test_22_cancel_restock_once(self):\n  _,o=self.order();self.assertEqual(request('orders/'+o['id'],'PATCH',{'status':'cancelled'},self.a)[0],200);self.assertEqual(request('orders/'+o['id'],'PATCH',{'status':'cancelled'},self.a)[0],403);p=next(p for p in request('bootstrap')[1]['products'] if p['id']==self.id);self.assertEqual(p['inventory'],10)\n",
       "actualApiTrace": [
         {
@@ -1031,13 +1031,13 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/orders/CH-DCECC41F",
+          "path": "/api/orders/CH-4CC9506B",
           "identity": "synthetic customer",
           "status": 200
         },
         {
           "method": "PATCH",
-          "path": "/api/orders/CH-DCECC41F",
+          "path": "/api/orders/CH-4CC9506B",
           "identity": "synthetic customer",
           "status": 403
         },
@@ -1065,7 +1065,7 @@
     {
       "test": "test_23_customer_cannot_confirm_order",
       "status": "passed",
-      "durationSeconds": 0.0788,
+      "durationSeconds": 0.1182,
       "stepsAndExpectedAssertions": " def test_23_customer_cannot_confirm_order(self):\n  _,o=self.order();self.assertEqual(request('orders/'+o['id'],'PATCH',{'status':'confirmed'},self.a)[0],403)\n",
       "actualApiTrace": [
         {
@@ -1088,7 +1088,7 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/orders/CH-F8565617",
+          "path": "/api/orders/CH-8F655CD5",
           "identity": "synthetic customer",
           "status": 403
         },
@@ -1110,7 +1110,7 @@
     {
       "test": "test_24_order_lifecycle",
       "status": "passed",
-      "durationSeconds": 0.1212,
+      "durationSeconds": 0.171,
       "stepsAndExpectedAssertions": " def test_24_order_lifecycle(self):\n  _,o=self.order()\n  for status in ['confirmed','preparing','ready','completed']:self.assertEqual(request('admin/orders/'+o['id'],'PATCH',{'status':status})[0],200)\n  order=request('orders',user=self.a)[1]['orders'][0];self.assertEqual(order['status'],'completed');self.assertEqual(len(order['events']),5)\n",
       "actualApiTrace": [
         {
@@ -1133,25 +1133,25 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/orders/CH-11BFCF4A",
+          "path": "/api/admin/orders/CH-790BEE0E",
           "identity": "admin",
           "status": 200
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/orders/CH-11BFCF4A",
+          "path": "/api/admin/orders/CH-790BEE0E",
           "identity": "admin",
           "status": 200
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/orders/CH-11BFCF4A",
+          "path": "/api/admin/orders/CH-790BEE0E",
           "identity": "admin",
           "status": 200
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/orders/CH-11BFCF4A",
+          "path": "/api/admin/orders/CH-790BEE0E",
           "identity": "admin",
           "status": 200
         },
@@ -1179,7 +1179,7 @@
     {
       "test": "test_25_invalid_transition",
       "status": "passed",
-      "durationSeconds": 0.0765,
+      "durationSeconds": 0.1047,
       "stepsAndExpectedAssertions": " def test_25_invalid_transition(self):\n  _,o=self.order();self.assertEqual(request('admin/orders/'+o['id'],'PATCH',{'status':'completed'})[0],400)\n",
       "actualApiTrace": [
         {
@@ -1202,7 +1202,7 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/orders/CH-5DD57D7C",
+          "path": "/api/admin/orders/CH-E2A665AC",
           "identity": "admin",
           "status": 400
         },
@@ -1224,7 +1224,7 @@
     {
       "test": "test_26_no_simulated_online_payment",
       "status": "passed",
-      "durationSeconds": 0.1116,
+      "durationSeconds": 0.1433,
       "stepsAndExpectedAssertions": " def test_26_no_simulated_online_payment(self):\n  self.assertEqual(self.order(method='card')[0],400);_,o=self.order();self.assertEqual(request('admin/payments/'+o['id'],'POST',{'reference':'QA receipt'},self.a)[0],403);self.assertEqual(request('orders',user=self.a)[1]['orders'][0]['payment_status'],'unpaid')\n",
       "actualApiTrace": [
         {
@@ -1259,7 +1259,7 @@
         },
         {
           "method": "POST",
-          "path": "/api/admin/payments/CH-6379C3C8",
+          "path": "/api/admin/payments/CH-A615EB17",
           "identity": "synthetic customer",
           "status": 403
         },
@@ -1287,7 +1287,7 @@
     {
       "test": "test_27_record_actual_cash_and_no_duplicate",
       "status": "passed",
-      "durationSeconds": 0.101,
+      "durationSeconds": 0.1289,
       "stepsAndExpectedAssertions": " def test_27_record_actual_cash_and_no_duplicate(self):\n  _,o=self.order();self.assertEqual(request('admin/payments/'+o['id'],'POST',{'reference':'QA local cash receipt'})[0],200);self.assertEqual(request('admin/payments/'+o['id'],'POST',{'reference':'duplicate'})[0],409);self.assertEqual(request('orders',user=self.a)[1]['orders'][0]['payment_status'],'paid');self.assertEqual(request('admin/orders/'+o['id'],'PATCH',{'status':'cancelled'})[0],409)\n",
       "actualApiTrace": [
         {
@@ -1310,13 +1310,13 @@
         },
         {
           "method": "POST",
-          "path": "/api/admin/payments/CH-FC517D10",
+          "path": "/api/admin/payments/CH-4D9FB9F5",
           "identity": "admin",
           "status": 200
         },
         {
           "method": "POST",
-          "path": "/api/admin/payments/CH-FC517D10",
+          "path": "/api/admin/payments/CH-4D9FB9F5",
           "identity": "admin",
           "status": 409
         },
@@ -1328,7 +1328,7 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/orders/CH-FC517D10",
+          "path": "/api/admin/orders/CH-4D9FB9F5",
           "identity": "admin",
           "status": 409
         },
@@ -1350,7 +1350,7 @@
     {
       "test": "test_28_category_management",
       "status": "passed",
-      "durationSeconds": 0.0936,
+      "durationSeconds": 0.1286,
       "stepsAndExpectedAssertions": " def test_28_category_management(self):\n  id='cat-'+self.id;c={'id':id,'name':'QA category','position':99,'enabled':True,'image':''};self.assertEqual(request('admin/categories','POST',c)[0],200);request('admin/products','POST',{**self.p,'categoryId':id});request('admin/categories','POST',{**c,'enabled':False,'name':'QA renamed'});self.assertEqual(self.quote()[0],400);self.assertEqual(request('admin/products','POST',{**self.p,'categoryId':'unknown'})[0],400)\n",
       "actualApiTrace": [
         {
@@ -1407,7 +1407,7 @@
     {
       "test": "test_29_atomic_import_validation",
       "status": "passed",
-      "durationSeconds": 0.0778,
+      "durationSeconds": 0.122,
       "stepsAndExpectedAssertions": " def test_29_atomic_import_validation(self):\n  a={**self.p,'id':self.id+'-import'};bad={**self.p,'id':self.id+'-bad','price':-1};self.assertEqual(request('admin/import','POST',{'products':[a,bad]})[0],400);self.assertFalse(any(p['id']==a['id'] for p in request('bootstrap')[1]['products']));code,b=request('admin/import','POST',{'products':[a]});self.assertEqual(code,200);self.assertEqual(b['imported'],1);request('admin/products','POST',{**a,'archived':True})\n",
       "actualApiTrace": [
         {
@@ -1458,7 +1458,7 @@
     {
       "test": "test_30_customer_suggestion_pending_then_draft",
       "status": "passed",
-      "durationSeconds": 0.103,
+      "durationSeconds": 0.1568,
       "stepsAndExpectedAssertions": " def test_30_customer_suggestion_pending_then_draft(self):\n  code,s=request('suggestions','POST',{'name':'QA suggestion','category':'Coffee','description':'Local test idea'},self.a);self.assertEqual(code,201);self.assertEqual(s['status'],'pending');self.assertEqual(request('suggestions',user=self.b)[1]['suggestions'],[]);self.assertFalse(any(p['name']=='QA suggestion' for p in request('bootstrap')[1]['products']));self.assertEqual(request('admin/suggestions/'+s['id'],'PATCH',{'status':'approved','product':{**self.p,'name':'QA approved'}})[0],200);draft=next(p for p in request('bootstrap')[1]['products'] if p['id']=='suggestion-'+s['id']);self.assertFalse(draft['available']);request('admin/products','POST',{**draft,'archived':True})\n",
       "actualApiTrace": [
         {
@@ -1487,7 +1487,7 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/suggestions/1bef2ed4-c13f-4530-8fea-17736f49f842",
+          "path": "/api/admin/suggestions/ab631b95-9794-4619-9da2-1d5124dc28f7",
           "identity": "admin",
           "status": 200
         },
@@ -1521,7 +1521,7 @@
     {
       "test": "test_31_disabled_customer_blocked",
       "status": "passed",
-      "durationSeconds": 0.0621,
+      "durationSeconds": 0.0822,
       "stepsAndExpectedAssertions": " def test_31_disabled_customer_blocked(self):\n  request('profile','PUT',{'name':'QA disabled','phone':''},self.b);self.assertEqual(request('admin/customers/'+self.b[0],'PATCH',{'disabled':True})[0],200);self.assertEqual(request('orders',user=self.b)[0],403)\n",
       "actualApiTrace": [
         {
@@ -1538,7 +1538,7 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/customers/qa-3305533b65-b",
+          "path": "/api/admin/customers/qa-099809a3fd-b",
           "identity": "admin",
           "status": 200
         },
@@ -1566,7 +1566,7 @@
     {
       "test": "test_32_cross_origin_write_blocked",
       "status": "passed",
-      "durationSeconds": 0.0426,
+      "durationSeconds": 0.0533,
       "stepsAndExpectedAssertions": " def test_32_cross_origin_write_blocked(self):\n  self.assertEqual(request('cart','PUT',{'items':[]},self.a,{'Origin':'https://evil.example'})[0],403)\n",
       "actualApiTrace": [
         {
@@ -1599,7 +1599,7 @@
     {
       "test": "test_33_invalid_json_and_oversized_body",
       "status": "passed",
-      "durationSeconds": 0.0486,
+      "durationSeconds": 0.0508,
       "stepsAndExpectedAssertions": " def test_33_invalid_json_and_oversized_body(self):\n  self.assertEqual(request('cart','PUT',user=self.a,raw=b'{broken')[0],400);self.assertEqual(request('cart','PUT',user=self.a,raw=b' '*1000001)[0],413)\n",
       "actualApiTrace": [
         {
@@ -1638,7 +1638,7 @@
     {
       "test": "test_34_image_upload_and_magic_validation",
       "status": "passed",
-      "durationSeconds": 0.0776,
+      "durationSeconds": 0.0881,
       "stepsAndExpectedAssertions": " def test_34_image_upload_and_magic_validation(self):\n  def upload(content,mime):\n   boundary='coffee-test-boundary';payload=(f'--{boundary}\\r\\nContent-Disposition: form-data; name=\"file\"; filename=\"test.png\"\\r\\nContent-Type: {mime}\\r\\n\\r\\n').encode()+content+f'\\r\\n--{boundary}--\\r\\n'.encode();return request('upload','POST',user=self.a,extra={'Content-Type':f'multipart/form-data; boundary={boundary}'},raw=payload)\n  self.assertEqual(upload(b'<svg onload=\"alert(1)\"></svg>','image/png')[0],400);code,b=upload(pathlib.Path('public/icon-192.png').read_bytes(),'image/png');self.assertEqual(code,201,b);status,content=request(b['url'].removeprefix('/api/'));self.assertEqual(status,200);self.assertTrue(content.startswith(b'\\x89PNG'))\n",
       "actualApiTrace": [
         {
@@ -1661,7 +1661,7 @@
         },
         {
           "method": "GET",
-          "path": "/api/images/8427d57b-3b33-4ef4-8a04-8e4b6d3a9014",
+          "path": "/api/images/64aae2aa-cef3-494b-9da4-6ff824cdf7c7",
           "identity": "admin",
           "status": 200
         },
@@ -1683,7 +1683,7 @@
     {
       "test": "test_35_audit_records_present",
       "status": "passed",
-      "durationSeconds": 0.0975,
+      "durationSeconds": 0.1011,
       "stepsAndExpectedAssertions": " def test_35_audit_records_present(self):\n  self.assertTrue(any(a['target']==self.id and a['action']=='product.save' for a in request('admin/overview')[1]['audit']))\n",
       "actualApiTrace": [
         {
@@ -1716,7 +1716,7 @@
     {
       "test": "test_36_checkout_contact_validation",
       "status": "passed",
-      "durationSeconds": 0.0537,
+      "durationSeconds": 0.0718,
       "stepsAndExpectedAssertions": " def test_36_checkout_contact_validation(self):\n  code,b=request('orders','POST',{'items':[self.line],'fulfillment':'pickup','paymentMethod':'pay_at_pickup','contact':{'name':'QA','phone':'bad'},'expectedTotal':10000,'idempotencyKey':str(uuid.uuid4())},self.a);self.assertEqual(code,400,b)\n",
       "actualApiTrace": [
         {
@@ -1749,7 +1749,7 @@
     {
       "test": "test_37_invalid_settings_atomic",
       "status": "passed",
-      "durationSeconds": 0.1435,
+      "durationSeconds": 0.1979,
       "stepsAndExpectedAssertions": " def test_37_invalid_settings_atomic(self):\n  for change in [{'currency':'inr'},{'taxBps':10001},{'deliveryFee':-1},{'brand':''}]:\n   with self.subTest(change=change):\n    self.assertEqual(request('admin/settings','PUT',{**self.originalSettings,**change})[0],400)\n    self.assertEqual(request('bootstrap')[1]['settings'],self.originalSettings)\n",
       "actualApiTrace": [
         {
@@ -1824,7 +1824,7 @@
     {
       "test": "test_38_online_payment_forced_off",
       "status": "passed",
-      "durationSeconds": 0.0652,
+      "durationSeconds": 0.1009,
       "stepsAndExpectedAssertions": " def test_38_online_payment_forced_off(self):\n  self.assertEqual(request('admin/settings','PUT',{**self.originalSettings,'onlinePayments':True})[0],200)\n  self.assertFalse(request('bootstrap')[1]['settings']['onlinePayments'])\n",
       "actualApiTrace": [
         {
@@ -1863,7 +1863,7 @@
     {
       "test": "test_39_disabled_fulfillment",
       "status": "passed",
-      "durationSeconds": 0.0789,
+      "durationSeconds": 0.1033,
       "stepsAndExpectedAssertions": " def test_39_disabled_fulfillment(self):\n  request('admin/settings','PUT',{**self.originalSettings,'pickupEnabled':False,'deliveryEnabled':False})\n  self.assertEqual(self.quote()[0],400);self.assertEqual(self.quote(fulfillment='delivery')[0],400)\n",
       "actualApiTrace": [
         {
@@ -1908,7 +1908,7 @@
     {
       "test": "test_40_reject_suggestion",
       "status": "passed",
-      "durationSeconds": 0.1085,
+      "durationSeconds": 0.1241,
       "stepsAndExpectedAssertions": " def test_40_reject_suggestion(self):\n  code,s=request('suggestions','POST',{'name':'QA rejected idea','category':'Coffee','description':'Test rejection'},self.a);self.assertEqual(code,201)\n  self.assertEqual(request('admin/suggestions/'+s['id'],'PATCH',{'status':'invalid'})[0],400)\n  self.assertEqual(request('admin/suggestions/'+s['id'],'PATCH',{'status':'approved'})[0],400)\n  self.assertEqual(request('admin/suggestions/'+s['id'],'PATCH',{'status':'rejected'})[0],200)\n  self.assertEqual(request('suggestions',user=self.a)[1]['suggestions'][0]['status'],'rejected')\n  self.assertFalse(any(p['id']=='suggestion-'+s['id'] for p in request('bootstrap')[1]['products']))\n",
       "actualApiTrace": [
         {
@@ -1925,19 +1925,19 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/suggestions/41fdf00d-134f-4ef7-b6c7-0c0397f846ea",
+          "path": "/api/admin/suggestions/723b55a4-4d26-4a9e-9b40-edeaa8b0ce26",
           "identity": "admin",
           "status": 400
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/suggestions/41fdf00d-134f-4ef7-b6c7-0c0397f846ea",
+          "path": "/api/admin/suggestions/723b55a4-4d26-4a9e-9b40-edeaa8b0ce26",
           "identity": "admin",
           "status": 400
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/suggestions/41fdf00d-134f-4ef7-b6c7-0c0397f846ea",
+          "path": "/api/admin/suggestions/723b55a4-4d26-4a9e-9b40-edeaa8b0ce26",
           "identity": "admin",
           "status": 200
         },
@@ -1971,7 +1971,7 @@
     {
       "test": "test_41_customer_recovery_admin_protection",
       "status": "passed",
-      "durationSeconds": 0.0839,
+      "durationSeconds": 0.1096,
       "stepsAndExpectedAssertions": " def test_41_customer_recovery_admin_protection(self):\n  request('profile','PUT',{'name':'QA restore','phone':''},self.b)\n  request('admin/customers/'+self.b[0],'PATCH',{'disabled':True});self.assertEqual(request('cart',user=self.b)[0],403)\n  self.assertEqual(request('admin/customers/'+self.b[0],'PATCH',{'disabled':False})[0],200);self.assertEqual(request('cart',user=self.b)[0],200)\n  self.assertEqual(request('admin/customers/'+ADMIN[0],'PATCH',{'disabled':True})[0],400)\n",
       "actualApiTrace": [
         {
@@ -1988,7 +1988,7 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/customers/qa-ce4a56249a-b",
+          "path": "/api/admin/customers/qa-d95a61ddc6-b",
           "identity": "admin",
           "status": 200
         },
@@ -2000,7 +2000,7 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/customers/qa-ce4a56249a-b",
+          "path": "/api/admin/customers/qa-d95a61ddc6-b",
           "identity": "admin",
           "status": 200
         },
@@ -2034,7 +2034,7 @@
     {
       "test": "test_42_admin_order_search_filter_offset",
       "status": "passed",
-      "durationSeconds": 0.158,
+      "durationSeconds": 0.1612,
       "stepsAndExpectedAssertions": " def test_42_admin_order_search_filter_offset(self):\n  _,o=self.order();code,b=request('admin/orders?q='+o['id']);self.assertEqual(code,200);self.assertEqual([x['id'] for x in b['orders']],[o['id']])\n  request('admin/orders/'+o['id'],'PATCH',{'status':'confirmed'})\n  self.assertEqual(len(request('admin/orders?q='+o['id']+'&status=confirmed')[1]['orders']),1)\n  self.assertEqual(request('admin/orders?q='+o['id']+'&status=pending')[1]['orders'],[])\n  self.assertEqual(request('admin/orders?q='+o['id']+'&offset=1')[1]['orders'],[])\n  self.assertEqual(request('admin/orders?offset=-1')[0],400)\n",
       "actualApiTrace": [
         {
@@ -2057,31 +2057,31 @@
         },
         {
           "method": "GET",
-          "path": "/api/admin/orders?q=CH-FCFF4495",
+          "path": "/api/admin/orders?q=CH-E0F569D0",
           "identity": "admin",
           "status": 200
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/orders/CH-FCFF4495",
+          "path": "/api/admin/orders/CH-E0F569D0",
           "identity": "admin",
           "status": 200
         },
         {
           "method": "GET",
-          "path": "/api/admin/orders?q=CH-FCFF4495&status=confirmed",
+          "path": "/api/admin/orders?q=CH-E0F569D0&status=confirmed",
           "identity": "admin",
           "status": 200
         },
         {
           "method": "GET",
-          "path": "/api/admin/orders?q=CH-FCFF4495&status=pending",
+          "path": "/api/admin/orders?q=CH-E0F569D0&status=pending",
           "identity": "admin",
           "status": 200
         },
         {
           "method": "GET",
-          "path": "/api/admin/orders?q=CH-FCFF4495&offset=1",
+          "path": "/api/admin/orders?q=CH-E0F569D0&offset=1",
           "identity": "admin",
           "status": 200
         },
@@ -2109,7 +2109,7 @@
     {
       "test": "test_43_delivery_lifecycle",
       "status": "passed",
-      "durationSeconds": 0.1406,
+      "durationSeconds": 0.1814,
       "stepsAndExpectedAssertions": " def test_43_delivery_lifecycle(self):\n  request('admin/settings','PUT',{**self.originalSettings,'deliveryEnabled':True,'deliveryFee':3000})\n  code,o=self.order(method='cash_on_delivery',fulfillment='delivery');self.assertEqual(code,201,o)\n  for status in ['confirmed','preparing']:self.assertEqual(request('admin/orders/'+o['id'],'PATCH',{'status':status})[0],200)\n  self.assertEqual(request('admin/orders/'+o['id'],'PATCH',{'status':'ready'})[0],400)\n  for status in ['out_for_delivery','completed']:self.assertEqual(request('admin/orders/'+o['id'],'PATCH',{'status':status})[0],200)\n  order=request('orders',user=self.a)[1]['orders'][0];self.assertEqual(order['status'],'completed');self.assertEqual(order['total'],13000)\n",
       "actualApiTrace": [
         {
@@ -2138,31 +2138,31 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/orders/CH-8043FF2C",
+          "path": "/api/admin/orders/CH-3716A583",
           "identity": "admin",
           "status": 200
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/orders/CH-8043FF2C",
+          "path": "/api/admin/orders/CH-3716A583",
           "identity": "admin",
           "status": 200
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/orders/CH-8043FF2C",
+          "path": "/api/admin/orders/CH-3716A583",
           "identity": "admin",
           "status": 400
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/orders/CH-8043FF2C",
+          "path": "/api/admin/orders/CH-3716A583",
           "identity": "admin",
           "status": 200
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/orders/CH-8043FF2C",
+          "path": "/api/admin/orders/CH-3716A583",
           "identity": "admin",
           "status": 200
         },
@@ -2190,7 +2190,7 @@
     {
       "test": "test_44_payment_reference_and_cancelled_order",
       "status": "passed",
-      "durationSeconds": 0.1228,
+      "durationSeconds": 0.1988,
       "stepsAndExpectedAssertions": " def test_44_payment_reference_and_cancelled_order(self):\n  _,o=self.order()\n  for reference in ['', ' '*5, 'x'*151]:self.assertEqual(request('admin/payments/'+o['id'],'POST',{'reference':reference})[0],400)\n  self.assertEqual(request('orders',user=self.a)[1]['orders'][0]['payment_status'],'unpaid')\n  request('orders/'+o['id'],'PATCH',{'status':'cancelled'},self.a)\n  self.assertEqual(request('admin/payments/'+o['id'],'POST',{'reference':'cancelled receipt'})[0],400)\n",
       "actualApiTrace": [
         {
@@ -2213,19 +2213,19 @@
         },
         {
           "method": "POST",
-          "path": "/api/admin/payments/CH-E519B572",
+          "path": "/api/admin/payments/CH-B797B20E",
           "identity": "admin",
           "status": 400
         },
         {
           "method": "POST",
-          "path": "/api/admin/payments/CH-E519B572",
+          "path": "/api/admin/payments/CH-B797B20E",
           "identity": "admin",
           "status": 400
         },
         {
           "method": "POST",
-          "path": "/api/admin/payments/CH-E519B572",
+          "path": "/api/admin/payments/CH-B797B20E",
           "identity": "admin",
           "status": 400
         },
@@ -2237,13 +2237,13 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/orders/CH-E519B572",
+          "path": "/api/orders/CH-B797B20E",
           "identity": "synthetic customer",
           "status": 200
         },
         {
           "method": "POST",
-          "path": "/api/admin/payments/CH-E519B572",
+          "path": "/api/admin/payments/CH-B797B20E",
           "identity": "admin",
           "status": 400
         },
@@ -2265,7 +2265,7 @@
     {
       "test": "test_45_invalid_product_fields",
       "status": "passed",
-      "durationSeconds": 0.1196,
+      "durationSeconds": 0.1527,
       "stepsAndExpectedAssertions": " def test_45_invalid_product_fields(self):\n  for change in [{'price':-1},{'image':'javascript:alert(1)'},{'image':'https://'},{'image':'https://user:password@example.test/a.png'},{'image':'https://example.test/a b.png'},{'image':'/api/images/../../bad'},{'image':'http://insecure.example/a.png'},{'inventory':-1},{'dietary':['invented']},{'variants':[{'id':'x','name':'X','price':0},{'id':'x','name':'Duplicate','price':0}]}]:\n   with self.subTest(change=change):self.assertEqual(request('admin/products','POST',{**self.p,**change})[0],400)\n  self.assertEqual(self.quote()[1]['total'],10000)\n",
       "actualApiTrace": [
         {
@@ -2358,7 +2358,7 @@
     {
       "test": "test_46_upload_invalid_data",
       "status": "passed",
-      "durationSeconds": 0.06,
+      "durationSeconds": 0.0779,
       "stepsAndExpectedAssertions": " def test_46_upload_invalid_data(self):\n  def upload(content,mime):\n   boundary='qa-upload';payload=(f'--{boundary}\\r\\nContent-Disposition: form-data; name=\"file\"; filename=\"qa.png\"\\r\\nContent-Type: {mime}\\r\\n\\r\\n').encode()+content+f'\\r\\n--{boundary}--\\r\\n'.encode()\n   return request('upload','POST',user=self.a,extra={'Content-Type':f'multipart/form-data; boundary={boundary}'},raw=payload)\n  for content,mime in [(b'','image/png'),(b'\\x89PNG','image/png'),(pathlib.Path('public/icon-192.png').read_bytes(),'image/jpeg'),(b'GIF89a','image/gif')]:\n   with self.subTest(mime=mime,length=len(content)):self.assertEqual(upload(content,mime)[0],400)\n",
       "actualApiTrace": [
         {
@@ -2409,7 +2409,7 @@
     {
       "test": "test_47_duplicate_import_atomic",
       "status": "passed",
-      "durationSeconds": 0.0741,
+      "durationSeconds": 0.0908,
       "stepsAndExpectedAssertions": " def test_47_duplicate_import_atomic(self):\n  a={**self.p,'id':self.id+'-dupe'}\n  self.assertEqual(request('admin/import','POST',{'products':[a,a]})[0],400)\n  self.assertFalse(any(p['id']==a['id'] for p in request('bootstrap')[1]['products']))\n",
       "actualApiTrace": [
         {
@@ -2448,7 +2448,7 @@
     {
       "test": "test_48_missing_resources",
       "status": "passed",
-      "durationSeconds": 0.0611,
+      "durationSeconds": 0.0758,
       "stepsAndExpectedAssertions": " def test_48_missing_resources(self):\n  self.assertEqual(request('admin/suggestions/missing','PATCH',{'status':'rejected'})[0],404)\n  self.assertEqual(request('admin/orders/missing','PATCH',{'status':'confirmed'})[0],404)\n  self.assertEqual(request('not-a-real-endpoint')[0],404)\n",
       "actualApiTrace": [
         {
@@ -2493,7 +2493,7 @@
     {
       "test": "test_49_invalid_transition_prototype_keys",
       "status": "passed",
-      "durationSeconds": 0.0926,
+      "durationSeconds": 0.1335,
       "stepsAndExpectedAssertions": " def test_49_invalid_transition_prototype_keys(self):\n  _,o=self.order()\n  for status in ['constructor','toString','__proto__']:\n   with self.subTest(status=status):self.assertEqual(request('admin/orders/'+o['id'],'PATCH',{'status':status})[0],400)\n",
       "actualApiTrace": [
         {
@@ -2516,19 +2516,19 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/orders/CH-8F100224",
+          "path": "/api/admin/orders/CH-C0783FD8",
           "identity": "admin",
           "status": 400
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/orders/CH-8F100224",
+          "path": "/api/admin/orders/CH-C0783FD8",
           "identity": "admin",
           "status": 400
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/orders/CH-8F100224",
+          "path": "/api/admin/orders/CH-C0783FD8",
           "identity": "admin",
           "status": 400
         },
@@ -2550,7 +2550,7 @@
     {
       "test": "test_50_online_gateway_disabled_and_auth_protected",
       "status": "passed",
-      "durationSeconds": 0.0975,
+      "durationSeconds": 0.1281,
       "stepsAndExpectedAssertions": " def test_50_online_gateway_disabled_and_auth_protected(self):\n  self.assertEqual(request('payments/config',user=None)[0],401)\n  code,config=request('payments/config',user=self.a)\n  self.assertEqual(code,200);self.assertEqual(config,{'enabled':False,'provider':None})\n  code,order=self.order();self.assertEqual(code,201)\n  for suffix,method,data in [('start','POST',{}),('verify','POST',{'razorpay_payment_id':'pay_forged'}),('status','GET',None)]:\n   self.assertEqual(request('payments/'+order['id']+'/'+suffix,method,data,self.a)[0],403)\n  self.assertEqual(request('payments/webhook','POST',{'event':'payment.captured'},None)[0],503)\n  self.assertEqual(request('orders',user=self.a)[1]['orders'][0]['payment_status'],'unpaid')\n",
       "actualApiTrace": [
         {
@@ -2585,19 +2585,19 @@
         },
         {
           "method": "POST",
-          "path": "/api/payments/CH-9EB58D59/start",
+          "path": "/api/payments/CH-8D5C0F0F/start",
           "identity": "synthetic customer",
           "status": 403
         },
         {
           "method": "POST",
-          "path": "/api/payments/CH-9EB58D59/verify",
+          "path": "/api/payments/CH-8D5C0F0F/verify",
           "identity": "synthetic customer",
           "status": 403
         },
         {
           "method": "GET",
-          "path": "/api/payments/CH-9EB58D59/status",
+          "path": "/api/payments/CH-8D5C0F0F/status",
           "identity": "synthetic customer",
           "status": 403
         },
@@ -2631,7 +2631,7 @@
     {
       "test": "test_51_subscription_balance_private_and_cannot_self_grant",
       "status": "passed",
-      "durationSeconds": 0.0627,
+      "durationSeconds": 0.0865,
       "stepsAndExpectedAssertions": " def test_51_subscription_balance_private_and_cannot_self_grant(self):\n  self.assertEqual(request('subscriptions',user=None)[0],401)\n  for customer in [self.a,self.b]:\n   code,b=request('subscriptions',user=customer)\n   self.assertEqual(code,200);self.assertEqual(b['subscriptions'],[])\n   self.assertEqual(b['summary']['remainingCredits'],0);self.assertEqual(b['summary']['totalCredits'],0)\n  self.assertEqual(request('subscriptions','POST',{'totalCredits':8,'paid':True},self.a)[0],404)\n  self.assertEqual(request('subscriptions',user=self.a)[1]['summary']['remainingCredits'],0)\n",
       "actualApiTrace": [
         {
@@ -2688,7 +2688,7 @@
     {
       "test": "test_52_dummy_payment_outcomes_never_pay_order",
       "status": "passed",
-      "durationSeconds": 0.1052,
+      "durationSeconds": 0.1298,
       "stepsAndExpectedAssertions": " def test_52_dummy_payment_outcomes_never_pay_order(self):\n  self.assertEqual(request('test-payments/config',user=self.a)[1]['enabled'],True)\n  _,o=self.order()\n  for outcome,status in [('success','paid'),('failure','failed'),('cancelled','cancelled')]:\n   code,b=request('test-payments/'+o['id'],'POST',{'outcome':outcome,'amount':1,'paid':True},self.a)\n   self.assertEqual(code,200,b);self.assertEqual(b['simulatedStatus'],status);self.assertEqual(b['amount'],10000);self.assertFalse(b['realMoneyCollected']);self.assertEqual(b['actualPaymentStatus'],'unpaid')\n  saved=request('orders',user=self.a)[1]['orders'][0]\n  self.assertEqual(saved['payment_status'],'unpaid');self.assertEqual(saved['status'],'pending')\n",
       "actualApiTrace": [
         {
@@ -2717,19 +2717,19 @@
         },
         {
           "method": "POST",
-          "path": "/api/test-payments/CH-AEED1695",
+          "path": "/api/test-payments/CH-79348843",
           "identity": "synthetic customer",
           "status": 200
         },
         {
           "method": "POST",
-          "path": "/api/test-payments/CH-AEED1695",
+          "path": "/api/test-payments/CH-79348843",
           "identity": "synthetic customer",
           "status": 200
         },
         {
           "method": "POST",
-          "path": "/api/test-payments/CH-AEED1695",
+          "path": "/api/test-payments/CH-79348843",
           "identity": "synthetic customer",
           "status": 200
         },
@@ -2757,7 +2757,7 @@
     {
       "test": "test_53_dummy_payment_access_validation",
       "status": "passed",
-      "durationSeconds": 0.1066,
+      "durationSeconds": 0.1398,
       "stepsAndExpectedAssertions": " def test_53_dummy_payment_access_validation(self):\n  self.assertEqual(request('test-payments/config',user=None)[0],401)\n  _,o=self.order();path='test-payments/'+o['id']\n  self.assertEqual(request(path,'POST',{'outcome':'success'},self.b)[0],404)\n  self.assertEqual(request(path,'POST',{'outcome':'paid'},self.a)[0],400)\n  self.assertEqual(request(path,'GET',user=self.a)[0],405)\n  request('orders/'+o['id'],'PATCH',{'status':'cancelled'},self.a)\n  self.assertEqual(request(path,'POST',{'outcome':'success'},self.a)[0],409)\n",
       "actualApiTrace": [
         {
@@ -2786,31 +2786,31 @@
         },
         {
           "method": "POST",
-          "path": "/api/test-payments/CH-E8F4640A",
+          "path": "/api/test-payments/CH-CCE5E89F",
           "identity": "synthetic customer",
           "status": 404
         },
         {
           "method": "POST",
-          "path": "/api/test-payments/CH-E8F4640A",
+          "path": "/api/test-payments/CH-CCE5E89F",
           "identity": "synthetic customer",
           "status": 400
         },
         {
           "method": "GET",
-          "path": "/api/test-payments/CH-E8F4640A",
+          "path": "/api/test-payments/CH-CCE5E89F",
           "identity": "synthetic customer",
           "status": 405
         },
         {
           "method": "PATCH",
-          "path": "/api/orders/CH-E8F4640A",
+          "path": "/api/orders/CH-CCE5E89F",
           "identity": "synthetic customer",
           "status": 200
         },
         {
           "method": "POST",
-          "path": "/api/test-payments/CH-E8F4640A",
+          "path": "/api/test-payments/CH-CCE5E89F",
           "identity": "synthetic customer",
           "status": 409
         },
@@ -2832,7 +2832,7 @@
     {
       "test": "test_54_tester_login_isolated_and_logout",
       "status": "passed",
-      "durationSeconds": 0.1088,
+      "durationSeconds": 0.1561,
       "stepsAndExpectedAssertions": " def test_54_tester_login_isolated_and_logout(self):\n  def login(name):\n   req=urllib.request.Request(BASE+'/api/tester-session',data=json.dumps({'name':name}).encode(),headers={'Content-Type':'application/json'},method='POST')\n   with urllib.request.urlopen(req) as r:\n    self.assertEqual(r.status,200);cookie=r.headers['Set-Cookie'];self.assertIn('HttpOnly',cookie);self.assertIn('SameSite=Lax',cookie);return {'Cookie':cookie.split(';')[0]}\n  a=login('QA Tester A');b=login('QA Tester B')\n  ua=request('bootstrap',user=None,extra=a)[1]['user'];ub=request('bootstrap',user=None,extra=b)[1]['user']\n  self.assertNotEqual(ua['userId'],ub['userId']);self.assertEqual(ua['profile']['name'],'QA Tester A');self.assertFalse(ua['admin'])\n  self.assertEqual(request('admin/overview',user=None,extra=a)[0],403)\n  self.assertEqual(request('cart','PUT',{'items':[self.line]},user=None,extra=a)[0],200)\n  self.assertEqual(request('cart',user=None,extra=b)[1]['items'],[])\n  self.assertEqual(request('tester-session/logout','POST',{},user=None,extra=a)[0],200)\n  self.assertEqual(request('cart',user=None,extra=a)[0],401)\n",
       "actualApiTrace": [
         {
@@ -2901,7 +2901,7 @@
     {
       "test": "test_55_tester_session_validation",
       "status": "passed",
-      "durationSeconds": 0.0607,
+      "durationSeconds": 0.0904,
       "stepsAndExpectedAssertions": " def test_55_tester_session_validation(self):\n  self.assertEqual(request('tester-session','POST',{'name':'x'},user=None)[0],400)\n  self.assertEqual(request('tester-session','GET',user=None)[0],405)\n  self.assertEqual(request('tester-session','POST',{'name':'QA'},user=None,extra={'Origin':'https://evil.example'})[0],403)\n  self.assertIsNone(request('bootstrap',user=None,extra={'Cookie':'espresso_tester='+'a'*64})[1]['user'])\n",
       "actualApiTrace": [
         {
@@ -2952,7 +2952,7 @@
     {
       "test": "test_56_admin_identity_survives_tester_cookie",
       "status": "passed",
-      "durationSeconds": 0.1567,
+      "durationSeconds": 0.158,
       "stepsAndExpectedAssertions": " def test_56_admin_identity_survives_tester_cookie(self):\n  req=urllib.request.Request(BASE+'/api/tester-session',data=json.dumps({'name':'QA Admin Customer View'}).encode(),headers={'Content-Type':'application/json'},method='POST')\n  with urllib.request.urlopen(req) as r:cookie={'Cookie':r.headers['Set-Cookie'].split(';')[0]}\n  customer=request('bootstrap',user=ADMIN,extra=cookie)[1]['user']\n  self.assertTrue(customer['userId'].startswith('tester-'));self.assertFalse(customer['admin'])\n  self.assertEqual(request('admin/overview',user=ADMIN,extra=cookie)[0],200)\n  self.assertEqual(request('admin/overview',user=None,extra=cookie)[0],403)\n  self.assertEqual(request('admin/overview',user=self.a,extra=cookie)[0],403)\n  self.assertEqual(request('tester-session/logout','POST',{},user=None,extra=cookie)[0],200)\n",
       "actualApiTrace": [
         {
@@ -3009,7 +3009,7 @@
     {
       "test": "test_57_workbook_temporary_price_checkout",
       "status": "passed",
-      "durationSeconds": 0.13,
+      "durationSeconds": 0.1372,
       "stepsAndExpectedAssertions": " def test_57_workbook_temporary_price_checkout(self):\n  product=next(p for p in request('bootstrap')[1]['products'] if p.get('testPrice'))\n  line={**self.line,'productId':product['id']}\n  code,q=self.quote([line]);self.assertEqual(code,200);self.assertEqual(q['total'],10000)\n  code,o=self.order(items=[line]);self.assertEqual(code,201);self.assertEqual(o['paymentStatus'],'unpaid')\n",
       "actualApiTrace": [
         {
@@ -3060,7 +3060,7 @@
     {
       "test": "test_58_workbook_recipe_dietary_metadata",
       "status": "passed",
-      "durationSeconds": 0.0664,
+      "durationSeconds": 0.0764,
       "stepsAndExpectedAssertions": " def test_58_workbook_recipe_dietary_metadata(self):\n  products=request('bootstrap')[1]['products']\n  lookup={p['id']:p for p in products}\n  self.assertEqual(lookup['source-26']['dietary'],['Non-veg','Egg'])\n  self.assertEqual(lookup['source-15']['dietary'],['Egg'])\n  self.assertEqual(lookup['source-28']['dietary'],[])\n  self.assertEqual(lookup['source-28']['dietaryReview'],True)\n",
       "actualApiTrace": [
         {
@@ -3093,7 +3093,7 @@
     {
       "test": "test_59_removed_paypal_routes_are_disabled",
       "status": "passed",
-      "durationSeconds": 0.1195,
+      "durationSeconds": 0.1326,
       "stepsAndExpectedAssertions": " def test_59_removed_paypal_routes_are_disabled(self):\n  self.assertEqual(request('paypal-test/config',user=None)[0],401)\n  self.assertEqual(request('paypal-test/config',user=self.a)[0],410)\n  self.assertEqual(request('razorpay-test/config',user=self.a)[0],410)\n  code,o=self.order();self.assertEqual(code,201)\n  for action in ['start','capture','status']:\n   self.assertEqual(request('paypal-test/'+o['id']+'/'+action,'POST',{},self.a)[0],410)\n  saved=next(item for item in request('orders',user=self.a)[1]['orders'] if item['id']==o['id'])\n  self.assertEqual(saved['payment_status'],'unpaid')\n",
       "actualApiTrace": [
         {
@@ -3134,19 +3134,19 @@
         },
         {
           "method": "POST",
-          "path": "/api/paypal-test/CH-8D60412E/start",
+          "path": "/api/paypal-test/CH-09FCC393/start",
           "identity": "synthetic customer",
           "status": 410
         },
         {
           "method": "POST",
-          "path": "/api/paypal-test/CH-8D60412E/capture",
+          "path": "/api/paypal-test/CH-09FCC393/capture",
           "identity": "synthetic customer",
           "status": 410
         },
         {
           "method": "POST",
-          "path": "/api/paypal-test/CH-8D60412E/status",
+          "path": "/api/paypal-test/CH-09FCC393/status",
           "identity": "synthetic customer",
           "status": 410
         },
@@ -3174,7 +3174,7 @@
     {
       "test": "test_60_phone_auth_fails_closed_without_sms",
       "status": "passed",
-      "durationSeconds": 0.0622,
+      "durationSeconds": 0.0644,
       "stepsAndExpectedAssertions": " def test_60_phone_auth_fails_closed_without_sms(self):\n  code,b=request('auth/phone/config');self.assertEqual(code,200);self.assertFalse(b['enabled'])\n  self.assertEqual(request('auth/phone/send','POST',{'phone':'9876543210'},user=None)[0],503)\n  self.assertEqual(request('auth/phone/verify','POST',{'phone':'9876543210','code':'123456','challenge':'x'},user=None)[0],503)\n  self.assertEqual(request('auth/phone/logout','POST',{},user=None)[0],200)\n",
       "actualApiTrace": [
         {
@@ -3225,7 +3225,7 @@
     {
       "test": "test_61_admin_advertisements_roundtrip_and_validation",
       "status": "passed",
-      "durationSeconds": 0.1469,
+      "durationSeconds": 0.1753,
       "stepsAndExpectedAssertions": " def test_61_admin_advertisements_roundtrip_and_validation(self):\n  banners=[{'id':'qa-banner-'+str(i),'image':'/api/images/qa-example','tag':'','title':'QA banner','copy':'','action':'Browse','search':'coffee','destination':'menu','enabled':True} for i in range(7)]\n  settings={**self.originalSettings,'promotionBanners':banners}\n  self.assertEqual(request('admin/settings','PUT',settings)[0],200)\n  self.assertEqual(request('bootstrap')[1]['settings']['promotionBanners'],banners)\n  bad={**banners[0],'image':'javascript:alert(1)'}\n  self.assertEqual(request('admin/settings','PUT',{**settings,'promotionBanners':[bad]})[0],400)\n  self.assertEqual(request('bootstrap')[1]['settings']['promotionBanners'],banners)\n  self.assertEqual(request('admin/settings','PUT',{**settings,'promotionBanners':[]})[0],200)\n  self.assertEqual(request('bootstrap')[1]['settings']['promotionBanners'],[])\n",
       "actualApiTrace": [
         {
@@ -3288,7 +3288,7 @@
     {
       "test": "test_62_profile_photo_ownership_and_persistence",
       "status": "passed",
-      "durationSeconds": 0.1129,
+      "durationSeconds": 0.1271,
       "stepsAndExpectedAssertions": " def test_62_profile_photo_ownership_and_persistence(self):\n  boundary='profile-photo-test'\n  payload=(f'--{boundary}\\r\\nContent-Disposition: form-data; name=\"file\"; filename=\"avatar.png\"\\r\\nContent-Type: image/png\\r\\n\\r\\n').encode()+pathlib.Path('public/icon-192.png').read_bytes()+f'\\r\\n--{boundary}--\\r\\n'.encode()\n  status,photo=request('upload','POST',user=self.a,extra={'Content-Type':f'multipart/form-data; boundary={boundary}'},raw=payload)\n  self.assertEqual(status,201,photo)\n  details={'name':'QA photo user','phone':'9876543210','avatar':photo['url']}\n  self.assertEqual(request('profile','PUT',details,self.a)[0],200)\n  self.assertEqual(request('profile',user=self.a)[1]['profile']['avatar'],photo['url'])\n  self.assertEqual(request('profile','PUT',details,self.b)[0],403)\n  self.assertEqual(request('profile','PUT',{'name':'Updated name','phone':''},self.a)[0],200)\n  self.assertEqual(request('profile',user=self.a)[1]['profile']['avatar'],photo['url'])\n  self.assertEqual(request('profile','PUT',{**details,'avatar':''},self.a)[0],200)\n  self.assertEqual(request('profile',user=self.a)[1]['profile']['avatar'],'')\n",
       "actualApiTrace": [
         {
@@ -3363,7 +3363,7 @@
     {
       "test": "test_63_payment_collection_method_and_customer_history",
       "status": "passed",
-      "durationSeconds": 0.3123,
+      "durationSeconds": 0.391,
       "stepsAndExpectedAssertions": " def test_63_payment_collection_method_and_customer_history(self):\n  for method in ['cash','upi','card']:\n   _,o=self.order()\n   self.assertEqual(request('admin/payments/'+o['id'],'POST',{'reference':'QA '+method,'collection_method':method})[0],200)\n   status,b=request('admin/customers/'+self.a[0]+'/orders')\n   self.assertEqual(status,200);self.assertEqual(b['total'],len(b['orders']));self.assertFalse(b['hasMore'])\n   row=next(x for x in b['orders'] if x['id']==o['id'])\n   self.assertEqual(row['collection_method'],method);self.assertEqual(row['items'][0]['product_id'],self.id)\n   self.assertIn('discount',row);self.assertEqual(row['payment_status'],'paid')\n  self.assertEqual(request('admin/customers/'+self.a[0]+'/orders',user=self.b)[0],403)\n  overview=request('admin/overview')[1]\n  self.assertEqual(next(x for x in overview['customers'] if x['id']==self.a[0])['order_count'],3)\n  _,o=self.order()\n  self.assertEqual(request('admin/payments/'+o['id'],'POST',{'reference':'QA invalid','collection_method':'bitcoin'})[0],400)\n  self.assertEqual(request('admin/customers/missing-customer/orders')[0],404)\n",
       "actualApiTrace": [
         {
@@ -3386,13 +3386,13 @@
         },
         {
           "method": "POST",
-          "path": "/api/admin/payments/CH-1A8B0139",
+          "path": "/api/admin/payments/CH-D975D43E",
           "identity": "admin",
           "status": 200
         },
         {
           "method": "GET",
-          "path": "/api/admin/customers/qa-cc1e6fc72c-a/orders",
+          "path": "/api/admin/customers/qa-024df802ca-a/orders",
           "identity": "admin",
           "status": 200
         },
@@ -3410,13 +3410,13 @@
         },
         {
           "method": "POST",
-          "path": "/api/admin/payments/CH-33B48B66",
+          "path": "/api/admin/payments/CH-123E5EBF",
           "identity": "admin",
           "status": 200
         },
         {
           "method": "GET",
-          "path": "/api/admin/customers/qa-cc1e6fc72c-a/orders",
+          "path": "/api/admin/customers/qa-024df802ca-a/orders",
           "identity": "admin",
           "status": 200
         },
@@ -3434,19 +3434,19 @@
         },
         {
           "method": "POST",
-          "path": "/api/admin/payments/CH-A99E1215",
+          "path": "/api/admin/payments/CH-AA6F8C73",
           "identity": "admin",
           "status": 200
         },
         {
           "method": "GET",
-          "path": "/api/admin/customers/qa-cc1e6fc72c-a/orders",
+          "path": "/api/admin/customers/qa-024df802ca-a/orders",
           "identity": "admin",
           "status": 200
         },
         {
           "method": "GET",
-          "path": "/api/admin/customers/qa-cc1e6fc72c-a/orders",
+          "path": "/api/admin/customers/qa-024df802ca-a/orders",
           "identity": "synthetic customer",
           "status": 403
         },
@@ -3470,7 +3470,7 @@
         },
         {
           "method": "POST",
-          "path": "/api/admin/payments/CH-CA10FCD7",
+          "path": "/api/admin/payments/CH-5C27DCE1",
           "identity": "admin",
           "status": 400
         },
@@ -3498,8 +3498,8 @@
     {
       "test": "test_64_admin_password_login_and_logout",
       "status": "passed",
-      "durationSeconds": 0.1598,
-      "stepsAndExpectedAssertions": " def test_64_admin_password_login_and_logout(self):\n  payload=json.dumps({'username':'qaadmin','password':'qa-admin-password'}).encode()\n  req=urllib.request.Request(BASE+'/api/auth/admin/login',data=payload,headers={'Content-Type':'application/json','cf-connecting-ip':self.id+'-success'},method='POST')\n  with urllib.request.urlopen(req) as r:\n   self.assertEqual(r.status,200);cookie=r.headers['Set-Cookie'];self.assertIn('HttpOnly',cookie);self.assertIn('SameSite=Strict',cookie)\n  identity={'Cookie':cookie.split(';')[0]}\n  self.assertEqual(request('admin/overview',user=None,extra=identity)[0],200)\n  self.assertEqual(request('bootstrap',user=None,extra=identity)[1]['user']['authProvider'],'admin-password')\n  self.assertEqual(request('auth/admin/logout','POST',{},user=None,extra=identity)[0],200)\n  self.assertEqual(request('admin/overview',user=None,extra=identity)[0],401)\n  self.assertEqual(request('admin/overview',user=None,extra={'Cookie':'espresso_admin='+'a'*64})[0],401)\n",
+      "durationSeconds": 0.1764,
+      "stepsAndExpectedAssertions": " def test_64_admin_password_login_and_logout(self):\n  payload=json.dumps({'username':'qaadmin','password':'qa-admin-password'}).encode()\n  req=urllib.request.Request(BASE+'/api/auth/admin/login',data=payload,headers={'Content-Type':'application/json','cf-connecting-ip':self.id+'-success'},method='POST')\n  with urllib.request.urlopen(req) as r:\n   self.assertEqual(r.status,200);cookie=r.headers['Set-Cookie'];self.assertIn('HttpOnly',cookie);self.assertIn('SameSite=Strict',cookie)\n  identity={'Cookie':cookie.split(';')[0]}\n  self.assertEqual(request('admin/overview',user=None,extra=identity)[0],200)\n  # Admin cookies grant admin access only, never a customer identity.\n  self.assertIsNone(request('bootstrap',user=None,extra=identity)[1]['user'])\n  self.assertEqual(request('auth/admin/logout','POST',{},user=None,extra=identity)[0],200)\n  self.assertEqual(request('admin/overview',user=None,extra=identity)[0],403)\n  self.assertEqual(request('admin/overview',user=None,extra={'Cookie':'espresso_admin='+'a'*64})[0],403)\n",
       "actualApiTrace": [
         {
           "method": "POST",
@@ -3529,13 +3529,13 @@
           "method": "GET",
           "path": "/api/admin/overview",
           "identity": "anonymous",
-          "status": 401
+          "status": 403
         },
         {
           "method": "GET",
           "path": "/api/admin/overview",
           "identity": "anonymous",
-          "status": 401
+          "status": 403
         },
         {
           "method": "POST",
@@ -3555,7 +3555,7 @@
     {
       "test": "test_65_admin_password_rejection_and_rate_limit",
       "status": "passed",
-      "durationSeconds": 0.2538,
+      "durationSeconds": 0.2978,
       "stepsAndExpectedAssertions": " def test_65_admin_password_rejection_and_rate_limit(self):\n  for i in range(10):\n   self.assertEqual(request('auth/admin/login','POST',{'username':'qaadmin','password':'wrong'},user=None,extra={'cf-connecting-ip':self.id+'-rate'})[0],401)\n  self.assertEqual(request('auth/admin/login','POST',{'username':'qaadmin','password':'qa-admin-password'},user=None,extra={'cf-connecting-ip':self.id+'-rate'})[0],429)\n  self.assertEqual(request('auth/admin/login','POST',{'username':'qaadmin','password':'qa-admin-password'},user=None,extra={'Origin':'https://evil.example'})[0],403)\n",
       "actualApiTrace": [
         {
@@ -3654,7 +3654,7 @@
     {
       "test": "test_66_admin_stock_toggle_preserves_item_and_blocks_order",
       "status": "passed",
-      "durationSeconds": 0.171,
+      "durationSeconds": 0.1969,
       "stepsAndExpectedAssertions": " def test_66_admin_stock_toggle_preserves_item_and_blocks_order(self):\n  path='admin/products/'+self.id+'/availability'\n  self.assertEqual(request(path,'PATCH',{'available':False},self.a)[0],403)\n  self.assertEqual(request(path,'PATCH',{'available':False})[0],200)\n  p=next(x for x in request('bootstrap')[1]['products'] if x['id']==self.id)\n  self.assertFalse(p['available']);self.assertEqual(p['inventory'],10);self.assertEqual(p['price'],10000)\n  self.assertEqual(self.quote()[0],400)\n  self.assertEqual(request(path,'PATCH',{'available':True})[0],200)\n  self.assertEqual(self.quote()[0],200)\n  self.assertEqual(request('admin/products','POST',{**self.p,'image':'/images/menu/items/source-01.webp'})[0],200)\n  self.assertEqual(request('admin/products','POST',{**self.p,'inventory':0,'available':False})[0],200)\n  self.assertEqual(request(path,'PATCH',{'available':True})[0],409)\n  self.assertEqual(request(path,'PATCH',{'available':'yes'})[0],400)\n",
       "actualApiTrace": [
         {
@@ -3665,13 +3665,13 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/products/qa-6d45eb1503/availability",
+          "path": "/api/admin/products/qa-75e9838199/availability",
           "identity": "synthetic customer",
           "status": 403
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/products/qa-6d45eb1503/availability",
+          "path": "/api/admin/products/qa-75e9838199/availability",
           "identity": "admin",
           "status": 200
         },
@@ -3689,7 +3689,7 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/products/qa-6d45eb1503/availability",
+          "path": "/api/admin/products/qa-75e9838199/availability",
           "identity": "admin",
           "status": 200
         },
@@ -3713,13 +3713,13 @@
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/products/qa-6d45eb1503/availability",
+          "path": "/api/admin/products/qa-75e9838199/availability",
           "identity": "admin",
           "status": 409
         },
         {
           "method": "PATCH",
-          "path": "/api/admin/products/qa-6d45eb1503/availability",
+          "path": "/api/admin/products/qa-75e9838199/availability",
           "identity": "admin",
           "status": 400
         },

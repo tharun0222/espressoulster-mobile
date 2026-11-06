@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {validateSubscriptionPlan} from '../lib/subscription-catalog.ts';
+const good={name:'Team coffee pass',amount:1200000,credits:60,days:60,enabled:true};
+test('validates editable plan fields',()=>assert.deepEqual(validateSubscriptionPlan(good),good));
+test('rejects unsafe price, credits, validity and malformed fields',()=>{for(const changes of [{name:''},{amount:4999},{amount:Infinity},{amount:100.5},{credits:0},{credits:1.5},{days:0},{days:731},{enabled:'yes'}])assert.throws(()=>validateSubscriptionPlan({...good,...changes}))});
+import {validatePlanItems} from '../lib/subscription-catalog.ts';
+test('menu selection requires actual non-archived products and stores canonical names',()=>{const products=[{id:'sandwich',name:'Cheese sandwich'},{id:'old',name:'Old item',archived:true}];assert.throws(()=>validatePlanItems('menu',[],products));assert.throws(()=>validatePlanItems('menu',['missing'],products));assert.throws(()=>validatePlanItems('menu',['old'],products));assert.deepEqual(validatePlanItems('menu',['sandwich','sandwich'],products),{itemScope:'menu',includedItems:[{id:'sandwich',name:'Cheese sandwich'}]})});

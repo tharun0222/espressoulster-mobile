@@ -1,2 +1,2 @@
-export const subscriptionPlans={weekly:{id:'weekly',name:'Weekly coffee pass',amount:159900,credits:8,days:30},monthly:{id:'monthly',name:'Monthly coffee pass',amount:600000,credits:34,days:30}} as const;
-export function subscriptionPlan(id:unknown){if(id!=='weekly'&&id!=='monthly')throw Error('Choose a valid subscription plan.');return subscriptionPlans[id];}
+export const subscriptionPlans={weekly:{id:'weekly',name:'Weekly coffee pass',amount:159900,credits:8,days:30},monthly:{id:'monthly',name:'Monthly coffee pass',amount:600000,credits:34,days:30},two_month:{id:'two_month',name:'2-month coffee pass',amount:1200000,credits:60,days:60}} as const;
+export function subscriptionPlan(id:unknown){if(id!=='weekly'&&id!=='monthly'&&id!=='two_month')throw Error('Choose a valid subscription plan.');return subscriptionPlans[id];}

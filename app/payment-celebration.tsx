@@ -1,0 +1,10 @@
+import type {CSSProperties} from 'react';
+export default function PaymentCelebration(){
+ return <div className="coffee-payment-celebration" aria-hidden="true">
+  <div className="coffee-celebration-halo"/>
+  <svg className="coffee-celebration-ring" viewBox="0 0 220 220"><circle cx="110" cy="110" r="88"/></svg>
+  <div className="coffee-celebration-burst">{Array.from({length:12},(_,i)=><i key={i} style={{'--angle':`${i*30}deg`,'--delay':`${i%3*65}ms`} as CSSProperties}/>)}</div>
+  <svg className="coffee-celebration-cup" viewBox="0 0 180 180" fill="none"><ellipse cx="90" cy="164" rx="49" ry="5" fill="#061e19" opacity=".2"/><g className="coffee-celebration-steam" fill="none" stroke="#d3ae59" strokeWidth="2.5" strokeLinecap="round"><path d="M73 35c-10-10 9-12 0-23"/><path d="M91 31c-10-10 9-12 0-23"/><path d="M109 35c-10-10 9-12 0-23"/></g><g className="coffee-celebration-mug"><path d="M133 90h13c26 0 26 33 0 33h-11" fill="none" stroke="#d3ae59" strokeWidth="9"/><path d="M44 79h93v32q0 36-46 36t-47-36Z" fill="#fffdf3"/><ellipse cx="90" cy="79" rx="47" ry="10" fill="#d3ae59"/><ellipse cx="90" cy="80" rx="36" ry="5" fill="#563c2c"/><ellipse cx="91" cy="154" rx="61" ry="6" fill="#d3ae59" opacity=".7"/><g className="payment-cup-brand"><circle cx="90" cy="103" r="10" fill="#173b36"/><circle cx="90" cy="103" r="8.4" stroke="#d3ae59" strokeWidth=".65"/><text x="90" y="107" textAnchor="middle" fontFamily="Georgia,serif" fontSize="12" fontWeight="bold" fill="#fffdf3">E</text><text x="90" y="127" textAnchor="middle" fontFamily="Georgia,serif" fontSize="10.5" fontWeight="bold" textLength="82" lengthAdjust="spacingAndGlyphs" fill="#173b36">Espressoulster</text><text x="90" y="138" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="5.4" letterSpacing="2.2" fill="#173b36">COFFEE</text></g></g></svg>
+  <svg className="coffee-celebration-seal" viewBox="0 0 56 56"><circle cx="28" cy="28" r="25" fill="#efc77f" stroke="#173b36" strokeWidth="4"/><path d="m17 28 8 8 15-17" fill="none" stroke="#173b36" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+ </div>;
+}

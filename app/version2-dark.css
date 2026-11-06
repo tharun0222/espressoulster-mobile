@@ -1,0 +1,422 @@
+/* Version 2 presentation, enabled only for Version 1 dark mode. */
+
+/* dribbble-theme.css */
+/* Customer app: the approved black and orange food-delivery visual direction. */
+html[data-theme="dark"] .dribbble-theme,html[data-theme="dark"] .phone-welcome,html[data-theme="dark"] body:has(.dribbble-theme) .modal-backdrop{--green:#ff7043;--green-dark:#e65b30;--gold:#ffab87;--ink:#f6f6f6;--muted:#aaa;--cream:#080808;--paper:#151515;--line:#2b2b2b;--pink:#ff7043;color-scheme:dark}
+html[data-theme="dark"] body:has(.dribbble-theme),html[data-theme="dark"] body:has(.phone-welcome){background:#171717}
+html[data-theme="dark"] .app-shell.dribbble-theme{background:#080808;color:#f6f6f6;box-shadow:0 0 60px #0005;font-family:"DM Sans",Arial,sans-serif}
+html[data-theme="dark"] .dribbble-theme h1,html[data-theme="dark"] .dribbble-theme h2,html[data-theme="dark"] .dribbble-theme h3{color:#f6f6f6;font-family:"DM Sans",Arial,sans-serif}
+html[data-theme="dark"] .dribbble-theme .header,html[data-theme="dark"] .dribbble-theme .header.home-header{background:#080808;border-color:transparent;box-shadow:none;border-radius:0;color:#f6f6f6}
+html[data-theme="dark"] .dribbble-theme .header-inner{padding:22px 22px 12px}
+html[data-theme="dark"] .dribbble-theme .brand{font-size:17px;font-weight:700;color:#fff;letter-spacing:-.5px}
+html[data-theme="dark"] .dribbble-theme .brand-logo{width:30px;height:30px;background:#181818;border-radius:50%}
+html[data-theme="dark"] .dribbble-theme .header-actions{gap:8px}
+html[data-theme="dark"] .dribbble-theme .header-actions .icon-button{width:42px;height:42px;background:#161616;color:#eee;border:1px solid #282828;border-radius:50%;box-shadow:none}
+html[data-theme="dark"] .dribbble-theme .greeting{font-size:23px;font-weight:600;letter-spacing:-.5px;color:#fff;margin:17px 0 10px}
+html[data-theme="dark"] .dribbble-theme .location{background:transparent;border:0;color:#bdbdbd;font-size:11px;padding:0;min-height:28px;gap:6px}
+html[data-theme="dark"] .dribbble-theme .location svg{color:#ff946d}
+html[data-theme="dark"] .dribbble-theme .location small{background:#222;color:#c3c3c3;border-radius:12px;padding:5px 8px;font-size:9px}
+html[data-theme="dark"] .dribbble-theme .badge,html[data-theme="dark"] .dribbble-theme .cart-count{background:#ff7043;color:#190b05;border-color:#080808}
+html[data-theme="dark"] .dribbble-theme .order-mode.segmented{margin:8px 22px 18px;background:#161616;border:1px solid #292929;border-radius:999px;padding:4px;box-shadow:none}
+html[data-theme="dark"] .dribbble-theme .order-mode button{background:transparent;color:#b6b6b6;border-radius:999px;font-size:11px;min-height:34px}
+html[data-theme="dark"] .dribbble-theme .order-mode button.active{background:#ff7043;color:#190b05;font-weight:700;box-shadow:none}
+html[data-theme="dark"] .dribbble-theme .home-content{padding:0 22px 28px}
+html[data-theme="dark"] .dribbble-theme .theme-home-search{display:flex;flex-direction:row;align-items:center;gap:10px;background:#151515;border:1px solid #2c2c2c;border-radius:999px;padding:0 15px;margin:0 0 22px;color:#bcbcbc}
+html[data-theme="dark"] .dribbble-theme .theme-home-search input{background:transparent;border:0;padding:0;min-height:46px;min-width:0;font-size:12px;color:#f5f5f5}
+html[data-theme="dark"] .dribbble-theme .theme-home-search input::placeholder{color:#999}
+html[data-theme="dark"] .dribbble-theme .theme-home-search button{display:grid;place-items:center;width:30px;flex-shrink:0;color:#ffab87;padding:0}
+html[data-theme="dark"] .dribbble-theme .coffee-photo-hero{background:#15110e;border-radius:24px;min-height:350px;margin:0 0 24px;box-shadow:none;display:flex;align-items:flex-end}
+html[data-theme="dark"] .dribbble-theme .coffee-photo-image{object-position:65% 45%;filter:brightness(.78) saturate(.9)}
+html[data-theme="dark"] .dribbble-theme .coffee-photo-shade{background:linear-gradient(0deg,#050505f5,#050505bf 30%,#0505050a 75%)}
+html[data-theme="dark"] .dribbble-theme .coffee-photo-copy{max-width:none;width:100%;padding:24px 22px}
+html[data-theme="dark"] .dribbble-theme .coffee-photo-copy .eyebrow{color:#ffab87;font-size:8px;letter-spacing:1.7px}
+html[data-theme="dark"] .dribbble-theme .coffee-photo-copy h2{font:500 34px/1.1 "DM Sans",Arial,sans-serif;color:#fff;letter-spacing:-1px;margin:12px 0}
+html[data-theme="dark"] .dribbble-theme .coffee-photo-copy p{color:#ccc;font-size:12px;max-width:225px;margin-bottom:20px}
+html[data-theme="dark"] .dribbble-theme .coffee-photo-copy button{display:flex;justify-content:space-between;align-items:center;width:100%;background:#ffffff0d;color:#fff;border:1px solid #ffffff35;box-shadow:none;backdrop-filter:blur(12px);border-radius:999px;font-size:12px;min-height:46px;padding:12px 16px}
+html[data-theme="dark"] .dribbble-theme .coffee-photo-copy button svg{background:#ff7043;color:#190b05;padding:5px;box-sizing:content-box;border-radius:50%}
+html[data-theme="dark"] .dribbble-theme .coffee-photo-copy button:hover{background:#ff704328;transform:none}
+html[data-theme="dark"] .dribbble-theme .section-heading{margin-bottom:14px;gap:10px}
+html[data-theme="dark"] .dribbble-theme .section-heading h2{font-size:16px;font-weight:500;letter-spacing:-.2px;color:#f5f5f5}
+html[data-theme="dark"] .dribbble-theme .section-heading button{color:#aaa;font-size:11px}
+html[data-theme="dark"] .dribbble-theme .personal-home{background:transparent;color:#fff;padding:0;margin:0 0 20px}
+html[data-theme="dark"] .dribbble-theme .personal-home>h2{font-size:19px;margin:7px 0 13px;letter-spacing:-.4px}
+html[data-theme="dark"] .dribbble-theme .eyebrow{color:#ffab87}
+html[data-theme="dark"] .dribbble-theme .club-shortcuts{gap:8px;margin-bottom:24px}
+html[data-theme="dark"] .dribbble-theme .club-shortcuts button{background:#151515;border:1px solid #2c2c2c;border-radius:18px;box-shadow:none;color:#ddd;font-size:10px;padding:14px 5px}
+html[data-theme="dark"] .dribbble-theme .club-shortcuts button svg{color:#ff986e;width:20px;height:20px}
+html[data-theme="dark"] .dribbble-theme .club-shortcuts button:hover{background:#222;transform:none}
+html[data-theme="dark"] .dribbble-theme :is(.table-booking-section,.ritual-card,.usual-card,.live-order-banner,.club-membership,.club-offer,.club-grid>button,.form-card,.order-card,.summary-card,.cart-item,.address-card,.profile-menu,.empty-state,.coffee-pairings,.subscription-daily-code,.subscription-tracker,.install-app-card){background:#151515;border-color:#303030;color:#f3f3f3;box-shadow:none}
+html[data-theme="dark"] .dribbble-theme :is(small,.description,.fine-print,.empty-state p,.table-booking-section p,.club-offer p,.club-membership p){color:#aaa}
+html[data-theme="dark"] .dribbble-theme .subscription-home-card{background:linear-gradient(120deg,#351b13,#151212);border:1px solid #633c2c;border-radius:21px;box-shadow:none;color:#f6f6f6}
+html[data-theme="dark"] .dribbble-theme .subscription-home-card>svg{color:#ff986e}
+html[data-theme="dark"] .dribbble-theme .subscription-home-card strong{color:#fff}
+html[data-theme="dark"] .dribbble-theme .subscription-home-card small,html[data-theme="dark"] .dribbble-theme .subscription-home-card span span{color:#d6b8a9}
+html[data-theme="dark"] .dribbble-theme .curated-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+html[data-theme="dark"] .dribbble-theme .product-card,html[data-theme="dark"] .dribbble-theme .product-card.compact{background:#151515;border:1px solid #2c2c2c;border-radius:20px;box-shadow:none}
+html[data-theme="dark"] .dribbble-theme .product-card:hover{border-color:#714a36;box-shadow:none}
+html[data-theme="dark"] .dribbble-theme .product-card .image-button{background:#222}
+html[data-theme="dark"] .dribbble-theme .compact .image-button{height:150px}
+html[data-theme="dark"] .dribbble-theme .product-image{background:#222;color:#b18e76}
+html[data-theme="dark"] .dribbble-theme .product-copy{color:#eee}
+html[data-theme="dark"] .dribbble-theme .product-title{font-size:13px;color:#f5f5f5}
+html[data-theme="dark"] .dribbble-theme .compact .product-copy{padding:12px}
+html[data-theme="dark"] .dribbble-theme .product-top .eyebrow{font-size:8px;color:#b7afa9}
+html[data-theme="dark"] .dribbble-theme .favorite{color:#bbb}
+html[data-theme="dark"] .dribbble-theme .favorite.saved{color:#ff946d}
+html[data-theme="dark"] .dribbble-theme .favorite.saved svg{fill:#ff704326}
+html[data-theme="dark"] .dribbble-theme .price{color:#ffab87}
+html[data-theme="dark"] .dribbble-theme .dietary-tags>span{background:#252a21;border-color:#414b38;color:#cbddb9;font-size:8px}
+html[data-theme="dark"] .dribbble-theme .dietary-tags .diet-test{background:#322519;color:#e7bc86}
+html[data-theme="dark"] .dribbble-theme .add-button{background:#ff7043;border-color:#ff7043;color:#190b05;border-radius:12px;box-shadow:none}
+html[data-theme="dark"] .dribbble-theme .add-button:disabled{background:#292929;border-color:#333;color:#aaa}
+html[data-theme="dark"] .dribbble-theme .menu-quantity{background:#261a14;border-color:#5b3928;color:#ffab87}
+html[data-theme="dark"] .dribbble-theme .primary,html[data-theme="dark"] .dribbble-theme a.primary{background:#ff7043;border-color:#ff7043;color:#190b05;border-radius:999px;box-shadow:none}
+html[data-theme="dark"] .dribbble-theme .primary:hover{background:#ff8b61}
+html[data-theme="dark"] .dribbble-theme .secondary,html[data-theme="dark"] .dribbble-theme .text-button{background:#241a15;border-color:#51392b;color:#ffab87}
+html[data-theme="dark"] .dribbble-theme :is(input,select,textarea){background:#1b1b1b;border-color:#3b3b3b;color:#f5f5f5}
+html[data-theme="dark"] .dribbble-theme input::placeholder,html[data-theme="dark"] .dribbble-theme textarea::placeholder{color:#999}
+html[data-theme="dark"] .dribbble-theme :is(button,a,input,textarea,select):focus-visible{outline-color:#ff986e}
+html[data-theme="dark"] .dribbble-theme .menu-toolbar{background:#080808;border-color:#292929;padding:16px}
+html[data-theme="dark"] .dribbble-theme .search-field{background:#171717;color:#ccc;border-color:#333;border-radius:999px;box-shadow:none}
+html[data-theme="dark"] .dribbble-theme .search-field input{background:transparent}
+html[data-theme="dark"] .dribbble-theme .filter-button,html[data-theme="dark"] .dribbble-theme .filters{background:#181818;color:#ddd;border-color:#363636}
+html[data-theme="dark"] .dribbble-theme .menu-layout{border-color:#282828}
+html[data-theme="dark"] .dribbble-theme .category-rail{background:#111;border-color:#2c2c2c;width:84px;scrollbar-width:none}
+html[data-theme="dark"] .dribbble-theme .category-rail::-webkit-scrollbar{display:none}
+html[data-theme="dark"] .dribbble-theme .category-rail button{color:#aaa;background:transparent;border-radius:14px;font-size:10px;width:calc(100% - 12px);margin:4px 6px}
+html[data-theme="dark"] .dribbble-theme .category-rail button.active{background:#ff70431c;color:#ffab87}
+html[data-theme="dark"] .dribbble-theme .category-rail button.active::before{background:#ff7043}
+html[data-theme="dark"] .dribbble-theme .category-rail svg,html[data-theme="dark"] .dribbble-theme .category-rail button.active svg{color:#db9b75}
+html[data-theme="dark"] .dribbble-theme .menu-products{background:#080808;padding:16px 12px 24px}
+html[data-theme="dark"] .dribbble-theme .menu-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+html[data-theme="dark"] .dribbble-theme .menu-grid .product-card{display:flex;flex-direction:column;min-height:0}
+html[data-theme="dark"] .dribbble-theme .menu-grid .image-button{width:100%;min-height:125px;height:125px;flex:0 0 125px}
+html[data-theme="dark"] .dribbble-theme .menu-grid .product-copy{padding:10px}
+html[data-theme="dark"] .dribbble-theme .menu-grid .product-title{font-size:12px}
+html[data-theme="dark"] .dribbble-theme .menu-grid .price{font-size:13px}
+html[data-theme="dark"] .dribbble-theme .bottom-nav{left:50%;transform:translateX(-50%);bottom:max(12px,env(safe-area-inset-bottom));width:calc(100% - 28px);max-width:402px;height:72px;padding:7px 5px;border:1px solid #ffffff26;border-radius:26px;background:#1c1c1ce8;box-shadow:0 10px 35px #0009;backdrop-filter:blur(22px)}
+html[data-theme="dark"] .dribbble-theme .bottom-nav>button{font-size:9px;color:#b5b5b5;letter-spacing:0;gap:4px;min-width:0;flex:1}
+html[data-theme="dark"] .dribbble-theme .bottom-nav>button .nav-icon,html[data-theme="dark"] .dribbble-theme .bottom-nav .pay-nav .nav-icon{height:32px;width:38px;background:transparent;color:inherit;border:0;border-radius:50%;box-shadow:none;animation:none}
+html[data-theme="dark"] .dribbble-theme .bottom-nav>button.active{color:#fff;font-weight:500}
+html[data-theme="dark"] .dribbble-theme .bottom-nav>button.active .nav-icon{background:#ff7043;color:#190b05;animation:none}
+html[data-theme="dark"] .dribbble-theme .bottom-nav>button.active .nav-icon::after{display:none}
+html[data-theme="dark"] .dribbble-theme .bottom-nav>button.active>span:last-child{animation:none}
+html[data-theme="dark"] .dribbble-theme .movable-cart{background:#ff7043;color:#190b05;border-color:#ffab87;box-shadow:0 6px 18px #0006}
+html[data-theme="dark"] .dribbble-theme.app-shell{padding-bottom:calc(105px + env(safe-area-inset-bottom))}
+html[data-theme="dark"] .dribbble-theme.app-shell:has(.route-menu){padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+html[data-theme="dark"] .dribbble-theme .profile-hero{background:radial-gradient(ellipse at 50% 0,#42251c,transparent 75%),#111;color:#f5f5f5;border-color:#333}
+html[data-theme="dark"] .dribbble-theme .profile-hero p{color:#bbb}
+html[data-theme="dark"] .dribbble-theme .profile-content{background:#080808}
+html[data-theme="dark"] .dribbble-theme .avatar,html[data-theme="dark"] .dribbble-theme .customer-avatar{background:#2b1c16;color:#ffab87;border-color:#694333}
+html[data-theme="dark"] .dribbble-theme .profile-links,html[data-theme="dark"] .dribbble-theme .profile-stats button{background:#151515;color:#eee;border-color:#333}
+html[data-theme="dark"] .dribbble-theme .profile-links>button,html[data-theme="dark"] .dribbble-theme .profile-links>a{color:#ddd;border-color:#333}
+html[data-theme="dark"] .dribbble-theme .profile-links svg{color:#ff986e}
+html[data-theme="dark"] .dribbble-theme .profile-stats span{color:#aaa}
+html[data-theme="dark"] .dribbble-theme .totals,html[data-theme="dark"] .dribbble-theme .cart-summary{background:#151515;color:#ddd;border-color:#333}
+html[data-theme="dark"] .dribbble-theme .grand-total{color:#ffab87;border-color:#333}
+html[data-theme="dark"] .dribbble-theme .route-subscriptions,html[data-theme="dark"] .dribbble-theme .route-packs,html[data-theme="dark"] .dribbble-theme .subscription-content{background:#080808}
+html[data-theme="dark"] .dribbble-theme .subscription-official-quote h1{color:#f5f5f5}
+html[data-theme="dark"] .dribbble-theme .subscription-slide-card{background:linear-gradient(145deg,#2e1b13,#151515);border-color:#65432f;color:#f3f3f3;box-shadow:none}
+html[data-theme="dark"] .dribbble-theme .subscription-slide-card :is(h3,.subscription-price){color:#ffb18c}
+html[data-theme="dark"] .dribbble-theme .subscription-slide-card :is(p,small,.subscription-includes){color:#c9bcb4}
+html[data-theme="dark"] .dribbble-theme .subscription-slide-card .subscription-badge{background:#ff7043;color:#190b05}
+html[data-theme="dark"] .dribbble-theme .promotion-shade{background:linear-gradient(90deg,#090909f5,#090909bb 45%,#09090922)}
+html[data-theme="dark"] .dribbble-theme .promotion-copy button{background:#ff7043;color:#190b05}
+html[data-theme="dark"] .dribbble-theme .promotion-heading,html[data-theme="dark"] .dribbble-theme .promotion-copy h3{color:#fff}
+html[data-theme="dark"] .dribbble-theme .promotion-heading>div>span,html[data-theme="dark"] .dribbble-theme .promotion-tag{color:#ffab87}
+html[data-theme="dark"] .dribbble-theme .success-message,html[data-theme="dark"] .dribbble-theme .status{background:#192b22;color:#b6dec3;border-color:#395847}
+html[data-theme="dark"] .dribbble-theme .error{background:#301715;color:#ffc5b6;border-color:#6c362a}
+html[data-theme="dark"] body:has(.dribbble-theme) :is(.product-modal,.profile-editor-modal,.info-modal,.permission-setup){background:#0c0c0c;color:#f5f5f5;border-color:#333;--green:#ff7043;--green-dark:#e65b30;--ink:#f6f6f6;--muted:#aaa;--cream:#080808;--paper:#181818;--line:#303030;color-scheme:dark}
+html[data-theme="dark"] body:has(.dribbble-theme) .modal-backdrop{background:#000b;backdrop-filter:blur(5px)}
+html[data-theme="dark"] body:has(.dribbble-theme) .product-modal{border-radius:28px 28px 0 0;border:1px solid #333;box-shadow:0 -10px 60px #0007}
+html[data-theme="dark"] body:has(.dribbble-theme) .product-modal .detail-image{background:#161616;min-height:260px}
+html[data-theme="dark"] body:has(.dribbble-theme) .modal-close{background:#1b1b1bcc;color:#fff;border:1px solid #ffffff30}
+html[data-theme="dark"] body:has(.dribbble-theme) .modal-content :is(h2,h3){color:#f5f5f5;font-family:"DM Sans",Arial,sans-serif}
+html[data-theme="dark"] body:has(.dribbble-theme) .modal-content>p{color:#bbb}
+html[data-theme="dark"] body:has(.dribbble-theme) .modal-content :is(input,textarea,select){background:#1b1b1b;color:#f5f5f5;border-color:#3b3b3b}
+html[data-theme="dark"] body:has(.dribbble-theme) .item-nutrition,html[data-theme="dark"] body:has(.dribbble-theme) .item-ingredients{background:#181818;color:#ddd;border-color:#333}
+html[data-theme="dark"] body:has(.dribbble-theme) .item-nutrition dl>div{background:#252525;color:#f5f5f5;border:1px solid #363636}
+html[data-theme="dark"] body:has(.dribbble-theme) .item-nutrition dt{color:#bbb}
+html[data-theme="dark"] body:has(.dribbble-theme) .item-nutrition dd,html[data-theme="dark"] body:has(.dribbble-theme) .item-nutrition dd small{color:#fff}
+html[data-theme="dark"] body:has(.dribbble-theme) .item-nutrition :is(.nutrition-note,.nutrition-pending){color:#bbb}
+html[data-theme="dark"] body:has(.dribbble-theme) .item-nutrition a{color:#ffab87}
+html[data-theme="dark"] body:has(.dribbble-theme) .item-ingredients h3{color:#f5f5f5}
+html[data-theme="dark"] body:has(.dribbble-theme) .item-ingredients li{background:#292929;color:#e3e3e3;border-color:#3b3b3b}
+html[data-theme="dark"] body:has(.dribbble-theme) .recipe-basis,html[data-theme="dark"] body:has(.dribbble-theme) .recipe-measurements td small{color:#aaa}
+html[data-theme="dark"] body:has(.dribbble-theme) .recipe-measurements :is(th,td){color:#ddd;border-color:#333}
+html[data-theme="dark"] body:has(.dribbble-theme) .recipe-review{background:#251d16;color:#e0c3aa;border-color:#514130}
+html[data-theme="dark"] body:has(.dribbble-theme) .preference-chips>button{background:#231914;color:#efc5af;border-color:#563a2b}
+html[data-theme="dark"] body:has(.dribbble-theme) .preference-chips>button[aria-pressed=true]{background:#ff7043;color:#190b05}
+html[data-theme="dark"] body:has(.dribbble-theme) .detail-bottom{background:#111;color:#eee;border-color:#333}
+html[data-theme="dark"] body:has(.dribbble-theme) .detail-bottom .primary{background:#ff7043;color:#190b05;border-radius:999px}
+html[data-theme="dark"] body:has(.dribbble-theme) .detail-bottom .quantity{background:#222;color:#eee;border-color:#414141}
+html[data-theme="dark"] .phone-welcome{background:radial-gradient(ellipse at 85% 10%,#3c211a,transparent 55%),#080808;color:#f5f5f5}
+html[data-theme="dark"] .phone-welcome .phone-brand{color:#fff;font-family:"DM Sans",Arial,sans-serif}
+html[data-theme="dark"] .phone-welcome .phone-brand span{color:#ff986e}
+html[data-theme="dark"] .phone-welcome .phone-welcome-card{background:#151515;color:#f3f3f3;border:1px solid #333;box-shadow:0 20px 65px #0006}
+html[data-theme="dark"] .phone-welcome .phone-welcome-card h1{color:#fff;font-family:"DM Sans",Arial,sans-serif}
+html[data-theme="dark"] .phone-welcome .phone-welcome-card p,html[data-theme="dark"] .phone-welcome .phone-welcome-card small{color:#b6b6b6}
+html[data-theme="dark"] .phone-welcome .phone-icon{background:#ff70431c;color:#ff986e}
+html[data-theme="dark"] .phone-welcome .primary{background:#ff7043;color:#190b05;border-radius:999px}
+html[data-theme="dark"] .phone-welcome .pin-existing,html[data-theme="dark"] .phone-welcome .pin-back{color:#ffab87}
+html[data-theme="dark"] .phone-welcome :is(.phone-input-row,.pin-input-row){background:#1c1c1c;border-color:#414141;color:#eee}
+html[data-theme="dark"] .phone-welcome input{background:transparent;color:#fff;border-color:#414141}
+html[data-theme="dark"] .phone-welcome .phone-input-row>span{color:#ddd;border-color:#414141}
+html[data-theme="dark"] .phone-welcome .pin-input-row>button{color:#bbb}
+@media(max-width:360px){html[data-theme="dark"] .dribbble-theme .header-inner{padding-inline:16px}html[data-theme="dark"] .dribbble-theme .brand{font-size:14px}html[data-theme="dark"] .dribbble-theme .header-actions .icon-button{width:36px;height:36px}html[data-theme="dark"] .dribbble-theme .home-content{padding-inline:16px}html[data-theme="dark"] .dribbble-theme .menu-grid{grid-template-columns:1fr}html[data-theme="dark"] .dribbble-theme .menu-grid .image-button{min-height:150px;flex-basis:150px}html[data-theme="dark"] .dribbble-theme .bottom-nav>button{font-size:8px}}
+
+
+/* mobile-flow-fixes.css */
+/* Keep customer touch scrolling without visible scrollbar rails. */
+html[data-theme="dark"]:has(.dribbble-theme),
+html[data-theme="dark"] body:has(.dribbble-theme),
+html[data-theme="dark"] .dribbble-theme,
+html[data-theme="dark"] .dribbble-theme *,
+html[data-theme="dark"] body:has(.dribbble-theme) .modal-backdrop,
+html[data-theme="dark"] body:has(.dribbble-theme) .modal-backdrop * {
+  scrollbar-width: none;
+}
+html[data-theme="dark"]:has(.dribbble-theme)::-webkit-scrollbar,
+html[data-theme="dark"] body:has(.dribbble-theme)::-webkit-scrollbar,
+html[data-theme="dark"] .dribbble-theme::-webkit-scrollbar,
+html[data-theme="dark"] .dribbble-theme *::-webkit-scrollbar,
+html[data-theme="dark"] body:has(.dribbble-theme) .modal-backdrop::-webkit-scrollbar,
+html[data-theme="dark"] body:has(.dribbble-theme) .modal-backdrop *::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+html[data-theme="dark"] .dribbble-theme .main { min-width: 0; }
+
+
+/* cart-checkout-theme.css */
+/* Checkout stays legible within the mobile app shell at every viewport width. */
+html[data-theme="dark"] .dribbble-theme .checkout-grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+}
+html[data-theme="dark"] .dribbble-theme .checkout-grid > * { min-width: 0; }
+html[data-theme="dark"] .dribbble-theme .checkout-grid :is(.order-summary, .form-card) {
+  background: #151515;
+  color: #f3f3f3;
+  border-color: #303030;
+  padding: 20px;
+  gap: 18px;
+}
+html[data-theme="dark"] .dribbble-theme .order-summary :is(p, label), html[data-theme="dark"] .dribbble-theme .form-card label { color: #d0c8c2; }
+html[data-theme="dark"] .dribbble-theme .order-summary .fine-print,
+html[data-theme="dark"] .dribbble-theme .sandbox-payment-options :is(small, p),
+html[data-theme="dark"] .dribbble-theme .coffee-pairings > p { color: #b4aaa3; }
+html[data-theme="dark"] .dribbble-theme .sandbox-payment-options { border-color: #45362d; }
+html[data-theme="dark"] .dribbble-theme .sandbox-payment-options label {
+  min-height: 44px;
+  padding-block: 5px;
+  cursor: pointer;
+}
+html[data-theme="dark"] .dribbble-theme .sandbox-payment-options input { accent-color: #ff7043; }
+html[data-theme="dark"] .dribbble-theme .sandbox-payment-options label:has(input:disabled) { opacity: .65; cursor: default; }
+html[data-theme="dark"] .dribbble-theme .sandbox-payment-options strong { color: #f5eee9; }
+html[data-theme="dark"] .dribbble-theme .checkout-grid .segmented { background: #23201e; border-color: #45362d; }
+html[data-theme="dark"] .dribbble-theme .checkout-grid .segmented button { color: #d0c8c2; min-height: 44px; }
+html[data-theme="dark"] .dribbble-theme .checkout-grid .segmented button.active { background: #ff7043; color: #190b05; }
+html[data-theme="dark"] .dribbble-theme .coffee-pairings button { background: #231b17; color: #f5eee9; border-color: #493329; }
+html[data-theme="dark"] .dribbble-theme .coffee-pairings small { color: #ffab87; }
+html[data-theme="dark"] .dribbble-theme .cart-item {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  padding: 16px;
+  border: 1px solid #303030;
+  border-radius: 18px;
+  margin-bottom: 12px;
+}
+html[data-theme="dark"] .dribbble-theme .cart-item > .product-image { width: 64px; height: 72px; min-height: 72px; }
+html[data-theme="dark"] .dribbble-theme .cart-item :is(h3, p, small) { overflow-wrap: anywhere; }
+html[data-theme="dark"] .dribbble-theme .cart-item .text-button { min-height: 44px; padding: 9px 12px; margin-top: 8px; }
+html[data-theme="dark"] .dribbble-theme .cart-actions { grid-column: 1 / -1; flex-direction: row; justify-content: space-between; align-items: center; }
+html[data-theme="dark"] .dribbble-theme .cart-item .quantity { max-width: none; background: #261a14; border-color: #5b3928; color: #ffab87; }
+html[data-theme="dark"] .dribbble-theme .cart-item .quantity button { width: 44px; min-height: 44px; }
+html[data-theme="dark"] .dribbble-theme .cart-item .quantity span { min-width: 28px; }
+html[data-theme="dark"] .dribbble-theme .cart-item .icon-button { width: 44px; height: 44px; min-height: 44px; color: #ffab87; background: #241a15; }
+html[data-theme="dark"] .dribbble-theme .totals > div { gap: 12px; align-items: start; }
+html[data-theme="dark"] .dribbble-theme .totals > div > :last-child { flex-shrink: 0; }
+html[data-theme="dark"] .dribbble-theme .checkout-grid .wide { min-height: 48px; white-space: normal; }
+@media (max-width: 360px) {
+  html[data-theme="dark"] .dribbble-theme .checkout-grid :is(.order-summary, .form-card) { padding: 16px; }
+}
+
+
+/* upi-scanner.css */
+/* Version 2's in-store payment flow shares the customer app's dark palette. */
+html[data-theme="dark"] .dribbble-theme .upi-scanner {
+  min-width: 0;
+  padding: 24px 22px;
+  border: 1px solid #38302b;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #241b16, #151515 65%);
+  color: #f6f6f6;
+}
+html[data-theme="dark"] .dribbble-theme .upi-scanner h2 { margin: 0 0 12px; font-size: 24px; }
+html[data-theme="dark"] .dribbble-theme .upi-scanner > p { color: #d0c5be; }
+html[data-theme="dark"] .dribbble-theme .upi-scanner > .fine-print,
+html[data-theme="dark"] .dribbble-theme .upi-scan-result .fine-print { color: #bfb4ad; font-size: 12px; line-height: 1.65; }
+html[data-theme="dark"] .dribbble-theme .upi-scanner > .secondary {
+  width: 100%;
+  min-height: 50px;
+  margin: 18px 0 4px;
+  border: 1px solid #ff7043;
+  border-radius: 14px;
+  background: #ff7043;
+  color: #1b100b;
+  font-weight: 700;
+}
+html[data-theme="dark"] .dribbble-theme .upi-scanner > .secondary:disabled { opacity: .7; cursor: wait; }
+html[data-theme="dark"] .dribbble-theme .upi-scanner :is(button, a):focus-visible { outline: 3px solid #ffbd9e; outline-offset: 4px; }
+html[data-theme="dark"] .dribbble-theme .upi-scanner .scanner-camera { border: 1px solid #795340; background: #080808; max-height: 42svh; }
+html[data-theme="dark"] .dribbble-theme .upi-scanner > [role="status"] { color: #ffb28f; }
+html[data-theme="dark"] .dribbble-theme .upi-scanner > .phone-error {
+  padding: 12px 14px;
+  border: 1px solid #874b40;
+  border-radius: 12px;
+  background: #38211d;
+  color: #ffd0c4;
+}
+html[data-theme="dark"] .dribbble-theme .upi-scan-result {
+  padding: 18px;
+  background: #1e1b18;
+  border: 1px solid #514032;
+  color: #f6f6f6;
+}
+html[data-theme="dark"] .dribbble-theme .upi-scan-result h3 { margin: 0 0 14px; font-size: 18px; }
+html[data-theme="dark"] .dribbble-theme .upi-scan-result strong { color: #ffb28f; }
+html[data-theme="dark"] .dribbble-theme .upi-scan-result > p { color: #d0c5be; }
+html[data-theme="dark"] .dribbble-theme .upi-scan-result .primary { min-height: 48px; background: #ff7043; color: #1b100b; font-weight: 700; }
+@media (max-width: 360px) {
+  html[data-theme="dark"] .dribbble-theme .upi-scanner { padding: 20px 16px; }
+  html[data-theme="dark"] .dribbble-theme .upi-scan-result { padding: 14px; }
+}
+
+
+/* profile-booking-theme.css */
+/* Version 2 customer profile and booking surfaces, including portal dialogs. */
+html[data-theme="dark"] .dribbble-theme .table-booking-section{min-width:0;scroll-margin-top:100px}
+html[data-theme="dark"] .dribbble-theme .booking-intro{align-items:flex-start;min-width:0}
+html[data-theme="dark"] .dribbble-theme .booking-icon{background:#302017;color:#ffab87;flex-shrink:0}
+html[data-theme="dark"] .dribbble-theme .booking-intro h2{font-size:21px;line-height:1.25}
+html[data-theme="dark"] .dribbble-theme .booking-body :is(input,select,textarea){background:#202020;color:#f6f6f6;border-color:#444;min-height:46px;font-size:16px;max-width:100%}
+html[data-theme="dark"] .dribbble-theme .booking-body label{color:#ddd;min-width:0}
+html[data-theme="dark"] .dribbble-theme .booking-body textarea{min-height:88px;resize:vertical}
+html[data-theme="dark"] .dribbble-theme .booking-body select:disabled{opacity:.65}
+html[data-theme="dark"] .dribbble-theme .booking-row{background:#1f1f1f;border-color:#3c3c3c;color:#eee;overflow-wrap:anywhere}
+html[data-theme="dark"] .dribbble-theme .booking-row p{color:#c4c4c4;flex-wrap:wrap;line-height:1.6}
+html[data-theme="dark"] .dribbble-theme .booking-status{color:#ffbe94}
+html[data-theme="dark"] .dribbble-theme .booking-status.confirmed{color:#a8dfbc}
+html[data-theme="dark"] .dribbble-theme .booking-status:is(.declined,.cancelled){color:#ffb3a9}
+html[data-theme="dark"] .dribbble-theme :is(.booking-message,.booking-duration){background:#2b2019;color:#ffd0b5;border:1px solid #664531;line-height:1.6}
+html[data-theme="dark"] .dribbble-theme .booking-list-heading{gap:10px;flex-wrap:wrap}
+html[data-theme="dark"] .dribbble-theme .booking-list-heading h3{font-size:17px;margin:12px 0}
+html[data-theme="dark"] .dribbble-theme .booking-body .text-button{min-height:44px;padding:10px 14px}
+html[data-theme="dark"] .dribbble-theme .booking-body .error-banner{background:#371d1a;color:#ffd0c6;border-color:#754039}
+html[data-theme="dark"] body:has(.dribbble-theme) .booking-confirmation-notice{left:max(14px,calc((100vw - 430px)/2 + 14px));right:max(14px,calc((100vw - 430px)/2 + 14px));width:auto;bottom:calc(104px + env(safe-area-inset-bottom));background:#211914;color:#f5f5f5;border-color:#81533c;box-shadow:0 10px 40px #0009;max-height:calc(100dvh - 145px)}
+html[data-theme="dark"] body:has(.dribbble-theme) .booking-confirmation-notice :is(strong,dt){color:#ffbc9a}
+html[data-theme="dark"] body:has(.dribbble-theme) .booking-confirmation-notice .primary{background:#ff7043;color:#190b05;min-height:46px;border-radius:999px}
+html[data-theme="dark"] body:has(.dribbble-theme) .booking-confirmation-notice .text-button{color:#ffd0b5;min-height:44px;width:100%}
+html[data-theme="dark"] body:has(.dribbble-theme) .booking-notice-close{min-width:44px;min-height:44px;right:7px;top:7px}
+html[data-theme="dark"] body:has(.dribbble-theme) .profile-editor-modal .form-card{color:#eee;background:transparent;min-width:0}
+html[data-theme="dark"] body:has(.dribbble-theme) .profile-editor-modal :is(input,textarea,select){background:#202020;color:#f5f5f5;border-color:#444;font-size:16px;min-height:46px;min-width:0;max-width:100%}
+html[data-theme="dark"] body:has(.dribbble-theme) .profile-editor-modal input[type=file]{font-size:12px;padding:10px;overflow:hidden}
+html[data-theme="dark"] body:has(.dribbble-theme) .profile-editor-modal :is(small,.fine-print){color:#bdbdbd}
+html[data-theme="dark"] body:has(.dribbble-theme) .profile-editor-modal .secondary{background:#ff7043;border-color:#ff7043;color:#190b05;min-height:46px}
+html[data-theme="dark"] body:has(.dribbble-theme) .profile-editor-modal .text-button{color:#ffbc9a;min-height:44px}
+html[data-theme="dark"] body:has(.dribbble-theme) .profile-editor-heading .icon-button{color:#eee;min-width:44px;min-height:44px}
+html[data-theme="dark"] .dribbble-theme .profile-page .permission-settings-link{margin:12px 22px;max-width:calc(100% - 44px);min-height:46px}
+html[data-theme="dark"] .dribbble-theme .profile-links :is(button,a){min-height:52px}
+@media(max-width:370px){html[data-theme="dark"] .dribbble-theme .table-booking-section{padding:16px}html[data-theme="dark"] .dribbble-theme .booking-fields{grid-template-columns:minmax(0,1fr)}html[data-theme="dark"] .dribbble-theme .booking-intro{gap:10px}html[data-theme="dark"] .dribbble-theme .booking-icon{padding:10px}html[data-theme="dark"] .dribbble-theme .booking-intro h2{font-size:19px}}
+
+
+/* subscription-mobile-fixes.css */
+/* One complete plan per row, with compact artwork and consistent text space. */
+html[data-theme="dark"] .subscription-content .subscription-plan-slider {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  width: 100%;
+  min-width: 0;
+  padding: 8px 16px 24px;
+  box-sizing: border-box;
+}
+
+html[data-theme="dark"] .subscription-content .subscription-slide-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+  padding: 18px;
+  border: 1px solid #604331;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #2e1b13, #151515);
+  color: #f6f2ec;
+  box-shadow: none;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+
+html[data-theme="dark"] .subscription-slide-card .subscription-plan-top {
+  margin: 0 0 10px;
+  gap: 10px;
+}
+html[data-theme="dark"] .subscription-slide-card .subscription-badge {
+  background: #ff7043;
+  color: #190b05;
+  font-size: 9px;
+  padding: 7px 10px;
+}
+html[data-theme="dark"] .subscription-slide-card .subscription-plan-top > svg { width: 22px; height: 22px; flex-shrink: 0; }
+html[data-theme="dark"] .subscription-slide-card .subscription-items-banner {
+  height: clamp(80px, 13svh, 110px) !important;
+  width: 100%;
+  margin: 0 0 12px;
+  border-radius: 14px;
+}
+html[data-theme="dark"] .subscription-slide-card .subscription-credit-overlay { inset: auto 12px 10px; gap: 8px; }
+html[data-theme="dark"] .subscription-slide-card .subscription-credit-overlay strong { font-size: 34px; letter-spacing: -1px; }
+html[data-theme="dark"] .subscription-slide-card .subscription-credit-overlay span { font-size: 11px; }
+html[data-theme="dark"] .subscription-slide-card .eyebrow { margin: 0 0 6px; font-size: 8px; letter-spacing: 1.2px; color: #c9bcb4; }
+html[data-theme="dark"] .subscription-slide-card h3 {
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 1.2;
+  min-height: 1.2em;
+  margin: 0 0 12px;
+  color: #ffb18c;
+}
+html[data-theme="dark"] .subscription-slide-card .subscription-price { font-size: 29px; line-height: 1.15; color: #ffb18c; }
+html[data-theme="dark"] .subscription-slide-card .subscription-price > span { font-size: 11px; color: #c9bcb4; margin-top: 4px; }
+html[data-theme="dark"] .subscription-slide-card .subscription-plan-summary { font-size: 12px; line-height: 1.6; min-height: 3.2em; color: #e1d5cc; margin: 12px 0 6px; }
+html[data-theme="dark"] .subscription-slide-card .subscription-includes {
+  font-size: 12px;
+  line-height: 1.6;
+  min-height: 1.6em;
+  color: #d8c9bd;
+  margin: 0 0 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+html[data-theme="dark"] .subscription-slide-card .subscription-plan-details { border-color: #59473c; padding-top: 12px; color: #d8c9bd; }
+html[data-theme="dark"] .subscription-slide-card .subscription-plan-details summary { color: #ffb18c; min-height: 32px; }
+html[data-theme="dark"] .subscription-slide-card .subscription-benefits { margin: 12px 0; gap: 14px; }
+html[data-theme="dark"] .subscription-slide-card .subscription-benefits svg { color: #ff986e; }
+html[data-theme="dark"] .subscription-slide-card .subscription-clarification { color: #c9bcb4; }
+html[data-theme="dark"] .subscription-slide-card > .primary { min-height: 46px; margin: 12px 0 6px; font-size: 13px; white-space: normal; }
+html[data-theme="dark"] .subscription-slide-card .subscription-status { color: #c9bcb4; font-size: 11px; line-height: 1.5; margin: 0; }
+html[data-theme="dark"] .subscription-content .subscription-official-quote h1 { color: #f6f2ec; }
+
+@media (max-width: 360px) {
+  html[data-theme="dark"] .subscription-content .subscription-plan-slider { padding-inline: 12px; }
+  html[data-theme="dark"] .subscription-content .subscription-slide-card { padding: 15px; }
+  html[data-theme="dark"] .subscription-slide-card h3 { font-size: 20px; }
+  html[data-theme="dark"] .subscription-slide-card .subscription-price { font-size: 27px; }
+}
+

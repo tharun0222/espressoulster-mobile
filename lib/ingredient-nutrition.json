@@ -1,0 +1,3623 @@
+{
+  "espresso": {
+    "name": "Espresso",
+    "reference": "171891",
+    "food": "Beverages, coffee, brewed, espresso, restaurant-prepared",
+    "per100g": {
+      "fat": 0.18,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.12,
+      "carbs": 1.67,
+      "kcal": 9.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171891/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "milk": {
+    "name": "Milk",
+    "reference": "171265",
+    "food": "Milk, whole, 3.25% milkfat, with added vitamin D",
+    "per100g": {
+      "fat": 3.25,
+      "fibre": 0.0,
+      "sugar": 5.05,
+      "protein": 3.15,
+      "carbs": 4.8,
+      "kcal": 61.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171265/nutrients",
+    "proxy": "",
+    "density": 1.03
+  },
+  "hot water": {
+    "name": "Hot Water",
+    "reference": "174158",
+    "food": "Water, bottled, generic",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 0.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174158/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "chocolate powder": {
+    "name": "Chocolate Powder",
+    "reference": "173182",
+    "food": "Beverages, rich chocolate, powder",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 81.82,
+      "protein": 0.0,
+      "carbs": 92.96,
+      "kcal": 372.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173182/nutrients",
+    "proxy": "Sweetened chocolate beverage powder proxy; café powder brand is unspecified.",
+    "density": 1
+  },
+  "chocolate sauce": {
+    "name": "Chocolate Sauce",
+    "reference": "174117",
+    "food": "Beverages, chocolate syrup",
+    "per100g": {
+      "fat": 1.13,
+      "fibre": 2.6,
+      "sugar": 49.65,
+      "protein": 2.1,
+      "carbs": 65.1,
+      "kcal": 279.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174117/nutrients",
+    "proxy": "Generic chocolate syrup proxy.",
+    "density": 1
+  },
+  "milk foam": {
+    "name": "Milk Foam",
+    "reference": "171265",
+    "food": "Milk, whole, 3.25% milkfat, with added vitamin D",
+    "per100g": {
+      "fat": 3.25,
+      "fibre": 0.0,
+      "sugar": 5.05,
+      "protein": 3.15,
+      "carbs": 4.8,
+      "kcal": 61.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171265/nutrients",
+    "proxy": "",
+    "density": 1.03
+  },
+  "ice cream": {
+    "name": "Ice Cream",
+    "reference": "167575",
+    "food": "Ice creams, vanilla",
+    "per100g": {
+      "fat": 11.0,
+      "fibre": 0.7,
+      "sugar": 21.22,
+      "protein": 3.5,
+      "carbs": 23.6,
+      "kcal": 207.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/167575/nutrients",
+    "proxy": "Generic vanilla ice cream proxy.",
+    "density": 1
+  },
+  "ice cubes": {
+    "name": "Ice Cubes",
+    "reference": "174158",
+    "food": "Water, bottled, generic",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 0.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174158/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "water": {
+    "name": "Water",
+    "reference": "174158",
+    "food": "Water, bottled, generic",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 0.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174158/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "orange juice": {
+    "name": "Orange Juice",
+    "reference": "169098",
+    "food": "Orange juice, raw (Includes foods for USDA's Food Distribution Program)",
+    "per100g": {
+      "fat": 0.2,
+      "fibre": 0.2,
+      "sugar": 8.4,
+      "protein": 0.7,
+      "carbs": 10.4,
+      "kcal": 45.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169098/nutrients",
+    "proxy": "",
+    "density": 1.04
+  },
+  "cold brew": {
+    "name": "Cold Brew",
+    "reference": "171890",
+    "food": "Beverages, coffee, brewed, prepared with tap water",
+    "per100g": {
+      "fat": 0.02,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.12,
+      "carbs": 0.0,
+      "kcal": 1.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171890/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "mango syrup": {
+    "name": "Mango Syrup",
+    "reference": "syrup",
+    "food": "Standard sugar syrup model: 65% sugar, 35% water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sugar syrup model: 65% sugar, 35% water. Assumed composition; not the café supplier label.",
+    "density": 1.3
+  },
+  "tonic water": {
+    "name": "Tonic Water",
+    "reference": "171869",
+    "food": "Beverages, carbonated, tonic water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 8.8,
+      "protein": 0.0,
+      "carbs": 8.8,
+      "kcal": 34.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171869/nutrients",
+    "proxy": "",
+    "density": 1.04
+  },
+  "strawberry syrup": {
+    "name": "Strawberry Syrup",
+    "reference": "syrup",
+    "food": "Standard sugar syrup model: 65% sugar, 35% water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sugar syrup model: 65% sugar, 35% water. Assumed composition; not the café supplier label.",
+    "density": 1.3
+  },
+  "condenced milk": {
+    "name": "Condenced Milk",
+    "reference": "171275",
+    "food": "Milk, canned, condensed, sweetened",
+    "per100g": {
+      "fat": 8.7,
+      "fibre": 0.0,
+      "sugar": 54.4,
+      "protein": 7.91,
+      "carbs": 54.4,
+      "kcal": 321.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171275/nutrients",
+    "proxy": "",
+    "density": 1.3
+  },
+  "ice cube": {
+    "name": "Ice Cube",
+    "reference": "174158",
+    "food": "Water, bottled, generic",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 0.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174158/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "masala chai": {
+    "name": "Masala Chai",
+    "reference": "chai",
+    "food": "Standard sweet chai powder model: 70% sugar, 25% skimmed milk powder, 5% cinnamon",
+    "per100g": {
+      "fat": 0.2545,
+      "fibre": 2.655,
+      "sugar": 82.96350000000001,
+      "protein": 9.2395,
+      "carbs": 87.01050000000001,
+      "kcal": 373.75
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sweet chai powder model: 70% sugar, 25% skimmed milk powder, 5% cinnamon. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "vanilla syrup": {
+    "name": "Vanilla Syrup",
+    "reference": "syrup",
+    "food": "Standard sugar syrup model: 65% sugar, 35% water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sugar syrup model: 65% sugar, 35% water. Assumed composition; not the café supplier label.",
+    "density": 1.3
+  },
+  "condensed milk": {
+    "name": "Condensed Milk",
+    "reference": "171275",
+    "food": "Milk, canned, condensed, sweetened",
+    "per100g": {
+      "fat": 8.7,
+      "fibre": 0.0,
+      "sugar": 54.4,
+      "protein": 7.91,
+      "carbs": 54.4,
+      "kcal": 321.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171275/nutrients",
+    "proxy": "",
+    "density": 1.3
+  },
+  "cinnamon powder": {
+    "name": "Cinnamon Powder",
+    "reference": "171320",
+    "food": "Spices, cinnamon, ground",
+    "per100g": {
+      "fat": 1.24,
+      "fibre": 53.1,
+      "sugar": 2.17,
+      "protein": 3.99,
+      "carbs": 80.59,
+      "kcal": 247.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171320/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "matcha powder": {
+    "name": "Matcha Powder",
+    "reference": "matcha",
+    "food": "MEXT 2023, matcha tea, food 16035",
+    "per100g": {
+      "fat": 5.3,
+      "fibre": 38.5,
+      "sugar": 1.5,
+      "protein": 29.6,
+      "carbs": 39.5,
+      "kcal": 237
+    },
+    "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=16_16035_7",
+    "proxy": "",
+    "density": 1
+  },
+  "lemon juice": {
+    "name": "Lemon Juice",
+    "reference": "167747",
+    "food": "Lemon juice, raw",
+    "per100g": {
+      "fat": 0.24,
+      "fibre": 0.3,
+      "sugar": 2.52,
+      "protein": 0.35,
+      "carbs": 6.9,
+      "kcal": 22.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/167747/nutrients",
+    "proxy": "",
+    "density": 1.03,
+    "pieceGrams": 30
+  },
+  "lemon": {
+    "name": "Lemon",
+    "reference": "167746",
+    "food": "Lemons, raw, without peel",
+    "per100g": {
+      "fat": 0.3,
+      "fibre": 2.8,
+      "sugar": 2.5,
+      "protein": 1.1,
+      "carbs": 9.32,
+      "kcal": 29.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/167746/nutrients",
+    "proxy": "",
+    "density": 1,
+    "pieceGrams": 58
+  },
+  "chocolate syrup": {
+    "name": "Chocolate Syrup",
+    "reference": "174117",
+    "food": "Beverages, chocolate syrup",
+    "per100g": {
+      "fat": 1.13,
+      "fibre": 2.6,
+      "sugar": 49.65,
+      "protein": 2.1,
+      "carbs": 65.1,
+      "kcal": 279.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174117/nutrients",
+    "proxy": "Generic chocolate syrup proxy.",
+    "density": 1.3
+  },
+  "cookies": {
+    "name": "Cookies",
+    "reference": "172718",
+    "food": "Cookies, chocolate sandwich, with creme filling, regular",
+    "per100g": {
+      "fat": 19.14,
+      "fibre": 2.9,
+      "sugar": 40.67,
+      "protein": 5.21,
+      "carbs": 71.0,
+      "kcal": 464.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172718/nutrients",
+    "proxy": "Generic chocolate sandwich cookie proxy.",
+    "density": 1,
+    "pieceGrams": 11
+  },
+  "frappe mix": {
+    "name": "Frappe Mix",
+    "reference": "frappe",
+    "food": "Standard frappe premix model: 50% sugar, 50% skimmed milk powder",
+    "per100g": {
+      "fat": 0.385,
+      "fibre": 0.0,
+      "sugar": 75.89,
+      "protein": 18.08,
+      "carbs": 75.98,
+      "kcal": 374.5
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard frappe premix model: 50% sugar, 50% skimmed milk powder. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "whipped cream": {
+    "name": "Whipped Cream",
+    "reference": "170860",
+    "food": "Cream, whipped, cream topping, pressurized",
+    "per100g": {
+      "fat": 22.22,
+      "fibre": 0.0,
+      "sugar": 8.0,
+      "protein": 3.2,
+      "carbs": 12.49,
+      "kcal": 257.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170860/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "choco chip": {
+    "name": "Choco Chip",
+    "reference": "169581",
+    "food": "Baking chocolate, MARS SNACKFOOD US, M&M's Semisweet Chocolate Mini Baking Bits",
+    "per100g": {
+      "fat": 26.15,
+      "fibre": 6.7,
+      "sugar": 53.07,
+      "protein": 4.44,
+      "carbs": 65.96,
+      "kcal": 517.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169581/nutrients",
+    "proxy": "Semisweet chocolate baking pieces proxy.",
+    "density": 1
+  },
+  "sugar syrup": {
+    "name": "Sugar Syrup",
+    "reference": "syrup",
+    "food": "Standard sugar syrup model: 65% sugar, 35% water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sugar syrup model: 65% sugar, 35% water. Assumed composition; not the café supplier label.",
+    "density": 1.3
+  },
+  "hazelnut syrup": {
+    "name": "Hazelnut Syrup",
+    "reference": "syrup",
+    "food": "Standard sugar syrup model: 65% sugar, 35% water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sugar syrup model: 65% sugar, 35% water. Assumed composition; not the café supplier label.",
+    "density": 1.3
+  },
+  "caramel syrup": {
+    "name": "Caramel Syrup",
+    "reference": "syrup",
+    "food": "Standard sugar syrup model: 65% sugar, 35% water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sugar syrup model: 65% sugar, 35% water. Assumed composition; not the café supplier label.",
+    "density": 1.3
+  },
+  "blueberry yoghurt": {
+    "name": "Blueberry Yoghurt",
+    "reference": "170889",
+    "food": "Yogurt, fruit, low fat,9 g protein/8 oz",
+    "per100g": {
+      "fat": 1.15,
+      "fibre": 0.0,
+      "sugar": 18.64,
+      "protein": 3.98,
+      "carbs": 18.64,
+      "kcal": 99.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170889/nutrients",
+    "proxy": "Generic fruit yoghurt proxy.",
+    "density": 1.03
+  },
+  "oats": {
+    "name": "Oats",
+    "reference": "173904",
+    "food": "Cereals, oats, regular and quick, not fortified, dry",
+    "per100g": {
+      "fat": 6.52,
+      "fibre": 10.1,
+      "sugar": 0.99,
+      "protein": 13.15,
+      "carbs": 67.7,
+      "kcal": 379.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173904/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "fresh blueberry": {
+    "name": "Fresh Blueberry",
+    "reference": "171711",
+    "food": "Blueberries, raw",
+    "per100g": {
+      "fat": 0.33,
+      "fibre": 2.4,
+      "sugar": 9.96,
+      "protein": 0.74,
+      "carbs": 14.49,
+      "kcal": 57.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171711/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "chia seeds": {
+    "name": "Chia Seeds",
+    "reference": "chia",
+    "food": "Seeds, chia seeds, dried",
+    "per100g": {
+      "protein": 16.54,
+      "fibre": 34.4,
+      "fat": 30.74,
+      "carbs": 42.12,
+      "kcal": 486.0,
+      "sugar": 0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170554/nutrients",
+    "proxy": "Chia sugar uses a rounded manufacturer label (0 g/serving), not an analytical zero.",
+    "density": 1
+  },
+  "peanut butter": {
+    "name": "Peanut Butter",
+    "reference": "172470",
+    "food": "Peanut butter, smooth style, without salt",
+    "per100g": {
+      "fat": 51.36,
+      "fibre": 5.0,
+      "sugar": 10.49,
+      "protein": 22.21,
+      "carbs": 22.31,
+      "kcal": 598.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172470/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "whey protein": {
+    "name": "Whey Protein",
+    "reference": "173180",
+    "food": "Beverages, Protein powder whey based",
+    "per100g": {
+      "fat": 1.56,
+      "fibre": 3.1,
+      "sugar": 0.0,
+      "protein": 78.13,
+      "carbs": 6.25,
+      "kcal": 352.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173180/nutrients",
+    "proxy": "Generic whey protein powder proxy; check the café brand.",
+    "density": 1
+  },
+  "cocoa powder": {
+    "name": "Cocoa Powder",
+    "reference": "169593",
+    "food": "Cocoa, dry powder, unsweetened",
+    "per100g": {
+      "fat": 13.7,
+      "fibre": 37.0,
+      "sugar": 1.75,
+      "protein": 19.6,
+      "carbs": 57.9,
+      "kcal": 228.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169593/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "banana": {
+    "name": "Banana",
+    "reference": "173944",
+    "food": "Bananas, raw",
+    "per100g": {
+      "fat": 0.33,
+      "fibre": 2.6,
+      "sugar": 12.23,
+      "protein": 1.09,
+      "carbs": 22.84,
+      "kcal": 89.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173944/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "pumpkin seeds": {
+    "name": "Pumpkin Seeds",
+    "reference": "169415",
+    "food": "Seeds, pumpkin and squash seed kernels, roasted, with salt added",
+    "per100g": {
+      "fat": 49.05,
+      "fibre": 6.5,
+      "sugar": 1.29,
+      "protein": 29.84,
+      "carbs": 14.71,
+      "kcal": 574.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169415/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "sunflower seeds": {
+    "name": "Sunflower Seeds",
+    "reference": "170562",
+    "food": "Seeds, sunflower seed kernels, dried",
+    "per100g": {
+      "fat": 51.46,
+      "fibre": 8.6,
+      "sugar": 2.62,
+      "protein": 20.78,
+      "carbs": 20.0,
+      "kcal": 584.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170562/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "muesli": {
+    "name": "Muesli",
+    "reference": "171646",
+    "food": "Cereals ready-to-eat, granola, homemade",
+    "per100g": {
+      "fat": 24.31,
+      "fibre": 8.9,
+      "sugar": 19.8,
+      "protein": 13.67,
+      "carbs": 53.88,
+      "kcal": 489.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171646/nutrients",
+    "proxy": "Generic granola proxy for unspecified muesli; composition can differ substantially.",
+    "density": 1
+  },
+  "honey": {
+    "name": "Honey",
+    "reference": "169640",
+    "food": "Honey",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.2,
+      "sugar": 82.12,
+      "protein": 0.3,
+      "carbs": 82.4,
+      "kcal": 304.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169640/nutrients",
+    "proxy": "",
+    "density": 1.42
+  },
+  "mint": {
+    "name": "Mint",
+    "reference": "173475",
+    "food": "Spearmint, fresh",
+    "per100g": {
+      "fat": 0.73,
+      "fibre": 6.8,
+      "sugar": 0.85,
+      "protein": 3.29,
+      "carbs": 8.41,
+      "kcal": 44.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173475/nutrients",
+    "proxy": "Mint sugar unreported in SR; estimate uses fresh parsley sugar 0.85 g/100g as an explicit herb proxy.",
+    "density": 1,
+    "pieceGrams": 0.2,
+    "leafGrams": 0.2
+  },
+  "mint leaves": {
+    "name": "Mint Leaves",
+    "reference": "173475",
+    "food": "Spearmint, fresh",
+    "per100g": {
+      "fat": 0.73,
+      "fibre": 6.8,
+      "sugar": 0.85,
+      "protein": 3.29,
+      "carbs": 8.41,
+      "kcal": 44.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173475/nutrients",
+    "proxy": "Mint sugar unreported in SR; estimate uses fresh parsley sugar 0.85 g/100g as an explicit herb proxy.",
+    "density": 1,
+    "pieceGrams": 0.2,
+    "leafGrams": 0.2
+  },
+  "peach syrup": {
+    "name": "Peach Syrup",
+    "reference": "syrup",
+    "food": "Standard sugar syrup model: 65% sugar, 35% water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sugar syrup model: 65% sugar, 35% water. Assumed composition; not the café supplier label.",
+    "density": 1.3
+  },
+  "passion syrup": {
+    "name": "Passion Syrup",
+    "reference": "syrup",
+    "food": "Standard sugar syrup model: 65% sugar, 35% water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sugar syrup model: 65% sugar, 35% water. Assumed composition; not the café supplier label.",
+    "density": 1.3
+  },
+  "mojito mint syrup": {
+    "name": "Mojito Mint Syrup",
+    "reference": "syrup",
+    "food": "Standard sugar syrup model: 65% sugar, 35% water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sugar syrup model: 65% sugar, 35% water. Assumed composition; not the café supplier label.",
+    "density": 1.3
+  },
+  "sprit": {
+    "name": "Sprit",
+    "reference": "173205",
+    "food": "Beverages, carbonated, lemon-lime soda, no caffeine",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 10.38,
+      "protein": 0.09,
+      "carbs": 10.42,
+      "kcal": 41.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173205/nutrients",
+    "proxy": "",
+    "density": 1.04
+  },
+  "soda": {
+    "name": "Soda",
+    "reference": "174158",
+    "food": "Water, bottled, generic",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 0.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174158/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "watermelon syrup": {
+    "name": "Watermelon Syrup",
+    "reference": "syrup",
+    "food": "Standard sugar syrup model: 65% sugar, 35% water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sugar syrup model: 65% sugar, 35% water. Assumed composition; not the café supplier label.",
+    "density": 1.3
+  },
+  "sprite": {
+    "name": "Sprite",
+    "reference": "173205",
+    "food": "Beverages, carbonated, lemon-lime soda, no caffeine",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 10.38,
+      "protein": 0.09,
+      "carbs": 10.42,
+      "kcal": 41.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173205/nutrients",
+    "proxy": "",
+    "density": 1.04
+  },
+  "green apple syrup": {
+    "name": "Green Apple Syrup",
+    "reference": "syrup",
+    "food": "Standard sugar syrup model: 65% sugar, 35% water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sugar syrup model: 65% sugar, 35% water. Assumed composition; not the café supplier label.",
+    "density": 1.3
+  },
+  "blue curacao": {
+    "name": "Blue Curacao",
+    "reference": "syrup",
+    "food": "Standard sugar syrup model: 65% sugar, 35% water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sugar syrup model: 65% sugar, 35% water. Assumed composition; not the café supplier label.",
+    "density": 1.3
+  },
+  "blueberry cursh": {
+    "name": "Blueberry Cursh",
+    "reference": "syrup",
+    "food": "Standard sugar syrup model: 65% sugar, 35% water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sugar syrup model: 65% sugar, 35% water. Assumed composition; not the café supplier label.",
+    "density": 1.3
+  },
+  "green apple crush": {
+    "name": "Green Apple Crush",
+    "reference": "syrup",
+    "food": "Standard sugar syrup model: 65% sugar, 35% water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sugar syrup model: 65% sugar, 35% water. Assumed composition; not the café supplier label.",
+    "density": 1.3
+  },
+  "kiwi crush": {
+    "name": "Kiwi Crush",
+    "reference": "syrup",
+    "food": "Standard sugar syrup model: 65% sugar, 35% water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sugar syrup model: 65% sugar, 35% water. Assumed composition; not the café supplier label.",
+    "density": 1.3
+  },
+  "pineapple crush": {
+    "name": "Pineapple Crush",
+    "reference": "syrup",
+    "food": "Standard sugar syrup model: 65% sugar, 35% water",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard sugar syrup model: 65% sugar, 35% water. Assumed composition; not the café supplier label.",
+    "density": 1.3
+  },
+  "bagel bread": {
+    "name": "Bagel Bread",
+    "reference": "174899",
+    "food": "Bagels, plain, enriched, with calcium propionate (includes onion, poppy, sesame)",
+    "per100g": {
+      "fat": 1.32,
+      "fibre": 1.6,
+      "sugar": 8.43,
+      "protein": 10.56,
+      "carbs": 52.38,
+      "kcal": 264.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174899/nutrients",
+    "proxy": "",
+    "density": 1,
+    "pieceGrams": 95
+  },
+  "cream cheese": {
+    "name": "Cream Cheese",
+    "reference": "173418",
+    "food": "Cheese, cream",
+    "per100g": {
+      "fat": 34.44,
+      "fibre": 0.0,
+      "sugar": 3.76,
+      "protein": 6.15,
+      "carbs": 5.52,
+      "kcal": 350.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173418/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "rocket leaves": {
+    "name": "Rocket Leaves",
+    "reference": "169387",
+    "food": "Arugula, raw",
+    "per100g": {
+      "fat": 0.66,
+      "fibre": 1.6,
+      "sugar": 2.05,
+      "protein": 2.58,
+      "carbs": 3.65,
+      "kcal": 25.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169387/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "cherry tomatoes": {
+    "name": "Cherry Tomatoes",
+    "reference": "170457",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "per100g": {
+      "fat": 0.2,
+      "fibre": 1.2,
+      "sugar": 2.63,
+      "protein": 0.88,
+      "carbs": 3.89,
+      "kcal": 18.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170457/nutrients",
+    "proxy": "",
+    "density": 1,
+    "pieceGrams": 17
+  },
+  "butter salted": {
+    "name": "Butter Salted",
+    "reference": "173410",
+    "food": "Butter, salted",
+    "per100g": {
+      "fat": 81.11,
+      "fibre": 0.0,
+      "sugar": 0.06,
+      "protein": 0.85,
+      "carbs": 0.06,
+      "kcal": 717.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173410/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "egg": {
+    "name": "Egg",
+    "reference": "171287",
+    "food": "Egg, whole, raw, fresh",
+    "per100g": {
+      "fat": 9.51,
+      "fibre": 0.0,
+      "sugar": 0.37,
+      "protein": 12.56,
+      "carbs": 0.72,
+      "kcal": 143.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171287/nutrients",
+    "proxy": "",
+    "density": 1,
+    "pieceGrams": 50
+  },
+  "salt + pepper": {
+    "name": "Salt + Pepper",
+    "reference": "salt-pepper",
+    "food": "Standard seasoning model: 50% salt, 50% black pepper",
+    "per100g": {
+      "fat": 1.63,
+      "fibre": 12.65,
+      "sugar": 0.32,
+      "protein": 5.195,
+      "carbs": 31.975,
+      "kcal": 125.5
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard seasoning model: 50% salt, 50% black pepper. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "smoked chicken ham": {
+    "name": "Smoked Chicken Ham",
+    "reference": "168092",
+    "food": "Ham, turkey, sliced, extra lean, prepackaged or deli",
+    "per100g": {
+      "fat": 5.8,
+      "fibre": 0.0,
+      "sugar": 0.5,
+      "protein": 19.6,
+      "carbs": 0.93,
+      "kcal": 134.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168092/nutrients",
+    "proxy": "Lean turkey deli ham proxy for unspecified chicken ham.",
+    "density": 1,
+    "pieceGrams": 20
+  },
+  "paneer": {
+    "name": "Paneer",
+    "reference": "paneer",
+    "food": "Amul Fresh Paneer label, used as a paneer brand proxy",
+    "per100g": {
+      "fat": 24,
+      "fibre": 0,
+      "sugar": 4,
+      "protein": 20,
+      "carbs": 4,
+      "kcal": 312
+    },
+    "url": "https://sabardairy.org/product/amul-fresh-paneer/",
+    "proxy": "Manufacturer paneer label proxy; café brand may differ. Fibre assumed zero for plain milk paneer.",
+    "density": 1
+  },
+  "mexican marination": {
+    "name": "Mexican Marination",
+    "reference": "marinade",
+    "food": "Standard marinade model: 80% yoghurt, 10% olive oil, 10% paprika",
+    "per100g": {
+      "fat": 13.889,
+      "fibre": 3.49,
+      "sugar": 4.7620000000000005,
+      "protein": 4.19,
+      "carbs": 9.127,
+      "kcal": 165.39999999999998
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard marinade model: 80% yoghurt, 10% olive oil, 10% paprika. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "panini 5\"/wrap": {
+    "name": "Panini 5\"/Wrap",
+    "reference": "174913",
+    "food": "Bread, Italian",
+    "per100g": {
+      "fat": 2.73,
+      "fibre": 2.1,
+      "sugar": 4.69,
+      "protein": 9.49,
+      "carbs": 48.11,
+      "kcal": 259.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174913/nutrients",
+    "proxy": "Estimate selects a bread panini, not a tortilla wrap.",
+    "density": 1,
+    "pieceGrams": 100
+  },
+  "peri peri mayo": {
+    "name": "Peri Peri Mayo",
+    "reference": "mayo",
+    "food": "Standard flavoured mayo model: 95% mayonnaise, 5% paprika",
+    "per100g": {
+      "fat": 71.75199999999998,
+      "fibre": 1.745,
+      "sugar": 1.0585,
+      "protein": 1.6190000000000002,
+      "carbs": 3.241,
+      "kcal": 660.1
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard flavoured mayo model: 95% mayonnaise, 5% paprika. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "iceberg+green lettuce": {
+    "name": "Iceberg+Green Lettuce",
+    "reference": "169248",
+    "food": "Lettuce, iceberg (includes crisphead types), raw",
+    "per100g": {
+      "fat": 0.14,
+      "fibre": 1.2,
+      "sugar": 1.97,
+      "protein": 0.9,
+      "carbs": 2.97,
+      "kcal": 14.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169248/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "smoke marination": {
+    "name": "Smoke Marination",
+    "reference": "marinade",
+    "food": "Standard marinade model: 80% yoghurt, 10% olive oil, 10% paprika",
+    "per100g": {
+      "fat": 13.889,
+      "fibre": 3.49,
+      "sugar": 4.7620000000000005,
+      "protein": 4.19,
+      "carbs": 9.127,
+      "kcal": 165.39999999999998
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard marinade model: 80% yoghurt, 10% olive oil, 10% paprika. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "bellpepper": {
+    "name": "Bellpepper",
+    "reference": "170108",
+    "food": "Peppers, sweet, red, raw",
+    "per100g": {
+      "fat": 0.3,
+      "fibre": 2.1,
+      "sugar": 4.2,
+      "protein": 0.99,
+      "carbs": 6.03,
+      "kcal": 26.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170108/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "cheese slice": {
+    "name": "Cheese Slice",
+    "reference": "171290",
+    "food": "Cheese, pasteurized process, American, without added vitamin D",
+    "per100g": {
+      "fat": 31.79,
+      "fibre": 0.0,
+      "sugar": 2.26,
+      "protein": 18.13,
+      "carbs": 3.7,
+      "kcal": 371.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171290/nutrients",
+    "proxy": "",
+    "density": 1,
+    "pieceGrams": 20
+  },
+  "oil": {
+    "name": "Oil",
+    "reference": "172336",
+    "food": "Oil, canola",
+    "per100g": {
+      "fat": 100.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 884.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172336/nutrients",
+    "proxy": "",
+    "density": 0.92
+  },
+  "ketchup": {
+    "name": "Ketchup",
+    "reference": "168556",
+    "food": "Catsup",
+    "per100g": {
+      "fat": 0.1,
+      "fibre": 0.3,
+      "sugar": 21.27,
+      "protein": 1.04,
+      "carbs": 27.4,
+      "kcal": 101.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168556/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "mayo": {
+    "name": "Mayo",
+    "reference": "171009",
+    "food": "Salad dressing, mayonnaise, regular",
+    "per100g": {
+      "fat": 74.85,
+      "fibre": 0.0,
+      "sugar": 0.57,
+      "protein": 0.96,
+      "carbs": 0.57,
+      "kcal": 680.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171009/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "french fries": {
+    "name": "French Fries",
+    "reference": "169264",
+    "food": "Potatoes, french fried, all types, salt added in processing, frozen, home-prepared, oven heated",
+    "per100g": {
+      "fat": 5.48,
+      "fibre": 2.0,
+      "sugar": 0.37,
+      "protein": 2.75,
+      "carbs": 25.55,
+      "kcal": 158.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169264/nutrients",
+    "proxy": "Prepared oven-heated fries proxy; actual frying oil changes totals.",
+    "density": 1
+  },
+  "parsley": {
+    "name": "Parsley",
+    "reference": "170416",
+    "food": "Parsley, fresh",
+    "per100g": {
+      "fat": 0.79,
+      "fibre": 3.3,
+      "sugar": 0.85,
+      "protein": 2.97,
+      "carbs": 6.33,
+      "kcal": 36.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170416/nutrients",
+    "proxy": "Fresh parsley proxy for unspecified microgreens.",
+    "density": 1
+  },
+  "chicken": {
+    "name": "Chicken",
+    "reference": "171477",
+    "food": "Chicken, broilers or fryers, breast, meat only, cooked, roasted",
+    "per100g": {
+      "fat": 3.57,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 31.02,
+      "carbs": 0.0,
+      "kcal": 165.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171477/nutrients",
+    "proxy": "Cooked chicken breast proxy; marinade not specified in the workbook.",
+    "density": 1
+  },
+  "caremelized onion": {
+    "name": "Caremelized Onion",
+    "reference": "caramel-onion",
+    "food": "Standard caramelised onion model: 85% onion, 10% olive oil, 5% sugar",
+    "per100g": {
+      "fat": 10.085,
+      "fibre": 1.445,
+      "sugar": 8.594000000000001,
+      "protein": 0.9350000000000002,
+      "carbs": 12.938,
+      "kcal": 141.75
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard caramelised onion model: 85% onion, 10% olive oil, 5% sugar. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "hummus": {
+    "name": "Hummus",
+    "reference": "172454",
+    "food": "Hummus, home prepared",
+    "per100g": {
+      "fat": 8.59,
+      "fibre": 4.0,
+      "sugar": 0.27,
+      "protein": 4.86,
+      "carbs": 20.12,
+      "kcal": 177.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172454/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "butter": {
+    "name": "Butter",
+    "reference": "173410",
+    "food": "Butter, salted",
+    "per100g": {
+      "fat": 81.11,
+      "fibre": 0.0,
+      "sugar": 0.06,
+      "protein": 0.85,
+      "carbs": 0.06,
+      "kcal": 717.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173410/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "fresh cream": {
+    "name": "Fresh Cream",
+    "reference": "170859",
+    "food": "Cream, fluid, heavy whipping",
+    "per100g": {
+      "fat": 36.08,
+      "fibre": 0.0,
+      "sugar": 2.92,
+      "protein": 2.84,
+      "carbs": 2.84,
+      "kcal": 340.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170859/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "salt pepper": {
+    "name": "Salt Pepper",
+    "reference": "salt-pepper",
+    "food": "Standard seasoning model: 50% salt, 50% black pepper",
+    "per100g": {
+      "fat": 1.63,
+      "fibre": 12.65,
+      "sugar": 0.32,
+      "protein": 5.195,
+      "carbs": 31.975,
+      "kcal": 125.5
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard seasoning model: 50% salt, 50% black pepper. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "onion": {
+    "name": "Onion",
+    "reference": "170000",
+    "food": "Onions, raw",
+    "per100g": {
+      "fat": 0.1,
+      "fibre": 1.7,
+      "sugar": 4.24,
+      "protein": 1.1,
+      "carbs": 9.34,
+      "kcal": 40.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170000/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "english cucumber": {
+    "name": "English Cucumber",
+    "reference": "168409",
+    "food": "Cucumber, with peel, raw",
+    "per100g": {
+      "fat": 0.11,
+      "fibre": 0.5,
+      "sugar": 1.67,
+      "protein": 0.65,
+      "carbs": 3.63,
+      "kcal": 15.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168409/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "jalepeno": {
+    "name": "Jalepeno",
+    "reference": "170080",
+    "food": "Peppers, jalapeno, canned, solids and liquids",
+    "per100g": {
+      "fat": 0.94,
+      "fibre": 2.6,
+      "sugar": 2.14,
+      "protein": 0.92,
+      "carbs": 4.74,
+      "kcal": 27.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170080/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "olives": {
+    "name": "Olives",
+    "reference": "169094",
+    "food": "Olives, ripe, canned (small-extra large)",
+    "per100g": {
+      "fat": 10.9,
+      "fibre": 1.6,
+      "sugar": 0.0,
+      "protein": 0.84,
+      "carbs": 6.04,
+      "kcal": 116.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169094/nutrients",
+    "proxy": "",
+    "density": 1,
+    "sliceGrams": 0.5
+  },
+  "plain mayo": {
+    "name": "Plain Mayo",
+    "reference": "171009",
+    "food": "Salad dressing, mayonnaise, regular",
+    "per100g": {
+      "fat": 74.85,
+      "fibre": 0.0,
+      "sugar": 0.57,
+      "protein": 0.96,
+      "carbs": 0.57,
+      "kcal": 680.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171009/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "brocolli": {
+    "name": "Brocolli",
+    "reference": "170379",
+    "food": "Broccoli, raw",
+    "per100g": {
+      "fat": 0.37,
+      "fibre": 2.6,
+      "sugar": 1.7,
+      "protein": 2.82,
+      "carbs": 6.64,
+      "kcal": 34.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170379/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "zuccihini": {
+    "name": "Zuccihini",
+    "reference": "169291",
+    "food": "Squash, summer, zucchini, includes skin, raw",
+    "per100g": {
+      "fat": 0.32,
+      "fibre": 1.0,
+      "sugar": 2.5,
+      "protein": 1.21,
+      "carbs": 3.11,
+      "kcal": 17.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169291/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "bell pepper": {
+    "name": "Bell Pepper",
+    "reference": "170108",
+    "food": "Peppers, sweet, red, raw",
+    "per100g": {
+      "fat": 0.3,
+      "fibre": 2.1,
+      "sugar": 4.2,
+      "protein": 0.99,
+      "carbs": 6.03,
+      "kcal": 26.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170108/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "garlic": {
+    "name": "Garlic",
+    "reference": "169230",
+    "food": "Garlic, raw",
+    "per100g": {
+      "fat": 0.5,
+      "fibre": 2.1,
+      "sugar": 1.0,
+      "protein": 6.36,
+      "carbs": 33.06,
+      "kcal": 149.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169230/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "panini 5\"": {
+    "name": "Panini 5\"",
+    "reference": "174913",
+    "food": "Bread, Italian",
+    "per100g": {
+      "fat": 2.73,
+      "fibre": 2.1,
+      "sugar": 4.69,
+      "protein": 9.49,
+      "carbs": 48.11,
+      "kcal": 259.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174913/nutrients",
+    "proxy": "Estimate selects a bread panini, not a tortilla wrap.",
+    "density": 1,
+    "pieceGrams": 100
+  },
+  "mushroom": {
+    "name": "Mushroom",
+    "reference": "169251",
+    "food": "Mushrooms, white, raw",
+    "per100g": {
+      "fat": 0.34,
+      "fibre": 1.0,
+      "sugar": 1.98,
+      "protein": 3.09,
+      "carbs": 3.26,
+      "kcal": 22.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169251/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "spinach": {
+    "name": "Spinach",
+    "reference": "168462",
+    "food": "Spinach, raw",
+    "per100g": {
+      "fat": 0.39,
+      "fibre": 2.2,
+      "sugar": 0.42,
+      "protein": 2.86,
+      "carbs": 3.63,
+      "kcal": 23.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168462/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "sour dough bread": {
+    "name": "Sour Dough Bread",
+    "reference": "172675",
+    "food": "Bread, french or vienna (includes sourdough)",
+    "per100g": {
+      "fat": 2.42,
+      "fibre": 2.2,
+      "sugar": 4.62,
+      "protein": 10.75,
+      "carbs": 51.88,
+      "kcal": 272.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172675/nutrients",
+    "proxy": "",
+    "density": 1,
+    "sliceGrams": 40
+  },
+  "beet feta hummus": {
+    "name": "Beet Feta Hummus",
+    "reference": "beet-hummus",
+    "food": "Standard beet hummus proxy: 80% hummus, 20% cooked beetroot",
+    "per100g": {
+      "fat": 6.908,
+      "fibre": 3.6,
+      "sugar": 1.8079999999999998,
+      "protein": 4.224,
+      "carbs": 18.088,
+      "kcal": 150.4
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard beet hummus proxy: 80% hummus, 20% cooked beetroot. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "avocado": {
+    "name": "Avocado",
+    "reference": "171705",
+    "food": "Avocados, raw, all commercial varieties",
+    "per100g": {
+      "fat": 14.66,
+      "fibre": 6.7,
+      "sugar": 0.66,
+      "protein": 2.0,
+      "carbs": 8.53,
+      "kcal": 160.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171705/nutrients",
+    "proxy": "",
+    "density": 1,
+    "pieceGrams": 150
+  },
+  "tomato": {
+    "name": "Tomato",
+    "reference": "170457",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "per100g": {
+      "fat": 0.2,
+      "fibre": 1.2,
+      "sugar": 2.63,
+      "protein": 0.88,
+      "carbs": 3.89,
+      "kcal": 18.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170457/nutrients",
+    "proxy": "",
+    "density": 1,
+    "pieceGrams": 123
+  },
+  "salt": {
+    "name": "Salt",
+    "reference": "173468",
+    "food": "Salt, table",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 0.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173468/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "pepper": {
+    "name": "Pepper",
+    "reference": "170931",
+    "food": "Spices, pepper, black",
+    "per100g": {
+      "fat": 3.26,
+      "fibre": 25.3,
+      "sugar": 0.64,
+      "protein": 10.39,
+      "carbs": 63.95,
+      "kcal": 251.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170931/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "chilli flakes": {
+    "name": "Chilli Flakes",
+    "reference": "171319",
+    "food": "Spices, chili powder",
+    "per100g": {
+      "fat": 14.28,
+      "fibre": 34.8,
+      "sugar": 7.19,
+      "protein": 13.46,
+      "carbs": 49.7,
+      "kcal": 282.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171319/nutrients",
+    "proxy": "Generic ground chilli spice proxy.",
+    "density": 1
+  },
+  "spanish peprika": {
+    "name": "Spanish Peprika",
+    "reference": "171329",
+    "food": "Spices, paprika",
+    "per100g": {
+      "fat": 12.89,
+      "fibre": 34.9,
+      "sugar": 10.34,
+      "protein": 14.14,
+      "carbs": 53.99,
+      "kcal": 282.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171329/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "cherry tomato": {
+    "name": "Cherry Tomato",
+    "reference": "170457",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "per100g": {
+      "fat": 0.2,
+      "fibre": 1.2,
+      "sugar": 2.63,
+      "protein": 0.88,
+      "carbs": 3.89,
+      "kcal": 18.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170457/nutrients",
+    "proxy": "",
+    "density": 1,
+    "pieceGrams": 17
+  },
+  "black olives": {
+    "name": "Black Olives",
+    "reference": "169094",
+    "food": "Olives, ripe, canned (small-extra large)",
+    "per100g": {
+      "fat": 10.9,
+      "fibre": 1.6,
+      "sugar": 0.0,
+      "protein": 0.84,
+      "carbs": 6.04,
+      "kcal": 116.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169094/nutrients",
+    "proxy": "",
+    "density": 1,
+    "sliceGrams": 0.5
+  },
+  "sourdough bread": {
+    "name": "Sourdough Bread",
+    "reference": "172675",
+    "food": "Bread, french or vienna (includes sourdough)",
+    "per100g": {
+      "fat": 2.42,
+      "fibre": 2.2,
+      "sugar": 4.62,
+      "protein": 10.75,
+      "carbs": 51.88,
+      "kcal": 272.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172675/nutrients",
+    "proxy": "",
+    "density": 1,
+    "sliceGrams": 40
+  },
+  "mozzerella cheese": {
+    "name": "Mozzerella Cheese",
+    "reference": "170845",
+    "food": "Cheese, mozzarella, whole milk",
+    "per100g": {
+      "fat": 22.14,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 22.17,
+      "carbs": 2.4,
+      "kcal": 299.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170845/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "green chilli": {
+    "name": "Green Chilli",
+    "reference": "170106",
+    "food": "Peppers, hot chili, red, raw",
+    "per100g": {
+      "fat": 0.44,
+      "fibre": 1.5,
+      "sugar": 5.3,
+      "protein": 1.87,
+      "carbs": 8.81,
+      "kcal": 40.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170106/nutrients",
+    "proxy": "",
+    "density": 1,
+    "pieceGrams": 5
+  },
+  "oregano dried": {
+    "name": "Oregano Dried",
+    "reference": "171328",
+    "food": "Spices, oregano, dried",
+    "per100g": {
+      "fat": 4.28,
+      "fibre": 42.5,
+      "sugar": 4.09,
+      "protein": 9.0,
+      "carbs": 68.92,
+      "kcal": 265.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171328/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "oregano seasoning": {
+    "name": "Oregano Seasoning",
+    "reference": "season",
+    "food": "Standard seasoning model: 50% paprika, 25% oregano, 25% salt",
+    "per100g": {
+      "fat": 7.515000000000001,
+      "fibre": 28.075,
+      "sugar": 6.1925,
+      "protein": 9.32,
+      "carbs": 44.225,
+      "kcal": 207.25
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard seasoning model: 50% paprika, 25% oregano, 25% salt. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "herb butter": {
+    "name": "Herb Butter",
+    "reference": "herb-butter",
+    "food": "Standard herb butter model: 98% butter, 2% parsley",
+    "per100g": {
+      "fat": 79.50359999999999,
+      "fibre": 0.066,
+      "sugar": 0.0758,
+      "protein": 0.8924,
+      "carbs": 0.18539999999999998,
+      "kcal": 703.38
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard herb butter model: 98% butter, 2% parsley. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "salted butter": {
+    "name": "Salted Butter",
+    "reference": "173410",
+    "food": "Butter, salted",
+    "per100g": {
+      "fat": 81.11,
+      "fibre": 0.0,
+      "sugar": 0.06,
+      "protein": 0.85,
+      "carbs": 0.06,
+      "kcal": 717.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173410/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "basil oil": {
+    "name": "Basil Oil",
+    "reference": "171413",
+    "food": "Oil, olive, salad or cooking",
+    "per100g": {
+      "fat": 100.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 884.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171413/nutrients",
+    "proxy": "Infused oils use plain olive oil as the nutrient proxy.",
+    "density": 1
+  },
+  "micro greens": {
+    "name": "Micro Greens",
+    "reference": "170416",
+    "food": "Parsley, fresh",
+    "per100g": {
+      "fat": 0.79,
+      "fibre": 3.3,
+      "sugar": 0.85,
+      "protein": 2.97,
+      "carbs": 6.33,
+      "kcal": 36.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170416/nutrients",
+    "proxy": "Fresh parsley proxy for unspecified microgreens.",
+    "density": 1
+  },
+  "chilli oil": {
+    "name": "Chilli Oil",
+    "reference": "171413",
+    "food": "Oil, olive, salad or cooking",
+    "per100g": {
+      "fat": 100.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 884.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171413/nutrients",
+    "proxy": "Infused oils use plain olive oil as the nutrient proxy.",
+    "density": 1
+  },
+  "salted btter": {
+    "name": "Salted Btter",
+    "reference": "173410",
+    "food": "Butter, salted",
+    "per100g": {
+      "fat": 81.11,
+      "fibre": 0.0,
+      "sugar": 0.06,
+      "protein": 0.85,
+      "carbs": 0.06,
+      "kcal": 717.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173410/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "herby butter": {
+    "name": "Herby Butter",
+    "reference": "herb-butter",
+    "food": "Standard herb butter model: 98% butter, 2% parsley",
+    "per100g": {
+      "fat": 79.50359999999999,
+      "fibre": 0.066,
+      "sugar": 0.0758,
+      "protein": 0.8924,
+      "carbs": 0.18539999999999998,
+      "kcal": 703.38
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard herb butter model: 98% butter, 2% parsley. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "bellbepper": {
+    "name": "Bellbepper",
+    "reference": "170108",
+    "food": "Peppers, sweet, red, raw",
+    "per100g": {
+      "fat": 0.3,
+      "fibre": 2.1,
+      "sugar": 4.2,
+      "protein": 0.99,
+      "carbs": 6.03,
+      "kcal": 26.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170108/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "onion powder": {
+    "name": "Onion Powder",
+    "reference": "171327",
+    "food": "Spices, onion powder",
+    "per100g": {
+      "fat": 1.04,
+      "fibre": 15.2,
+      "sugar": 6.63,
+      "protein": 10.41,
+      "carbs": 79.12,
+      "kcal": 341.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171327/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "garlic powder": {
+    "name": "Garlic Powder",
+    "reference": "171325",
+    "food": "Spices, garlic powder",
+    "per100g": {
+      "fat": 0.73,
+      "fibre": 9.0,
+      "sugar": 2.43,
+      "protein": 16.55,
+      "carbs": 72.73,
+      "kcal": 331.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171325/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "cajun spice": {
+    "name": "Cajun Spice",
+    "reference": "season",
+    "food": "Standard seasoning model: 50% paprika, 25% oregano, 25% salt",
+    "per100g": {
+      "fat": 7.515000000000001,
+      "fibre": 28.075,
+      "sugar": 6.1925,
+      "protein": 9.32,
+      "carbs": 44.225,
+      "kcal": 207.25
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard seasoning model: 50% paprika, 25% oregano, 25% salt. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "green lettuce": {
+    "name": "Green Lettuce",
+    "reference": "169248",
+    "food": "Lettuce, iceberg (includes crisphead types), raw",
+    "per100g": {
+      "fat": 0.14,
+      "fibre": 1.2,
+      "sugar": 1.97,
+      "protein": 0.9,
+      "carbs": 2.97,
+      "kcal": 14.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169248/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "caremelized": {
+    "name": "Caremelized",
+    "reference": "caramel-onion",
+    "food": "Standard caramelised onion model: 85% onion, 10% olive oil, 5% sugar",
+    "per100g": {
+      "fat": 10.085,
+      "fibre": 1.445,
+      "sugar": 8.594000000000001,
+      "protein": 0.9350000000000002,
+      "carbs": 12.938,
+      "kcal": 141.75
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard caramelised onion model: 85% onion, 10% olive oil, 5% sugar. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "marinated chicken": {
+    "name": "Marinated Chicken",
+    "reference": "171477",
+    "food": "Chicken, broilers or fryers, breast, meat only, cooked, roasted",
+    "per100g": {
+      "fat": 3.57,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 31.02,
+      "carbs": 0.0,
+      "kcal": 165.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171477/nutrients",
+    "proxy": "Cooked chicken breast proxy; marinade not specified in the workbook.",
+    "density": 1
+  },
+  "bqrbeque sauce": {
+    "name": "Bqrbeque Sauce",
+    "reference": "174523",
+    "food": "Sauce, barbecue",
+    "per100g": {
+      "fat": 0.63,
+      "fibre": 0.9,
+      "sugar": 33.24,
+      "protein": 0.82,
+      "carbs": 40.77,
+      "kcal": 172.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174523/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "peri peri seasoning": {
+    "name": "Peri Peri Seasoning",
+    "reference": "season",
+    "food": "Standard seasoning model: 50% paprika, 25% oregano, 25% salt",
+    "per100g": {
+      "fat": 7.515000000000001,
+      "fibre": 28.075,
+      "sugar": 6.1925,
+      "protein": 9.32,
+      "carbs": 44.225,
+      "kcal": 207.25
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard seasoning model: 50% paprika, 25% oregano, 25% salt. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "cayenne pepper powder": {
+    "name": "Cayenne Pepper Powder",
+    "reference": "171319",
+    "food": "Spices, chili powder",
+    "per100g": {
+      "fat": 14.28,
+      "fibre": 34.8,
+      "sugar": 7.19,
+      "protein": 13.46,
+      "carbs": 49.7,
+      "kcal": 282.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171319/nutrients",
+    "proxy": "Generic ground chilli spice proxy.",
+    "density": 1
+  },
+  "cajun seasoning": {
+    "name": "Cajun Seasoning",
+    "reference": "season",
+    "food": "Standard seasoning model: 50% paprika, 25% oregano, 25% salt",
+    "per100g": {
+      "fat": 7.515000000000001,
+      "fibre": 28.075,
+      "sugar": 6.1925,
+      "protein": 9.32,
+      "carbs": 44.225,
+      "kcal": 207.25
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard seasoning model: 50% paprika, 25% oregano, 25% salt. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "salad dressing base": {
+    "name": "Salad Dressing Base",
+    "reference": "171019",
+    "food": "Salad dressing, italian dressing, commercial, regular",
+    "per100g": {
+      "fat": 21.12,
+      "fibre": 0.0,
+      "sugar": 10.77,
+      "protein": 0.41,
+      "carbs": 12.12,
+      "kcal": 240.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171019/nutrients",
+    "proxy": "Generic Italian dressing proxy; actual café dressing is unspecified.",
+    "density": 1
+  },
+  "sweet corn": {
+    "name": "Sweet Corn",
+    "reference": "169998",
+    "food": "Corn, sweet, yellow, raw",
+    "per100g": {
+      "fat": 1.35,
+      "fibre": 2.0,
+      "sugar": 6.26,
+      "protein": 3.27,
+      "carbs": 18.7,
+      "kcal": 86.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169998/nutrients",
+    "proxy": "Generic sweet corn kernels proxy for baby corn where applicable.",
+    "density": 1
+  },
+  "maida": {
+    "name": "Maida",
+    "reference": "168936",
+    "food": "Wheat flour, white, all-purpose, enriched, unbleached",
+    "per100g": {
+      "fat": 0.98,
+      "fibre": 2.7,
+      "sugar": 0.27,
+      "protein": 10.33,
+      "carbs": 76.31,
+      "kcal": 364.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168936/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "corn flour": {
+    "name": "Corn Flour",
+    "reference": "169698",
+    "food": "Cornstarch",
+    "per100g": {
+      "fat": 0.05,
+      "fibre": 0.9,
+      "sugar": 0.0,
+      "protein": 0.26,
+      "carbs": 91.27,
+      "kcal": 381.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169698/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "baby corn": {
+    "name": "Baby Corn",
+    "reference": "169998",
+    "food": "Corn, sweet, yellow, raw",
+    "per100g": {
+      "fat": 1.35,
+      "fibre": 2.0,
+      "sugar": 6.26,
+      "protein": 3.27,
+      "carbs": 18.7,
+      "kcal": 86.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169998/nutrients",
+    "proxy": "Generic sweet corn kernels proxy for baby corn where applicable.",
+    "density": 1
+  },
+  "french beans": {
+    "name": "French Beans",
+    "reference": "169961",
+    "food": "Beans, snap, green, raw",
+    "per100g": {
+      "fat": 0.22,
+      "fibre": 2.7,
+      "sugar": 3.26,
+      "protein": 1.83,
+      "carbs": 6.97,
+      "kcal": 31.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169961/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "carrot": {
+    "name": "Carrot",
+    "reference": "170393",
+    "food": "Carrots, raw",
+    "per100g": {
+      "fat": 0.24,
+      "fibre": 2.8,
+      "sugar": 4.74,
+      "protein": 0.93,
+      "carbs": 9.58,
+      "kcal": 41.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170393/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "green peas": {
+    "name": "Green Peas",
+    "reference": "168405",
+    "food": "Cowpeas, young pods with seeds, raw",
+    "per100g": {
+      "fat": 0.3,
+      "fibre": 3.3,
+      "sugar": 5.04,
+      "protein": 3.3,
+      "carbs": 9.5,
+      "kcal": 44.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168405/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "seasme seeds": {
+    "name": "Seasme Seeds",
+    "reference": "169412",
+    "food": "Seeds, sesame seed kernels, dried (decorticated)",
+    "per100g": {
+      "fat": 61.21,
+      "fibre": 11.6,
+      "sugar": 0.48,
+      "protein": 20.45,
+      "carbs": 11.73,
+      "kcal": 631.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169412/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "salad dressing": {
+    "name": "Salad Dressing",
+    "reference": "171019",
+    "food": "Salad dressing, italian dressing, commercial, regular",
+    "per100g": {
+      "fat": 21.12,
+      "fibre": 0.0,
+      "sugar": 10.77,
+      "protein": 0.41,
+      "carbs": 12.12,
+      "kcal": 240.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171019/nutrients",
+    "proxy": "Generic Italian dressing proxy; actual café dressing is unspecified.",
+    "density": 1
+  },
+  "smoke marinated chicken": {
+    "name": "Smoke Marinated Chicken",
+    "reference": "171477",
+    "food": "Chicken, broilers or fryers, breast, meat only, cooked, roasted",
+    "per100g": {
+      "fat": 3.57,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 31.02,
+      "carbs": 0.0,
+      "kcal": 165.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171477/nutrients",
+    "proxy": "Cooked chicken breast proxy; marinade not specified in the workbook.",
+    "density": 1
+  },
+  "iceberg": {
+    "name": "Iceberg",
+    "reference": "169248",
+    "food": "Lettuce, iceberg (includes crisphead types), raw",
+    "per100g": {
+      "fat": 0.14,
+      "fibre": 1.2,
+      "sugar": 1.97,
+      "protein": 0.9,
+      "carbs": 2.97,
+      "kcal": 14.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169248/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "ceaser dressing": {
+    "name": "Ceaser Dressing",
+    "reference": "169055",
+    "food": "Salad dressing, caesar dressing, regular",
+    "per100g": {
+      "fat": 57.85,
+      "fibre": 0.5,
+      "sugar": 2.81,
+      "protein": 2.17,
+      "carbs": 3.3,
+      "kcal": 542.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169055/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "lettuce green": {
+    "name": "Lettuce Green",
+    "reference": "169248",
+    "food": "Lettuce, iceberg (includes crisphead types), raw",
+    "per100g": {
+      "fat": 0.14,
+      "fibre": 1.2,
+      "sugar": 1.97,
+      "protein": 0.9,
+      "carbs": 2.97,
+      "kcal": 14.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169248/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "iceberg lettuce": {
+    "name": "Iceberg Lettuce",
+    "reference": "169248",
+    "food": "Lettuce, iceberg (includes crisphead types), raw",
+    "per100g": {
+      "fat": 0.14,
+      "fibre": 1.2,
+      "sugar": 1.97,
+      "protein": 0.9,
+      "carbs": 2.97,
+      "kcal": 14.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169248/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "crutons": {
+    "name": "Crutons",
+    "reference": "172751",
+    "food": "Croutons, plain",
+    "per100g": {
+      "fat": 6.6,
+      "fibre": 5.1,
+      "sugar": 6.2,
+      "protein": 11.9,
+      "carbs": 73.5,
+      "kcal": 407.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172751/nutrients",
+    "proxy": "Crouton sugar unreported in SR; plain breadcrumbs sugar 6.2 g/100g used as proxy.",
+    "density": 1,
+    "pieceGrams": 2
+  },
+  "parmesan cheese": {
+    "name": "Parmesan Cheese",
+    "reference": "170848",
+    "food": "Cheese, parmesan, hard",
+    "per100g": {
+      "fat": 25.0,
+      "fibre": 0.0,
+      "sugar": 0.11,
+      "protein": 35.75,
+      "carbs": 3.22,
+      "kcal": 392.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170848/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "mexican dressing": {
+    "name": "Mexican Dressing",
+    "reference": "171019",
+    "food": "Salad dressing, italian dressing, commercial, regular",
+    "per100g": {
+      "fat": 21.12,
+      "fibre": 0.0,
+      "sugar": 10.77,
+      "protein": 0.41,
+      "carbs": 12.12,
+      "kcal": 240.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171019/nutrients",
+    "proxy": "Generic Italian dressing proxy; actual café dressing is unspecified.",
+    "density": 1
+  },
+  "lettuce": {
+    "name": "Lettuce",
+    "reference": "169248",
+    "food": "Lettuce, iceberg (includes crisphead types), raw",
+    "per100g": {
+      "fat": 0.14,
+      "fibre": 1.2,
+      "sugar": 1.97,
+      "protein": 0.9,
+      "carbs": 2.97,
+      "kcal": 14.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169248/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "chikpea": {
+    "name": "Chikpea",
+    "reference": "173757",
+    "food": "Chickpeas (garbanzo beans, bengal gram), mature seeds, cooked, boiled, without salt",
+    "per100g": {
+      "fat": 2.59,
+      "fibre": 7.6,
+      "sugar": 4.8,
+      "protein": 8.86,
+      "carbs": 27.42,
+      "kcal": 164.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173757/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "rajma beans": {
+    "name": "Rajma Beans",
+    "reference": "175194",
+    "food": "Beans, kidney, red, mature seeds, cooked, boiled, without salt",
+    "per100g": {
+      "fat": 0.5,
+      "fibre": 7.4,
+      "sugar": 0.32,
+      "protein": 8.67,
+      "carbs": 22.8,
+      "kcal": 127.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/175194/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "quinoa": {
+    "name": "Quinoa",
+    "reference": "168917",
+    "food": "Quinoa, cooked",
+    "per100g": {
+      "fat": 1.92,
+      "fibre": 2.8,
+      "sugar": 0.87,
+      "protein": 4.4,
+      "carbs": 21.3,
+      "kcal": 120.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168917/nutrients",
+    "proxy": "Cooked quinoa assumed, rather than dry weight.",
+    "density": 1
+  },
+  "toasted seasme seed": {
+    "name": "Toasted Seasme Seed",
+    "reference": "169412",
+    "food": "Seeds, sesame seed kernels, dried (decorticated)",
+    "per100g": {
+      "fat": 61.21,
+      "fibre": 11.6,
+      "sugar": 0.48,
+      "protein": 20.45,
+      "carbs": 11.73,
+      "kcal": 631.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169412/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "olive oil": {
+    "name": "Olive Oil",
+    "reference": "171413",
+    "food": "Oil, olive, salad or cooking",
+    "per100g": {
+      "fat": 100.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 884.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171413/nutrients",
+    "proxy": "Infused oils use plain olive oil as the nutrient proxy.",
+    "density": 0.91
+  },
+  "dried oregano": {
+    "name": "Dried Oregano",
+    "reference": "171328",
+    "food": "Spices, oregano, dried",
+    "per100g": {
+      "fat": 4.28,
+      "fibre": 42.5,
+      "sugar": 4.09,
+      "protein": 9.0,
+      "carbs": 68.92,
+      "kcal": 265.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171328/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "black peppr": {
+    "name": "Black Peppr",
+    "reference": "170931",
+    "food": "Spices, pepper, black",
+    "per100g": {
+      "fat": 3.26,
+      "fibre": 25.3,
+      "sugar": 0.64,
+      "protein": 10.39,
+      "carbs": 63.95,
+      "kcal": 251.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170931/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "cumin powder": {
+    "name": "Cumin Powder",
+    "reference": "170923",
+    "food": "Spices, cumin seed",
+    "per100g": {
+      "fat": 22.27,
+      "fibre": 10.5,
+      "sugar": 2.25,
+      "protein": 17.81,
+      "carbs": 44.24,
+      "kcal": 375.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170923/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "dijon mustard": {
+    "name": "Dijon Mustard",
+    "reference": "172234",
+    "food": "Mustard, prepared, yellow",
+    "per100g": {
+      "fat": 3.34,
+      "fibre": 4.0,
+      "sugar": 0.92,
+      "protein": 3.74,
+      "carbs": 5.83,
+      "kcal": 60.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172234/nutrients",
+    "proxy": "Prepared mustard proxy.",
+    "density": 1
+  },
+  "jumbo bread": {
+    "name": "Jumbo Bread",
+    "reference": "174924",
+    "food": "Bread, white, commercially prepared (includes soft bread crumbs)",
+    "per100g": {
+      "fat": 3.33,
+      "fibre": 2.7,
+      "sugar": 5.67,
+      "protein": 8.85,
+      "carbs": 49.42,
+      "kcal": 266.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174924/nutrients",
+    "proxy": "",
+    "density": 1,
+    "sliceGrams": 40
+  },
+  "butter chiplet": {
+    "name": "Butter Chiplet",
+    "reference": "173410",
+    "food": "Butter, salted",
+    "per100g": {
+      "fat": 81.11,
+      "fibre": 0.0,
+      "sugar": 0.06,
+      "protein": 0.85,
+      "carbs": 0.06,
+      "kcal": 717.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173410/nutrients",
+    "proxy": "",
+    "density": 1,
+    "pieceGrams": 10
+  },
+  "potato wedges": {
+    "name": "Potato Wedges",
+    "reference": "169264",
+    "food": "Potatoes, french fried, all types, salt added in processing, frozen, home-prepared, oven heated",
+    "per100g": {
+      "fat": 5.48,
+      "fibre": 2.0,
+      "sugar": 0.37,
+      "protein": 2.75,
+      "carbs": 25.55,
+      "kcal": 158.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169264/nutrients",
+    "proxy": "Prepared oven-heated fries proxy; actual frying oil changes totals.",
+    "density": 1
+  },
+  "sundried tomato": {
+    "name": "Sundried Tomato",
+    "reference": "168567",
+    "food": "Tomatoes, sun-dried",
+    "per100g": {
+      "fat": 2.97,
+      "fibre": 12.3,
+      "sugar": 37.59,
+      "protein": 14.11,
+      "carbs": 55.76,
+      "kcal": 258.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168567/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "veg corquettes": {
+    "name": "Veg Corquettes",
+    "reference": "croquette",
+    "food": "Proposed croquette model: 60% potato, 15% peas, 15% breadcrumbs, 10% retained oil",
+    "per100g": {
+      "fat": 10.894,
+      "fibre": 2.4299999999999997,
+      "sugar": 2.178,
+      "protein": 3.7274999999999996,
+      "carbs": 22.716,
+      "kcal": 200.45000000000002
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Proposed croquette model: 60% potato, 15% peas, 15% breadcrumbs, 10% retained oil. Assumed composition; not the café supplier label.",
+    "density": 1,
+    "pieceGrams": 35
+  },
+  "dip": {
+    "name": "Dip",
+    "reference": "mayo",
+    "food": "Standard flavoured mayo model: 95% mayonnaise, 5% paprika",
+    "per100g": {
+      "fat": 71.75199999999998,
+      "fibre": 1.745,
+      "sugar": 1.0585,
+      "protein": 1.6190000000000002,
+      "carbs": 3.241,
+      "kcal": 660.1
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard flavoured mayo model: 95% mayonnaise, 5% paprika. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "baguette bread": {
+    "name": "Baguette Bread",
+    "reference": "172675",
+    "food": "Bread, french or vienna (includes sourdough)",
+    "per100g": {
+      "fat": 2.42,
+      "fibre": 2.2,
+      "sugar": 4.62,
+      "protein": 10.75,
+      "carbs": 51.88,
+      "kcal": 272.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172675/nutrients",
+    "proxy": "",
+    "density": 1,
+    "sliceGrams": 20
+  },
+  "balsamic vinegar": {
+    "name": "Balsamic Vinegar",
+    "reference": "172241",
+    "food": "Vinegar, balsamic",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0,
+      "sugar": 14.95,
+      "protein": 0.49,
+      "carbs": 17.03,
+      "kcal": 88.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172241/nutrients",
+    "proxy": "Fibre assumed zero for filtered balsamic vinegar; not reported in SR.",
+    "density": 1.05
+  },
+  "basil": {
+    "name": "Basil",
+    "reference": "172232",
+    "food": "Basil, fresh",
+    "per100g": {
+      "fat": 0.64,
+      "fibre": 1.6,
+      "sugar": 0.3,
+      "protein": 3.15,
+      "carbs": 2.65,
+      "kcal": 23.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172232/nutrients",
+    "proxy": "",
+    "density": 1,
+    "leafGrams": 0.5
+  },
+  "corn": {
+    "name": "Corn",
+    "reference": "169998",
+    "food": "Corn, sweet, yellow, raw",
+    "per100g": {
+      "fat": 1.35,
+      "fibre": 2.0,
+      "sugar": 6.26,
+      "protein": 3.27,
+      "carbs": 18.7,
+      "kcal": 86.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169998/nutrients",
+    "proxy": "Generic sweet corn kernels proxy for baby corn where applicable.",
+    "density": 1
+  },
+  "french fries frozen": {
+    "name": "French Fries Frozen",
+    "reference": "169264",
+    "food": "Potatoes, french fried, all types, salt added in processing, frozen, home-prepared, oven heated",
+    "per100g": {
+      "fat": 5.48,
+      "fibre": 2.0,
+      "sugar": 0.37,
+      "protein": 2.75,
+      "carbs": 25.55,
+      "kcal": 158.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169264/nutrients",
+    "proxy": "Prepared oven-heated fries proxy; actual frying oil changes totals.",
+    "density": 1
+  },
+  "peri peri": {
+    "name": "Peri Peri",
+    "reference": "season",
+    "food": "Standard seasoning model: 50% paprika, 25% oregano, 25% salt",
+    "per100g": {
+      "fat": 7.515000000000001,
+      "fibre": 28.075,
+      "sugar": 6.1925,
+      "protein": 9.32,
+      "carbs": 44.225,
+      "kcal": 207.25
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard seasoning model: 50% paprika, 25% oregano, 25% salt. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "cornflour": {
+    "name": "Cornflour",
+    "reference": "169698",
+    "food": "Cornstarch",
+    "per100g": {
+      "fat": 0.05,
+      "fibre": 0.9,
+      "sugar": 0.0,
+      "protein": 0.26,
+      "carbs": 91.27,
+      "kcal": 381.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169698/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "pri-pri mayo": {
+    "name": "Pri-Pri Mayo",
+    "reference": "mayo",
+    "food": "Standard flavoured mayo model: 95% mayonnaise, 5% paprika",
+    "per100g": {
+      "fat": 71.75199999999998,
+      "fibre": 1.745,
+      "sugar": 1.0585,
+      "protein": 1.6190000000000002,
+      "carbs": 3.241,
+      "kcal": 660.1
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard flavoured mayo model: 95% mayonnaise, 5% paprika. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "nachos": {
+    "name": "Nachos",
+    "reference": "167558",
+    "food": "Snacks, tortilla chips, plain, white corn, salted",
+    "per100g": {
+      "fat": 20.68,
+      "fibre": 5.4,
+      "sugar": 0.78,
+      "protein": 7.1,
+      "carbs": 67.78,
+      "kcal": 472.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/167558/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "salsa": {
+    "name": "Salsa",
+    "reference": "171824",
+    "food": "Sauce, salsa, verde, ready-to-serve",
+    "per100g": {
+      "fat": 0.89,
+      "fibre": 1.9,
+      "sugar": 3.5,
+      "protein": 1.13,
+      "carbs": 6.36,
+      "kcal": 38.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171824/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "sour cream": {
+    "name": "Sour Cream",
+    "reference": "173440",
+    "food": "Cheese, low-sodium, cheddar or colby",
+    "per100g": {
+      "fat": 32.62,
+      "fibre": 0.0,
+      "sugar": 0.49,
+      "protein": 24.35,
+      "carbs": 1.91,
+      "kcal": 398.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173440/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "chickpea": {
+    "name": "Chickpea",
+    "reference": "173757",
+    "food": "Chickpeas (garbanzo beans, bengal gram), mature seeds, cooked, boiled, without salt",
+    "per100g": {
+      "fat": 2.59,
+      "fibre": 7.6,
+      "sugar": 4.8,
+      "protein": 8.86,
+      "carbs": 27.42,
+      "kcal": 164.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173757/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "sweet peprika": {
+    "name": "Sweet Peprika",
+    "reference": "171329",
+    "food": "Spices, paprika",
+    "per100g": {
+      "fat": 12.89,
+      "fibre": 34.9,
+      "sugar": 10.34,
+      "protein": 14.14,
+      "carbs": 53.99,
+      "kcal": 282.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171329/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "cayyene pepper": {
+    "name": "Cayyene Pepper",
+    "reference": "171319",
+    "food": "Spices, chili powder",
+    "per100g": {
+      "fat": 14.28,
+      "fibre": 34.8,
+      "sugar": 7.19,
+      "protein": 13.46,
+      "carbs": 49.7,
+      "kcal": 282.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171319/nutrients",
+    "proxy": "Generic ground chilli spice proxy.",
+    "density": 1
+  },
+  "saour cream": {
+    "name": "Saour Cream",
+    "reference": "173440",
+    "food": "Cheese, low-sodium, cheddar or colby",
+    "per100g": {
+      "fat": 32.62,
+      "fibre": 0.0,
+      "sugar": 0.49,
+      "protein": 24.35,
+      "carbs": 1.91,
+      "kcal": 398.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173440/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "chicken sausage": {
+    "name": "Chicken Sausage",
+    "reference": "173880",
+    "food": "Sausage, chicken or turkey, Italian style,  lower sodium",
+    "per100g": {
+      "fat": 4.46,
+      "fibre": 0.0,
+      "sugar": 0.81,
+      "protein": 21.43,
+      "carbs": 14.25,
+      "kcal": 183.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173880/nutrients",
+    "proxy": "Cooked chicken/turkey sausage proxy.",
+    "density": 1,
+    "pieceGrams": 50
+  },
+  "baked beans": {
+    "name": "Baked Beans",
+    "reference": "175182",
+    "food": "Beans, baked, canned, plain or vegetarian",
+    "per100g": {
+      "fat": 0.37,
+      "fibre": 4.1,
+      "sugar": 7.96,
+      "protein": 4.75,
+      "carbs": 21.14,
+      "kcal": 94.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/175182/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "potato": {
+    "name": "Potato",
+    "reference": "170026",
+    "food": "Potatoes, flesh and skin, raw",
+    "per100g": {
+      "fat": 0.09,
+      "fibre": 2.1,
+      "sugar": 0.82,
+      "protein": 2.05,
+      "carbs": 17.49,
+      "kcal": 77.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170026/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "hash brown": {
+    "name": "Hash Brown",
+    "reference": "167604",
+    "food": "Potatoes, hash brown, refrigerated, unprepared",
+    "per100g": {
+      "fat": 0.08,
+      "fibre": 1.8,
+      "sugar": 0.91,
+      "protein": 1.75,
+      "carbs": 19.16,
+      "kcal": 84.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/167604/nutrients",
+    "proxy": "",
+    "density": 1,
+    "pieceGrams": 55
+  },
+  "leek+celery": {
+    "name": "Leek+Celery",
+    "reference": "leek-celery",
+    "food": "Equal parts raw leek and celery",
+    "per100g": {
+      "fat": 0.235,
+      "fibre": 1.7000000000000002,
+      "sugar": 2.62,
+      "protein": 1.095,
+      "carbs": 8.56,
+      "kcal": 37.5
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Equal parts raw leek and celery. Assumed composition; not the café supplier label.",
+    "density": 1
+  },
+  "turmeric": {
+    "name": "Turmeric",
+    "reference": "172231",
+    "food": "Spices, turmeric, ground",
+    "per100g": {
+      "fat": 3.25,
+      "fibre": 22.7,
+      "sugar": 3.21,
+      "protein": 9.68,
+      "carbs": 67.14,
+      "kcal": 312.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172231/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "chicken ham": {
+    "name": "Chicken Ham",
+    "reference": "168092",
+    "food": "Ham, turkey, sliced, extra lean, prepackaged or deli",
+    "per100g": {
+      "fat": 5.8,
+      "fibre": 0.0,
+      "sugar": 0.5,
+      "protein": 19.6,
+      "carbs": 0.93,
+      "kcal": 134.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168092/nutrients",
+    "proxy": "Lean turkey deli ham proxy for unspecified chicken ham.",
+    "density": 1,
+    "pieceGrams": 20
+  },
+  "basa fish lemon marirante": {
+    "name": "Basa Fish Lemon Marirante",
+    "reference": "175165",
+    "food": "Fish, catfish, channel, farmed, raw",
+    "per100g": {
+      "fat": 5.94,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 15.23,
+      "carbs": 0.0,
+      "kcal": 119.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/175165/nutrients",
+    "proxy": "Raw farmed catfish proxy for basa, before unspecified marinade.",
+    "density": 1
+  },
+  "cucumber": {
+    "name": "Cucumber",
+    "reference": "168409",
+    "food": "Cucumber, with peel, raw",
+    "per100g": {
+      "fat": 0.11,
+      "fibre": 0.5,
+      "sugar": 1.67,
+      "protein": 0.65,
+      "carbs": 3.63,
+      "kcal": 15.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168409/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "prawns": {
+    "name": "Prawns",
+    "reference": "175179",
+    "food": "Crustaceans, shrimp, raw",
+    "per100g": {
+      "fat": 0.51,
+      "fibre": 0,
+      "sugar": 0,
+      "protein": 20.1,
+      "carbs": 0.0,
+      "kcal": 85.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/175179/nutrients",
+    "proxy": "Sugar and fibre assumed zero for plain raw prawns; not reported in SR.",
+    "density": 1,
+    "pieceGrams": 15
+  },
+  "brioche bread": {
+    "name": "Brioche Bread",
+    "reference": "172673",
+    "food": "Bread, egg",
+    "per100g": {
+      "fat": 6.0,
+      "fibre": 2.3,
+      "sugar": 1.78,
+      "protein": 9.5,
+      "carbs": 47.8,
+      "kcal": 287.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172673/nutrients",
+    "proxy": "Generic egg bread proxy for brioche.",
+    "density": 1,
+    "sliceGrams": 40
+  },
+  "sugar": {
+    "name": "Sugar",
+    "reference": "169655",
+    "food": "Sugars, granulated",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 99.8,
+      "protein": 0.0,
+      "carbs": 99.98,
+      "kcal": 387.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169655/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "venilla essence": {
+    "name": "Venilla Essence",
+    "reference": "173471",
+    "food": "Vanilla extract",
+    "per100g": {
+      "fat": 0.06,
+      "fibre": 0.0,
+      "sugar": 12.65,
+      "protein": 0.06,
+      "carbs": 12.65,
+      "kcal": 288.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173471/nutrients",
+    "proxy": "Vanilla extract proxy for essence.",
+    "density": 1
+  },
+  "maple syrup": {
+    "name": "Maple Syrup",
+    "reference": "169661",
+    "food": "Syrups, maple",
+    "per100g": {
+      "fat": 0.06,
+      "fibre": 0.0,
+      "sugar": 60.46,
+      "protein": 0.04,
+      "carbs": 67.04,
+      "kcal": 260.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169661/nutrients",
+    "proxy": "",
+    "density": 1.33
+  },
+  "baking powder": {
+    "name": "Baking Powder",
+    "reference": "172803",
+    "food": "Leavening agents, baking powder, double-acting, sodium aluminum sulfate",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.2,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 27.7,
+      "kcal": 53.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172803/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "baking soda": {
+    "name": "Baking Soda",
+    "reference": "175040",
+    "food": "Leavening agents, baking soda",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 0.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/175040/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "leek": {
+    "name": "Leek",
+    "reference": "169246",
+    "food": "Leeks, (bulb and lower leaf-portion), raw",
+    "per100g": {
+      "fat": 0.3,
+      "fibre": 1.8,
+      "sugar": 3.9,
+      "protein": 1.5,
+      "carbs": 14.15,
+      "kcal": 61.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169246/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "celery": {
+    "name": "Celery",
+    "reference": "169988",
+    "food": "Celery, raw",
+    "per100g": {
+      "fat": 0.17,
+      "fibre": 1.6,
+      "sugar": 1.34,
+      "protein": 0.69,
+      "carbs": 2.97,
+      "kcal": 14.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169988/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "speghetti": {
+    "name": "Speghetti",
+    "reference": "169737",
+    "food": "Pasta, cooked, enriched, without added salt",
+    "per100g": {
+      "fat": 0.93,
+      "fibre": 1.8,
+      "sugar": 0.56,
+      "protein": 5.8,
+      "carbs": 30.86,
+      "kcal": 158.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169737/nutrients",
+    "proxy": "Cooked, drained pasta weight assumed.",
+    "density": 1
+  },
+  "basil leaves": {
+    "name": "Basil Leaves",
+    "reference": "172232",
+    "food": "Basil, fresh",
+    "per100g": {
+      "fat": 0.64,
+      "fibre": 1.6,
+      "sugar": 0.3,
+      "protein": 3.15,
+      "carbs": 2.65,
+      "kcal": 23.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172232/nutrients",
+    "proxy": "",
+    "density": 1,
+    "leafGrams": 0.5
+  },
+  "black sliced olives": {
+    "name": "Black Sliced Olives",
+    "reference": "169094",
+    "food": "Olives, ripe, canned (small-extra large)",
+    "per100g": {
+      "fat": 10.9,
+      "fibre": 1.6,
+      "sugar": 0.0,
+      "protein": 0.84,
+      "carbs": 6.04,
+      "kcal": 116.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169094/nutrients",
+    "proxy": "",
+    "density": 1,
+    "sliceGrams": 0.5
+  },
+  "garlic bread": {
+    "name": "Garlic Bread",
+    "reference": "garlic-bread",
+    "food": "Standard garlic bread model: 85% bread, 13% butter, 2% garlic",
+    "per100g": {
+      "fat": 12.6113,
+      "fibre": 1.9120000000000004,
+      "sugar": 3.9548,
+      "protein": 9.3752,
+      "carbs": 44.767,
+      "kcal": 327.39
+    },
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "proxy": "Standard garlic bread model: 85% bread, 13% butter, 2% garlic. Assumed composition; not the café supplier label.",
+    "density": 1,
+    "pieceGrams": 35
+  },
+  "bellpeper": {
+    "name": "Bellpeper",
+    "reference": "170108",
+    "food": "Peppers, sweet, red, raw",
+    "per100g": {
+      "fat": 0.3,
+      "fibre": 2.1,
+      "sugar": 4.2,
+      "protein": 0.99,
+      "carbs": 6.03,
+      "kcal": 26.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170108/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "pesto paste": {
+    "name": "Pesto Paste",
+    "reference": "171579",
+    "food": "Sauce, pesto, ready-to-serve, refrigerated",
+    "per100g": {
+      "fat": 37.6,
+      "fibre": 1.8,
+      "sugar": 6.33,
+      "protein": 9.83,
+      "carbs": 10.09,
+      "kcal": 418.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171579/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "white sauce": {
+    "name": "White Sauce",
+    "reference": "174525",
+    "food": "Sauce, homemade, white, medium",
+    "per100g": {
+      "fat": 10.63,
+      "fibre": 0.2,
+      "sugar": 4.38,
+      "protein": 3.84,
+      "carbs": 9.17,
+      "kcal": 147.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174525/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "parmesan": {
+    "name": "Parmesan",
+    "reference": "170848",
+    "food": "Cheese, parmesan, hard",
+    "per100g": {
+      "fat": 25.0,
+      "fibre": 0.0,
+      "sugar": 0.11,
+      "protein": 35.75,
+      "carbs": 3.22,
+      "kcal": 392.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170848/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "cooked pasta": {
+    "name": "Cooked Pasta",
+    "reference": "169737",
+    "food": "Pasta, cooked, enriched, without added salt",
+    "per100g": {
+      "fat": 0.93,
+      "fibre": 1.8,
+      "sugar": 0.56,
+      "protein": 5.8,
+      "carbs": 30.86,
+      "kcal": 158.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169737/nutrients",
+    "proxy": "Cooked, drained pasta weight assumed.",
+    "density": 1
+  },
+  "white wine": {
+    "name": "White Wine",
+    "reference": "174837",
+    "food": "Alcoholic beverage, wine, table, white",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.96,
+      "protein": 0.07,
+      "carbs": 2.6,
+      "kcal": 82.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174837/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "sitake paste": {
+    "name": "Sitake Paste",
+    "reference": "169251",
+    "food": "Mushrooms, white, raw",
+    "per100g": {
+      "fat": 0.34,
+      "fibre": 1.0,
+      "sugar": 1.98,
+      "protein": 3.09,
+      "carbs": 3.26,
+      "kcal": 22.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169251/nutrients",
+    "proxy": "Plain mushroom proxy; unspecified paste can contain extra cream or oil.",
+    "density": 1
+  },
+  "penne pasta": {
+    "name": "Penne Pasta",
+    "reference": "169737",
+    "food": "Pasta, cooked, enriched, without added salt",
+    "per100g": {
+      "fat": 0.93,
+      "fibre": 1.8,
+      "sugar": 0.56,
+      "protein": 5.8,
+      "carbs": 30.86,
+      "kcal": 158.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169737/nutrients",
+    "proxy": "Cooked, drained pasta weight assumed.",
+    "density": 1
+  },
+  "mushroom for garnish": {
+    "name": "Mushroom For Garnish",
+    "reference": "169251",
+    "food": "Mushrooms, white, raw",
+    "per100g": {
+      "fat": 0.34,
+      "fibre": 1.0,
+      "sugar": 1.98,
+      "protein": 3.09,
+      "carbs": 3.26,
+      "kcal": 22.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169251/nutrients",
+    "proxy": "",
+    "density": 1,
+    "pieceGrams": 20
+  },
+  "leeks": {
+    "name": "Leeks",
+    "reference": "169246",
+    "food": "Leeks, (bulb and lower leaf-portion), raw",
+    "per100g": {
+      "fat": 0.3,
+      "fibre": 1.8,
+      "sugar": 3.9,
+      "protein": 1.5,
+      "carbs": 14.15,
+      "kcal": 61.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169246/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "cheddar cheese powder": {
+    "name": "Cheddar Cheese Powder",
+    "reference": "173414",
+    "food": "Cheese, cheddar (Includes foods for USDA's Food Distribution Program)",
+    "per100g": {
+      "fat": 33.31,
+      "fibre": 0.0,
+      "sugar": 0.48,
+      "protein": 22.87,
+      "carbs": 3.37,
+      "kcal": 403.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173414/nutrients",
+    "proxy": "Cheddar cheese proxy for unspecified cheese powder.",
+    "density": 1
+  },
+  "oregano": {
+    "name": "Oregano",
+    "reference": "171328",
+    "food": "Spices, oregano, dried",
+    "per100g": {
+      "fat": 4.28,
+      "fibre": 42.5,
+      "sugar": 4.09,
+      "protein": 9.0,
+      "carbs": 68.92,
+      "kcal": 265.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171328/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "mozzerela cheese": {
+    "name": "Mozzerela Cheese",
+    "reference": "170845",
+    "food": "Cheese, mozzarella, whole milk",
+    "per100g": {
+      "fat": 22.14,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 22.17,
+      "carbs": 2.4,
+      "kcal": 299.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170845/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "brewed coffee yield": {
+    "name": "Brewed coffee yield",
+    "reference": "171890",
+    "food": "Beverages, coffee, brewed, prepared with tap water",
+    "per100g": {
+      "fat": 0.02,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.12,
+      "carbs": 0.0,
+      "kcal": 1.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171890/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "bread crumbs": {
+    "name": "Bread Crumbs",
+    "reference": "174928",
+    "food": "Bread, crumbs, dry, grated, plain",
+    "per100g": {
+      "fat": 5.3,
+      "fibre": 4.5,
+      "sugar": 6.2,
+      "protein": 13.35,
+      "carbs": 71.98,
+      "kcal": 395.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174928/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "food colour": {
+    "name": "Food Colour",
+    "reference": "174158",
+    "food": "Water, bottled, generic",
+    "per100g": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 0.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174158/nutrients",
+    "proxy": "Assumed water-based colouring, 0.1 g; negligible nutrients.",
+    "density": 1
+  },
+  "vanilla essence": {
+    "name": "Vanilla Essence",
+    "reference": "173471",
+    "food": "Vanilla extract",
+    "per100g": {
+      "fat": 0.06,
+      "fibre": 0.0,
+      "sugar": 12.65,
+      "protein": 0.06,
+      "carbs": 12.65,
+      "kcal": 288.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173471/nutrients",
+    "proxy": "Vanilla extract proxy for essence.",
+    "density": 1
+  },
+  "broccoli": {
+    "name": "Broccoli",
+    "reference": "170379",
+    "food": "Broccoli, raw",
+    "per100g": {
+      "fat": 0.37,
+      "fibre": 2.6,
+      "sugar": 1.7,
+      "protein": 2.82,
+      "carbs": 6.64,
+      "kcal": 34.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170379/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "mozzarella cheese": {
+    "name": "Mozzarella Cheese",
+    "reference": "170845",
+    "food": "Cheese, mozzarella, whole milk",
+    "per100g": {
+      "fat": 22.14,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 22.17,
+      "carbs": 2.4,
+      "kcal": 299.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170845/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "jalapeno": {
+    "name": "Jalapeno",
+    "reference": "170080",
+    "food": "Peppers, jalapeno, canned, solids and liquids",
+    "per100g": {
+      "fat": 0.94,
+      "fibre": 2.6,
+      "sugar": 2.14,
+      "protein": 0.92,
+      "carbs": 4.74,
+      "kcal": 27.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170080/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "sesame seeds": {
+    "name": "Sesame Seeds",
+    "reference": "169412",
+    "food": "Seeds, sesame seed kernels, dried (decorticated)",
+    "per100g": {
+      "fat": 61.21,
+      "fibre": 11.6,
+      "sugar": 0.48,
+      "protein": 20.45,
+      "carbs": 11.73,
+      "kcal": 631.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169412/nutrients",
+    "proxy": "",
+    "density": 1
+  },
+  "chilli pepper flakes": {
+    "name": "Chilli Pepper Flakes",
+    "reference": "171319",
+    "food": "Spices, chili powder",
+    "per100g": {
+      "fat": 14.28,
+      "fibre": 34.8,
+      "sugar": 7.19,
+      "protein": 13.46,
+      "carbs": 49.7,
+      "kcal": 282.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171319/nutrients",
+    "proxy": "Generic ground chilli spice proxy.",
+    "density": 1
+  },
+  "brewed coffee": {
+    "name": "Brewed Coffee",
+    "reference": "171890",
+    "food": "Beverages, coffee, brewed, prepared with tap water",
+    "per100g": {
+      "fat": 0.02,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.12,
+      "carbs": 0.0,
+      "kcal": 1.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171890/nutrients",
+    "proxy": "",
+    "density": 1
+  }
+}

@@ -1,0 +1,5 @@
+CREATE TABLE subscription_catalog(id TEXT PRIMARY KEY,name TEXT NOT NULL,amount INTEGER NOT NULL CHECK(amount BETWEEN 5000 AND 100000000),credits INTEGER NOT NULL CHECK(credits BETWEEN 1 AND 3660),days INTEGER NOT NULL CHECK(days BETWEEN 1 AND 730),enabled INTEGER NOT NULL DEFAULT 1 CHECK(enabled IN (0,1)),archived INTEGER NOT NULL DEFAULT 0 CHECK(archived IN (0,1)),revision INTEGER NOT NULL DEFAULT 1);
+INSERT INTO subscription_catalog(id,name,amount,credits,days) VALUES ('weekly','Weekly coffee pass',159900,8,30),('monthly','Monthly coffee pass',600000,34,30),('two_month','2-month coffee pass',1200000,60,60);
+ALTER TABLE coffee_subscriptions ADD COLUMN purchased_credits INTEGER CHECK(purchased_credits BETWEEN 1 AND 3660);
+CREATE TABLE subscription_purchase_snapshots(order_id TEXT PRIMARY KEY REFERENCES orders(id),user_id TEXT NOT NULL,plan_id TEXT NOT NULL,name TEXT NOT NULL,amount INTEGER NOT NULL,credits INTEGER NOT NULL,days INTEGER NOT NULL,revision INTEGER NOT NULL,created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE INDEX subscription_snapshot_user ON subscription_purchase_snapshots(user_id,plan_id,created_at);

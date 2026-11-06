@@ -1,3 +1,13 @@
+import MenuRecipeDetails from './menu-recipe-details';
+import AppPermissionSetup from './app-permission-setup';
+import AddressForm from './address-form';
+import BookingNotifications from './booking-notifications';
+import TableBooking from './table-booking';
+import CustomerAvatar from './customer-avatar';
+import {CoffeeMotionHero,MobileMotion} from './coffee-motion';
+import {PersonalHome,Pairings,DigitalReceipt,OrderAlerts} from './mobile-experience';
+import {prepareReorder,mergeOrderUpdates,cartItemKey} from '../lib/mobile-experience';
+import CoffeeClub,{ClubShortcuts} from './coffee-club';
 import UpiScanner from './upi-scanner';
 import {unlockCelebrationAudio,celebrationSound} from '../lib/celebration-audio';
 import MovableCart from "./movable-cart";
@@ -9,6 +19,8 @@ import {filterMenu} from "../lib/menu-filters";
 import { useState, useEffect, useCallback, useRef, useLayoutEffect } from "react";
 import {
   Coffee,
+  Pencil,
+  Gift,
   Croissant,
   Sandwich,
   Cookie,
@@ -42,9 +54,11 @@ import {
   ArrowLeft,
   CheckCircle2,
 } from "lucide-react";
+import {singleFlight} from '../lib/customer-flow';
 import { signOutSession } from "../lib/sign-out";
 import { useDialogAccessibility } from "../lib/dialog";
 import MobileInstall from "./mobile-install";
+import {ThemeToggle} from "./theme-provider";
 import CoffeeSubscriptions from "./coffee-subscriptions";
 import SubscriptionTracker from "./subscription-tracker";
 import OnlinePayment from "./online-payment";
@@ -61,9 +75,13 @@ export async function api(
   path: string,
   method = "GET",
   data?: any,
+  signal?: AbortSignal,
 ): Promise<any> {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 15000);
+  const cancel = () => controller.abort();
+  if (signal?.aborted) controller.abort();
+  else signal?.addEventListener("abort", cancel, {once:true});
+  const timer = setTimeout(cancel, 15000);
   try {
     const r = await fetch("/api/" + path, {
       method,
@@ -76,10 +94,12 @@ export async function api(
     if (!r.ok) throw new Error(b.error || "Something went wrong. Please retry.");
     return b;
   } catch (error) {
+    if (signal?.aborted) {const cancelled=new Error("Request cancelled");cancelled.name="AbortError";throw cancelled;}
     if (controller.signal.aborted) throw new Error("The request timed out. Check your connection and try again.");
     throw error;
   } finally {
     clearTimeout(timer);
+    signal?.removeEventListener("abort", cancel);
   }
 }
 export function money(value: number, currency = "INR") {
@@ -122,12 +142,12 @@ const initialItem = (id: string): Item => ({
   addonIds: [],
   instructions: "",
 });
-const itemKey = (i: Item) =>
-  JSON.stringify([i.productId, i.variantId, [...i.addonIds].sort()]);
+const itemKey = cartItemKey;
 export default function StoreApp() {
   const [profilePhoto, setProfilePhoto] = useState<string | null>(null);
   const profilePhotoInput = useRef<HTMLInputElement>(null);
-  const profileDetailsRef = useRef<HTMLFormElement>(null);
+  const [profileEditorOpen, setProfileEditorOpen] = useState(false);
+  const profileBusyRef = useRef(false);
   const floatingCartRef = useRef<HTMLButtonElement>(null);
   const headerCartRef = useRef<HTMLButtonElement>(null);
   const [cartFlights, setCartFlights] = useState<any[]>([]);
@@ -165,7 +185,6 @@ export default function StoreApp() {
     [priceRange, setPriceRange] = useState("all"),
     [diet, setDiet] = useState("all"),
     [showFilters, setShowFilters] = useState(false),
-    [visibleCount, setVisibleCount] = useState(24),
     [selected, setSelected] = useState<any>(null),
     [editIndex, setEditIndex] = useState(-1),
     [selection, setSelection] = useState<Item>(initialItem("")),
@@ -177,7 +196,7 @@ export default function StoreApp() {
     [code, setCode] = useState(""),
     [fulfillment, setFulfillment] = useState("pickup"),
     [confirmation, setConfirmation] = useState(""),
-    [splash, setSplash] = useState(true),
+
     [info, setInfo] = useState("");
   const [onlineConfig,setOnlineConfig]=useState<any>({enabled:false});
   const [payOnline,setPayOnline]=useState(false);
@@ -202,22 +221,31 @@ export default function StoreApp() {
   const pendingCart = useRef<Item[] | null>(null);
   const savedCart = useRef("");
   const cartSaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const accountOwner = useRef<string|null>(null);
+  const favoriteRequests = useRef(new Set<string>());
+  const cartOwner = useRef("");
+  const favoritesOwner = useRef("");
+  const initialLoad = useRef<Promise<void>|null>(null);
+  const bootstrapRequest = useRef<(()=>Promise<any>)|null>(null);
+  if(!bootstrapRequest.current)bootstrapRequest.current=singleFlight(()=>api("bootstrap"));
   function flushCart(items?: Item[]): Promise<void> {
     if (cartSaveTimer.current) clearTimeout(cartSaveTimer.current);
     if (items) pendingCart.current = items;
     if (!cartSerial.current) {
       cartSerial.current = Promise.resolve().then(async () => {
         while (pendingCart.current) {
-          const next = pendingCart.current;
+          const owner = accountOwner.current;
+        const next = pendingCart.current;
           pendingCart.current = null;
           const signature = JSON.stringify(next);
           if (signature === savedCart.current) continue;
           try {
             await api("cart", "PUT", {items: next});
-            savedCart.current = signature;
+            if(accountOwner.current===owner)savedCart.current = signature;
           } catch (error) {
             // Keep the latest unsaved state for an explicit checkout retry.
-            if (!pendingCart.current) pendingCart.current = next;
+            if(accountOwner.current!==owner)continue;
+          if (!pendingCart.current) pendingCart.current = next;
             throw error;
           }
         }
@@ -230,11 +258,10 @@ export default function StoreApp() {
     products = data?.products || [],
     categories = data?.categories?.filter((c: any) => c.enabled && data.products.some((p:any)=>!p.archived && p.categoryId===c.id)) || [];
   const menuProductsRef = useRef<HTMLElement>(null);
-  const categoryPositions = useRef<Record<string, {top:number; count:number}>>({});
+  const categoryPositions = useRef<Record<string, {top:number}>>({});
   const selectMenuCategory = (next:string) => {
     if (next === category) return;
-    categoryPositions.current[category] = {top:menuProductsRef.current?.scrollTop || 0, count:visibleCount};
-    setVisibleCount(categoryPositions.current[next]?.count || 24);
+    categoryPositions.current[category] = {top:menuProductsRef.current?.scrollTop || 0};
     setCategory(next);
   };
   useLayoutEffect(() => {
@@ -252,37 +279,68 @@ export default function StoreApp() {
     window.history.replaceState(null, "", "#" + r);
     window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
+  useEffect(()=>{if(!user?.userId)return;let stopped=false,timer:ReturnType<typeof setTimeout>;const refresh=async()=>{if(document.visibilityState==='visible'){try{const b=await api('orders');if(!stopped)setOrders(previous=>mergeOrderUpdates(previous,b.orders))}catch{/* Existing orders stay visible until connection returns. */}}if(!stopped)timer=setTimeout(refresh,15000)};timer=setTimeout(refresh,15000);return()=>{stopped=true;clearTimeout(timer)}},[user?.userId]);
   const notify = (s: string) => {
     setNotice(s);
     setTimeout(() => setNotice(""), 4000);
   };
-  const load = useCallback(async () => {
-    try {
-      setError("");
-      const b = await api("bootstrap");
-      setData(b);
-      if (b.user) {
-        const [c, f] = await Promise.all([api("cart"), api("favorites")]);
-        savedCart.current = JSON.stringify(c.items);
-        setCart(c.items);
-        setFavoriteIds(f.ids);
-        setContact((v: any) => ({
-          ...v,
-          name: b.user.profile.name || b.user.fullName || "",
-          phone: b.user.profile.phone || "",
-        }));
-      }
-      setCartReady(true);
-    } catch (e: any) {
-      setError(e.message);
+  function acceptBootstrap(snapshot:any){
+    const owner=String(snapshot.user?.userId||"");
+    if(accountOwner.current!==owner){
+      accountOwner.current=owner;cartOwner.current="";favoritesOwner.current="";
+      pendingCart.current=null;savedCart.current="";keyRef.current="";
+      setCart([]);setFavoriteIds([]);setQuote(null);setCartReady(!owner);
     }
+    setData(snapshot);
+    return owner;
+  }
+  const load = useCallback(():Promise<void> => {
+    if(initialLoad.current)return initialLoad.current;
+    initialLoad.current=(async()=>{
+      try {
+        setError("");
+        const b=await bootstrapRequest.current!();
+        const owner=acceptBootstrap(b);
+        if(b.user){
+          const needsCart=cartOwner.current!==owner;
+          const needsFavorites=favoritesOwner.current!==owner;
+          if(needsCart)setCartReady(false);
+          const [c,f]=await Promise.allSettled([
+            needsCart?api("cart"):Promise.resolve(null),
+            needsFavorites?api("favorites"):Promise.resolve(null),
+          ]);
+          if(accountOwner.current!==owner)return;
+          const failures:string[]=[];
+          if(c.status==='fulfilled'){
+            if(c.value){
+              savedCart.current=JSON.stringify(c.value.items);
+              setCart(c.value.items);
+              cartOwner.current=owner;
+              setContact((v:any)=>({...v,name:b.user.profile?.name||b.user.fullName||"",phone:b.user.profile?.phone||""}));
+            }
+            setCartReady(true);
+          }else failures.push("Your cart could not be loaded. Retry before adding items.");
+          if(f.status==='fulfilled'){
+            if(f.value){setFavoriteIds(f.value.ids);favoritesOwner.current=owner;}
+          }else failures.push("Your favourites could not be loaded.");
+          if(failures.length)setError(failures.join(" "));
+        }else{
+          cartOwner.current="";favoritesOwner.current="";
+          savedCart.current="";pendingCart.current=null;
+          setCart([]);setFavoriteIds([]);setCartReady(true);
+        }
+      }catch(e:any){setError(e.message);}
+    })().finally(()=>{initialLoad.current=null;});
+    return initialLoad.current;
   }, []);
-  useEffect(() => {
-    if (!splash) return;
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = previous; };
-  }, [splash]);
+  async function retryLoad(){
+    try{
+      // A failed save must be retried before fetching a server snapshot.
+      if(pendingCart.current)await flushCart();
+      await load();
+    }catch(e:any){setError("Cart could not be saved. "+e.message);}
+  }
+
   useEffect(() => {
     load();
     const r = window.location.hash.slice(1);
@@ -300,6 +358,7 @@ export default function StoreApp() {
         "favorites",
         "suggest",
         "addresses",
+        "rewards", "offers", "cafes", "wallet", "referrals", "birthday",
       ].includes(r)
     )
       setRoute(r);
@@ -307,25 +366,27 @@ export default function StoreApp() {
       navigator.serviceWorker.register("/sw.js").catch(() => {});
   }, [load]);
   useEffect(() => {
-    let active = true;
-    const refresh = async () => {
-      if (document.visibilityState !== "visible") return;
-      try {
-        const fresh = await api("bootstrap");
-        if (!active) return;
+    let active=true;
+    const refresh=singleFlight(async()=>{
+      if(document.visibilityState!=="visible")return;
+      try{
+        const fresh=await bootstrapRequest.current!();
+        if(!active)return;
+        if(String(fresh.user?.userId||"")!==accountOwner.current){
+          acceptBootstrap(fresh);
+          await initialLoad.current;
+          if(active&&fresh.user)await load();
+          return;
+        }
         setData(fresh);
-        setSelected((current:any) => current ? fresh.products.find((p:any)=>p.id===current.id) || null : null);
-      } catch { /* Keep browsing with the last loaded catalog during a connection interruption. */ }
-    };
-    const timer = setInterval(refresh, 30000);
-    window.addEventListener("focus", refresh);
-    return () => { active = false; clearInterval(timer); window.removeEventListener("focus", refresh); };
+        setSelected((current:any)=>current?fresh.products.find((p:any)=>p.id===current.id)||null:null);
+      }catch{/* Keep the last loaded catalog during a connection interruption. */}
+    });
+    const timer=setInterval(refresh,30000);
+    window.addEventListener("focus",refresh);
+    return()=>{active=false;clearInterval(timer);window.removeEventListener("focus",refresh);};
   }, []);
-  useEffect(()=>{
-    if(!data)return;
-    const timer=setTimeout(()=>setSplash(false),5200);
-    return()=>clearTimeout(timer);
-  },[!!data]);
+
   useEffect(() => {
     if (!user || !cartReady || JSON.stringify(cart) === savedCart.current) return;
     pendingCart.current = cart;
@@ -340,21 +401,18 @@ export default function StoreApp() {
       return;
     }
     let active = true;
+    const controller=new AbortController();
     setQuote(null);
-    api("quote", "POST", { items: cart, code, fulfillment })
-      .then((b) => {
-        if (active) setQuote(b);
-      })
-      .catch((e) => {
-        if (active) setError(e.message);
-      });
-    return () => {
-      active = false;
-    };
+    const timer=setTimeout(()=>{
+      api("quote", "POST", { items: cart, code, fulfillment },controller.signal)
+        .then(b=>{if(active)setQuote(b);})
+        .catch(e=>{if(active)setError(e.message);});
+    },250);
+    return()=>{active=false;clearTimeout(timer);controller.abort();};
   }, [route, cart, code, fulfillment, user?.userId]);
   useEffect(() => {
     if (!user) return;
-    if (["orders", "profile"].includes(route))
+    if (["home", "orders", "profile"].includes(route))
       api("orders")
         .then((b) => {
           setOrders(b.orders);
@@ -402,8 +460,16 @@ export default function StoreApp() {
     ).catch(() => {});
     return () => life.abort();
   }, [navigate]);
-  useEffect(() => { setVisibleCount(24); categoryPositions.current = {}; if (menuProductsRef.current) menuProductsRef.current.scrollTop = 0; }, [search, diet, sort, priceRange]);
-  useDialogAccessibility(!!selected || !!info, () => {
+  useEffect(() => { categoryPositions.current = {}; if (menuProductsRef.current) menuProductsRef.current.scrollTop = 0; }, [search, diet, sort, priceRange]);
+  profileBusyRef.current = busy;
+  function closeProfileEditor() {
+    if (profileBusyRef.current) return;
+    setProfileEditorOpen(false);
+    setProfilePhoto(null);
+    setError("");
+  }
+  useDialogAccessibility(!!selected || !!info || profileEditorOpen, () => {
+    closeProfileEditor();
     setSelected(null);
     setInfo("");
   });
@@ -416,6 +482,7 @@ export default function StoreApp() {
   }
   function add(item: Item, origin?: HTMLElement) {
     if (authRequired()) return;
+    if(!cartReady){setError("Your cart is still loading. Please retry before adding items.");return;}
     const p = products.find((p: any) => p.id === item.productId);
     if (!p?.available || p.inventory === 0 || p.price === null) {
       setError("This item is not available to order yet.");
@@ -445,6 +512,7 @@ export default function StoreApp() {
     setSelected(null);
     keyRef.current = "";
   }
+  function reorder(order:any){if(authRequired())return;if(!cartReady){setError("Your cart is still loading. Please retry before adding items.");return;}try{const items=prepareReorder(order,products);const totals=new Map<string,number>();for(const i of [...cart,...items])totals.set(i.productId,(totals.get(i.productId)||0)+i.quantity);for(const [id,n] of totals){const p=products.find((p:any)=>p.id===id);if(n>Math.min(99,p?.inventory??99))throw Error('Your cart would exceed available stock. Adjust quantities first.');}setCart(previous=>{const merged=[...previous];for(const item of items){const index=merged.findIndex(i=>itemKey(i)===itemKey(item));if(index<0)merged.push(item);else merged[index]={...merged[index],quantity:merged[index].quantity+item.quantity};}return merged});keyRef.current='';navigate('cart');notify('Added again. Review current prices before checkout.');}catch(e){setError((e as Error).message)}}
   function changeQty(index: number, delta: number) {
     setCart((old) => {
       const item = old[index];
@@ -484,19 +552,21 @@ export default function StoreApp() {
     });
   }
   async function favorite(id: string) {
-    if (authRequired()) return;
-    try {
-      const remove = favoriteIds.includes(id);
-      await api("favorites", "POST", { productId: id, remove });
-      setFavoriteIds((old) =>
-        remove ? old.filter((i) => i !== id) : [...old, id],
-      );
-      if (!remove) setFavouriteCelebration((event) => event + 1);
-      notify(remove ? "Removed from favourites" : "Saved to favourites");
-    } catch (e: any) {
-      setError(e.message);
-    }
+    if(authRequired())return;
+    const owner=accountOwner.current,key=owner+":"+id;
+    if(favoriteRequests.current.has(key))return;
+    favoriteRequests.current.add(key);
+    try{
+      const remove=favoriteIds.includes(id);
+      await api("favorites","POST",{productId:id,remove});
+      if(accountOwner.current!==owner)return;
+      setFavoriteIds(old=>remove?old.filter(item=>item!==id):old.includes(id)?old:[...old,id]);
+      if(!remove)setFavouriteCelebration(event=>event+1);
+      notify(remove?"Removed from favourites":"Saved to favourites");
+    }catch(e:any){if(accountOwner.current===owner)setError(e.message);}
+    finally{favoriteRequests.current.delete(key);}
   }
+
   function unit(i: Item) {
     const p = products.find((p: any) => p.id === i.productId);
     return p?.price == null
@@ -685,7 +755,7 @@ export default function StoreApp() {
       <div className="cart-flight-layer" aria-hidden="true">
         {cartFlights.map(flight => <div key={flight.id} className="cart-flight" style={{left: flight.x, top: flight.y, "--flight-x": `${flight.dx}px`, "--flight-y": `${flight.dy}px`, "--arc-x": `${flight.dx * .4}px`, "--arc-y": `${Math.min(flight.dy * .4, 0) - 85}px`} as React.CSSProperties}><ProductImage product={flight.product} /></div>)}
       </div>
-      <div className="app-shell">
+      <div className="app-shell dribbble-theme">
         <header className={"header " + (route === "home" ? "home-header" : "")}>
           <div className="header-inner">
             <div className="brand-row">
@@ -695,7 +765,7 @@ export default function StoreApp() {
                 ) : null}
                 <span>{settings.brand}</span>
               </button>
-              <div className="header-actions">
+              <div className="header-actions"><ThemeToggle/>
                 <button
                   className="icon-button"
                   onClick={() => navigate("favorites")}
@@ -738,20 +808,21 @@ export default function StoreApp() {
             </button>
           </div>
         </header>
-        <div className="order-mode segmented" role="group" aria-label="Order type">
+        {route === "home" && <div className="order-mode segmented" role="group" aria-label="Order type">
           {settings.dineInEnabled && <button type="button" aria-pressed={fulfillment === "dine_in"} className={fulfillment === "dine_in" ? "active" : ""} onClick={() => setFulfillment("dine_in")}>Dine in</button>}
           {settings.pickupEnabled && <button type="button" aria-pressed={fulfillment === "pickup"} className={fulfillment === "pickup" ? "active" : ""} onClick={() => setFulfillment("pickup")}>Take away</button>}
           {settings.deliveryEnabled && <button type="button" aria-pressed={fulfillment === "delivery"} className={fulfillment === "delivery" ? "active" : ""} onClick={() => setFulfillment("delivery")}>Delivery</button>}
-        </div>
+        </div>}
 
-        <main key={route} data-direction={pageDirection} className={"main page-enter route-" + route}>
+        <MobileMotion route={route}/>{user&&<AppPermissionSetup/>}
+        <main key={`${user?.userId || "guest"}:${route}`} data-direction={pageDirection} className={"main page-enter route-" + route}>
           {error && (
             <div className="error" role="alert">
               <span>{error}</span>
               <button
                 onClick={() => {
                   setError("");
-                  load();
+                  retryLoad();
                 }}
                 aria-label="Retry"
               >
@@ -770,7 +841,7 @@ export default function StoreApp() {
                   ? "The café is currently unavailable."
                   : "Brewing something good…"}
               </h2>
-              <button className="primary" onClick={load}>
+              <button className="primary" onClick={retryLoad}>
                 Try again
               </button>
             </div>
@@ -778,7 +849,7 @@ export default function StoreApp() {
             <>
               {route === "home" && (
                 <>
-                  <div className="home-content">
+                  <div className="home-content"><div className="theme-discovery"><form role="search" className="theme-home-search" onSubmit={event=>{event.preventDefault();setCategory("all");navigate("menu");}}><Search size={18} aria-hidden="true"/><input aria-label="Search coffee and food" placeholder="Search coffee, food & more" value={search} onChange={event=>setSearch(event.target.value)}/><button type="submit" aria-label="Search the menu"><ChevronRight size={18}/></button></form><div className="section-heading discovery-feature-heading"><h2>A little coffee break</h2><button onClick={()=>navigate("menu")}>View menu <ChevronRight size={14}/></button></div></div><CoffeeMotionHero onMenu={()=>navigate("menu")}/><PersonalHome user={user} orders={orders} products={products} onReorder={reorder} onNavigate={navigate}/><ClubShortcuts onNavigate={navigate}/><TableBooking user={user}/>
                     <PromotionBanners banners={settings.promotionBanners || []} onMenu={(term)=>{setSearch(term);setCategory("all");setDiet("all");setPriceRange("all");navigate("menu");}} onSubscriptions={()=>navigate("subscriptions")} />
                     <SubscriptionTracker userId={user?.userId} onOpen={() => navigate("subscriptions")} />
                     <button className="subscription-home-card" onClick={() => navigate("subscriptions")}>
@@ -847,10 +918,6 @@ export default function StoreApp() {
                           .map((p: any) => card(p, true))}
                       </div>
                     </section>
-                    <p className="catalog-note">
-                      Menu images are illustrative. Prices and availability are
-                      confirmed by the café.
-                    </p>
                   </div>
                 </>
               )}
@@ -962,19 +1029,8 @@ export default function StoreApp() {
                         <span>{filtered.length} items</span>
                       </div>
                       <div className="menu-grid">
-                        {filtered
-                          .slice(0, visibleCount)
-                          .map((p: any) => card(p))}
+                        {filtered.map((p: any) => card(p))}
                       </div>
-                      {visibleCount < filtered.length && (
-                        <button
-                          className="secondary wide"
-                          style={{ marginTop: 18 }}
-                          onClick={() => setVisibleCount((c) => c + 24)}
-                        >
-                          Show more items
-                        </button>
-                      )}
                       {!filtered.length && (
                         <div className="empty-state">
                           <Search size={34} />
@@ -994,10 +1050,7 @@ export default function StoreApp() {
                           </button>
                         </div>
                       )}
-                      <p className="catalog-note">
-                        Illustrative images · Items with pending prices cannot
-                        be ordered.
-                      </p>
+
                     </section>
                   </div>
                 </>
@@ -1134,7 +1187,7 @@ export default function StoreApp() {
                           Add more items
                         </button>
                       </section>
-                      <aside className="order-summary">
+                      <aside className="order-summary"><Pairings products={products} categories={categories} cart={cart} onSelect={p=>openProduct(p)}/>
                         <h2>Your order</h2>
                         <label>
                           Offer code
@@ -1179,8 +1232,9 @@ export default function StoreApp() {
                   ) : (
                     <form className="checkout-grid" onSubmit={submitOrder}>
                       <section className="form-card">
-                        <h2>How would you like it?</h2>
-                        <div className="segmented">
+                        <h2>Confirm your order type</h2>
+                        <p className="fine-print">Check dine-in or take-away before placing your order. You can change your selection here.</p>
+                        <div className="segmented" role="group" aria-label="Confirm order type">
                           {settings.dineInEnabled && (
                             <button type="button" className={fulfillment === "dine_in" ? "active" : ""} onClick={() => setFulfillment("dine_in")}>Dine in</button>
                           )}
@@ -1289,7 +1343,7 @@ export default function StoreApp() {
                           />
                         </label>
                       </section>
-                      <aside className="order-summary">
+                      <aside className="order-summary"><Pairings products={products} categories={categories} cart={cart} onSelect={p=>openProduct(p)}/>
                         <h2>Order summary</h2>
                         {cart.map((i) => (
                           <p key={itemKey(i)}>
@@ -1301,6 +1355,7 @@ export default function StoreApp() {
                           </p>
                         ))}
                         {totals()}
+                        <p className="billing-order-type"><strong>Order type</strong><span>{fulfillment === "dine_in" ? "Dine in" : fulfillment === "pickup" ? "Take away" : "Delivery"}{fulfillment === "dine_in" && contact.table ? ` · Table ${contact.table}` : ""}</span></p>
                         <fieldset className="sandbox-payment-options"><legend>Payment method</legend>
                           <label><input type="radio" name="paymentChoice" checked={!payOnline} onChange={()=>setPayOnline(false)}/><span><strong>Pay at the café</strong><small>{fulfillment==="dine_in"?"Pay at the counter":"Pay when you collect your order"}</small></span></label>
                           <label><input type="radio" name="paymentChoice" checked={payOnline} disabled={!onlineConfig.enabled} onChange={()=>setPayOnline(true)}/><span><strong>Stripe sandbox</strong><small>{onlineConfig.enabled?"Test cards only · no real money":"Sandbox setup is pending"}</small></span></label>
@@ -1421,7 +1476,7 @@ export default function StoreApp() {
                               {o.fulfillment === "dine_in" ? "Dine in" : o.fulfillment === "pickup" ? "Take away" : "Delivery"} · {o.payment_status === "paid" ? (o.collection_method === "stripe_test" ? "Stripe test payment verified" : "Paid") : o.status === "cancelled" ? "Not paid · cancelled" : "Payment pending"}
                             </span>
                           </div>
-                          <OnlinePayment order={o} onUpdate={() => { api("orders").then(b=>setOrders(b.orders)).catch(e=>setError(e.message)); }} />
+                          {o.items?.length>0&&<div className="order-reorder"><button className="secondary" onClick={()=>reorder(o)}>Order again</button></div>}<DigitalReceipt order={o}/><OnlinePayment order={o} onUpdate={() => { api("orders").then(b=>setOrders(b.orders)).catch(e=>setError(e.message)); }} />
                           <details>
                             <summary>Order details & timeline</summary>
                             <p>
@@ -1490,17 +1545,16 @@ export default function StoreApp() {
               {route === "profile" && (
                 <div className="profile-page">
                   <section className="profile-hero">
-                    <button type="button" className="avatar profile-avatar" aria-label="Change profile photo" disabled={!user || busy} onClick={()=>profilePhotoInput.current?.click()}>
-                      {(profilePhoto ?? user?.profile?.avatar) ? <img src={profilePhoto ?? user?.profile?.avatar} alt="Your profile photo" /> : <UserRound size={34} />}
-                      {user && <span className="avatar-edit"><Plus size={13}/></span>}
+                    <button type="button" className="avatar profile-avatar" aria-label="Edit profile" aria-haspopup="dialog" disabled={!user || busy} onClick={()=>{setProfilePhoto(null);setError("");setContact({...contact,name:user?.profile?.name||user?.fullName||"",phone:user?.profile?.phone||""});setProfileEditorOpen(true);}}>
+                      <CustomerAvatar src={profilePhoto ?? user?.profile?.avatar} name={user?.profile?.name||user?.fullName}/>
+                      {user && <span className="avatar-edit"><Pencil size={13}/></span>}
                     </button>
-                    {user && <button type="button" className="profile-edit-button" onClick={()=>{profileDetailsRef.current?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth",block:"start"});profileDetailsRef.current?.querySelector<HTMLInputElement>('input[name="profileName"]')?.focus({preventScroll:true});}}>Edit profile</button>}
                     <h1>
                       {user?.profile?.name || user?.fullName || "Coffee lover"}
                     </h1>
                     <p>{user?.email && !/@(?:tester|phone|pin)\.invalid$/.test(user.email) ? user.email : "Manage your profile"}</p>
                   </section>
-                  <MobileInstall />
+                  <MobileInstall /><button className="permission-settings-link secondary" onClick={()=>window.dispatchEvent(new Event("espresso-open-permissions"))}><Settings size={17}/>Notification settings</button>
                   {!user ? (
                     loginPanel()
                   ) : (
@@ -1525,6 +1579,9 @@ export default function StoreApp() {
                       <div className="profile-links">
                         {[
                           { icon: Package, name: "My orders", r: "orders" },
+                          { icon: Gift, name: "Rewards & benefits", r: "rewards" },
+                          { icon: MapPin, name: "Our café", r: "cafes" },
+                          { icon: Gift, name: "Offers & gift cards", r: "wallet" },
                           { icon: Coffee, name: "Coffee subscriptions", r: "subscriptions" },
                           {
                             icon: Heart,
@@ -1574,59 +1631,7 @@ export default function StoreApp() {
                           </a>
                         )}
                       </div>
-                      <form
-                        className="form-card profile-details-form"
-                        ref={profileDetailsRef}
-                        onSubmit={async (e) => {
-                          e.preventDefault();
-                          setBusy(true);
-                          try {
-                            await api("profile", "PUT", {...contact, ...(profilePhoto !== null ? {avatar: profilePhoto} : {})});
-                            setProfilePhoto(null);
-                            await load();
-                            notify("Profile saved");
-                          } catch (e: any) {
-                            setError(e.message);
-                          } finally {
-                            setBusy(false);
-                          }
-                        }}
-                      >
-                        <h2>Edit your profile</h2>
-                        <div className="profile-photo-controls">
-                          <label>Display picture
-                            <input ref={profilePhotoInput} type="file" accept="image/png,image/jpeg,image/webp" disabled={busy} onChange={async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>5000000){setError("Choose an image smaller than 5 MB.");return;}setBusy(true);try{const form=new FormData();form.set("file",file);const result=await api("upload","POST",form);setProfilePhoto(result.url);notify("Photo ready. Save your profile to apply it.");}catch(error){setError((error as Error).message);}finally{setBusy(false);event.target.value="";}}}/>
-                          </label>
-                          {(profilePhoto ?? user.profile?.avatar) && <button type="button" className="text-button" disabled={busy} onClick={()=>setProfilePhoto("")}>Remove photo</button>}
-                          <small>PNG, JPEG or WebP · up to 5 MB</small>
-                        </div>
-                        <label>
-                          Name
-                          <input
-                            name="profileName"
-                            required
-                            maxLength={100}
-                            value={contact.name}
-                            onChange={(e) =>
-                              setContact({ ...contact, name: e.target.value })
-                            }
-                          />
-                        </label>
-                        <label>
-                          Phone
-                          <input
-                            type="tel"
-                            maxLength={25}
-                            value={contact.phone}
-                            onChange={(e) =>
-                              setContact({ ...contact, phone: e.target.value })
-                            }
-                          />
-                        </label>
-                        <button className="secondary" disabled={busy}>
-                          Save profile
-                        </button>
-                      </form>
+
                       <button type="button" className="signout" disabled={signingOut} onClick={async()=>{setSigningOut(true);try{const destination=await signOutSession(api,user?.authProvider);sessionStorage.removeItem("espresso_guest");if(user?.authProvider==="pin"){window.dispatchEvent(new Event("espresso-pin-signedout"))}else window.location.assign(destination)}catch(e){setError((e as Error).message);setSigningOut(false)}}}><LogOut size={18}/>{signingOut ? "Signing out…" : "Sign out"}</button>
                     </div>
                   )}
@@ -1647,7 +1652,7 @@ export default function StoreApp() {
                           <MapPin size={22} />
                           <div>
                             <strong>{a.label}</strong>
-                            <p>{a.address}</p>
+                            <p>{a.address}</p>{a.location&&<small className="address-pin-label">Location pinned</small>}
                           </div>
                           <button
                             className="icon-button"
@@ -1667,46 +1672,7 @@ export default function StoreApp() {
                           </button>
                         </article>
                       ))}
-                      <form
-                        className="form-card"
-                        onSubmit={async (e) => {
-                          e.preventDefault();
-                          const f = e.currentTarget,
-                            b = new FormData(f);
-                          setBusy(true);
-                          try {
-                            const a = await api("addresses", "POST", {
-                              label: b.get("label"),
-                              address: b.get("address"),
-                            });
-                            setAddresses((old) => [...old, a]);
-                            f.reset();
-                            notify("Address saved");
-                          } catch (e: any) {
-                            setError(e.message);
-                          } finally {
-                            setBusy(false);
-                          }
-                        }}
-                      >
-                        <h2>Add an address</h2>
-                        <label>
-                          Label
-                          <input
-                            name="label"
-                            placeholder="Home, work…"
-                            required
-                            maxLength={50}
-                          />
-                        </label>
-                        <label>
-                          Full address
-                          <textarea name="address" required maxLength={1000} />
-                        </label>
-                        <button className="primary" disabled={busy}>
-                          Save address
-                        </button>
-                      </form>
+                      <AddressForm request={api} onSaved={a=>{setAddresses(old=>[...old,a]);notify('Address saved')}}/>
                     </>
                   )}
                 </div>
@@ -1847,10 +1813,10 @@ export default function StoreApp() {
               )}
               {(route === "subscriptions" || route === "packs") && (
                 <div className="page-content narrow">
-                  <PageTitle title="Coffee subscriptions" />
                   <CoffeeSubscriptions onMenu={() => navigate("menu")} />
                 </div>
               )}
+              {["rewards","offers","cafes","wallet","referrals","birthday"].includes(route) && <div className="page-content narrow"><CoffeeClub view={route} settings={settings} onNavigate={navigate}/></div>}
               {route === "pay" && (
                 <div className="page-content narrow">
                   <PageTitle title="Pay in store" />
@@ -1866,6 +1832,7 @@ export default function StoreApp() {
             {qty > 0 && <span className="cart-count" aria-live="polite">{qty}</span>}
           </MovableCart>
         )}
+        {user&&<div className="mobile-order-alerts"><OrderAlerts orders={orders} userId={user.userId} onNavigate={navigate}/></div>}
         <nav className="bottom-nav" aria-label="Main navigation">
           {[
             { r: "home", name: "Home", icon: House },
@@ -1884,13 +1851,74 @@ export default function StoreApp() {
               aria-current={route === n.r ? "page" : undefined}
             >
               <span className="nav-icon">
-                <n.icon size={23} strokeWidth={route === n.r ? 2.4 : 1.6} />
+                {n.r === "profile" && (profilePhoto ?? user?.profile?.avatar) ? <CustomerAvatar src={profilePhoto ?? user?.profile?.avatar} name={user?.profile?.name||user?.fullName} decorative/> : <n.icon size={23} strokeWidth={route === n.r ? 2.2 : 1.7} aria-hidden="true"/>}
               </span>
               <span>{n.name}</span>
             </button>
           ))}
         </nav>
       </div>
+      {profileEditorOpen && user && (
+        <div className="modal-backdrop" onClick={closeProfileEditor}>
+          <section className="profile-editor-modal" role="dialog" aria-modal="true" aria-labelledby="profile-editor-title" onClick={event=>event.stopPropagation()}>
+                      <form
+                        className="form-card profile-details-form"
+                        onSubmit={async (e) => {
+                          e.preventDefault();
+                          setBusy(true);
+                          try {
+                            await api("profile", "PUT", {...contact, ...(profilePhoto !== null ? {avatar: profilePhoto} : {})});
+                            setProfilePhoto(null);
+                            await load();
+                            setProfileEditorOpen(false);
+                            notify("Profile saved");
+                          } catch (e: any) {
+                            setError(e.message);
+                          } finally {
+                            setBusy(false);
+                          }
+                        }}
+                      >
+                        <div className="profile-editor-heading"><h2 id="profile-editor-title">Edit profile</h2><button type="button" className="icon-button" aria-label="Close profile editor" disabled={busy} onClick={closeProfileEditor}><X size={22}/></button></div>
+                        {error && <p role="alert" className="error-banner">{error}</p>}
+                        <div className="profile-photo-controls">
+                          <label>Display picture
+                            <input ref={profilePhotoInput} type="file" accept="image/png,image/jpeg,image/webp" disabled={busy} onChange={async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>5000000){setError("Choose an image smaller than 5 MB.");return;}setBusy(true);try{const form=new FormData();form.set("file",file);const result=await api("upload","POST",form);setProfilePhoto(result.url);notify("Photo ready. Save your profile to apply it.");}catch(error){setError((error as Error).message);}finally{setBusy(false);event.target.value="";}}}/>
+                          </label>
+                          {(profilePhoto ?? user.profile?.avatar) && <button type="button" className="text-button" disabled={busy} onClick={()=>setProfilePhoto("")}>Remove photo</button>}
+                          <small>PNG, JPEG or WebP · up to 5 MB</small>
+                        </div>
+                        <label>
+                          Name
+                          <input
+                            name="profileName"
+                            required
+                            maxLength={100}
+                            value={contact.name}
+                            onChange={(e) =>
+                              setContact({ ...contact, name: e.target.value })
+                            }
+                          />
+                        </label>
+                        <label>
+                          Contact phone (does not change sign-in number)
+                          <input
+                            type="tel"
+                            maxLength={25}
+                            value={contact.phone}
+                            onChange={(e) =>
+                              setContact({ ...contact, phone: e.target.value })
+                            }
+                          />
+                        </label>
+                        {user.authProvider==='pin'&&<p className="fine-print">Your sign-in number is {user.loginPhone||'the number used to create your account'}. Contact the café to change account access securely.</p>}
+                        <button className="secondary" disabled={busy}>
+                          Save profile
+                        </button>
+                      </form>
+          </section>
+        </div>
+      )}
       {selected && (
         <div className="modal-backdrop" onClick={() => setSelected(null)}>
           <section
@@ -1922,32 +1950,8 @@ export default function StoreApp() {
                 {selected.description ||
                   "Ask the café team for ingredients and product details."}
               </p>
-              <section className="item-nutrition" aria-label="Nutrition information">
-                <h3>Nutrition <span>per serving</span></h3>
-                {selected.nutrition?.status === "estimated" ? (
-                  <>
-                    <dl>
-                      {([['fat', 'Fat'], ['fibre', 'Fibre'], ['sugar', 'Total sugar'], ['protein', 'Protein']] as const).map(([key, label]) => (
-                        <div key={key}><dt>{label}</dt><dd>~{selected.nutrition.grams[key].toFixed(1)}<small> g</small></dd></div>
-                      ))}
-                    </dl>
-                    <p className="nutrition-note">Estimated for the recipe serving, before customisations. Brands and preparation may vary.</p>
-                    <a href="https://fdc.nal.usda.gov/download-datasets/" target="_blank" rel="noreferrer">Ingredient data: USDA FoodData Central</a>
-                  </>
-                ) : (
-                  <p className="nutrition-note">Fat, fibre, total sugar and protein: not available yet. Recipe quantities or ingredient nutrition need confirmation.</p>
-                )}
-              </section>
-              {selected.ingredients?.length > 0 && (
-                <section className="item-ingredients" aria-label="Ingredients">
-                  <h3>Ingredients</h3>
-                  <ul>
-                    {selected.ingredients.map((ingredient: string) => (
-                      <li key={ingredient}>{ingredient}</li>
-                    ))}
-                  </ul>
-                </section>
-              )}
+              <MenuRecipeDetails product={selected}/>
+
               {selected.dietary?.length > 0 && (
                 <div className="dietary-tags">
                   {selected.dietary.map((d: string) => (
@@ -1957,7 +1961,7 @@ export default function StoreApp() {
               )}
               {selected.variants?.length > 0 && (
                 <fieldset>
-                  <legend>Choose a variant</legend>
+                  <legend>Choose your size / option</legend>
                   {selected.variants.map((v: any) => (
                     <label className="option-row" key={v.id}>
                       <input
@@ -1986,7 +1990,7 @@ export default function StoreApp() {
                           setSelection({
                             ...selection,
                             addonIds: e.target.checked
-                              ? [...selection.addonIds, a.id]
+                              ? [...selection.addonIds.filter(id=>!a.group||selected.addons.find((option:any)=>option.id===id)?.group!==a.group), a.id]
                               : selection.addonIds.filter((i) => i !== a.id),
                           })
                         }
@@ -1997,7 +2001,7 @@ export default function StoreApp() {
                   ))}
                 </fieldset>
               )}
-              <label>
+              <div className="preference-chips"><span>Preparation requests</span>{['Less sweet','No added sugar','Extra hot'].map(request=><button type="button" key={request} aria-pressed={selection.instructions.includes(request)} onClick={()=>setSelection({...selection,instructions:selection.instructions.includes(request)?selection.instructions.split('; ').filter(t=>t!==request).join('; '):[selection.instructions,request].filter(Boolean).join('; ').slice(0,300)})}>{request}</button>)}<small>Requests are subject to the recipe and café confirmation. Priced sizes, milk options and extra shots appear above when configured.</small></div><label>
                 Special instructions
                 <textarea
                   maxLength={300}
@@ -2097,34 +2101,14 @@ export default function StoreApp() {
           </section>
         </div>
       )}
+      {user && <BookingNotifications userId={user.userId} onView={()=>{sessionStorage.setItem('espresso-open-bookings','1');navigate('home');window.dispatchEvent(new Event('espresso-open-bookings'));}}/>}
       {notice && (
         <div className="toast" role="status">
           <CheckCircle2 size={19} />
           {notice}
         </div>
       )}
-      {splash && (
-        <div className="splash" role="status" aria-label="Welcome to Espressoulster Coffee">
-          <div className="launch-intro"><h2>Espressoulster<span>COFFEE</span></h2><p>Order your favourites.<em>Freshly prepared.</em></p><div className="intro-line" /></div>
-          <div className="launch-scene">
-            <img src="/images/launch-coffee.webp" alt="Fresh coffee and pastries in the sunlight" />
-            <div className="launch-brand"><h2>Espressoulster<span>COFFEE</span></h2><p>Order your favourites.<em>Freshly prepared.</em></p></div>
-            <div className="launch-caption">
-              <div className="launch-food" aria-label="Preparing your café experience">
-                <div className="food-icon-cycle" aria-hidden="true">
-                  <Coffee className="food-icon food-coffee" strokeWidth={1.5} />
-                  <Croissant className="food-icon food-pastry" strokeWidth={1.5} />
-                  <Sandwich className="food-icon food-sandwich" strokeWidth={1.5} />
-                  <Cookie className="food-icon food-cookie" strokeWidth={1.5} />
-                  <span className="food-baseline" />
-                </div>
-                <span className="orbit-copy">Loading your menu</span>
-                <small>ESPRESSOULSTER COFFEE</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+
     </>
   );
 }

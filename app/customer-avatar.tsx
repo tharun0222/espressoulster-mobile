@@ -1,0 +1,3 @@
+'use client';
+import {useState} from 'react';
+export default function CustomerAvatar({src,name,decorative=false}:{src?:string|null;name?:string;decorative?:boolean}){const [failed,setFailed]=useState<string|null>(null);const initials=(name||'Coffee lover').trim().split(/\s+/).slice(0,2).map(part=>part[0]).join('').toUpperCase();return <span className="customer-avatar">{src&&failed!==src?<img src={src} alt={decorative?'':`${name||'Your'} profile photo`} onError={()=>setFailed(src)}/>:<span className="customer-avatar-initials" aria-label={decorative?undefined:`${name||'Your'} initials`} aria-hidden={decorative||undefined}>{initials}</span>}</span>}

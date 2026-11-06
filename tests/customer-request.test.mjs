@@ -26,3 +26,10 @@ test('customer API clears deadlines and preserves server validation errors', asy
   await assert.rejects(api('quote', 'POST', {items: []}), /Item is out of stock/);
   assert.equal(cleared, true);
 });
+
+test('customer reads can be cancelled when their cart or route becomes obsolete',async()=>{
+ let aborted=false;
+ const api=setup((url,{signal})=>new Promise((resolve,reject)=>{signal.addEventListener('abort',()=>{aborted=true;reject(Error('cancelled'));});}));
+ const controller=new AbortController();const pending=api('quote','POST',{items:[]},controller.signal);controller.abort();
+ await assert.rejects(pending,error=>error.name==='AbortError');assert.equal(aborted,true);
+});

@@ -285,3 +285,12 @@ test("dine in follows ready and completed workflow", () => {
  validTransition("ready","completed","dine_in");
  assert.throws(() => validTransition("preparing","out_for_delivery","dine_in"),BusinessError);
 });
+
+test('milk and sweetness groups cannot be combined twice',()=>{
+ const p={...product,addons:[{id:'oat',name:'Oat milk',price:2000,group:'milk'},{id:'almond',name:'Almond milk',price:2500,group:'milk'}]};
+ assert.throws(()=>priceCart([{productId:'test',quantity:1,variantId:'regular',addonIds:['oat','almond'],instructions:''}],[p],categories,settings,'','pickup'),/Choose only one milk/);
+ const quote=priceCart([{productId:'test',quantity:1,variantId:'regular',addonIds:['oat'],instructions:''}],[p],categories,settings,'','pickup');
+ assert.equal(quote.subtotal,12000);
+});
+
+test('same drink with different instructions can be quoted as separate lines',()=>{const base={productId:'test',quantity:1,variantId:'regular',addonIds:[]};const quote=priceCart([{...base,instructions:'Less sweet'},{...base,instructions:'No sugar'}],[product],categories,settings,'','pickup');assert.equal(quote.subtotal,20000);assert.throws(()=>priceCart([{...base,instructions:'Less sweet'},{...base,instructions:'Less sweet'}],[product],categories,settings,'','pickup'),/Duplicate cart lines/)});

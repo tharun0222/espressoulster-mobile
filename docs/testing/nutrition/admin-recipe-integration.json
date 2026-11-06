@@ -1,0 +1,18 @@
+{
+  "environment": "Isolated local Worker and SQLite database only",
+  "passed": 12,
+  "checks": [
+    "Unauthenticated recipe edits rejected",
+    "Ingredient edits persist while unreviewed nutrition stays unavailable",
+    "Reviewed nutrients persist and customer data distinguishes zero from blank",
+    "Admin can view saved custom recipe and original suggestion separately",
+    "Invalid nutrition rejected without modifying saved recipe",
+    "Unrelated item updates preserve recipe when override field is omitted",
+    "Café supplied nutrition source reaches customer menu",
+    "Automatic quantities produce authoritative saved totals and customer estimates, replacing stale client values",
+    "A second quantity change recalculates rather than retaining the previous total; review is explicit",
+    "Incomplete automatic recipes cannot publish partial totals or be marked reviewed",
+    "Restoring suggested recipe removes custom override",
+    "New items support custom recipes without a built-in recipe"
+  ]
+}

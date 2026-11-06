@@ -1,3 +1,4 @@
+import {recipeOverrideError} from './product-recipe.ts';
 export class BusinessError extends Error {
   constructor(
     message: string,
@@ -63,10 +64,11 @@ export function priceCart(
         addonIds.length <= 20,
       "Invalid add-ons",
     );
-    const key = JSON.stringify([p.id, variantId, [...addonIds].sort()]);
+    const key = JSON.stringify([p.id, variantId, [...addonIds].sort(), text(line.instructions || "",300)]);
     assert(!seen.has(key), "Duplicate cart lines");
     seen.add(key);
     let unitPrice = whole(p.price);
+    const selectedGroups=new Set<string>();
     let selections: any = { variant: null, addons: [] };
     if ((p.variants || []).length) {
       const v = p.variants.find((v: any) => v.id === variantId);
@@ -78,6 +80,7 @@ export function priceCart(
       const a = (p.addons || []).find((a: any) => a.id === id);
       assert(a, "Invalid add-on");
       unitPrice += whole(a.price);
+      if(a.group){assert(!selectedGroups.has(a.group),"Choose only one "+a.group+" option");selectedGroups.add(a.group);}
       selections.addons.push(a);
     }
     assert(unitPrice <= 100000000, "Price exceeds maximum");
@@ -141,6 +144,8 @@ export function priceCart(
 }
 export function validateProduct(p: any) {
   assert(p && typeof p === "object", "Invalid product");
+  const recipeError=recipeOverrideError(p.recipeOverride);
+  assert(!recipeError,recipeError||'Invalid recipe details');
   text(p.id, 80, true);
   text(p.name, 150, true);
   text(p.categoryId, 80, true);
@@ -154,6 +159,7 @@ export function validateProduct(p: any) {
       text(o.id, 80, true);
       text(o.name, 100, true);
       whole(o.price);
+      assert(o.group===undefined||["","milk","sweetness"].includes(o.group),"Invalid option group");
       assert(!ids.has(o.id), "Duplicate option");
       ids.add(o.id);
     }

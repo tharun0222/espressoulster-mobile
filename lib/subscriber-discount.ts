@@ -9,7 +9,7 @@ export function applySubscriberDiscount<T extends {subtotal:number;discount:numb
 }
 export async function subscriberQuote<T extends {subtotal:number;discount:number;tax:number;fee:number;total:number}>(d:any,user:any,quote:T,settings:any,now=Date.now()){
  if(!user?.userId||user.admin)return applySubscriberDiscount(quote,settings.taxBps,false);
- const rows=await d.prepare(`SELECT s.id,s.plan_name AS planName,(s.total_credits+s.bonus_credits) AS totalCredits,s.starts_at AS startsAt,s.expires_at AS expiresAt,s.revoked,p.amount AS amountPaid,COALESCE((SELECT SUM(r.credits) FROM coffee_redemptions r WHERE r.subscription_id=s.id AND r.reversed_at IS NULL),0) AS usedCredits FROM coffee_subscriptions s JOIN payments p ON p.id=s.payment_id JOIN orders o ON o.id=p.order_id WHERE s.user_id=? AND o.user_id=s.user_id AND o.payment_status='paid' AND o.status!='cancelled'`).bind(user.userId).all();
+ const rows=await d.prepare(`SELECT s.id,s.plan_name AS planName,COALESCE(s.purchased_credits,(s.total_credits+s.bonus_credits+s.extended_credits)) AS totalCredits,s.starts_at AS startsAt,s.expires_at AS expiresAt,s.revoked,p.amount AS amountPaid,COALESCE((SELECT SUM(r.credits) FROM coffee_redemptions r WHERE r.subscription_id=s.id AND r.reversed_at IS NULL),0) AS usedCredits FROM coffee_subscriptions s JOIN payments p ON p.id=s.payment_id JOIN orders o ON o.id=p.order_id WHERE s.user_id=? AND o.user_id=s.user_id AND o.payment_status='paid' AND o.status!='cancelled'`).bind(user.userId).all();
  const eligible=rows.results.some((r:any)=>{try{return ['active','exhausted'].includes(subscriptionSummary([{...r,revoked:!!r.revoked}],now).subscriptions[0].status)}catch{return false}});
  return applySubscriberDiscount(quote,settings.taxBps,eligible);
 }

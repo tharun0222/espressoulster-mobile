@@ -1,4 +1,8 @@
-import {subscriptionPlans} from '../../../lib/subscription-plans';
+import {addressLocation} from '../../../lib/address-location';
+import {visibleSubscriptionOrders} from '../../../lib/visible-subscription-orders';
+import {setQATestPassRemoved} from '../../../lib/test-subscription-removal';
+import {subscriptionCatalog,subscriptionPlanImages,validateSubscriptionBanner,validateSubscriptionPlan,validatePlanItems} from '../../../lib/subscription-catalog';
+import {validateBooking} from '../../../lib/table-booking';
 import {createSubscriptionRedemption,RedemptionError} from "../../../lib/subscription-redemption";
 import {subscriptionTestEnabled,syncTestSubscription,createTestSubscriptionOrder} from "../../../lib/subscription-test";
 import {subscriberQuote} from "../../../lib/subscriber-discount";
@@ -100,6 +104,67 @@ async function handle(req: Request) {
     }
     const user = path.startsWith("admin/") ? await adminIdentity() : await identity(true);
     assert(user, "Please sign in", 401);
+    if(path==='admin/subscription-plans'){
+      if(method==='GET'){const products=(await catalog(true)).products.filter((p:any)=>!p.archived);return json({plans:subscriptionPlanImages(await subscriptionCatalog(d,true),products),products:products.map((p:any)=>({id:p.id,name:p.name,categoryId:p.categoryId,image:p.image,imageAtlas:p.imageAtlas,imagePosition:p.imagePosition}))});}
+      const input=await body(req);
+      if(method==='DELETE'){assert(typeof input.id==='string','Choose a plan');const row=await d.prepare('UPDATE subscription_catalog SET archived=1,enabled=0,revision=revision+1 WHERE id=? AND revision=? RETURNING id').bind(input.id,input.revision).first();assert(row,'Plan changed. Refresh and retry.',409);await audit(user.userId,'subscription-plan.remove',input.id);return json({ok:true})}
+      assert(['POST','PUT'].includes(method),'Unsupported method',405);let plan;try{plan=validateSubscriptionPlan(input)}catch(e){throw new BusinessError((e as Error).message)}
+      let banner;try{banner=validateSubscriptionBanner(input.banner)}catch(e){throw new BusinessError((e as Error).message)}
+      let items;try{items=validatePlanItems(input.itemScope,input.itemIds,(await catalog(true)).products)}catch(e){throw new BusinessError((e as Error).message)}
+      const id=method==='POST'?'plan-'+crypto.randomUUID():input.id;assert(typeof id==='string'&&id.length<=80,'Choose a plan');
+      if(method==='POST')await d.prepare('INSERT INTO subscription_catalog(id,name,amount,credits,days,enabled,item_scope,included_items) VALUES(?,?,?,?,?,?,?,?)').bind(id,plan.name,plan.amount,plan.credits,plan.days,plan.enabled?1:0,items.itemScope,JSON.stringify(items.includedItems)).run();
+      else{const row=await d.prepare('UPDATE subscription_catalog SET name=?,amount=?,credits=?,days=?,enabled=?,item_scope=?,included_items=?,archived=0,revision=revision+1 WHERE id=? AND revision=? RETURNING id').bind(plan.name,plan.amount,plan.credits,plan.days,plan.enabled?1:0,items.itemScope,JSON.stringify(items.includedItems),id,input.revision).first();assert(row,'Plan changed. Refresh and retry.',409)}
+      await d.prepare('INSERT INTO settings(id,data) VALUES(?,?) ON CONFLICT(id) DO UPDATE SET data=excluded.data').bind('subscription-banner:'+id,JSON.stringify(banner)).run();
+      await audit(user.userId,'subscription-plan.save',id);return json({ok:true,id});
+    }
+    if(path==='booking-notifications'){
+      if(method==='GET')return json({notifications:(await d.prepare("SELECT n.* FROM booking_notifications n JOIN table_bookings b ON b.id=n.booking_id WHERE n.user_id=? AND n.read_at IS NULL AND b.status='confirmed' AND b.end_at>unixepoch('now') AND NOT EXISTS(SELECT 1 FROM booking_notifications newer WHERE newer.booking_id=n.booking_id AND newer.rowid>n.rowid) ORDER BY n.created_at DESC,n.rowid DESC LIMIT 20").bind(user.userId).all()).results.map((n:any)=>({...n,data:JSON.parse(n.data)}))});
+      if(method==='PATCH'){const input=await body(req);assert(typeof input.id==='string','Choose a notification');await d.prepare("UPDATE booking_notifications SET read_at=CURRENT_TIMESTAMP WHERE id=? AND user_id=?").bind(input.id,user.userId).run();return json({ok:true})}
+      return json({error:'Unsupported method'},405);
+    }
+    if(path==='admin/cafe-tables'&&method==='PATCH'){
+      const input=await body(req);assert(typeof input.id==='string'&&typeof input.enabled==='boolean','Choose a table and availability');
+      const occupied=await d.prepare("SELECT id FROM table_bookings WHERE status='confirmed' AND end_at>unixepoch('now') AND EXISTS(SELECT 1 FROM json_each(table_ids) WHERE value=?)").bind(input.id).first();
+      assert(input.enabled||!occupied,'Cancel or reassign upcoming bookings before disabling this table.',409);
+      await d.prepare('UPDATE cafe_tables SET enabled=? WHERE id=?').bind(input.enabled?1:0,input.id).run();await audit(user.userId,'table.availability',input.id);return json({ok:true});
+    }
+    if(path==='table-bookings'||path==='admin/table-bookings') {
+      const admin=path.startsWith('admin/');
+      if(method==='GET') {
+        const bookings=(await d.prepare(admin?"SELECT b.*,p.name AS customer_name,p.phone AS customer_phone FROM table_bookings b JOIN profiles p ON p.id=b.user_id ORDER BY b.date DESC,b.time LIMIT 200":"SELECT * FROM table_bookings WHERE user_id=? ORDER BY date DESC,time LIMIT 50").bind(...(admin?[]:[user.userId])).all()).results;
+        const tables=(await d.prepare("SELECT * FROM cafe_tables ORDER BY id").all()).results;
+        const occupied=admin?(await d.prepare("SELECT id,date,time,start_at,end_at,table_ids FROM table_bookings WHERE status='confirmed' AND end_at>unixepoch('now')").all()).results:[];
+        return json({bookings,tables,occupied});
+      }
+      const input=await body(req);
+      if(method==='POST'&&!admin){
+        let booking;try{booking=validateBooking(input)}catch(e){throw new BusinessError((e as Error).message)}
+        const count=await d.prepare("SELECT COUNT(*) AS n FROM table_bookings WHERE user_id=? AND created_at>datetime('now','-1 day')").bind(user.userId).first<any>();
+        assert(count.n<10,'You have reached the daily booking request limit.',429);
+        const duplicate=await d.prepare("SELECT id FROM table_bookings WHERE user_id=? AND start_at<? AND end_at>? AND status IN ('pending','confirmed')").bind(user.userId,booking.end_at,booking.start_at).first();assert(!duplicate,'You already have a booking request overlapping these times.',409);
+        const id=crypto.randomUUID();try{await d.prepare("INSERT INTO table_bookings(id,user_id,date,time,guests,purpose,notes,start_at,end_at) VALUES(?,?,?,?,?,?,?,?,?)").bind(id,user.userId,booking.date,booking.time,booking.guests,booking.purpose,booking.notes,booking.start_at,booking.end_at).run()}catch(e){if(/overlapping|UNIQUE constraint/.test((e as Error).message))throw new BusinessError('You already have an overlapping booking request.',409);throw e}return json({id,status:'pending'});
+      }
+      if(method==='PATCH'){
+        assert(typeof input.id==='string','Choose a booking');
+        assert((admin?['confirmed','declined','cancelled']:['cancelled']).includes(input.status),'Invalid booking status');
+        let result;
+        if(admin&&input.status==='confirmed'){
+          assert(Array.isArray(input.tableIds)&&input.tableIds.length>0&&input.tableIds.length<=15&&input.tableIds.every((id:any)=>typeof id==='string'),'Select tables for this booking');
+          try{result=await d.prepare("UPDATE table_bookings SET status='confirmed',table_ids=? WHERE id=? AND status IN ('pending','confirmed') AND start_at>unixepoch('now') RETURNING id").bind(JSON.stringify(input.tableIds),input.id).first()}
+          catch(e){const message=(e as Error).message;throw new BusinessError(message.includes('already booked')?'A selected table was just booked. Refresh and choose another.':message.includes('Not enough')?'Select enough seats for all guests.':message.includes('unavailable')?'A selected table is unavailable. Refresh and try again.':'Unable to assign these tables. Refresh and try again.',409)}
+        }else result=await d.prepare(admin?"UPDATE table_bookings SET status=? WHERE id=? AND status IN ('pending','confirmed') RETURNING id":"UPDATE table_bookings SET status=? WHERE id=? AND user_id=? AND status IN ('pending','confirmed') RETURNING id").bind(input.status,input.id,...(admin?[]:[user.userId])).first();
+        assert(result,'Booking has already changed or its time has passed. Refresh and try again.',409);
+        await audit(user.userId,'booking.'+input.status,input.id);return json({ok:true});
+      }
+      return json({error:'Unsupported method'},405);
+    }
+    if(path==='club'&&method==='GET'){
+      const rows=await d.prepare("SELECT total FROM orders WHERE user_id=? AND payment_status='paid' AND status!='cancelled' AND created_at>=datetime('now','-90 days') AND NOT EXISTS(SELECT 1 FROM coffee_subscriptions s JOIN payments p ON p.id=s.payment_id WHERE p.order_id=orders.id)").bind(user.userId).all<any>();
+      const profile=await d.prepare("SELECT date_of_birth FROM profiles WHERE id=?").bind(user.userId).first<any>();
+      const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(user.userId));
+      const referralCode='ESS-'+Array.from(new Uint8Array(digest)).slice(0,8).map(n=>n.toString(16).padStart(2,'0')).join('').toUpperCase();
+      return json({paidOrders:rows.results.length,tier:'Coffee lover',rules:{enabled:false},referralCode,birthday:profile?.date_of_birth||null});
+    }
     if (path.startsWith("test-payments/")) {
       const local = ["127.0.0.1", "localhost", "[::1]"].includes(url.hostname) || (env as any).PUBLIC_TEST_MODE === "true";
       if (path === "test-payments/config" && method === "GET") return json({enabled:local,testOnly:true});
@@ -116,23 +181,24 @@ async function handle(req: Request) {
     if (path.startsWith("payments/")) { const paymentResponse=await onlinePaymentRoute(path,req,user); if(paymentResponse) return paymentResponse; }
     if(path==='subscriptions/daily-code'&&method==='GET')return json(await createSubscriptionRedemption(d,env).status(user.userId));
     if(path==='subscriptions/daily-code'&&method==='POST')return json(await createSubscriptionRedemption(d,env).generate(user.userId));
-    if (path === "subscriptions/config" && method === "GET") return json({testEnabled:subscriptionTestEnabled(env),plans:Object.values(subscriptionPlans)});
+    if (path === "subscriptions/config" && method === "GET") return json({testEnabled:subscriptionTestEnabled(env),plans:subscriptionPlanImages(await subscriptionCatalog(d),(await catalog()).products)});
     if (path === "subscriptions/test-purchase" && method === "POST") {
       assert(subscriptionTestEnabled(env),"Sandbox subscriptions are unavailable",409);
       const input=await body(req);
-      assert(input.planId===undefined||["weekly","monthly"].includes(input.planId),"Choose a valid plan");
+      assert(typeof input.planId==='string'&&input.planId.length<=80,"Choose a valid plan");
+      await syncTestSubscription(d,env,user.userId);
       const id=await createTestSubscriptionOrder(d,user,input.planId||"weekly");
       return json({orderId:id,testOnly:true});
     }
     if (path === "subscriptions" && method === "GET") {
       await syncTestSubscription(d,env,user.userId);
-      const result = await d.prepare(`SELECT s.id,s.plan_name AS planName,s.plan_id AS planId,(s.total_credits+s.bonus_credits) AS totalCredits,
+      const result = await d.prepare(`SELECT s.id,s.plan_name AS planName,s.plan_id AS planId,s.item_scope AS itemScope,s.included_items AS includedItems,COALESCE(s.purchased_credits,(s.total_credits+s.bonus_credits+s.extended_credits)) AS totalCredits,
         s.starts_at AS startsAt,s.expires_at AS expiresAt,s.revoked,p.amount AS amountPaid,
         COALESCE((SELECT SUM(r.credits) FROM coffee_redemptions r WHERE r.subscription_id=s.id AND r.reversed_at IS NULL),0) AS usedCredits
         FROM coffee_subscriptions s JOIN payments p ON p.id=s.payment_id
         JOIN orders o ON o.id=p.order_id
-        WHERE s.user_id=? AND o.user_id=s.user_id AND o.payment_status='paid' AND o.status!='cancelled'
-        AND p.amount>=159900 ORDER BY s.expires_at ASC`).bind(user.userId).all<any>();
+        WHERE s.user_id=? AND s.revoked=0 AND o.user_id=s.user_id AND o.payment_status='paid' AND o.status!='cancelled'
+        AND p.amount>0 ORDER BY s.expires_at ASC`).bind(user.userId).all<any>();
       return json(subscriptionSummary(result.results.map(r=>({...r,revoked:!!r.revoked}))));
     }
     if (path === "cart") {
@@ -243,6 +309,7 @@ async function handle(req: Request) {
         const data = {
           label: text(b.label, 50, true),
           address: text(b.address, 1000, true),
+          location: (()=>{try{return addressLocation(b.location)}catch(e){throw new BusinessError((e as Error).message)}})(),
         };
         await d
           .prepare("INSERT INTO addresses (id,user_id,data) VALUES (?,?,?)")
@@ -397,13 +464,20 @@ async function handle(req: Request) {
       const user = await adminIdentity();
       const part = path.slice(6);
       if(part==='subscriptions/redeem'&&method==='POST')return json(await createSubscriptionRedemption(d,env).redeem(await body(req),user.userId));
+      if (part.startsWith('subscriptions/') && method === 'PATCH') {
+        const id=part.slice('subscriptions/'.length), input=await body(req);
+        assert(typeof input.removed==='boolean','Choose whether to remove or restore the sandbox pass');
+        assert(await setQATestPassRemoved(d,id,input.removed),'Only verified sandbox passes can be removed here',409);
+        await audit(user.userId,input.removed?'subscription-test.remove':'subscription-test.restore',id);
+        return json({ok:true});
+      }
       if (part === "subscriptions" && method === "GET") {
         await syncTestSubscription(d,env);
         const offset=whole(Number(url.searchParams.get("offset")||0),0,1000000);
-        const base=`FROM coffee_subscriptions s JOIN payments p ON p.id=s.payment_id JOIN orders o ON o.id=p.order_id JOIN profiles c ON c.id=s.user_id WHERE o.user_id=s.user_id AND o.payment_status='paid' AND o.status!='cancelled'`;
+        const base=`FROM coffee_subscriptions s JOIN payments p ON p.id=s.payment_id JOIN orders o ON o.id=p.order_id JOIN profiles c ON c.id=s.user_id WHERE o.user_id=s.user_id AND o.payment_status='paid' AND o.status!='cancelled' ${url.searchParams.get('includeRemoved')==='true'?"":'AND s.revoked=0'}`;
         const count=await d.prepare(`SELECT COUNT(*) AS n ${base}`).first<any>();
-        const rows=await d.prepare(`SELECT s.id,s.plan_name AS planName,s.plan_id AS planId,(s.total_credits+s.bonus_credits) AS totalCredits,s.starts_at AS startsAt,s.expires_at AS expiresAt,s.revoked,p.amount AS amountPaid,c.name AS customerName,c.phone AS customerPhone,COALESCE((SELECT SUM(r.credits) FROM coffee_redemptions r WHERE r.subscription_id=s.id AND r.reversed_at IS NULL),0) AS usedCredits ${base} ORDER BY s.created_at DESC,s.id LIMIT 50 OFFSET ?`).bind(offset).all<any>();
-        const subscriptions=rows.results.map((r:any)=>({...subscriptionSummary([{...r,revoked:!!r.revoked}]).subscriptions[0],customerName:r.customerName,customerPhone:r.customerPhone}));
+        const rows=await d.prepare(`SELECT s.id,s.plan_name AS planName,s.plan_id AS planId,s.item_scope AS itemScope,s.included_items AS includedItems,COALESCE(s.purchased_credits,(s.total_credits+s.bonus_credits+s.extended_credits)) AS totalCredits,s.starts_at AS startsAt,s.expires_at AS expiresAt,s.revoked,p.method AS paymentMethod,p.verified_by AS paymentVerification,p.amount AS amountPaid,c.name AS customerName,c.phone AS customerPhone,COALESCE((SELECT SUM(r.credits) FROM coffee_redemptions r WHERE r.subscription_id=s.id AND r.reversed_at IS NULL),0) AS usedCredits ${base} ORDER BY s.created_at DESC,s.id LIMIT 50 OFFSET ?`).bind(offset).all<any>();
+        const subscriptions=rows.results.map((r:any)=>({...subscriptionSummary([{...r,revoked:!!r.revoked}]).subscriptions[0],customerName:r.customerName,customerPhone:r.customerPhone,removed:!!r.revoked,canRemoveTest:r.paymentMethod==='stripe_test'&&r.paymentVerification==='provider_verified_test'}));
         return Response.json({subscriptions,total:count.n,hasMore:offset+subscriptions.length<count.n},{headers:{"Cache-Control":"no-store"}});
       }
       if (part === "orders" && method === "GET")
@@ -421,53 +495,28 @@ async function handle(req: Request) {
         const offset = whole(Number(url.searchParams.get("offset") || 0), 0, 1000000);
         const customer = await d.prepare("SELECT id FROM profiles WHERE id=?").bind(customerId).first();
         assert(customer, "Customer not found", 404);
-        const count = await d.prepare("SELECT COUNT(*) AS total FROM orders WHERE user_id=?").bind(customerId).first<any>();
+        const count = await d.prepare(`SELECT COUNT(*) AS total FROM orders WHERE user_id=? AND ${visibleSubscriptionOrders()}`).bind(customerId).first<any>();
         const orders = await orderList(customerId, offset);
         return json({orders, total: count.total, hasMore: offset + orders.length < count.total});
       }
       if (part === "overview" && method === "GET") {
-        const paymentResponse = await onlinePaymentRoute("payments/config", req, user);
-        const paymentConfig = paymentResponse ? await paymentResponse.json() : {enabled:false};
-        const c = await catalog(true);
-        const stats = await d
-          .prepare(
-            "SELECT COUNT(*) AS total,SUM(CASE WHEN status='pending' THEN 1 ELSE 0 END) AS pending,SUM(CASE WHEN status='completed' THEN 1 ELSE 0 END) AS completed,SUM(CASE WHEN payment_status='paid' AND NOT EXISTS(SELECT 1 FROM payments p WHERE p.order_id=orders.id AND p.method='stripe_test') THEN total ELSE 0 END) AS revenue FROM orders",
-          )
-          .first<any>();
-        const bestSellers = (
-          await d
-            .prepare(
-              "SELECT i.name,SUM(i.quantity) AS quantity FROM order_items i JOIN orders o ON o.id=i.order_id WHERE o.status!='cancelled' GROUP BY i.product_id,i.name ORDER BY quantity DESC LIMIT 5",
-            )
-            .all()
-        ).results;
+        // Independent reads can run together. Each still reads current database state.
+        const [c,stats,bestSellers,orders,customers,suggestions,activity,paymentResponse]=await Promise.all([
+          catalog(true),
+          d.prepare(`SELECT COUNT(*) AS total,SUM(CASE WHEN status='pending' THEN 1 ELSE 0 END) AS pending,SUM(CASE WHEN status='completed' THEN 1 ELSE 0 END) AS completed,SUM(CASE WHEN payment_status='paid' AND NOT EXISTS(SELECT 1 FROM payments p WHERE p.order_id=orders.id AND p.method='stripe_test') THEN total ELSE 0 END) AS revenue FROM orders WHERE ${visibleSubscriptionOrders()}`).first<any>(),
+          d.prepare(`SELECT i.name,SUM(i.quantity) AS quantity FROM order_items i JOIN orders o ON o.id=i.order_id WHERE o.status!='cancelled' AND ${visibleSubscriptionOrders('o')} GROUP BY i.product_id,i.name ORDER BY quantity DESC LIMIT 5`).all(),
+          orderList(),
+          d.prepare(`SELECT p.id,p.email,p.name,p.phone,p.disabled,p.created_at,COALESCE(o.order_count,0) AS order_count FROM profiles p LEFT JOIN (SELECT user_id,COUNT(*) AS order_count FROM orders WHERE ${visibleSubscriptionOrders()} GROUP BY user_id) o ON o.user_id=p.id ORDER BY p.created_at DESC LIMIT 200`).all(),
+          d.prepare("SELECT * FROM suggestions ORDER BY created_at DESC LIMIT 200").all<any>(),
+          d.prepare("SELECT * FROM audit_logs ORDER BY created_at DESC LIMIT 100").all(),
+          onlinePaymentRoute("payments/config",req,user),
+        ]);
+        const paymentConfig=paymentResponse?await paymentResponse.json():{enabled:false};
         return json({
-          ...c,
-          stats,
-          bestSellers,
-          paymentConfig,
-          orders: await orderList(),
-          customers: (
-            await d
-              .prepare(
-                "SELECT p.id,p.email,p.name,p.phone,p.disabled,p.created_at,COALESCE(o.order_count,0) AS order_count FROM profiles p LEFT JOIN (SELECT user_id,COUNT(*) AS order_count FROM orders GROUP BY user_id) o ON o.user_id=p.id ORDER BY p.created_at DESC LIMIT 200",
-              )
-              .all()
-          ).results,
-          suggestions: (
-            await d
-              .prepare(
-                "SELECT * FROM suggestions ORDER BY created_at DESC LIMIT 200",
-              )
-              .all<any>()
-          ).results.map((r) => ({ ...r, ...JSON.parse(r.data) })),
-          audit: (
-            await d
-              .prepare(
-                "SELECT * FROM audit_logs ORDER BY created_at DESC LIMIT 100",
-              )
-              .all()
-          ).results,
+          ...c,stats,bestSellers:bestSellers.results,paymentConfig,orders,
+          customers:customers.results,
+          suggestions:suggestions.results.map((r)=>({...r,...JSON.parse(r.data)})),
+          audit:activity.results,
         });
       }
       if (part.startsWith("payments/") && method === "POST") {
@@ -633,6 +682,13 @@ async function handle(req: Request) {
             assert(["menu", "subscriptions"].includes(banner.destination), "Invalid banner destination");
             assert(typeof banner.enabled === "boolean", "Invalid banner visibility");
           }
+        }
+        if(b.clubRules!==undefined){
+          assert(b.clubRules&&typeof b.clubRules==='object'&&!Array.isArray(b.clubRules),'Invalid coffee club rules');
+          const limits:Record<string,number>={qualifyingRupees:100000,silverOrders:1000,goldOrders:1000,silverCashbackPercent:100,goldCashbackPercent:100,referralRupees:10000,birthdayRupees:10000};
+          assert(Object.keys(b.clubRules).every(k=>k in limits),'Unknown coffee club rule');
+          for(const [key,value] of Object.entries(b.clubRules)){if(value!==null)whole(value,0,limits[key]);}
+          if(b.clubRules.silverOrders!=null&&b.clubRules.goldOrders!=null)assert(b.clubRules.goldOrders>b.clubRules.silverOrders,'Highest tier must require more orders than the second tier');
         }
         const { settings: old } = await catalog();
         const safe = { ...old, ...b, onlinePayments: false };

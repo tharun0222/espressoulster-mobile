@@ -1,0 +1,85 @@
+{
+  "label": "baseline",
+  "environment": "Isolated local Cloudflare Worker emulator and SQLite; synthetic test users only",
+  "limits": "At most 20 concurrent requests and 240 total requests; no live traffic, provider calls or payments",
+  "requestCount": 223,
+  "workloads": [
+    {
+      "name": "anonymous bootstrap",
+      "path": "/api/bootstrap",
+      "total": 40,
+      "concurrency": 10,
+      "p50Ms": 219.4,
+      "p95Ms": 240,
+      "maxMs": 244.5,
+      "requestsPerSecond": 44.8,
+      "averageBytes": 388595,
+      "errors": 0,
+      "statuses": {
+        "200": 40
+      }
+    },
+    {
+      "name": "authenticated bootstrap burst",
+      "path": "/api/bootstrap",
+      "total": 80,
+      "concurrency": 20,
+      "p50Ms": 476.4,
+      "p95Ms": 524.9,
+      "maxMs": 733.1,
+      "requestsPerSecond": 41.2,
+      "averageBytes": 389090,
+      "errors": 0,
+      "statuses": {
+        "200": 80
+      }
+    },
+    {
+      "name": "admin overview",
+      "path": "/api/admin/overview",
+      "total": 40,
+      "concurrency": 10,
+      "p50Ms": 352.5,
+      "p95Ms": 417.9,
+      "maxMs": 431.9,
+      "requestsPerSecond": 27.1,
+      "averageBytes": 677774,
+      "errors": 0,
+      "statuses": {
+        "200": 40
+      }
+    },
+    {
+      "name": "customer order history",
+      "path": "/api/orders",
+      "total": 40,
+      "concurrency": 10,
+      "p50Ms": 68.9,
+      "p95Ms": 85.5,
+      "maxMs": 86.9,
+      "requestsPerSecond": 139.6,
+      "averageBytes": 13,
+      "errors": 0,
+      "statuses": {
+        "200": 40
+      }
+    },
+    {
+      "name": "app shell",
+      "path": "/",
+      "total": 20,
+      "concurrency": 5,
+      "p50Ms": 26.9,
+      "p95Ms": 89,
+      "maxMs": 89.1,
+      "requestsPerSecond": 117.9,
+      "averageBytes": 10305,
+      "errors": 0,
+      "statuses": {
+        "200": 20
+      }
+    }
+  ],
+  "errors": 0,
+  "note": "Local results validate request handling and failures under bounded concurrency. They do not measure the production hosting load balancer, regional latency or maximum live capacity."
+}

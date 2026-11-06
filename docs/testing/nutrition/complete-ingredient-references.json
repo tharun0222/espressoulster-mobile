@@ -1,0 +1,1759 @@
+{
+  "171891": {
+    "name": "Beverages, coffee, brewed, espresso, restaurant-prepared",
+    "values": {
+      "fat": 0.18,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.12,
+      "carbs": 1.67,
+      "kcal": 9.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171891/nutrients"
+  },
+  "171265": {
+    "name": "Milk, whole, 3.25% milkfat, with added vitamin D",
+    "values": {
+      "fat": 3.25,
+      "fibre": 0.0,
+      "sugar": 5.05,
+      "protein": 3.15,
+      "carbs": 4.8,
+      "kcal": 61.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171265/nutrients"
+  },
+  "171890": {
+    "name": "Beverages, coffee, brewed, prepared with tap water",
+    "values": {
+      "fat": 0.02,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.12,
+      "carbs": 0.0,
+      "kcal": 1.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171890/nutrients"
+  },
+  "174158": {
+    "name": "Water, bottled, generic",
+    "values": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 0.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174158/nutrients"
+  },
+  "169640": {
+    "name": "Honey",
+    "values": {
+      "fat": 0.0,
+      "fibre": 0.2,
+      "sugar": 82.12,
+      "protein": 0.3,
+      "carbs": 82.4,
+      "kcal": 304.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169640/nutrients"
+  },
+  "169655": {
+    "name": "Sugars, granulated",
+    "values": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 99.8,
+      "protein": 0.0,
+      "carbs": 99.98,
+      "kcal": 387.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169655/nutrients"
+  },
+  "167747": {
+    "name": "Lemon juice, raw",
+    "values": {
+      "fat": 0.24,
+      "fibre": 0.3,
+      "sugar": 2.52,
+      "protein": 0.35,
+      "carbs": 6.9,
+      "kcal": 22.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/167747/nutrients"
+  },
+  "169098": {
+    "name": "Orange juice, raw (Includes foods for USDA's Food Distribution Program)",
+    "values": {
+      "fat": 0.2,
+      "fibre": 0.2,
+      "sugar": 8.4,
+      "protein": 0.7,
+      "carbs": 10.4,
+      "kcal": 45.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169098/nutrients"
+  },
+  "171275": {
+    "name": "Milk, canned, condensed, sweetened",
+    "values": {
+      "fat": 8.7,
+      "fibre": 0.0,
+      "sugar": 54.4,
+      "protein": 7.91,
+      "carbs": 54.4,
+      "kcal": 321.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171275/nutrients"
+  },
+  "171869": {
+    "name": "Beverages, carbonated, tonic water",
+    "values": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 8.8,
+      "protein": 0.0,
+      "carbs": 8.8,
+      "kcal": 34.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171869/nutrients"
+  },
+  "173205": {
+    "name": "Beverages, carbonated, lemon-lime soda, no caffeine",
+    "values": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 10.38,
+      "protein": 0.09,
+      "carbs": 10.42,
+      "kcal": 41.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173205/nutrients"
+  },
+  "170859": {
+    "name": "Cream, fluid, heavy whipping",
+    "values": {
+      "fat": 36.08,
+      "fibre": 0.0,
+      "sugar": 2.92,
+      "protein": 2.84,
+      "carbs": 2.84,
+      "kcal": 340.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170859/nutrients"
+  },
+  "169593": {
+    "name": "Cocoa, dry powder, unsweetened",
+    "values": {
+      "fat": 13.7,
+      "fibre": 37.0,
+      "sugar": 1.75,
+      "protein": 19.6,
+      "carbs": 57.9,
+      "kcal": 228.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169593/nutrients"
+  },
+  "173410": {
+    "name": "Butter, salted",
+    "values": {
+      "fat": 81.11,
+      "fibre": 0.0,
+      "sugar": 0.06,
+      "protein": 0.85,
+      "carbs": 0.06,
+      "kcal": 717.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173410/nutrients"
+  },
+  "171287": {
+    "name": "Egg, whole, raw, fresh",
+    "values": {
+      "fat": 9.51,
+      "fibre": 0.0,
+      "sugar": 0.37,
+      "protein": 12.56,
+      "carbs": 0.72,
+      "kcal": 143.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171287/nutrients"
+  },
+  "172675": {
+    "name": "Bread, french or vienna (includes sourdough)",
+    "values": {
+      "fat": 2.42,
+      "fibre": 2.2,
+      "sugar": 4.62,
+      "protein": 10.75,
+      "carbs": 51.88,
+      "kcal": 272.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172675/nutrients"
+  },
+  "174924": {
+    "name": "Bread, white, commercially prepared (includes soft bread crumbs)",
+    "values": {
+      "fat": 3.33,
+      "fibre": 2.7,
+      "sugar": 5.67,
+      "protein": 8.85,
+      "carbs": 49.42,
+      "kcal": 266.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174924/nutrients"
+  },
+  "173904": {
+    "name": "Cereals, oats, regular and quick, not fortified, dry",
+    "values": {
+      "fat": 6.52,
+      "fibre": 10.1,
+      "sugar": 0.99,
+      "protein": 13.15,
+      "carbs": 67.7,
+      "kcal": 379.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173904/nutrients"
+  },
+  "169415": {
+    "name": "Seeds, pumpkin and squash seed kernels, roasted, with salt added",
+    "values": {
+      "fat": 49.05,
+      "fibre": 6.5,
+      "sugar": 1.29,
+      "protein": 29.84,
+      "carbs": 14.71,
+      "kcal": 574.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169415/nutrients"
+  },
+  "170562": {
+    "name": "Seeds, sunflower seed kernels, dried",
+    "values": {
+      "fat": 51.46,
+      "fibre": 8.6,
+      "sugar": 2.62,
+      "protein": 20.78,
+      "carbs": 20.0,
+      "kcal": 584.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170562/nutrients"
+  },
+  "173944": {
+    "name": "Bananas, raw",
+    "values": {
+      "fat": 0.33,
+      "fibre": 2.6,
+      "sugar": 12.23,
+      "protein": 1.09,
+      "carbs": 22.84,
+      "kcal": 89.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173944/nutrients"
+  },
+  "171711": {
+    "name": "Blueberries, raw",
+    "values": {
+      "fat": 0.33,
+      "fibre": 2.4,
+      "sugar": 9.96,
+      "protein": 0.74,
+      "carbs": 14.49,
+      "kcal": 57.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171711/nutrients"
+  },
+  "172470": {
+    "name": "Peanut butter, smooth style, without salt",
+    "values": {
+      "fat": 51.36,
+      "fibre": 5.0,
+      "sugar": 10.49,
+      "protein": 22.21,
+      "carbs": 22.31,
+      "kcal": 598.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172470/nutrients"
+  },
+  "170000": {
+    "name": "Onions, raw",
+    "values": {
+      "fat": 0.1,
+      "fibre": 1.7,
+      "sugar": 4.24,
+      "protein": 1.1,
+      "carbs": 9.34,
+      "kcal": 40.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170000/nutrients"
+  },
+  "169230": {
+    "name": "Garlic, raw",
+    "values": {
+      "fat": 0.5,
+      "fibre": 2.1,
+      "sugar": 1.0,
+      "protein": 6.36,
+      "carbs": 33.06,
+      "kcal": 149.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169230/nutrients"
+  },
+  "170108": {
+    "name": "Peppers, sweet, red, raw",
+    "values": {
+      "fat": 0.3,
+      "fibre": 2.1,
+      "sugar": 4.2,
+      "protein": 0.99,
+      "carbs": 6.03,
+      "kcal": 26.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170108/nutrients"
+  },
+  "170379": {
+    "name": "Broccoli, raw",
+    "values": {
+      "fat": 0.37,
+      "fibre": 2.6,
+      "sugar": 1.7,
+      "protein": 2.82,
+      "carbs": 6.64,
+      "kcal": 34.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170379/nutrients"
+  },
+  "170457": {
+    "name": "Tomatoes, red, ripe, raw, year round average",
+    "values": {
+      "fat": 0.2,
+      "fibre": 1.2,
+      "sugar": 2.63,
+      "protein": 0.88,
+      "carbs": 3.89,
+      "kcal": 18.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170457/nutrients"
+  },
+  "170848": {
+    "name": "Cheese, parmesan, hard",
+    "values": {
+      "fat": 25.0,
+      "fibre": 0.0,
+      "sugar": 0.11,
+      "protein": 35.75,
+      "carbs": 3.22,
+      "kcal": 392.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170848/nutrients"
+  },
+  "173418": {
+    "name": "Cheese, cream",
+    "values": {
+      "fat": 34.44,
+      "fibre": 0.0,
+      "sugar": 3.76,
+      "protein": 6.15,
+      "carbs": 5.52,
+      "kcal": 350.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173418/nutrients"
+  },
+  "170845": {
+    "name": "Cheese, mozzarella, whole milk",
+    "values": {
+      "fat": 22.14,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 22.17,
+      "carbs": 2.4,
+      "kcal": 299.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170845/nutrients"
+  },
+  "171009": {
+    "name": "Salad dressing, mayonnaise, regular",
+    "values": {
+      "fat": 74.85,
+      "fibre": 0.0,
+      "sugar": 0.57,
+      "protein": 0.96,
+      "carbs": 0.57,
+      "kcal": 680.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171009/nutrients"
+  },
+  "169251": {
+    "name": "Mushrooms, white, raw",
+    "values": {
+      "fat": 0.34,
+      "fibre": 1.0,
+      "sugar": 1.98,
+      "protein": 3.09,
+      "carbs": 3.26,
+      "kcal": 22.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169251/nutrients"
+  },
+  "168409": {
+    "name": "Cucumber, with peel, raw",
+    "values": {
+      "fat": 0.11,
+      "fibre": 0.5,
+      "sugar": 1.67,
+      "protein": 0.65,
+      "carbs": 3.63,
+      "kcal": 15.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168409/nutrients"
+  },
+  "168462": {
+    "name": "Spinach, raw",
+    "values": {
+      "fat": 0.39,
+      "fibre": 2.2,
+      "sugar": 0.42,
+      "protein": 2.86,
+      "carbs": 3.63,
+      "kcal": 23.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168462/nutrients"
+  },
+  "169248": {
+    "name": "Lettuce, iceberg (includes crisphead types), raw",
+    "values": {
+      "fat": 0.14,
+      "fibre": 1.2,
+      "sugar": 1.97,
+      "protein": 0.9,
+      "carbs": 2.97,
+      "kcal": 14.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169248/nutrients"
+  },
+  "171705": {
+    "name": "Avocados, raw, all commercial varieties",
+    "values": {
+      "fat": 14.66,
+      "fibre": 6.7,
+      "sugar": 0.66,
+      "protein": 2.0,
+      "carbs": 8.53,
+      "kcal": 160.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171705/nutrients"
+  },
+  "171413": {
+    "name": "Oil, olive, salad or cooking",
+    "values": {
+      "fat": 100.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 884.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171413/nutrients"
+  },
+  "172336": {
+    "name": "Oil, canola",
+    "values": {
+      "fat": 100.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 884.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172336/nutrients"
+  },
+  "170931": {
+    "name": "Spices, pepper, black",
+    "values": {
+      "fat": 3.26,
+      "fibre": 25.3,
+      "sugar": 0.64,
+      "protein": 10.39,
+      "carbs": 63.95,
+      "kcal": 251.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170931/nutrients"
+  },
+  "171328": {
+    "name": "Spices, oregano, dried",
+    "values": {
+      "fat": 4.28,
+      "fibre": 42.5,
+      "sugar": 4.09,
+      "protein": 9.0,
+      "carbs": 68.92,
+      "kcal": 265.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171328/nutrients"
+  },
+  "173468": {
+    "name": "Salt, table",
+    "values": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 0.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173468/nutrients"
+  },
+  "173182": {
+    "name": "Beverages, rich chocolate, powder",
+    "values": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 81.82,
+      "protein": 0.0,
+      "carbs": 92.96,
+      "kcal": 372.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173182/nutrients"
+  },
+  "174117": {
+    "name": "Beverages, chocolate syrup",
+    "values": {
+      "fat": 1.13,
+      "fibre": 2.6,
+      "sugar": 49.65,
+      "protein": 2.1,
+      "carbs": 65.1,
+      "kcal": 279.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174117/nutrients"
+  },
+  "167575": {
+    "name": "Ice creams, vanilla",
+    "values": {
+      "fat": 11.0,
+      "fibre": 0.7,
+      "sugar": 21.22,
+      "protein": 3.5,
+      "carbs": 23.6,
+      "kcal": 207.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/167575/nutrients"
+  },
+  "172718": {
+    "name": "Cookies, chocolate sandwich, with creme filling, regular",
+    "values": {
+      "fat": 19.14,
+      "fibre": 2.9,
+      "sugar": 40.67,
+      "protein": 5.21,
+      "carbs": 71.0,
+      "kcal": 464.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172718/nutrients"
+  },
+  "169581": {
+    "name": "Baking chocolate, MARS SNACKFOOD US, M&M's Semisweet Chocolate Mini Baking Bits",
+    "values": {
+      "fat": 26.15,
+      "fibre": 6.7,
+      "sugar": 53.07,
+      "protein": 4.44,
+      "carbs": 65.96,
+      "kcal": 517.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169581/nutrients"
+  },
+  "170889": {
+    "name": "Yogurt, fruit, low fat,9 g protein/8 oz",
+    "values": {
+      "fat": 1.15,
+      "fibre": 0.0,
+      "sugar": 18.64,
+      "protein": 3.98,
+      "carbs": 18.64,
+      "kcal": 99.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170889/nutrients"
+  },
+  "171646": {
+    "name": "Cereals ready-to-eat, granola, homemade",
+    "values": {
+      "fat": 24.31,
+      "fibre": 8.9,
+      "sugar": 19.8,
+      "protein": 13.67,
+      "carbs": 53.88,
+      "kcal": 489.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171646/nutrients"
+  },
+  "173180": {
+    "name": "Beverages, Protein powder whey based",
+    "values": {
+      "fat": 1.56,
+      "fibre": 3.1,
+      "sugar": 0.0,
+      "protein": 78.13,
+      "carbs": 6.25,
+      "kcal": 352.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173180/nutrients"
+  },
+  "173475": {
+    "name": "Spearmint, fresh",
+    "values": {
+      "fat": 0.73,
+      "fibre": 6.8,
+      "sugar": 0.85,
+      "protein": 3.29,
+      "carbs": 8.41,
+      "kcal": 44.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173475/nutrients"
+  },
+  "167746": {
+    "name": "Lemons, raw, without peel",
+    "values": {
+      "fat": 0.3,
+      "fibre": 2.8,
+      "sugar": 2.5,
+      "protein": 1.1,
+      "carbs": 9.32,
+      "kcal": 29.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/167746/nutrients"
+  },
+  "174899": {
+    "name": "Bagels, plain, enriched, with calcium propionate (includes onion, poppy, sesame)",
+    "values": {
+      "fat": 1.32,
+      "fibre": 1.6,
+      "sugar": 8.43,
+      "protein": 10.56,
+      "carbs": 52.38,
+      "kcal": 264.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174899/nutrients"
+  },
+  "169387": {
+    "name": "Arugula, raw",
+    "values": {
+      "fat": 0.66,
+      "fibre": 1.6,
+      "sugar": 2.05,
+      "protein": 2.58,
+      "carbs": 3.65,
+      "kcal": 25.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169387/nutrients"
+  },
+  "171477": {
+    "name": "Chicken, broilers or fryers, breast, meat only, cooked, roasted",
+    "values": {
+      "fat": 3.57,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 31.02,
+      "carbs": 0.0,
+      "kcal": 165.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171477/nutrients"
+  },
+  "168092": {
+    "name": "Ham, turkey, sliced, extra lean, prepackaged or deli",
+    "values": {
+      "fat": 5.8,
+      "fibre": 0.0,
+      "sugar": 0.5,
+      "protein": 19.6,
+      "carbs": 0.93,
+      "kcal": 134.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168092/nutrients"
+  },
+  "171290": {
+    "name": "Cheese, pasteurized process, American, without added vitamin D",
+    "values": {
+      "fat": 31.79,
+      "fibre": 0.0,
+      "sugar": 2.26,
+      "protein": 18.13,
+      "carbs": 3.7,
+      "kcal": 371.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171290/nutrients"
+  },
+  "169264": {
+    "name": "Potatoes, french fried, all types, salt added in processing, frozen, home-prepared, oven heated",
+    "values": {
+      "fat": 5.48,
+      "fibre": 2.0,
+      "sugar": 0.37,
+      "protein": 2.75,
+      "carbs": 25.55,
+      "kcal": 158.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169264/nutrients"
+  },
+  "168556": {
+    "name": "Catsup",
+    "values": {
+      "fat": 0.1,
+      "fibre": 0.3,
+      "sugar": 21.27,
+      "protein": 1.04,
+      "carbs": 27.4,
+      "kcal": 101.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168556/nutrients"
+  },
+  "174913": {
+    "name": "Bread, Italian",
+    "values": {
+      "fat": 2.73,
+      "fibre": 2.1,
+      "sugar": 4.69,
+      "protein": 9.49,
+      "carbs": 48.11,
+      "kcal": 259.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174913/nutrients"
+  },
+  "172454": {
+    "name": "Hummus, home prepared",
+    "values": {
+      "fat": 8.59,
+      "fibre": 4.0,
+      "sugar": 0.27,
+      "protein": 4.86,
+      "carbs": 20.12,
+      "kcal": 177.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172454/nutrients"
+  },
+  "170080": {
+    "name": "Peppers, jalapeno, canned, solids and liquids",
+    "values": {
+      "fat": 0.94,
+      "fibre": 2.6,
+      "sugar": 2.14,
+      "protein": 0.92,
+      "carbs": 4.74,
+      "kcal": 27.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170080/nutrients"
+  },
+  "169094": {
+    "name": "Olives, ripe, canned (small-extra large)",
+    "values": {
+      "fat": 10.9,
+      "fibre": 1.6,
+      "sugar": 0.0,
+      "protein": 0.84,
+      "carbs": 6.04,
+      "kcal": 116.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169094/nutrients"
+  },
+  "169291": {
+    "name": "Squash, summer, zucchini, includes skin, raw",
+    "values": {
+      "fat": 0.32,
+      "fibre": 1.0,
+      "sugar": 2.5,
+      "protein": 1.21,
+      "carbs": 3.11,
+      "kcal": 17.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169291/nutrients"
+  },
+  "171329": {
+    "name": "Spices, paprika",
+    "values": {
+      "fat": 12.89,
+      "fibre": 34.9,
+      "sugar": 10.34,
+      "protein": 14.14,
+      "carbs": 53.99,
+      "kcal": 282.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171329/nutrients"
+  },
+  "170106": {
+    "name": "Peppers, hot chili, red, raw",
+    "values": {
+      "fat": 0.44,
+      "fibre": 1.5,
+      "sugar": 5.3,
+      "protein": 1.87,
+      "carbs": 8.81,
+      "kcal": 40.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170106/nutrients"
+  },
+  "171319": {
+    "name": "Spices, chili powder",
+    "values": {
+      "fat": 14.28,
+      "fibre": 34.8,
+      "sugar": 7.19,
+      "protein": 13.46,
+      "carbs": 49.7,
+      "kcal": 282.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171319/nutrients"
+  },
+  "171325": {
+    "name": "Spices, garlic powder",
+    "values": {
+      "fat": 0.73,
+      "fibre": 9.0,
+      "sugar": 2.43,
+      "protein": 16.55,
+      "carbs": 72.73,
+      "kcal": 331.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171325/nutrients"
+  },
+  "171327": {
+    "name": "Spices, onion powder",
+    "values": {
+      "fat": 1.04,
+      "fibre": 15.2,
+      "sugar": 6.63,
+      "protein": 10.41,
+      "carbs": 79.12,
+      "kcal": 341.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171327/nutrients"
+  },
+  "174523": {
+    "name": "Sauce, barbecue",
+    "values": {
+      "fat": 0.63,
+      "fibre": 0.9,
+      "sugar": 33.24,
+      "protein": 0.82,
+      "carbs": 40.77,
+      "kcal": 172.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174523/nutrients"
+  },
+  "169998": {
+    "name": "Corn, sweet, yellow, raw",
+    "values": {
+      "fat": 1.35,
+      "fibre": 2.0,
+      "sugar": 6.26,
+      "protein": 3.27,
+      "carbs": 18.7,
+      "kcal": 86.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169998/nutrients"
+  },
+  "170393": {
+    "name": "Carrots, raw",
+    "values": {
+      "fat": 0.24,
+      "fibre": 2.8,
+      "sugar": 4.74,
+      "protein": 0.93,
+      "carbs": 9.58,
+      "kcal": 41.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170393/nutrients"
+  },
+  "169698": {
+    "name": "Cornstarch",
+    "values": {
+      "fat": 0.05,
+      "fibre": 0.9,
+      "sugar": 0.0,
+      "protein": 0.26,
+      "carbs": 91.27,
+      "kcal": 381.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169698/nutrients"
+  },
+  "169961": {
+    "name": "Beans, snap, green, raw",
+    "values": {
+      "fat": 0.22,
+      "fibre": 2.7,
+      "sugar": 3.26,
+      "protein": 1.83,
+      "carbs": 6.97,
+      "kcal": 31.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169961/nutrients"
+  },
+  "168405": {
+    "name": "Cowpeas, young pods with seeds, raw",
+    "values": {
+      "fat": 0.3,
+      "fibre": 3.3,
+      "sugar": 5.04,
+      "protein": 3.3,
+      "carbs": 9.5,
+      "kcal": 44.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168405/nutrients"
+  },
+  "168936": {
+    "name": "Wheat flour, white, all-purpose, enriched, unbleached",
+    "values": {
+      "fat": 0.98,
+      "fibre": 2.7,
+      "sugar": 0.27,
+      "protein": 10.33,
+      "carbs": 76.31,
+      "kcal": 364.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168936/nutrients"
+  },
+  "169412": {
+    "name": "Seeds, sesame seed kernels, dried (decorticated)",
+    "values": {
+      "fat": 61.21,
+      "fibre": 11.6,
+      "sugar": 0.48,
+      "protein": 20.45,
+      "carbs": 11.73,
+      "kcal": 631.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169412/nutrients"
+  },
+  "171019": {
+    "name": "Salad dressing, italian dressing, commercial, regular",
+    "values": {
+      "fat": 21.12,
+      "fibre": 0.0,
+      "sugar": 10.77,
+      "protein": 0.41,
+      "carbs": 12.12,
+      "kcal": 240.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171019/nutrients"
+  },
+  "169055": {
+    "name": "Salad dressing, caesar dressing, regular",
+    "values": {
+      "fat": 57.85,
+      "fibre": 0.5,
+      "sugar": 2.81,
+      "protein": 2.17,
+      "carbs": 3.3,
+      "kcal": 542.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169055/nutrients"
+  },
+  "172751": {
+    "name": "Croutons, plain",
+    "values": {
+      "fat": 6.6,
+      "fibre": 5.1,
+      "sugar": 6.2,
+      "protein": 11.9,
+      "carbs": 73.5,
+      "kcal": 407.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172751/nutrients"
+  },
+  "173757": {
+    "name": "Chickpeas (garbanzo beans, bengal gram), mature seeds, cooked, boiled, without salt",
+    "values": {
+      "fat": 2.59,
+      "fibre": 7.6,
+      "sugar": 4.8,
+      "protein": 8.86,
+      "carbs": 27.42,
+      "kcal": 164.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173757/nutrients"
+  },
+  "175194": {
+    "name": "Beans, kidney, red, mature seeds, cooked, boiled, without salt",
+    "values": {
+      "fat": 0.5,
+      "fibre": 7.4,
+      "sugar": 0.32,
+      "protein": 8.67,
+      "carbs": 22.8,
+      "kcal": 127.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/175194/nutrients"
+  },
+  "170923": {
+    "name": "Spices, cumin seed",
+    "values": {
+      "fat": 22.27,
+      "fibre": 10.5,
+      "sugar": 2.25,
+      "protein": 17.81,
+      "carbs": 44.24,
+      "kcal": 375.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170923/nutrients"
+  },
+  "172234": {
+    "name": "Mustard, prepared, yellow",
+    "values": {
+      "fat": 3.34,
+      "fibre": 4.0,
+      "sugar": 0.92,
+      "protein": 3.74,
+      "carbs": 5.83,
+      "kcal": 60.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172234/nutrients"
+  },
+  "170416": {
+    "name": "Parsley, fresh",
+    "values": {
+      "fat": 0.79,
+      "fibre": 3.3,
+      "sugar": 0.85,
+      "protein": 2.97,
+      "carbs": 6.33,
+      "kcal": 36.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170416/nutrients"
+  },
+  "168917": {
+    "name": "Quinoa, cooked",
+    "values": {
+      "fat": 1.92,
+      "fibre": 2.8,
+      "sugar": 0.87,
+      "protein": 4.4,
+      "carbs": 21.3,
+      "kcal": 120.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168917/nutrients"
+  },
+  "167604": {
+    "name": "Potatoes, hash brown, refrigerated, unprepared",
+    "values": {
+      "fat": 0.08,
+      "fibre": 1.8,
+      "sugar": 0.91,
+      "protein": 1.75,
+      "carbs": 19.16,
+      "kcal": 84.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/167604/nutrients"
+  },
+  "168567": {
+    "name": "Tomatoes, sun-dried",
+    "values": {
+      "fat": 2.97,
+      "fibre": 12.3,
+      "sugar": 37.59,
+      "protein": 14.11,
+      "carbs": 55.76,
+      "kcal": 258.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/168567/nutrients"
+  },
+  "172241": {
+    "name": "Vinegar, balsamic",
+    "values": {
+      "fat": 0.0,
+      "fibre": 0,
+      "sugar": 14.95,
+      "protein": 0.49,
+      "carbs": 17.03,
+      "kcal": 88.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172241/nutrients"
+  },
+  "172232": {
+    "name": "Basil, fresh",
+    "values": {
+      "fat": 0.64,
+      "fibre": 1.6,
+      "sugar": 0.3,
+      "protein": 3.15,
+      "carbs": 2.65,
+      "kcal": 23.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172232/nutrients"
+  },
+  "167558": {
+    "name": "Snacks, tortilla chips, plain, white corn, salted",
+    "values": {
+      "fat": 20.68,
+      "fibre": 5.4,
+      "sugar": 0.78,
+      "protein": 7.1,
+      "carbs": 67.78,
+      "kcal": 472.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/167558/nutrients"
+  },
+  "171824": {
+    "name": "Sauce, salsa, verde, ready-to-serve",
+    "values": {
+      "fat": 0.89,
+      "fibre": 1.9,
+      "sugar": 3.5,
+      "protein": 1.13,
+      "carbs": 6.36,
+      "kcal": 38.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171824/nutrients"
+  },
+  "173440": {
+    "name": "Cheese, low-sodium, cheddar or colby",
+    "values": {
+      "fat": 32.62,
+      "fibre": 0.0,
+      "sugar": 0.49,
+      "protein": 24.35,
+      "carbs": 1.91,
+      "kcal": 398.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173440/nutrients"
+  },
+  "175182": {
+    "name": "Beans, baked, canned, plain or vegetarian",
+    "values": {
+      "fat": 0.37,
+      "fibre": 4.1,
+      "sugar": 7.96,
+      "protein": 4.75,
+      "carbs": 21.14,
+      "kcal": 94.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/175182/nutrients"
+  },
+  "173880": {
+    "name": "Sausage, chicken or turkey, Italian style,  lower sodium",
+    "values": {
+      "fat": 4.46,
+      "fibre": 0.0,
+      "sugar": 0.81,
+      "protein": 21.43,
+      "carbs": 14.25,
+      "kcal": 183.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173880/nutrients"
+  },
+  "170026": {
+    "name": "Potatoes, flesh and skin, raw",
+    "values": {
+      "fat": 0.09,
+      "fibre": 2.1,
+      "sugar": 0.82,
+      "protein": 2.05,
+      "carbs": 17.49,
+      "kcal": 77.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170026/nutrients"
+  },
+  "169246": {
+    "name": "Leeks, (bulb and lower leaf-portion), raw",
+    "values": {
+      "fat": 0.3,
+      "fibre": 1.8,
+      "sugar": 3.9,
+      "protein": 1.5,
+      "carbs": 14.15,
+      "kcal": 61.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169246/nutrients"
+  },
+  "169988": {
+    "name": "Celery, raw",
+    "values": {
+      "fat": 0.17,
+      "fibre": 1.6,
+      "sugar": 1.34,
+      "protein": 0.69,
+      "carbs": 2.97,
+      "kcal": 14.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169988/nutrients"
+  },
+  "172231": {
+    "name": "Spices, turmeric, ground",
+    "values": {
+      "fat": 3.25,
+      "fibre": 22.7,
+      "sugar": 3.21,
+      "protein": 9.68,
+      "carbs": 67.14,
+      "kcal": 312.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172231/nutrients"
+  },
+  "175165": {
+    "name": "Fish, catfish, channel, farmed, raw",
+    "values": {
+      "fat": 5.94,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 15.23,
+      "carbs": 0.0,
+      "kcal": 119.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/175165/nutrients"
+  },
+  "175179": {
+    "name": "Crustaceans, shrimp, raw",
+    "values": {
+      "fat": 0.51,
+      "fibre": 0,
+      "sugar": 0,
+      "protein": 20.1,
+      "carbs": 0.0,
+      "kcal": 85.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/175179/nutrients"
+  },
+  "172673": {
+    "name": "Bread, egg",
+    "values": {
+      "fat": 6.0,
+      "fibre": 2.3,
+      "sugar": 1.78,
+      "protein": 9.5,
+      "carbs": 47.8,
+      "kcal": 287.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172673/nutrients"
+  },
+  "171320": {
+    "name": "Spices, cinnamon, ground",
+    "values": {
+      "fat": 1.24,
+      "fibre": 53.1,
+      "sugar": 2.17,
+      "protein": 3.99,
+      "carbs": 80.59,
+      "kcal": 247.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171320/nutrients"
+  },
+  "169661": {
+    "name": "Syrups, maple",
+    "values": {
+      "fat": 0.06,
+      "fibre": 0.0,
+      "sugar": 60.46,
+      "protein": 0.04,
+      "carbs": 67.04,
+      "kcal": 260.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169661/nutrients"
+  },
+  "173471": {
+    "name": "Vanilla extract",
+    "values": {
+      "fat": 0.06,
+      "fibre": 0.0,
+      "sugar": 12.65,
+      "protein": 0.06,
+      "carbs": 12.65,
+      "kcal": 288.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173471/nutrients"
+  },
+  "172803": {
+    "name": "Leavening agents, baking powder, double-acting, sodium aluminum sulfate",
+    "values": {
+      "fat": 0.0,
+      "fibre": 0.2,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 27.7,
+      "kcal": 53.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/172803/nutrients"
+  },
+  "175040": {
+    "name": "Leavening agents, baking soda",
+    "values": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.0,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 0.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/175040/nutrients"
+  },
+  "169737": {
+    "name": "Pasta, cooked, enriched, without added salt",
+    "values": {
+      "fat": 0.93,
+      "fibre": 1.8,
+      "sugar": 0.56,
+      "protein": 5.8,
+      "carbs": 30.86,
+      "kcal": 158.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169737/nutrients"
+  },
+  "171579": {
+    "name": "Sauce, pesto, ready-to-serve, refrigerated",
+    "values": {
+      "fat": 37.6,
+      "fibre": 1.8,
+      "sugar": 6.33,
+      "protein": 9.83,
+      "carbs": 10.09,
+      "kcal": 418.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171579/nutrients"
+  },
+  "174525": {
+    "name": "Sauce, homemade, white, medium",
+    "values": {
+      "fat": 10.63,
+      "fibre": 0.2,
+      "sugar": 4.38,
+      "protein": 3.84,
+      "carbs": 9.17,
+      "kcal": 147.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174525/nutrients"
+  },
+  "174837": {
+    "name": "Alcoholic beverage, wine, table, white",
+    "values": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 0.96,
+      "protein": 0.07,
+      "carbs": 2.6,
+      "kcal": 82.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174837/nutrients"
+  },
+  "173414": {
+    "name": "Cheese, cheddar (Includes foods for USDA's Food Distribution Program)",
+    "values": {
+      "fat": 33.31,
+      "fibre": 0.0,
+      "sugar": 0.48,
+      "protein": 22.87,
+      "carbs": 3.37,
+      "kcal": 403.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/173414/nutrients"
+  },
+  "paneer": {
+    "name": "Amul Fresh Paneer label, used as a paneer brand proxy",
+    "values": {
+      "fat": 24,
+      "fibre": 0,
+      "sugar": 4,
+      "protein": 20,
+      "carbs": 4,
+      "kcal": 312
+    },
+    "url": "https://sabardairy.org/product/amul-fresh-paneer/",
+    "note": "Fibre assumed zero for plain milk paneer; not listed on manufacturer label."
+  },
+  "matcha": {
+    "name": "MEXT 2023, matcha tea, food 16035",
+    "values": {
+      "fat": 5.3,
+      "fibre": 38.5,
+      "sugar": 1.5,
+      "protein": 29.6,
+      "carbs": 39.5,
+      "kcal": 237
+    },
+    "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=16_16035_7",
+    "note": "Sugar sums measured mono/disaccharides (trace fructose excluded)."
+  },
+  "chia": {
+    "name": "Seeds, chia seeds, dried",
+    "values": {
+      "protein": 16.54,
+      "fibre": 34.4,
+      "fat": 30.74,
+      "carbs": 42.12,
+      "kcal": 486.0,
+      "sugar": 0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170554/nutrients",
+    "note": "Sugar assumed 0 from BareOrganics label, rounded per serving, NIH DSLD label 79829; not an analytical zero."
+  },
+  "syrup": {
+    "name": "Standard sugar syrup model: 65% sugar, 35% water",
+    "values": {
+      "fat": 0.0,
+      "fibre": 0.0,
+      "sugar": 64.87,
+      "protein": 0.0,
+      "carbs": 64.987,
+      "kcal": 251.55
+    },
+    "parts": [
+      [
+        169655,
+        65
+      ],
+      [
+        174158,
+        35
+      ]
+    ],
+    "url": "https://fdc.nal.usda.gov/download-datasets/"
+  },
+  "170877": {
+    "name": "Milk, dry, nonfat, regular, without added vitamin A and vitamin D",
+    "values": {
+      "fat": 0.77,
+      "fibre": 0.0,
+      "sugar": 51.98,
+      "protein": 36.16,
+      "carbs": 51.98,
+      "kcal": 362.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170877/nutrients"
+  },
+  "frappe": {
+    "name": "Standard frappe premix model: 50% sugar, 50% skimmed milk powder",
+    "values": {
+      "fat": 0.385,
+      "fibre": 0.0,
+      "sugar": 75.89,
+      "protein": 18.08,
+      "carbs": 75.98,
+      "kcal": 374.5
+    },
+    "parts": [
+      [
+        169655,
+        50
+      ],
+      [
+        170877,
+        50
+      ]
+    ],
+    "url": "https://fdc.nal.usda.gov/download-datasets/"
+  },
+  "chai": {
+    "name": "Standard sweet chai powder model: 70% sugar, 25% skimmed milk powder, 5% cinnamon",
+    "values": {
+      "fat": 0.2545,
+      "fibre": 2.655,
+      "sugar": 82.96350000000001,
+      "protein": 9.2395,
+      "carbs": 87.01050000000001,
+      "kcal": 373.75
+    },
+    "parts": [
+      [
+        169655,
+        70
+      ],
+      [
+        170877,
+        25
+      ],
+      [
+        171320,
+        5
+      ]
+    ],
+    "url": "https://fdc.nal.usda.gov/download-datasets/"
+  },
+  "season": {
+    "name": "Standard seasoning model: 50% paprika, 25% oregano, 25% salt",
+    "values": {
+      "fat": 7.515000000000001,
+      "fibre": 28.075,
+      "sugar": 6.1925,
+      "protein": 9.32,
+      "carbs": 44.225,
+      "kcal": 207.25
+    },
+    "parts": [
+      [
+        171329,
+        50
+      ],
+      [
+        171328,
+        25
+      ],
+      [
+        173468,
+        25
+      ]
+    ],
+    "url": "https://fdc.nal.usda.gov/download-datasets/"
+  },
+  "mayo": {
+    "name": "Standard flavoured mayo model: 95% mayonnaise, 5% paprika",
+    "values": {
+      "fat": 71.75199999999998,
+      "fibre": 1.745,
+      "sugar": 1.0585,
+      "protein": 1.6190000000000002,
+      "carbs": 3.241,
+      "kcal": 660.1
+    },
+    "parts": [
+      [
+        171009,
+        95
+      ],
+      [
+        171329,
+        5
+      ]
+    ],
+    "url": "https://fdc.nal.usda.gov/download-datasets/"
+  },
+  "171284": {
+    "name": "Yogurt, plain, whole milk",
+    "values": {
+      "fat": 3.25,
+      "fibre": 0.0,
+      "sugar": 4.66,
+      "protein": 3.47,
+      "carbs": 4.66,
+      "kcal": 61.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/171284/nutrients"
+  },
+  "marinade": {
+    "name": "Standard marinade model: 80% yoghurt, 10% olive oil, 10% paprika",
+    "values": {
+      "fat": 13.889,
+      "fibre": 3.49,
+      "sugar": 4.7620000000000005,
+      "protein": 4.19,
+      "carbs": 9.127,
+      "kcal": 165.39999999999998
+    },
+    "parts": [
+      [
+        171284,
+        80
+      ],
+      [
+        171413,
+        10
+      ],
+      [
+        171329,
+        10
+      ]
+    ],
+    "url": "https://fdc.nal.usda.gov/download-datasets/"
+  },
+  "herb-butter": {
+    "name": "Standard herb butter model: 98% butter, 2% parsley",
+    "values": {
+      "fat": 79.50359999999999,
+      "fibre": 0.066,
+      "sugar": 0.0758,
+      "protein": 0.8924,
+      "carbs": 0.18539999999999998,
+      "kcal": 703.38
+    },
+    "parts": [
+      [
+        173410,
+        98
+      ],
+      [
+        170416,
+        2
+      ]
+    ],
+    "url": "https://fdc.nal.usda.gov/download-datasets/"
+  },
+  "caramel-onion": {
+    "name": "Standard caramelised onion model: 85% onion, 10% olive oil, 5% sugar",
+    "values": {
+      "fat": 10.085,
+      "fibre": 1.445,
+      "sugar": 8.594000000000001,
+      "protein": 0.9350000000000002,
+      "carbs": 12.938,
+      "kcal": 141.75
+    },
+    "parts": [
+      [
+        170000,
+        85
+      ],
+      [
+        171413,
+        10
+      ],
+      [
+        169655,
+        5
+      ]
+    ],
+    "url": "https://fdc.nal.usda.gov/download-datasets/"
+  },
+  "salt-pepper": {
+    "name": "Standard seasoning model: 50% salt, 50% black pepper",
+    "values": {
+      "fat": 1.63,
+      "fibre": 12.65,
+      "sugar": 0.32,
+      "protein": 5.195,
+      "carbs": 31.975,
+      "kcal": 125.5
+    },
+    "parts": [
+      [
+        173468,
+        50
+      ],
+      [
+        170931,
+        50
+      ]
+    ],
+    "url": "https://fdc.nal.usda.gov/download-datasets/"
+  },
+  "169146": {
+    "name": "Beets, cooked, boiled, drained",
+    "values": {
+      "fat": 0.18,
+      "fibre": 2.0,
+      "sugar": 7.96,
+      "protein": 1.68,
+      "carbs": 9.96,
+      "kcal": 44.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/169146/nutrients"
+  },
+  "beet-hummus": {
+    "name": "Standard beet hummus proxy: 80% hummus, 20% cooked beetroot",
+    "values": {
+      "fat": 6.908,
+      "fibre": 3.6,
+      "sugar": 1.8079999999999998,
+      "protein": 4.224,
+      "carbs": 18.088,
+      "kcal": 150.4
+    },
+    "parts": [
+      [
+        172454,
+        80
+      ],
+      [
+        169146,
+        20
+      ]
+    ],
+    "url": "https://fdc.nal.usda.gov/download-datasets/"
+  },
+  "leek-celery": {
+    "name": "Equal parts raw leek and celery",
+    "values": {
+      "fat": 0.235,
+      "fibre": 1.7000000000000002,
+      "sugar": 2.62,
+      "protein": 1.095,
+      "carbs": 8.56,
+      "kcal": 37.5
+    },
+    "parts": [
+      [
+        169246,
+        50
+      ],
+      [
+        169988,
+        50
+      ]
+    ],
+    "url": "https://fdc.nal.usda.gov/download-datasets/"
+  },
+  "garlic-bread": {
+    "name": "Standard garlic bread model: 85% bread, 13% butter, 2% garlic",
+    "values": {
+      "fat": 12.6113,
+      "fibre": 1.9120000000000004,
+      "sugar": 3.9548,
+      "protein": 9.3752,
+      "carbs": 44.767,
+      "kcal": 327.39
+    },
+    "parts": [
+      [
+        172675,
+        85
+      ],
+      [
+        173410,
+        13
+      ],
+      [
+        169230,
+        2
+      ]
+    ],
+    "url": "https://fdc.nal.usda.gov/download-datasets/"
+  },
+  "174928": {
+    "name": "Bread, crumbs, dry, grated, plain",
+    "values": {
+      "fat": 5.3,
+      "fibre": 4.5,
+      "sugar": 6.2,
+      "protein": 13.35,
+      "carbs": 71.98,
+      "kcal": 395.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/174928/nutrients"
+  },
+  "croquette": {
+    "name": "Proposed croquette model: 60% potato, 15% peas, 15% breadcrumbs, 10% retained oil",
+    "values": {
+      "fat": 10.894,
+      "fibre": 2.4299999999999997,
+      "sugar": 2.178,
+      "protein": 3.7274999999999996,
+      "carbs": 22.716,
+      "kcal": 200.45000000000002
+    },
+    "parts": [
+      [
+        170026,
+        60
+      ],
+      [
+        168405,
+        15
+      ],
+      [
+        174928,
+        15
+      ],
+      [
+        172336,
+        10
+      ]
+    ],
+    "url": "https://fdc.nal.usda.gov/download-datasets/"
+  },
+  "170860": {
+    "name": "Cream, whipped, cream topping, pressurized",
+    "values": {
+      "fat": 22.22,
+      "fibre": 0.0,
+      "sugar": 8.0,
+      "protein": 3.2,
+      "carbs": 12.49,
+      "kcal": 257.0
+    },
+    "url": "https://fdc.nal.usda.gov/food-details/170860/nutrients"
+  }
+}
