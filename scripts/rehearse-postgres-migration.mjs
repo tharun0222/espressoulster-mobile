@@ -7,7 +7,7 @@ const { Client } = pg;
 const [snapshot, reportPath, ...flags] = process.argv.slice(2);
 const verifyOnly = flags.includes('--verify-only');
 const withRuntime = flags.includes('--with-runtime');
-const isolated = new Set(['espressoulster_runtime_staging','espressoulster_pg_fixture','espressoulster_load_staging']);
+const isolated = new Set(['espressoulster_local','espressoulster_runtime_staging','espressoulster_pg_fixture','espressoulster_load_staging']);
 const destination = process.env.PGDATABASE || 'espressoulster_rehearsal';
 if (!snapshot || !reportPath || flags.some(flag=>!['--verify-only','--with-runtime'].includes(flag))) {
   console.error('Usage: PGHOST=/private/socket PGPORT=55432 node scripts/rehearse-postgres-migration.mjs snapshot.sqlite report.json [--verify-only] [--with-runtime]');
@@ -159,7 +159,9 @@ try {
       }
     }
   } else {
-    check(JSON.stringify(existing) === JSON.stringify(tables.map(table => table.name).sort()), 'Destination tables differ from the SQLite snapshot.');
+    const applicationTables = destination === 'espressoulster_local'
+      ? existing.filter(name => !['android_push_devices', 'android_push_deliveries'].includes(name)) : existing;
+    check(JSON.stringify(applicationTables) === JSON.stringify(tables.map(table => table.name).sort()), 'Destination tables differ from the SQLite snapshot.');
   }
   const runtimeObjects = catalog.filter(object=>object.type === 'trigger' || object.type === 'view')
     .map(({type,name})=>({type,name})).sort((a,b)=>a.type.localeCompare(b.type) || a.name.localeCompare(b.name));
@@ -217,8 +219,16 @@ try {
     const imported = (await client.query(`SELECT DISTINCT 'trigger' AS type,trigger_name AS name
       FROM information_schema.triggers WHERE trigger_schema='public'
       UNION ALL SELECT 'view',table_name FROM information_schema.views WHERE table_schema='public' ORDER BY type,name`)).rows;
-    check(JSON.stringify(imported) === JSON.stringify(runtimeObjects), 'PostgreSQL trigger/view names differ from the source.');
+    const legacyObjects = destination === 'espressoulster_local' ? imported.filter(({ name }) =>
+      !['espc_android_order_push', 'espc_live_orders', 'espc_live_chat', 'espc_live_bookings', 'espc_live_intake'].includes(name)) : imported;
+    check(JSON.stringify(legacyObjects) === JSON.stringify(runtimeObjects), 'PostgreSQL trigger/view names differ from the source.');
     report.installedRuntimeObjects = imported;
+    if (!verifyOnly && destination === 'espressoulster_local') {
+      for (const name of ['live-updates.sql','android-order-push.sql']) {
+        const sql = await readFile(new URL('../server/postgres/'+name,import.meta.url),'utf8');
+        await client.query(sql.replace(/^BEGIN;\s*|\s*COMMIT;\s*$/g, ''));
+      }
+    }
   }
   await client.query(verifyOnly ? 'ROLLBACK' : 'COMMIT');
   await writeFile(reportPath, JSON.stringify(report, null, 2) + '\n', {mode:0o600,flag:'wx'});

@@ -1,4 +1,5 @@
 import pg from 'pg';
+import { postgresConnectionSettings } from './postgres.mjs';
 
 const subscribers = new Set();
 const topics = new Set(['orders', 'chat', 'bookings', 'intake']);
@@ -7,7 +8,7 @@ let listening;
 
 function listen() {
   if (listening) return listening;
-  const client = new pg.Client({connectionTimeoutMillis:3000, application_name:'espressoulster-live-updates'});
+  const client = new pg.Client({...postgresConnectionSettings(), application_name:'espressoulster-live-updates'});
   function disconnect() {
     if (listening !== connection) return;
     listening = undefined;
@@ -35,7 +36,7 @@ function listen() {
 }
 
 export async function liveUpdatesResponse(userId, staff, signal) {
-  if (!['postgres-staging', 'postgres'].includes(process.env.SELFHOST_DATABASE) || process.env.SELFHOST_LIVE_UPDATES !== 'true') {
+  if (process.env.SELFHOST_LIVE_UPDATES !== 'true') {
     return new Response(null,{status:204});
   }
   await listen();

@@ -19,6 +19,10 @@ export function selfhostSettings(env, development = false) {
   const trustLoopbackProxy = env.SELFHOST_TRUST_PROXY === 'loopback';
   if (env.SELFHOST_TRUST_PROXY && !trustLoopbackProxy) throw new Error('SELFHOST_TRUST_PROXY must be loopback or unset');
   if (trustLoopbackProxy && !loopback) throw new Error('Trusted proxy mode requires a loopback listener');
+  const database = env.SELFHOST_DATABASE || 'postgres-local';
+  if (!['postgres-local', 'postgres-staging', 'postgres'].includes(database)) {
+    throw new Error('SELFHOST_DATABASE must be postgres-local, postgres-staging, or postgres.');
+  }
   if (env.SELFHOST_DATABASE === 'postgres') {
     if (env.PGDATABASE !== 'espressoulster_runtime_staging' || !env.PGHOST?.startsWith('/') ||
       env.PUBLIC_TEST_MODE !== 'false' || development || origin.protocol !== 'https:' ||

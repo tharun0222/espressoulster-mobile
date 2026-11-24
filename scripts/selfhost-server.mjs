@@ -13,6 +13,13 @@ const settings = selfhostSettings(process.env, process.argv.includes('--dev'));
 const app = next({ dev: settings.development, hostname: settings.origin.hostname, port: settings.port,
   ...(settings.development ? { webpack: true } : {}),
 });
+const database = runtimeEnv.DB;
+try {
+  await database.prepare('SELECT 1 FROM settings LIMIT 1').first();
+} catch (error) {
+  await database.close();
+  throw new Error('PostgreSQL is unavailable or uninitialized. Check the connection settings and run npm run db:selfhost.', { cause: error });
+}
 await app.prepare();
 const handler = app.getRequestHandler();
 const admit = requestAdmission(settings.maxConcurrentRequests);
@@ -33,7 +40,7 @@ const serve = async (req, res) => {
   if (!(liveUpdatesRequest ? admitLiveUpdates : admit)(req, res)) return;
   if (req.url === '/api/ready' && req.method === 'GET') {
     try {
-      const ok = await runtimeEnv.DB.prepare('SELECT 1 AS ok').first('ok');
+      const ok = await database.prepare('SELECT 1 AS ok').first('ok');
       res.writeHead(ok === 1 ? 200 : 503, { 'Content-Type':'application/json', 'Cache-Control':'no-store' });
       res.end(JSON.stringify({ ok:ok === 1 }));
     } catch {
@@ -77,5 +84,5 @@ server.listen(settings.port, settings.host, () => {
   console.log(`Online payments: ${settings.live ? 'live enabled' : process.env.PAYMENT_PROVIDER === 'cashfree' && process.env.PAYMENT_MODE === 'test' ? 'Cashfree sandbox; no real money collected' : 'disabled; Pay at café available'}`);
 });
 for (const signal of ['SIGTERM', 'SIGINT']) process.once(signal, () => {
-  server.close(async () => { await stopAndroidOrderPush(); await app.close(); process.exit(0); });
+  server.close(async () => { await stopAndroidOrderPush(); await app.close(); await database.close(); process.exit(0); });
 });

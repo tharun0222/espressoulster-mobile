@@ -19,17 +19,29 @@ const appTypes = {
   },
 };
 
-export function openPostgres(settings = process.env) {
-  if (!settings.PGHOST?.startsWith('/') || !(settings.SELFHOST_DATABASE === 'postgres'
-    ? settings.PGDATABASE === 'espressoulster_runtime_staging' : permitted.has(settings.PGDATABASE))) {
-    throw new Error('PostgreSQL runtime is restricted to an isolated staging database and Unix socket.');
+export function postgresConnectionSettings(settings = process.env) {
+  const profile = settings.SELFHOST_DATABASE || 'postgres-local';
+  const database = settings.PGDATABASE || (profile === 'postgres-local' ? 'espressoulster_local' : '');
+  const localDatabase = database === 'espressoulster_local' || /^espressoulster_test_[a-f0-9]{16}$/.test(database);
+  const allowed = profile === 'postgres-local' ? localDatabase
+    : profile === 'postgres' ? database === 'espressoulster_runtime_staging'
+    : profile === 'postgres-staging' && permitted.has(database);
+  if (!settings.PGHOST?.startsWith('/') || !allowed) {
+    throw new Error('Set PGHOST to a private PostgreSQL Unix socket and PGDATABASE to the database for this profile.');
   }
+  return {
+    host: settings.PGHOST, database, port: Number(settings.PGPORT || 5432),
+    ...(settings.PGUSER ? { user: settings.PGUSER } : {}),
+    connectionTimeoutMillis: 3000,
+  };
+}
+
+export function openPostgres(settings = process.env) {
   const max = Number(settings.SELFHOST_POSTGRES_POOL_SIZE || 8);
   if (!Number.isInteger(max) || max < 1 || max > 32) throw new Error('Invalid PostgreSQL pool size');
   const pool = new pg.Pool({
-    host:settings.PGHOST, database:settings.PGDATABASE, port:Number(settings.PGPORT || 5432),
-    ...(settings.PGUSER ? {user:settings.PGUSER} : {}),
-    max, connectionTimeoutMillis:3000, statement_timeout:15000, lock_timeout:3000,
+    ...postgresConnectionSettings(settings),
+    max, statement_timeout:15000, lock_timeout:3000,
     idle_in_transaction_session_timeout:20000, options:'-c timezone=UTC', types:appTypes,
   });
   // An idle connection can be dropped during a PostgreSQL restart.

@@ -7,16 +7,31 @@ import { randomBytes } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
-import { openDatabase, migrateDatabase } from '../server/database.mjs';
-import { openPostgres } from '../server/postgres.mjs';
+import pg from 'pg';
+import { initializeDatabase } from '../scripts/selfhost-db.mjs';
+import { openPostgres, postgresConnectionSettings } from '../server/postgres.mjs';
 import { passwordHash } from '../lib/admin-password.ts';
 
-test('built self-hosted app supports sign-in, ₹1 quote and ordering while rejecting cross-origin requests', { timeout: 30000 }, async () => {
+test('built self-hosted app supports sign-in, ₹1 quote and ordering while rejecting cross-origin requests', { timeout: 30000 }, async t => {
   const directory = mkdtempSync(path.join(tmpdir(), 'cafe-http-'));
-  const postgres = process.env.SELFHOST_DATABASE === 'postgres-staging';
-  if (postgres) assert.equal(process.env.PGDATABASE, 'espressoulster_pg_fixture');
-  const db = postgres ? openPostgres() : openDatabase(path.join(directory, 'cafe.sqlite'));
-  if (!postgres) migrateDatabase(db, path.resolve('drizzle'));
+  t.after(() => rmSync(directory, { recursive: true, force: true }));
+  const staging = process.env.SELFHOST_DATABASE === 'postgres-staging';
+  if (staging) assert.equal(process.env.PGDATABASE, 'espressoulster_pg_fixture');
+  const databaseName = staging ? process.env.PGDATABASE : 'espressoulster_test_' + randomBytes(8).toString('hex');
+  const databaseEnv = {
+    ...process.env, PGDATABASE: databaseName, SELFHOST_DATABASE: staging ? 'postgres-staging' : 'postgres-local',
+  };
+  if (!staging) {
+    const admin = new pg.Client({ ...postgresConnectionSettings(databaseEnv), database: 'postgres' });
+    await admin.connect();
+    t.after(async () => {
+      try { await admin.query('DROP DATABASE IF EXISTS ' + databaseName + ' WITH (FORCE)'); }
+      finally { await admin.end(); }
+    });
+    await admin.query('CREATE DATABASE ' + databaseName);
+    await initializeDatabase(databaseEnv);
+  }
+  const db = openPostgres(databaseEnv);
   const id = `http-fixture-${crypto.randomUUID()}`;
   const phone = '9' + String(BigInt('0x' + randomBytes(5).toString('hex')) % 1000000000n).padStart(9, '0');
   try {
@@ -36,7 +51,7 @@ test('built self-hosted app supports sign-in, ₹1 quote and ordering while reje
   const adminSalt = randomBytes(24).toString('hex');
   const adminHash = await passwordHash(adminPassword, adminSalt);
   const child = spawn(process.execPath, ['scripts/selfhost-server.mjs'], { stdio: ['ignore','pipe','pipe'], env: {
-    ...process.env, NODE_ENV: 'production', APP_RUNTIME: 'selfhost', SELFHOST_HOST: '127.0.0.1', SELFHOST_PORT: String(port),
+    ...databaseEnv, NODE_ENV: 'production', APP_RUNTIME: 'selfhost', SELFHOST_HOST: '127.0.0.1', SELFHOST_PORT: String(port),
     SELFHOST_DATA_DIR: directory, SELFHOST_TLS_CERT: '', SELFHOST_TLS_KEY: '', PAYMENT_APP_ORIGIN: origin,
     PAYMENT_PROVIDER: 'disabled', PAYMENT_MODE: 'disabled', PAYMENT_LIVE_ENABLED: 'false', PUBLIC_TEST_MODE: 'false',
     CUSTOMER_AUTH_MODE: 'pin', CUSTOMER_OTP_ONLY: 'false', PIN_AUTH_OTP_ENABLED: 'false', PIN_AUTH_SECRET: randomBytes(32).toString('hex'),
@@ -147,7 +162,7 @@ test('built self-hosted app supports sign-in, ₹1 quote and ordering while reje
     assert.equal(staffNotice.title, 'New café order');
     assert.match(staffNotice.body, /Pickup/);
     assert.equal(Object.hasOwn(staffNotice, 'contact'), false);
-    if (postgres && process.env.SELFHOST_LIVE_UPDATES === 'true') {
+    if (process.env.SELFHOST_LIVE_UPDATES === 'true') {
       const [customerEvents, adminEvents] = await Promise.all([feed('live-updates',cookie),feed('admin/live-updates',adminCookie)]);
       await Promise.all([customerEvents(': connected'),adminEvents(': connected')]);
       const liveMessage = {message:'Fixture live chat.',requestId:crypto.randomUUID()};
@@ -160,7 +175,7 @@ test('built self-hosted app supports sign-in, ₹1 quote and ordering while reje
       console.log('Verified concurrent customer and Admin streams receive chat and order changes.');
     }
     assert.equal((await admin('overview')).status, 200);
-    for (const status of postgres && process.env.SELFHOST_LIVE_UPDATES === 'true' ? ['preparing','ready'] : ['confirmed','preparing','ready']) {
+    for (const status of process.env.SELFHOST_LIVE_UPDATES === 'true' ? ['preparing','ready'] : ['confirmed','preparing','ready']) {
       const update = await admin('orders/'+placedOrder,{status},'PATCH');
       assert.equal(update.status, 200, await update.clone().text());
     }
@@ -301,6 +316,5 @@ test('built self-hosted app supports sign-in, ₹1 quote and ordering while reje
     child.kill('SIGTERM');
     for (let i=0; i<50 && child.exitCode===null; i++) await delay(100);
     if (child.exitCode === null) { child.kill('SIGKILL'); await delay(100); }
-    rmSync(directory, { recursive:true, force:true });
   }
 });

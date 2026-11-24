@@ -1,5 +1,5 @@
 -- PostgreSQL ports of the 19 active triggers and two views in the SQLite schema.
--- Keep these business rules aligned with SQLite until the live switch is approved.
+-- Active application rules for the PostgreSQL runtime.
 CREATE VIEW cafe_dine_in_requests AS
   SELECT NULL::text AS table_id,NULL::text AS customer_id,NULL::text AS kind,NULL::text AS source_id WHERE false;
 CREATE VIEW live_cafe_table_schedule AS

@@ -1,5 +1,4 @@
 import path from 'node:path';
-import { openDatabase } from './database.mjs';
 import { openPostgres } from './postgres.mjs';
 import { localImageStorage } from './storage.mjs';
 import { selfhostSettings } from './settings.mjs';
@@ -9,10 +8,9 @@ function runtime() {
   if (typeof window !== 'undefined') throw new Error('Server runtime cannot run in the browser');
   if (!globalThis[stateKey]) {
     const directory = path.resolve(process.env.SELFHOST_DATA_DIR || '.selfhost/data');
-    const usePostgres = ['postgres-staging', 'postgres'].includes(process.env.SELFHOST_DATABASE);
-    if (usePostgres) selfhostSettings(process.env);
+    selfhostSettings(process.env);
     globalThis[stateKey] = {
-      DB: usePostgres ? openPostgres() : openDatabase(path.join(directory, 'cafe.sqlite')),
+      DB: openPostgres(),
       BUCKET: localImageStorage(path.join(directory, 'images')),
     };
   }

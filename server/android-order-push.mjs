@@ -1,4 +1,5 @@
 import pg from 'pg';
+import { postgresConnectionSettings } from './postgres.mjs';
 import { GoogleAuth } from 'google-auth-library';
 import { orderNotice, staffOrderNotice } from '../lib/order-notifications.ts';
 import { canSeeStaffPanel, staffRole } from '../lib/staff-panel-access.ts';
@@ -79,12 +80,11 @@ export async function dispatchAndroidOrders(db, config, send) {
 }
 
 export function startAndroidOrderPush(config = process.env) {
-  if (!['postgres-staging', 'postgres'].includes(config.SELFHOST_DATABASE) ||
-    !/^[a-z][a-z0-9-]{4,29}$/.test(config.ANDROID_PUSH_PROJECT_ID ?? '') ||
+  if (!/^[a-z][a-z0-9-]{4,29}$/.test(config.ANDROID_PUSH_PROJECT_ID ?? '') ||
     !config.GOOGLE_APPLICATION_CREDENTIALS) return async () => {};
   const auth = new GoogleAuth({keyFile:config.GOOGLE_APPLICATION_CREDENTIALS, scopes:[scopeUrl]});
   const send = firebaseOrderSender(config.ANDROID_PUSH_PROJECT_ID, () => auth.getAccessToken());
-  const pool = new pg.Pool({max:3,connectionTimeoutMillis:3000,statement_timeout:8000,application_name:'espc-android-order-push'});
+  const pool = new pg.Pool({...postgresConnectionSettings(config),max:3,statement_timeout:8000,application_name:'espc-android-order-push'});
   let timer, run, stopped = false;
   pool.on('error', () => console.warn('Android order push database connection closed'));
   function schedule(delay) {

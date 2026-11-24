@@ -3,8 +3,7 @@ import { hashTesterToken } from './tester-auth.ts';
 import { assert } from './pricing.ts';
 
 export function androidPushConfigured(env: Record<string, string | undefined>) {
-  return (env.SELFHOST_DATABASE === 'postgres-staging' || env.SELFHOST_DATABASE === 'postgres') &&
-    /^[a-z][a-z0-9-]{4,29}$/.test(env.ANDROID_PUSH_PROJECT_ID ?? '') &&
+  return /^[a-z][a-z0-9-]{4,29}$/.test(env.ANDROID_PUSH_PROJECT_ID ?? '') &&
     Boolean(env.GOOGLE_APPLICATION_CREDENTIALS);
 }
 

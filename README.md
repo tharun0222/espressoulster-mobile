@@ -1,29 +1,32 @@
 # Espressoulster Coffee
 
 One project for the Android customer app, mobile Admin, and the café backend.
-The self-hosted Node.js backend uses PostgreSQL on staging and defaults to SQLite
-for local development. The Android build, server code, and deployed media assets
+The self-hosted Node.js backend uses PostgreSQL for local development and staging.
+The Android build, server code, and deployed media assets
 are maintained together on `main`. The [staging source snapshot](https://github.com/tharun0222/espressoulster-mobile/commit/90b4f1540fb45dcc4b8611d908cff221a996928a)
 records the version running on 24 November 2026.
 
 ## Run on this computer
 
-Requires Node.js 24+ and the existing npm lockfile. Keep your current ignored
-`.env` and `.env.selfhost` files; they contain server settings and credentials.
+Requires Node.js 24+ and a running PostgreSQL 17+ server. Copy
+`.env.selfhost.example` to the ignored `.env.selfhost` file for a new setup.
+Set `PGHOST` to the absolute path of the PostgreSQL Unix socket directory,
+`PGPORT` to its port, and `PGUSER` to your local role if it differs from your OS user.
+The role must be able to create tables in `espressoulster_local`.
 
 ```sh
+createdb -h /path/to/postgres/socket -p 5432 espressoulster_local
+npm run install:ci
 npm run db:selfhost
 npm run build
 npm start
 ```
 
 Open `http://127.0.0.1:5173/#home`. For development, stop the existing server and
-run `npm run dev`. All default commands now use the self-hosted runtime.
-
-The current local database and four uploads have been copied to `.selfhost/data`.
-Accounts, sessions, order history, and table schedule records were preserved.
-The current 110 menu items, four pass catalog prices, and booking fee are ₹1.
-Existing order totals were preserved. Do not publish these prices accidentally.
+run `npm run dev`. Database setup initializes the schema and starter catalog,
+and can be rerun against an initialized database. Keep existing PostgreSQL
+settings and backups when upgrading a deployed instance. See the
+[backend setup guide](docs/self-hosted-backend.md) for importing older data.
 
 ## Cashfree
 
@@ -52,10 +55,10 @@ npm run build
 npm run test:backend
 ```
 
-The backend integration check starts a separate local Node server with an
-isolated temporary database. It does not change customer data or charge money.
-The prior Worker-specific scripts are retained as historical tooling and are
-not part of the default runtime or backend integration check.
+The backend integration check starts a separate Node server and creates a
+temporary PostgreSQL database on the configured local server. The local test
+role needs `CREATEDB` and access to the `postgres` maintenance database. Older
+SQLite migrations and fixtures are retained for legacy imports and regression tests.
 
 ## Android and mobile Admin
 
@@ -67,12 +70,9 @@ computer. Admin access continues to use the existing approved-number policy.
 ## Code
 
 - `app/`: customer and mobile Admin screens and API routes.
-- `server/`: local SQLite, upload storage, environment binding and server settings.
+- `server/`: PostgreSQL, upload storage, environment binding and server settings.
 - `scripts/selfhost-server.mjs`: HTTP loopback or built-in HTTPS server.
-- `scripts/selfhost-db.mjs`: checked migrations and optional database import.
+- `scripts/selfhost-db.mjs`: PostgreSQL schema and starter catalog initialization.
 - `lib/`: pricing, payments, subscriptions, table scheduling and authentication.
-- `drizzle/`: versioned SQL migrations.
+- `server/postgres/`: PostgreSQL bootstrap, functions, triggers and views.
 - `tests/`: payment, business logic and self-hosted backend checks.
-
-SQLite here is intended for one app instance on one computer. Large concurrent
-traffic requires separate capacity planning and load testing.

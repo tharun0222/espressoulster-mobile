@@ -3,7 +3,8 @@
 The Android app, customer screens, mobile Admin, API, database migrations, and
 Cashfree verification code live in this project. The default `dev`, `build`, and
 `start` commands use Node.js and Next.js. They do not run Cloudflare, Wrangler,
-ChatGPT Sites, a hosted database, or a tunnel.
+ChatGPT Sites, a hosted database, or a tunnel. The backend connects to PostgreSQL
+over a Unix socket.
 
 The local server is running at `http://127.0.0.1:5173`. Its customer checkout is
 `/#checkout`. The backend and user interface share the same origin, so the app
@@ -11,26 +12,30 @@ does not send secrets to the browser or require cross-origin cookie changes.
 
 ## Files and commands
 
-- `server/database.mjs`: local SQLite database, transactional batches, checked migrations.
+- `server/postgres.mjs`: PostgreSQL connection pool and transactional batches.
 - `server/storage.mjs`: private on-disk image uploads.
 - `server/runtime.mjs`: server-only database, storage, and environment bindings.
 - `scripts/selfhost-server.mjs`: HTTP on loopback, or HTTPS using your certificate.
 - `.env.selfhost`: ignored server settings; mode 600. Existing `.env` is loaded
   first and the self-host settings override it. Shell environment variables take precedence.
-- `.selfhost/data/cafe.sqlite`: persistent database. The previous local database
-  was copied using SQLite's backup API, preserving accounts, sessions and history.
-- `.selfhost/data/images`: the four previous local uploads were imported.
+- `.selfhost/data/images`: private uploaded images, stored separately from PostgreSQL.
+
+Follow the [local setup in the README](../README.md) to create and initialize
+the local PostgreSQL database. For development, use `npm run dev`. Stop an
+existing server before starting another on the same port. Use `pg_dump` to
+back up PostgreSQL and back up uploaded images separately.
+
+For an older SQLite installation with accounts or orders to keep, make a
+consistent SQLite backup. Run the verified import against an empty local
+PostgreSQL database before running `npm run db:selfhost`. Use the same socket,
+port, and role as your local app:
 
 ```sh
-npm run db:selfhost
-npm run build
-npm start
+PGHOST=/path/to/postgres/socket PGPORT=5432 PGDATABASE=espressoulster_local \
+  node scripts/rehearse-postgres-migration.mjs /path/to/cafe-backup.sqlite import-report.json --with-runtime
 ```
 
-For development, use `npm run dev`. Stop an existing server before starting
-another on the same port. Builds and database files are ignored by Git. Back up
-the database with SQLite's backup API; do not copy only the database file while
-its WAL is active. Uploaded images also need backups.
+Keep the original backup and uploaded images until the imported data is verified.
 
 ## Cashfree and the current ₹1 prices
 
@@ -68,6 +73,9 @@ Keep this same code and database on your computer or your own server. Supply:
 In the ignored `.env.selfhost`, configure:
 
 ```dotenv
+SELFHOST_DATABASE=postgres
+PGHOST=/absolute/path/to/postgres/socket-directory
+PGDATABASE=espressoulster_runtime_staging
 SELFHOST_HOST=0.0.0.0
 SELFHOST_PORT=443
 SELFHOST_TLS_CERT=/absolute/path/fullchain.pem
@@ -95,6 +103,3 @@ Then test one ₹1 order, one ₹1 booking, and one ₹1 pass on a phone, includ
 return-to-app, cancellation and duplicate callbacks. The customer must complete
 the real payment. Until that rollout is tested, this is a local backend, not a
 verified live payment deployment.
-
-This SQLite runtime is intended for one app instance on one computer. It is not
-a claim of capacity for 200,000 simultaneous users.
