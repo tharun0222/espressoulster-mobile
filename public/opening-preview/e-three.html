@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Espressoulster · Three E reveals</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100svh; display: grid; place-items: center; background: #170f0e; color: #fff5e9; font: 16px system-ui; }
+main { width: min(100%, 420px); padding: 20px; text-align: center; }
+h1 { font-size: 24px; margin: 0; }
+p { color: #edc8ad; min-height: 3em; }
+.stage { height: clamp(200px, 45svh, 380px); display: grid; place-items: center; perspective: 530px; background: radial-gradient(ellipse, #493024, transparent 70%); }
+.mark, .piece { width: 132px; height: 142px; position: relative; transform-style: preserve-3d; }
+.piece, .slice { position: absolute; inset: 0; }
+.slice { clip-path: var(--shape); background: #6d3624; transform: translateZ(var(--depth)); }
+.slice:last-child { background: linear-gradient(135deg,#ffdab0,#b26444 53%,#e7a579); }
+[data-style="11"] .slice:last-child { background: #f6ebda; }
+[data-style="25"] .slice:last-child { background: linear-gradient(112deg,#7a3927 15%,#fbd6ae 32%,#ad5e42 45%,#ffd4aa 52%,#8f432b 76%); background-size: 240% 100%; animation: shine 1.3s .45s both; }
+[data-style="01"] .piece { animation: assemble .95s var(--delay) cubic-bezier(.2,.75,.25,1) both; }
+[data-style="11"] .mark { animation: settle 1.15s ease-out both; }
+[data-style="25"] .mark { animation: orbit 1.7s cubic-bezier(.3,.1,.2,1) both; }
+@keyframes assemble { from { opacity: 0; transform: translate3d(var(--x),var(--y),75px) rotateY(var(--turn)) rotateZ(var(--tilt)); } to { transform: none; } }
+@keyframes settle { from { opacity: 0; transform: translate3d(0,18px,-140px) rotateX(34deg) rotateY(-20deg); } to { transform: none; } }
+@keyframes orbit { from { opacity: 0; transform: rotateY(-145deg) rotateX(25deg) translateZ(-80px); } 45% { opacity: 1; } to { transform: none; } }
+@keyframes shine { from { background-position: 100% 0; } to { background-position: 0 0; } }
+.glass .stage { overflow: hidden; background: radial-gradient(ellipse, #253247, transparent 72%); }
+.glass .slice { background: var(--edge); }
+.glass .slice:last-child { background: var(--face); background-size: 230% 100%; animation: shine 1.45s .2s both; }
+.glass .mark { animation: glass-turn var(--duration) cubic-bezier(.2,.7,.22,1) both; }
+[data-style="19"] .piece { animation: assemble 1s var(--delay) both; }
+[data-style="22"] .mark { filter: drop-shadow(0 0 13px #34cfff88); }
+[data-style="23"] .mark { animation: bubble 1.5s ease-out both; }
+[data-style="24"]::after {
+  content: ""; grid-area: 1 / 1; pointer-events: none; width: 75%; height: 72%;
+  background: linear-gradient(115deg, transparent 32%, #eefaff55 49%, transparent 64%);
+  animation: rays 1.6s .15s both;
+}
+[data-style="24"] .mark { grid-area: 1 / 1; animation-name: ray-turn; }
+@keyframes ray-turn {
+  from { opacity: 0; transform: rotateY(-355deg) rotateX(18deg); }
+  25% { opacity: 1; }
+  to { transform: rotateY(0deg) rotateX(0deg); }
+}
+@keyframes glass-turn {
+  from { opacity: 0; transform: var(--entrance); }
+  35% { opacity: 1; }
+  to { transform: none; }
+}
+@keyframes bubble {
+  0% { opacity: 0; transform: translateY(72px) rotateX(-30deg) scale(.55); }
+  55% { opacity: 1; transform: translateY(-15px) rotateY(19deg) scale(1.06); }
+  78% { transform: translateY(5px) rotateY(-8deg) scale(.97); }
+  100% { transform: none; }
+}
+@keyframes rays {
+  0% { opacity: 0; transform: translateX(-85%); }
+  55% { opacity: .8; }
+  100% { opacity: 0; transform: translateX(85%); }
+}
+.cinematic .stage { background: radial-gradient(ellipse, #553220, #140f10 68%); }
+.cinematic [data-style="50"] { background: radial-gradient(ellipse, #465059, #140f10 68%); }
+.cinematic [data-style="52"] { background: radial-gradient(ellipse, #1c425b, #0a101b 68%); }
+[data-style="51"] .piece { animation: assemble 1s var(--delay) cubic-bezier(.18,.8,.22,1) both; }
+[data-style="52"]::after {
+  content: ""; grid-area: 1 / 1; pointer-events: none; width: 70%; height: 2px;
+  background: #a5faff; box-shadow: 0 0 16px 4px #4dd6ff;
+  animation: scan 1.35s .4s ease-in-out both;
+}
+[data-style="52"] .mark { grid-area: 1 / 1; }
+@keyframes scan {
+  0% { opacity: 0; transform: translateY(-90px); }
+  35%, 65% { opacity: .8; }
+  100% { opacity: 0; transform: translateY(90px); }
+}
+.coffee .mark, .coffee .piece { width: 120px; height: 120px; }
+.coffee .stage { height: clamp(180px, 37svh, 320px); }
+.coffee-brand { margin: 0; font: 32px Georgia, serif; }
+.coffee-brand span { display: block; margin-top: 8px; font: 11px system-ui; letter-spacing: .28em; color: #edc8ad; }
+nav { flex-wrap: wrap; display: flex; gap: 8px; justify-content: center; }
+button { font: inherit; padding: 10px 16px; border-radius: 24px; border: 1px solid #91614c; color: inherit; background: #2f1e18; cursor: pointer; }
+button[aria-pressed="true"] { background: #f3c4a1; color: #261510; }
+#again { margin-top: 12px; }
+@media (prefers-reduced-motion: reduce) { .stage:not(.play-motion) *, .stage:not(.play-motion)::after { animation: none !important; } .stage:not(.play-motion)::after { display: none; } }
+</style>
+<main>
+ <h1 id="name"></h1>
+ <div class="stage" role="img" aria-label="Espressoulster letter E"></div>
+ <p class="coffee-brand" hidden>Espressoulster<span>COFFEE</span></p>
+ <p id="description" aria-live="polite"></p>
+ <nav aria-label="Choose a reveal"></nav>
+ <button type="button" id="again">Play again</button>
+</main>
+<script>
+const designs = {
+  '01': ['Stroke assembly', 'Three copper strokes swing in from different directions and join to form the E.'],
+  '11': ['Soft entrance', 'A cream E rises, turns gently toward you, and settles.'],
+  '25': ['Copper orbit', 'A thick copper E turns toward the light as a reflection crosses its face.'],
+};
+const glass = {
+  '17': ['Frosted turn', 'A frosted E rolls forward into a pale blue highlight.', '#354e69', 'linear-gradient(130deg,#7698b3,#e7f8ff,#829cbb)', 'rotateX(70deg) rotateZ(-18deg)', '1.25s', 14],
+  '18': ['Cinematic glass', 'The E approaches edge-on and turns into the light.', '#20354e', 'linear-gradient(115deg,#21364f,#a6dbef 45%,#f3fcff 53%,#355376)', 'translateZ(-210px) rotateY(-135deg)', '1.8s', 21],
+  '19': ['Glossy assembly', 'Three glossy pieces turn and meet in the center.', '#423e69', 'linear-gradient(125deg,#464369,#eae1ff,#7566ab)', 'translateZ(-25px)', '1.2s', 12],
+  '20': ['Clear tilt', 'A slim glass E lifts and settles with a small tilt.', '#42606b', 'linear-gradient(125deg,#7497a0,#f4ffff,#a7cbd0)', 'translateY(34px) rotateX(34deg)', '1.05s', 6],
+  '21': ['Prism orbit', 'A turn shifts the face from violet to peach and aqua.', '#4f367b', 'linear-gradient(120deg,#7957ef,#f099d5,#ffd291,#7af5db,#546af4)', 'rotateY(145deg) rotateZ(22deg)', '1.6s', 17],
+  '22': ['Neon glass', 'An electric blue edge appears as the E swings into view.', '#145784', 'linear-gradient(120deg,#193266,#3f80ff,#b3f6ff,#146cbc)', 'rotateY(-95deg) rotateX(-24deg)', '1.35s', 13],
+  '23': ['Bubble glass', 'A thick, pearly E floats up and bobs once.', '#546785', 'linear-gradient(115deg,#7db2c8,#ffd7f3,#effbff,#a7b5ed)', 'none', '1.5s', 24],
+  '24': ['Light ray rotation', 'The E turns through a narrow shaft of light.', '#344663', 'linear-gradient(115deg,#233957,#94d7ee,#f6fdff,#587392)', 'rotateY(-355deg) rotateX(18deg)', '1.95s', 18],
+};
+const cinematic = {
+  '48': ['Cinematic copper', 'The copper E approaches edge-on and turns into a narrow band of light.', '#50291e', 'linear-gradient(112deg,#5c3025,#f6ba88 46%,#fff1cf 53%,#81412e)', 'translateZ(-210px) rotateY(-100deg) rotateX(12deg)', '1.8s', 20],
+  '49': ['Forged gold', 'A heavy gold E rises from shadow with a low-angle tilt.', '#56401c', 'linear-gradient(140deg,#634620,#ffe7a6,#a77736)', 'translateY(85px) rotateX(-55deg)', '1.65s', 23],
+  '50': ['Silver pedestal', 'A polished silver E descends and levels out in a soft spotlight.', '#455360', 'linear-gradient(120deg,#526270,#eef6ff,#8099aa)', 'translateY(-65px) translateZ(-110px) rotateX(44deg) rotateZ(-12deg)', '1.6s', 16],
+  '51': ['Bronze impact', 'Three bronze segments rush inward and settle into a single E.', '#572a1c', 'linear-gradient(125deg,#633020,#ed9861,#ffc99a,#924827)', 'none', '1.3s', 24],
+  '52': ['Sci-fi scan', 'An ice-blue E turns upright as a scanner line passes over it.', '#145175', 'linear-gradient(117deg,#142749,#38a5d3,#cbffff,#155379)', 'rotateY(85deg) translateX(50px) rotateZ(12deg)', '1.5s', 12],
+};
+const set = new URLSearchParams(location.search).get('set');
+const coffeeMode = set === 'coffee';
+const choices = coffeeMode || set === 'cinematic' ? cinematic : set === 'glass' ? glass : designs;
+document.querySelector('main').classList.toggle('coffee', coffeeMode);
+document.querySelector('.coffee-brand').hidden = !coffeeMode;
+const glassMode = choices !== designs;
+document.querySelector('main').classList.toggle('cinematic', choices === cinematic);
+document.querySelector('main').classList.toggle('glass', glassMode);
+
+const segments = [
+  ['polygon(0 0,100% 0,86% 18%,22% 18%,22% 33.5%,0 33.5%)', '-80px', '-52px', '-85deg', '-24deg'],
+  ['polygon(0 33%,22% 33%,22% 42%,81% 42%,67% 60%,22% 60%,22% 69.5%,0 69.5%)', '100px', '0px', '105deg', '15deg'],
+  ['polygon(0 69%,22% 69%,22% 82%,100% 82%,86% 100%,0 100%)', '-60px', '68px', '-70deg', '28deg'],
+];
+const cupSegments = [
+  ['path("M42 39C29 28 61 25 53 10L57 8C68 27 37 30 46 37ZM60 39C50 31 73 25 71 18L75 17C79 28 57 33 64 37Z")', '-80px', '-52px', '-85deg', '-24deg'],
+  ['path(evenodd, "M18 48H86V59H93A14 14 0 0 1 93 87H79A31 31 0 0 1 52 102A34 34 0 0 1 18 68ZM86 67V70Q86 75 83 80H93A6.5 6.5 0 0 0 93 67Z")', '100px', '0px', '105deg', '15deg'],
+  ['path("M19 107H90A3 3 0 0 1 90 113H19A3 3 0 0 1 19 107Z")', '-60px', '68px', '-70deg', '28deg'],
+];
+const stage = document.querySelector('.stage');
+if (coffeeMode) stage.setAttribute('aria-label', 'Espressoulster Steam & Saucer coffee mark');
+const buttons = (choices === designs ? ['01', '11', '25'] : Object.keys(choices)).map(option => {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.dataset.option = option;
+  button.textContent = option;
+  document.querySelector('nav').append(button);
+  return button;
+});
+let selected = choices === designs ? '01' : Object.keys(choices)[0];
+
+function show(option, requestedMotion = false) {
+  selected = option;
+  stage.dataset.style = option;
+  stage.classList.toggle('play-motion', requestedMotion);
+  const mark = document.createElement('div');
+  mark.className = 'mark';
+  const [, , edge, face, entrance, duration, glassDepth] = choices[option];
+  if (glassMode) {
+    Object.entries({ edge, face, entrance, duration })
+      .forEach(([key, value]) => mark.style.setProperty('--' + key, value));
+  }
+  const depth = glassDepth ?? (option === '25' ? 22 : option === '11' ? 6 : 12);
+  (coffeeMode ? cupSegments : segments).forEach(([shape, x, y, turn, tilt], index) => {
+    const piece = document.createElement('div');
+    piece.className = 'piece';
+    Object.entries({ shape, x, y, turn, tilt, delay: index * 110 + 'ms' })
+      .forEach(([key, value]) => piece.style.setProperty('--' + key, value));
+    for (let layer = 0; layer <= depth; layer++) {
+      const slice = document.createElement('div');
+      slice.className = 'slice';
+      slice.style.setProperty('--depth', layer - depth + 'px');
+      piece.append(slice);
+    }
+    mark.append(piece);
+  });
+  stage.replaceChildren(mark);
+  document.querySelector('#name').textContent = option + ' · ' + choices[option][0];
+  document.querySelector('#description').textContent = coffeeMode ? choices[option][1].replace('a single E', 'the cup, steam, and saucer').replace(/\bE\b/g, 'cup') : choices[option][1];
+  buttons.forEach(button => button.setAttribute('aria-pressed', button.dataset.option === option));
+}
+
+buttons.forEach(button => button.addEventListener('click', () => show(button.dataset.option, true)));
+document.querySelector('#again').addEventListener('click', () => show(selected, true));
+show(selected);
+</script>
+</html>

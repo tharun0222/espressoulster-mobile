@@ -1,8 +1,10 @@
 # Espressoulster Coffee
 
 One project for the Android customer app, mobile Admin, and the café backend.
-The default runtime is a self-hosted Node.js server with SQLite and private local
-image storage. It runs on your own computer without Cloudflare or ChatGPT Sites.
+The self-hosted Node.js backend uses PostgreSQL on staging and defaults to SQLite
+for local development. The Android build, server code, and deployed media assets
+are maintained together on `main`. The [staging source snapshot](https://github.com/tharun0222/espressoulster-mobile/commit/90b4f1540fb45dcc4b8611d908cff221a996928a)
+records the version running on 24 November 2026.
 
 ## Run on this computer
 

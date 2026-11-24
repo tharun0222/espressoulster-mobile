@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Espressoulster · Coffee marks</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100svh; display: grid; place-items: center; background: #1b110d; color: #fff0de; font: 16px system-ui; }
+main { width: min(100%, 430px); padding: 20px; text-align: center; }
+.stage { padding: 42px 12px; border-radius: 24px; background: radial-gradient(ellipse at 50% 30%, #503025, #271914 74%); }
+svg { display: block; width: 130px; height: 130px; margin: 0 auto 12px; overflow: visible; }
+h1 { margin: 0; font: 34px Georgia, serif; }
+.brand-label { margin: 8px 0 0; font-size: 11px; letter-spacing: .3em; color: #ffc49d; }
+nav { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+button { color: inherit; background: #312019; border: 1px solid #996c54; padding: 10px 14px; border-radius: 20px; font: inherit; cursor: pointer; }
+button[aria-pressed="true"] { background: #f7c59d; color: #26150e; }
+#name { min-height: 1.5em; }
+.mark { transform-origin: center; animation: arrive 900ms cubic-bezier(.2,.75,.3,1) both; }
+.detail { stroke-dasharray: 1; animation: trace 650ms 400ms ease-out both; }
+@keyframes arrive { from { opacity: 0; transform: perspective(240px) rotateY(-68deg) translateY(12px); } }
+@keyframes trace { from { stroke-dashoffset: 1; } }
+@media (prefers-reduced-motion: reduce) { .mark, .detail { animation: none; } }
+</style>
+<main>
+ <div class="stage">
+  <div id="symbol"></div>
+  <h1>Espressoulster</h1>
+  <p class="brand-label">COFFEE</p>
+ </div>
+ <p id="name" aria-live="polite"></p>
+ <nav aria-label="Choose a coffee mark">
+  <button type="button" data-mark="0">01 · Cup</button>
+  <button type="button" data-mark="1">02 · Bean</button>
+  <button type="button" data-mark="2">03 · Crema</button>
+ </nav>
+</main>
+<script>
+const marks = [
+  ['Steam & Saucer', '<path fill="url(#copper)" d="M18 48h68v11h7a14 14 0 0 1 0 28H79a31 31 0 0 1-27 15 34 34 0 0 1-34-34zm68 19v3q0 5-3 10h10a6.5 6.5 0 0 0 0-13z"/><path d="M19 110h71" stroke="#eab68e" stroke-width="5" stroke-linecap="round"/><path class="detail" pathLength="1" d="M44 38c-12-10 17-12 13-28M61 38c-7-7 14-10 14-18" fill="none" stroke="#fff0d9" stroke-width="4" stroke-linecap="round"/>'],
+  ['Split Bean', '<path fill="url(#copper)" d="M90 17c18 14 17 46-3 69S39 116 23 101c-17-15-14-46 6-68S73 3 90 17Z"/><path class="detail" pathLength="1" d="M29 98c-1-28 47-24 47-52 0-9 3-17 11-25" fill="none" stroke="#3d231a" stroke-width="6" stroke-linecap="round"/>'],
+  ['Crema Swirl', '<circle cx="60" cy="60" r="43" fill="url(#copper)"/><circle cx="60" cy="60" r="35" fill="#4c281c"/><path class="detail" pathLength="1" d="M34 59c9-19 32-27 47-12 17 18-1 43-22 38-14-3-18-20-7-28 9-7 19-2 19 6" fill="none" stroke="#ffe1ba" stroke-width="5" stroke-linecap="round"/><path d="M101 52h5a9 9 0 0 1 0 18h-6" fill="none" stroke="#df9a70" stroke-width="5"/>'],
+];
+const buttons = [...document.querySelectorAll('[data-mark]')];
+function show(index) {
+  const [name, drawing] = marks[index];
+  document.querySelector('#name').textContent = name;
+  document.querySelector('#symbol').innerHTML = '<svg viewBox="0 0 120 120" role="img" aria-label="' + name + '"><defs><linearGradient id="copper" x2="1" y2="1"><stop stop-color="#ffdfb6"/><stop offset="1" stop-color="#b86c48"/></linearGradient></defs><g class="mark">' + drawing + '</g></svg>';
+  buttons.forEach(button => button.setAttribute('aria-pressed', Number(button.dataset.mark) === index));
+}
+buttons.forEach(button => button.addEventListener('click', () => show(Number(button.dataset.mark))));
+show(0);
+</script>
+</html>

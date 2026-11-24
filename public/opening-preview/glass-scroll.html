@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Espressoulster · Scroll drinks</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eee2d6;color:#fff4df;font:15px system-ui}main{margin:auto;width:min(100%,430px);min-height:100svh;padding:24px;background:#21140e;position:relative;isolation:isolate;overflow:hidden;transition:background .7s}
+header{font:24px Georgia}header small{display:block;font:10px system-ui;letter-spacing:.22em;color:#e6b38f;margin-top:5px}
+#interaction{height:min(65svh,540px);position:relative;display:grid;place-items:center;touch-action:pan-x;overscroll-behavior:contain}
+.glow{position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 60%,var(--glow,#956039),transparent 67%);transition:background .7s}
+.glass{width:210px;height:300px;filter:drop-shadow(0 20px 18px #0007);animation:glass-arrive .75s cubic-bezier(.2,.7,.2,1) both}
+.liquid-stop{transition:stop-color .7s}.swirl{transition:fill .7s,opacity .7s}
+.beans{position:absolute;width:24px;height:34px;border-radius:60% 40%;background:linear-gradient(100deg,#ce9863,#6d3d22);border:1px solid #bd8552;box-shadow:0 8px 13px #0005;animation:float 2.5s ease-in-out infinite alternate;transition:background .7s}
+.beans::after{content:"";position:absolute;left:46%;top:4px;height:25px;width:2px;background:#412213;transform:rotate(12deg);border-radius:50%}
+.a{left:5%;top:25%;rotate:-30deg}.b{right:5%;top:55%;rotate:25deg;animation-delay:-1s}.c{left:9%;bottom:12%;scale:.65;animation-delay:-1.7s}
+h1{font:38px Georgia;margin:0 0 8px}#name{animation:copy .6s ease both}p{margin:0;color:#e3c3ab;line-height:1.5}
+.count{font-size:11px;letter-spacing:.14em;color:#e6b38f;margin-bottom:12px}
+nav{display:flex;justify-content:center;gap:9px;margin:20px 0}button{background:transparent;border:1px solid #b58a6b;color:#fff2dd;min-width:44px;min-height:44px;border-radius:50%;font:inherit;cursor:pointer}button[aria-pressed=true]{background:#f0bc8b;color:#382017}
+.hint{text-align:center;font-size:12px}.credits{font-size:10px;text-align:center;margin-top:16px;color:#bd987b}
+@keyframes glass-arrive{from{opacity:.3;transform:translateY(25px) rotateY(-35deg) rotateZ(-5deg)}to{opacity:1;transform:none}}
+@keyframes copy{from{opacity:0;transform:translateY(9px)}}
+@keyframes float{to{translate:0 -16px;rotate:16deg}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<main style="--glow:#956039">
+<header>Espressoulster<small>COFFEE</small></header>
+<div id="interaction" aria-label="Swipe up or down to change the featured drink" tabindex="0">
+<div class="glow"></div>
+<i class="beans a" aria-hidden="true"></i><i class="beans b" aria-hidden="true"></i><i class="beans c" aria-hidden="true"></i>
+<svg class="glass" viewBox="0 0 210 300" role="img" aria-label="Glass of iced latte">
+ <defs>
+  <linearGradient id="glass-shade"><stop stop-color="#fff" stop-opacity=".32"/><stop offset=".2" stop-color="#fff" stop-opacity=".02"/><stop offset=".75" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity=".38"/></linearGradient>
+  <linearGradient id="liquid" x2=".8" y2="1"><stop class="liquid-stop top" stop-color="#61321e"/><stop class="liquid-stop middle" offset=".42" stop-color="#ae7650"/><stop class="liquid-stop bottom" offset="1" stop-color="#e8c89e"/></linearGradient>
+  <linearGradient id="ice"><stop stop-color="#fff8df" stop-opacity=".8"/><stop offset="1" stop-color="#fff" stop-opacity=".15"/></linearGradient>
+  <clipPath id="inside"><path d="M40 72Q105 90 170 72L152 257Q105 275 58 257Z"/></clipPath>
+ </defs>
+ <path d="M124 78L145 5" stroke="#edc89e" stroke-width="6" stroke-linecap="round"/>
+ <path d="M36 64Q105 45 174 64L155 260Q105 282 55 260Z" fill="#fff" fill-opacity=".05" stroke="#fff4dc" stroke-opacity=".6" stroke-width="1.5"/>
+ <g clip-path="url(#inside)">
+  <path d="M35 87Q105 65 177 89L154 270H55Z" fill="url(#liquid)"/>
+  <path class="swirl" d="M65 89C147 85 73 140 129 169S74 206 127 263H150C106 209 173 197 144 162S156 103 92 77Z" fill="#f4d9b1" opacity=".47"/>
+  <path class="swirl" d="M51 115C127 131 85 157 127 195S96 229 107 277H58Z" fill="#e6bd8d" opacity=".35"/>
+  <g fill="url(#ice)" stroke="#fff" stroke-opacity=".3">
+   <rect x="56" y="83" width="36" height="29" rx="6" transform="rotate(-14 70 98)"/>
+   <rect x="108" y="85" width="39" height="31" rx="6" transform="rotate(16 128 100)"/>
+   <rect x="82" y="112" width="33" height="30" rx="6" transform="rotate(25 98 126)"/>
+   <rect x="121" y="144" width="28" height="32" rx="6" transform="rotate(-12 134 160)"/>
+  </g>
+ </g>
+ <path d="M36 64Q105 45 174 64L155 260Q105 282 55 260Z" fill="url(#glass-shade)"/>
+ <ellipse cx="105" cy="64" rx="69" ry="14" fill="#fff" fill-opacity=".12" stroke="#fff2dc" stroke-opacity=".8" stroke-width="2"/>
+ <ellipse cx="105" cy="64" rx="58" ry="8" fill="#4d2819" fill-opacity=".35"/>
+ <path d="M44 81L60 244" stroke="#fff" stroke-opacity=".48" stroke-width="3" stroke-linecap="round"/>
+ <path d="M163 88L149 243" stroke="#fff" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/>
+ <g fill="#fff" fill-opacity=".5"><circle cx="48" cy="119" r="2"/><circle cx="155" cy="143" r="1.5"/><circle cx="55" cy="174" r="2"/><circle cx="149" cy="203" r="2.2"/><circle cx="74" cy="238" r="1.2"/></g>
+</svg>
+</div>
+<div class="count" id="count">01 / 04</div>
+<h1 id="name">Iced latte</h1><p id="description">Espresso meets cold milk.</p>
+<nav aria-label="Choose a drink"><button aria-label="Iced latte" aria-pressed="true">1</button><button aria-label="Mocha" aria-pressed="false">2</button><button aria-label="Matcha" aria-pressed="false">3</button><button aria-label="Berry matcha" aria-pressed="false">4</button></nav>
+<p class="hint">Swipe ↑ ↓ or scroll to change the drink.</p>
+<p class="credits">Animation concept · sample drink names · preview only</p>
+</main>
+<script>
+const drinks=[
+ ['Iced latte','Espresso meets cold milk.','#61321e','#ae7650','#e8c89e','#956039'],
+ ['Mocha','Chocolate, espresso, and a smooth finish.','#32160e','#603424','#b17a55','#7b3d22'],
+ ['Matcha','Green tea over milk and ice.','#486519','#8fa83c','#e3e4ab','#627b26'],
+ ['Berry matcha','Layers of berry, milk, and green tea.','#526622','#b7c283','#8f496c','#72405c'],
+];
+const main=document.querySelector('main');
+const interaction=document.querySelector('#interaction');
+const buttons=[...document.querySelectorAll('nav button')];
+let active=0,lockedUntil=0;
+function select(index){
+ if(index===active)return;
+ active=(index+drinks.length)%drinks.length;
+ const [name,description,top,middle,bottom,glow]=drinks[active];
+ document.querySelector('.top').setAttribute('stop-color',top);
+ document.querySelector('.middle').setAttribute('stop-color',middle);
+ document.querySelector('.bottom').setAttribute('stop-color',bottom);
+ main.style.setProperty('--glow',glow);
+ const glass=document.querySelector('.glass');glass.setAttribute('aria-label','Glass of '+name.toLowerCase());
+ glass.style.animation='none';void glass.getBoundingClientRect();glass.style.animation='';
+ const title=document.querySelector('#name');title.textContent=name;title.style.animation='none';void title.getBoundingClientRect();title.style.animation='';
+ document.querySelector('#description').textContent=description;
+ document.querySelector('#count').textContent=String(active+1).padStart(2,'0')+' / 04';
+ document.querySelectorAll('.beans').forEach(bean=>bean.style.background='linear-gradient(100deg,'+middle+','+top+')');
+ buttons.forEach((button,i)=>button.setAttribute('aria-pressed',i===active));
+}
+function step(direction){if(performance.now()<lockedUntil)return;lockedUntil=performance.now()+650;select(active+direction)}
+buttons.forEach((button,i)=>button.onclick=()=>select(i));
+interaction.addEventListener('wheel',event=>{if(Math.abs(event.deltaY)>8){event.preventDefault();step(event.deltaY>0?1:-1)}},{passive:false});
+let startY=null;
+interaction.addEventListener('touchstart',event=>{startY=event.touches[0].clientY},{passive:true});
+interaction.addEventListener('touchmove',event=>{if(startY!==null&&Math.abs(event.touches[0].clientY-startY)>12)event.preventDefault()},{passive:false});
+interaction.addEventListener('touchend',event=>{if(startY!==null){const diff=startY-event.changedTouches[0].clientY;if(Math.abs(diff)>35)step(diff>0?1:-1)}startY=null});
+interaction.addEventListener('keydown',event=>{if(['ArrowDown','ArrowUp'].includes(event.key)){event.preventDefault();step(event.key==='ArrowDown'?1:-1)}});
+</script>
+</html>
