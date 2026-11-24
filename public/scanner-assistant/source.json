@@ -1,0 +1,19 @@
+{
+  "fps": 25,
+  "frames": 405,
+  "readyAt": 9.6,
+  "returnAt": 6.4,
+  "firstGestureEndAt": 19.36,
+  "loopStart": null,
+  "duration": 16.2,
+  "asset": "../previews/assets/pixabay-presenter-original.mp4",
+  "transparent": false,
+  "introHands": "Original gestures",
+  "source": "https://pixabay.com/videos/man-person-walk-talk-presentation-143765/",
+  "creator": "Julien Tromeur",
+  "license": "https://pixabay.com/service/license-summary/",
+  "appearance": "Unmodified original reference video",
+  "baseAsset": "pixabay-presenter-original.mp4",
+  "reversedGestureTail": false,
+  "edits": []
+}

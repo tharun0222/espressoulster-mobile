@@ -1,11 +1,21 @@
+import {sendOrderPush} from './order-push';
+import {applyPriceRelease} from './price-release';
+import {isSameOriginRequest} from './request-origin';
+import {isCafeTableConflict,tableUnavailableMessage} from './cafe-table-manager';
+import {paysAtCafe} from './order-payment';
+import {cafeOffDutyMessage} from './cafe-order-intake';
+import {orderPlacementStatements,reserveOrderStock} from './order-placement';
 import {ensureSeedOnce} from './seed-once';
 import {menuRecipe} from './menu-recipe';
 import {cleanRecipeOverride,recipeOverrideError,resolveProductRecipe} from './product-recipe';
 import {visibleSubscriptionOrders} from './visible-subscription-orders';
 import {subscriberQuote} from './subscriber-discount';
-import {stripeTestConfig} from './stripe-security';
-import {readPinSession,pinReady} from './pin-auth-core';
+import {hostedPaymentConfig} from './sandbox-config';
+import {hostedPaymentMethod, isSandboxPayment, type CheckoutMode, type SandboxProvider} from './sandbox-checkout';
+import {readPinSession,readStaffPinSession,pinReady,pinToken,staffPinCookie} from './pin-auth-core';
+import {canSeeStaffPanel,staffRole} from './staff-panel-access';
 import {passwordAdmin} from "./admin-auth";
+import {androidAdminAccess,androidAdminRequired,localStaffPreview,requireAndroidAdmin,staffOtpRequired,staffPhoneAuthRequired,staffOtpDeviceIndependent} from "./android-admin-access";
 import {phoneSessionToken} from "./phone-verification";
 import {headers} from "next/headers";
 import {testerToken,hashTesterToken} from "./tester-auth";
@@ -35,7 +45,7 @@ export function db() {
 }
 export async function seed() {
   const d = db();
-  return ensureSeedOnce(d,async()=>{
+  await ensureSeedOnce(d,async()=>{
     if(await d.prepare("SELECT id FROM settings WHERE id=?").bind("store").first())return;
     await d.batch([
       ...categorySeed.map((c) =>
@@ -57,7 +67,43 @@ export async function seed() {
         .bind("store", JSON.stringify(defaultSettings)),
     ]);
   });
+  await applyPriceRelease(d, env.CATALOG_PRICE_RELEASE);
 }
+export async function cafeAcceptingOrders() {
+  const row = await db().prepare("SELECT data FROM settings WHERE id='order-intake'").first<{data:string}>();
+  return row?.data !== "false";
+}
+
+function storeSettings(data?: string) {
+  const saved = JSON.parse(data || "{}");
+  if (saved.brand === "My Coffee House") saved.brand = defaultSettings.brand;
+  if (!saved.address?.trim()) saved.address = defaultSettings.address;
+  return { ...defaultSettings, ...saved, testMode: (env as any).PUBLIC_TEST_MODE === "true" };
+}
+
+export async function cartCatalog(lines: unknown) {
+  assert(Array.isArray(lines) && lines.length > 0 && lines.length <= 100, "Your cart is empty or too large");
+  const productIds = [...new Set(lines.map(line => {
+    assert(line && typeof line.productId === "string", "Invalid cart item");
+    return line.productId;
+  }))];
+  const d = db();
+  const [products, settings] = await d.batch([
+    d.prepare(`SELECT p.*,c.enabled AS category_enabled FROM products p
+      LEFT JOIN categories c ON c.id=p.category_id
+      WHERE p.archived=0 AND p.id IN (SELECT value FROM json_each(?))`).bind(JSON.stringify(productIds)),
+    d.prepare("SELECT data FROM settings WHERE id='store'"),
+  ]);
+  return {
+    products: products.results.map((row: any) => ({
+      ...JSON.parse(row.data), id: row.id, name: row.name, categoryId: row.category_id, price: row.price,
+      inventory: row.inventory, available: !!row.available, archived: !!row.archived, _raw: row.data,
+    })),
+    categories: products.results.map((row: any) => ({ id: row.category_id, enabled: !!row.category_enabled })),
+    settings: storeSettings((settings.results[0] as { data: string } | undefined)?.data),
+  };
+}
+
 export async function catalog(admin = false) {
   const d = db();
   const [p, c, s] = await Promise.all([
@@ -70,11 +116,10 @@ export async function catalog(admin = false) {
       .bind("store")
       .first<any>(),
   ]);
-  const savedSettings = JSON.parse(s?.data || "{}");
-  if (savedSettings.brand === "My Coffee House") savedSettings.brand = defaultSettings.brand;
+  const settings = storeSettings(s?.data);
+  const storedProducts = p.results.map((row: any) => ({row, stored: JSON.parse(row.data)}));
   return {
-    products: p.results.map((r: any) => {
-      const stored=JSON.parse(r.data);
+    products: storedProducts.filter(({stored}) => admin || settings.testMode || !stored.testPrice).map(({row: r, stored}) => {
       const suggested=menuRecipe(r.id,r.name);
       return Object.defineProperty(
         {
@@ -89,7 +134,7 @@ export async function catalog(admin = false) {
       );
     }),
     categories: c.results.map((r: any) => ({ ...r, enabled: !!r.enabled })),
-    settings: { ...defaultSettings, ...savedSettings, testMode:(env as any).PUBLIC_TEST_MODE === "true" },
+    settings,
   };
 }
 export async function identity(required = false, administrator = false) {
@@ -99,7 +144,7 @@ export async function identity(required = false, administrator = false) {
     if (passwordUser) return passwordUser;
   }
   if (!administrator && (env as any).CUSTOMER_AUTH_MODE === 'pin') {
-    const profile=pinReady(env)?await readPinSession(db(),(await headers()).get('cookie')):null;
+    const profile=pinReady(env)?await readPinSession(db(),(await headers()).get('cookie'),undefined,env.STAFF_ONLY_PHONES):null;
     assert(!required||profile,'Please sign in with your mobile number and PIN',401);
     const login=profile?await db().prepare('SELECT phone FROM pin_accounts WHERE user_id=?').bind(profile.id).first<any>():null;
     return profile?{loginPhone:login?.phone,userId:profile.id,email:profile.email,fullName:profile.name,displayName:profile.name,phoneVerified:false,authProvider:'pin',admin:false,profile}:null;
@@ -142,6 +187,27 @@ export async function identity(required = false, administrator = false) {
   };
 }
 export async function adminIdentity() {
+  const requestHeaders = await headers();
+  const cookie = requestHeaders.get('cookie');
+  await requireAndroidAdmin(cookie);
+  const host = requestHeaders.get('host');
+  const localStaff = localStaffPreview(host);
+  const otpOnly = staffOtpRequired(host);
+  const staffPhoneAuth = staffPhoneAuthRequired(host);
+  if (!staffOtpDeviceIndependent() && staffPhoneAuth && !localStaff && !androidAdminRequired()) {
+    assert(await androidAdminAccess(cookie), "Open Café Admin in the Espressoulster Android app.", 403);
+  }
+  if (androidAdminRequired() || localStaff || staffPhoneAuth || (pinToken(cookie,staffPinCookie) && await androidAdminAccess(cookie))) {
+    const profile = await readStaffPinSession(db(),cookie,otpOnly);
+    assert(profile, "Staff sign-in is required", 403);
+    const account = await db().prepare('SELECT phone FROM pin_accounts WHERE user_id=?').bind(profile.id).first<{phone:string}>();
+    const phone=account?.phone;
+    const staffAccess = staffRole(phone, env);
+    assert(staffAccess, "Staff access is unavailable for this number",403);
+    return {userId:profile.id,email:profile.email,fullName:profile.name,displayName:profile.name,
+      phoneVerified:false,authProvider:'staff-pin',admin:true,profile,staffAccess,
+      staffDutyAccess:canSeeStaffPanel(phone, env.STAFF_DUTY_PHONES)};
+  }
   const passwordUser = await passwordAdmin();
   if (passwordUser) return passwordUser;
   assert((env as any).ADMIN_PASSWORD_LOGIN_ONLY !== "true", "Administrator login is required", 403);
@@ -149,16 +215,19 @@ export async function adminIdentity() {
   assert(u?.admin, "Administrator access is required", 403);
   return u!;
 }
+
+export function canManageStaffOrders(user: object) {
+  return !("staffAccess" in user) || user.staffAccess === "operator";
+}
+export function canManageStaffDuty(user: object) {
+  return canManageStaffOrders(user) || ("staffDutyAccess" in user && user.staffDutyAccess === true);
+}
 export function mutationGuard(req: Request) {
-  const origin = req.headers.get("origin");
+  // Next's custom server may normalize Request.url to localhost. Match the
+  // configured public origin plus the validated Host on self-hosted requests.
   assert(
-    !origin || origin === new URL(req.url).origin,
+    isSameOriginRequest(req, process.env.APP_RUNTIME === 'selfhost' ? process.env.PAYMENT_APP_ORIGIN : undefined),
     "Cross-origin request rejected",
-    403,
-  );
-  assert(
-    req.headers.get("sec-fetch-site") !== "cross-site",
-    "Cross-site request rejected",
     403,
   );
 }
@@ -259,8 +328,9 @@ export async function orderList(
     params.push(userId);
   }
   if (search) {
-    where.push("(id LIKE ? OR contact LIKE ?)");
-    params.push("%" + search + "%", "%" + search + "%");
+    where.push("(lower(id) LIKE lower(?) OR lower(order_number) LIKE lower(?) OR lower(contact) LIKE lower(?))");
+    const pattern = "%" + search + "%";
+    params.push(pattern, pattern, pattern);
   }
   if (status && status !== "all") {
     where.push("status=?");
@@ -280,7 +350,7 @@ export async function orderList(
   const [items, events, payments] = await d.batch([
     d.prepare(`SELECT * FROM order_items WHERE order_id IN (${placeholders})`).bind(...ids),
     d.prepare(`SELECT order_id,status,created_at FROM order_events WHERE order_id IN (${placeholders}) ORDER BY created_at,rowid`).bind(...ids),
-    d.prepare(`SELECT order_id,method FROM payments WHERE order_id IN (${placeholders}) ORDER BY created_at,rowid`).bind(...ids),
+    d.prepare(`SELECT order_id,method,created_at FROM payments WHERE order_id IN (${placeholders}) ORDER BY created_at,rowid`).bind(...ids),
   ]);
   const byOrder = (records: any[]) => {
     const grouped = new Map<string, any[]>();
@@ -292,9 +362,11 @@ export async function orderList(
   };
   const itemGroups = byOrder(items.results), eventGroups = byOrder(events.results);
   const paymentMethods = new Map(payments.results.map((p: any) => [p.order_id, p.method]));
+  const paidTimes = new Map(payments.results.map((p: any) => [p.order_id, p.created_at]));
   return rows.results.map((o: any) => ({
     ...o, contact: JSON.parse(o.contact),
     collection_method: paymentMethods.get(o.id) || null,
+    timer_started_at: ["stripe_test", "cashfree_test", "cashfree", "phonepe", "razorpay_test"].includes(String(paymentMethods.get(o.id))) ? paidTimes.get(o.id) || o.created_at : o.created_at,
     items: (itemGroups.get(o.id) || []).map((i: any) => ({...i,selections: JSON.parse(i.selections)})),
     events: eventGroups.get(o.id) || [],
   }));
@@ -302,15 +374,25 @@ export async function orderList(
 export async function placeOrder(b: any, user: any) {
   const d = db();
   const key = text(b.idempotencyKey, 100, true);
+  const prepaid = isSandboxPayment(b.paymentMethod) || b.paymentMethod === "cashfree";
+  const gateway = prepaid ? hostedPaymentConfig(env) : null;
+  const pending = await d.prepare("SELECT id,user_id,state,provider,mode FROM prepaid_checkouts WHERE idempotency_key=?")
+    .bind(key).first<{id:string;user_id:string;state:string;provider:SandboxProvider;mode:CheckoutMode}>();
+  if (pending) {
+    assert(pending.user_id === user.userId && b.paymentMethod === hostedPaymentMethod(pending.provider, pending.mode), "Invalid checkout request", 409);
+    assert(pending.state !== "expired", "This checkout expired. Start a new checkout.", 409);
+    return { id: pending.id, checkoutPending: true, repeated: true };
+  }
   const existing = await d
-    .prepare("SELECT id,user_id FROM orders WHERE idempotency_key=?")
+    .prepare("SELECT id,user_id,order_number FROM orders WHERE idempotency_key=?")
     .bind(key)
     .first<any>();
   if (existing) {
     assert(existing.user_id === user.userId, "Invalid checkout request", 409);
-    return { id: existing.id, repeated: true };
+    return { id: existing.id, order_number: existing.order_number, repeated: true };
   }
-  const cat = await catalog();
+  assert(await cafeAcceptingOrders(), cafeOffDutyMessage, 409);
+  const cat = await cartCatalog(b.items);
   const quote = await subscriberQuote(d,user,priceCart(
     b.items,
     cat.products,
@@ -324,7 +406,14 @@ export async function placeOrder(b: any, user: any) {
     "Your order total changed. Review the refreshed total and try again.",
     409,
   );
+  const table = b.fulfillment === "dine_in" ? b.contact?.table : undefined;
+  if (table != null && table !== "") {
+    assert(typeof table === "string" && /^T[0-9]{2}$/.test(table), "This table number is invalid.");
+    const availableTable = await d.prepare("SELECT id FROM cafe_tables WHERE id=? AND enabled=1").bind(table).first();
+    assert(availableTable, "This table is unavailable. Ask the café for your table number.", 409);
+  }
   const contact = {
+    ...(table ? { table } : {}),
     name: text(b.contact?.name, 100, true),
     phone: text(b.contact?.phone, 25, true),
     email: user.email,
@@ -332,99 +421,62 @@ export async function placeOrder(b: any, user: any) {
     notes: text(b.contact?.notes || "", 500),
   };
   assert(/^[+\d ()-]{7,25}$/.test(contact.phone), "Enter a valid phone number");
+  if (gateway?.mode === "live") {
+    assert(/^(?:\+91)?[6-9]\d{9}$/.test(contact.phone.replace(/[\s()-]/g, "")), "Enter a valid Indian mobile number for online payment.");
+  }
   if (b.fulfillment === "delivery")
     assert(contact.address.length >= 10, "Enter a complete delivery address");
   assert(
-    (b.paymentMethod === "stripe_test" && (env as any).PAYMENT_PROVIDER === "stripe" && quote.currency === "INR" && quote.total >= stripeTestConfig(env).minimumAmount) ||
+    (gateway && b.paymentMethod === gateway.method && quote.currency === "INR" && quote.total >= gateway.minimumAmount) ||
     (b.paymentMethod === "pay_at_pickup" && b.fulfillment === "pickup") ||
     (b.paymentMethod === "pay_at_counter" && b.fulfillment === "dine_in") ||
       (b.paymentMethod === "cash_on_delivery" && b.fulfillment === "delivery"),
     "Select an available payment method",
   );
   const id = "CH-" + crypto.randomUUID().slice(0, 8).toUpperCase();
-  const statements = [
-    d
-      .prepare(
-        "INSERT INTO orders (id,user_id,idempotency_key,fulfillment,subtotal,tax,discount,fee,total,currency,contact) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
-      )
-      .bind(
-        id,
-        user.userId,
-        key,
-        b.fulfillment,
-        quote.subtotal,
-        quote.tax,
-        quote.discount,
-        quote.fee,
-        quote.total,
-        quote.currency,
-        JSON.stringify(contact),
-      ),
-  ];
-  for (const pid of new Set(quote.items.map((i) => i.productId))) {
-    const p = cat.products.find((p) => p.id === pid)!;
-    const qty = quote.items
-      .filter((i) => i.productId === pid)
-      .reduce((s, i) => s + i.quantity, 0);
-    statements.push(
-      d
-        .prepare(
-          "UPDATE products SET inventory=CASE WHEN price=? AND data=? AND available=1 AND archived=0 AND EXISTS(SELECT 1 FROM categories WHERE id=products.category_id AND enabled=1) THEN CASE WHEN inventory IS NULL THEN NULL ELSE inventory-? END ELSE -1 END WHERE id=?",
-        )
-        .bind(p.price, p._raw, qty, pid),
-    );
-  }
-  for (const item of quote.items)
-    statements.push(
-      d
-        .prepare(
-          "INSERT INTO order_items (id,order_id,product_id,name,quantity,unit_price,selections,instructions) VALUES (?,?,?,?,?,?,?,?)",
-        )
-        .bind(
-          crypto.randomUUID(),
-          id,
-          item.productId,
-          item.name,
-          item.quantity,
-          item.unitPrice,
-          JSON.stringify(item.selections),
-          item.instructions,
-        ),
-    );
-  statements.push(
-    d
-      .prepare(
-        "INSERT INTO order_events (id,order_id,status,actor) VALUES (?,?,?,?)",
-      )
-      .bind(crypto.randomUUID(), id, "pending", user.userId),
-  );
-  statements.push(
-    d.prepare("DELETE FROM carts WHERE user_id=?").bind(user.userId),
-  );
-  statements.push(
-    d
-      .prepare(
-        "INSERT INTO profiles (id,email,name,phone) VALUES (?,?,?,?) ON CONFLICT(id) DO UPDATE SET name=excluded.name,phone=excluded.phone",
-      )
-      .bind(user.userId, user.email, contact.name, contact.phone),
-  );
+  const { holds, statements: stock } = reserveOrderStock(d, quote.items, cat.products);
+  let orderNumber: string;
   try {
-    await d.batch(statements);
+    if (gateway) {
+      const checkoutId = "PC-" + crypto.randomUUID().replaceAll("-", "").toUpperCase();
+      await d.batch([
+        d.prepare(`INSERT INTO prepaid_checkouts (id,order_id,user_id,idempotency_key,fulfillment,total,currency,contact,quote,cart_snapshot,stock_holds,provider,mode)
+          VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`)
+          .bind(checkoutId, id, user.userId, key, b.fulfillment, quote.total, quote.currency,
+            JSON.stringify(contact), JSON.stringify(quote), JSON.stringify(b.items), JSON.stringify(holds), gateway.provider, gateway.mode),
+        ...stock,
+      ]);
+      return { id: checkoutId, checkoutPending: true };
+    }
+    const statements = orderPlacementStatements(d, {
+      id, userId: user.userId, key, fulfillment: b.fulfillment, paymentMethod: b.paymentMethod,
+      quote, contact, openingTime: cat.settings.orderDayOpeningTime,
+    });
+    const [, saved] = await d.batch<{order_number:string}>([...statements, ...stock]);
+    orderNumber = saved.results[0].order_number;
   } catch (error) {
+    if (gateway) {
+      const checkout = await d.prepare("SELECT id FROM prepaid_checkouts WHERE idempotency_key=? AND user_id=? AND provider=? AND mode=? AND state!='expired'")
+        .bind(key, user.userId, gateway.provider, gateway.mode).first<{id:string}>();
+      if (checkout) return { id: checkout.id, checkoutPending: true, repeated: true };
+    }
     const already = await d
-      .prepare("SELECT id FROM orders WHERE idempotency_key=? AND user_id=?")
+      .prepare("SELECT id,order_number FROM orders WHERE idempotency_key=? AND user_id=?")
       .bind(key, user.userId)
       .first<any>();
-    if (already) return { id: already.id, repeated: true };
+    if (already) return { id: already.id, order_number: already.order_number, repeated: true };
+    if (String(error).includes("CAFE_OFF_DUTY")) throw new BusinessError(cafeOffDutyMessage, 409);
+    if (String(error).includes("CHECKOUT_KEY_ALREADY_USED")) throw new BusinessError("A checkout is already open for this request.", 409);
+    if (isCafeTableConflict(error)) throw new BusinessError(tableUnavailableMessage, 409);
     console.error("Order transaction failed", error);
     throw new BusinessError(
       "The menu or stock changed. Refresh your cart and try again.",
       409,
     );
   }
-  return { id, ...quote, status: "pending", paymentStatus: "unpaid" };
+  return { id, order_number: orderNumber, ...quote, status: "pending", paymentStatus: "unpaid" };
 }
-export async function updateStatus(id: string, status: string, user: any) {
+export async function updateStatus(id: string, status: string, user: any, selectedTable?: unknown) {
   const d = db();
   const order = await d
     .prepare("SELECT * FROM orders WHERE id=?")
@@ -449,12 +501,24 @@ export async function updateStatus(id: string, status: string, user: any) {
       409,
     );
   validTransition(order.status, status, order.fulfillment);
+  const acceptingDineIn = status === "confirmed" && order.fulfillment === "dine_in";
+  const contact = JSON.parse(order.contact);
+  if (selectedTable !== undefined)
+    assert(acceptingDineIn, "A table can be selected only when accepting a dine-in order.");
+  const table = acceptingDineIn ? selectedTable ?? contact.table : null;
+  if (acceptingDineIn)
+    assert(typeof table === "string" && /^T[0-9]{2}$/.test(table), "Choose a table before accepting this dine-in order.", 409);
+  const needsCafePayment = status === "completed" && paysAtCafe(order);
+  assert(!needsCafePayment || order.payment_status === "paid", "Record collected payment before completing this order.", 409);
+  const statusUpdate = acceptingDineIn && typeof table === "string"
+    ? d.prepare(`UPDATE orders SET status=?,contact=json_set(contact,'$.table',?)
+        WHERE id=? AND status=? RETURNING id`)
+      .bind(status, table, id, order.status)
+    : d.prepare(
+        "UPDATE orders SET status=? WHERE id=? AND status=? AND (? != 'cancelled' OR payment_status='unpaid') AND (?=0 OR payment_status='paid') RETURNING id",
+      ).bind(status, id, order.status, status, needsCafePayment ? 1 : 0);
   const stmts = [
-    d
-      .prepare(
-        "UPDATE orders SET status=? WHERE id=? AND status=? AND (? != 'cancelled' OR payment_status='unpaid')",
-      )
-      .bind(status, id, order.status, status),
+    statusUpdate,
     d
       .prepare(
         "INSERT INTO order_events (id,order_id,status,actor) SELECT ?,?,?,? WHERE changes()=1",
@@ -484,12 +548,18 @@ export async function updateStatus(id: string, status: string, user: any) {
       );
   }
 
-  const result = await d.batch(stmts);
+  const result = await d.batch<{id:string}>(stmts);
   assert(
-    result[0].meta.changes === 1,
-    "Order changed. Refresh and try again.",
+    result[0].results.length === 1,
+    acceptingDineIn
+      ? "That table is unavailable or this order has changed. Refresh and try again."
+      : "Order changed. Refresh and try again.",
     409,
   );
   await audit(user.userId, "order." + status, id);
+
+  try {
+    await sendOrderPush(d, env, { ...order, status, contact: acceptingDineIn ? { ...contact, table } : contact });
+  } catch { console.warn("Order notification could not be delivered"); }
   return { ok: true };
 }

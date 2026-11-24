@@ -1,0 +1,15 @@
+.order-status-screen{position:fixed;inset:0;margin:auto;width:min(100%,430px);max-width:100%;max-height:100dvh;border:0;background:#101010;color:#f5eadb;overscroll-behavior:contain;box-shadow:0 0 80px #0008;animation:order-status-open .3s ease both}
+.order-status-screen::backdrop{background:#000a;backdrop-filter:blur(7px)}
+.order-status-screen-header{display:flex;align-items:center;gap:14px}.order-status-screen-header button{flex:none;width:44px;height:44px;border:1px solid #49372b;border-radius:50%;background:#1c1713;color:#e9c9a5;font-size:22px;cursor:pointer}.order-status-screen-header>div{display:flex;flex-direction:column;gap:5px;min-width:0;overflow-wrap:anywhere}.order-status-screen-header span{font-size:11px;color:#ad9988}.order-status-screen-header strong{font-size:14px;font-weight:500;letter-spacing:.5px}
+@keyframes order-status-open{from{opacity:0;translate:0 18px}to{opacity:1;translate:0}}
+@media(prefers-reduced-motion:reduce){.order-status-screen{animation:none}}
+.order-status-chat { justify-self: center; min-height: 44px; max-width: 100%; margin: 0; }
+.order-status-screen-header .order-status-table {
+  margin-inline-start: auto;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #cfe5f7;
+  color: #123e60;
+  font-weight: 700;
+  white-space: nowrap;
+}

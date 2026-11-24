@@ -1,0 +1,18 @@
+{
+  "source": "https://pixabay.com/videos/man-person-walk-talk-presentation-143765/",
+  "creator": "Julien Tromeur",
+  "license": "https://pixabay.com/service/license-summary/",
+  "original_file": "pixabay-presenter-original.mp4",
+  "original_duration_seconds": 16.2,
+  "original_fps": 25,
+  "original_frames": 405,
+  "modifications": [
+    "Black hoodie-style garment with folded hood, drawstrings and front pocket",
+    "White Espressoulster Coffee wordmark",
+    "Black and white footwear colours",
+    "White studio background retained",
+    "Mobile encoding"
+  ],
+  "scope": "Scanner preview only; not integrated into customer app",
+  "current_preview_video": "espressoulster-presenter-hoodie-mobile-v1.mp4"
+}

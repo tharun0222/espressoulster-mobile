@@ -1,0 +1,52 @@
+.account-gallery { width: min(100%, 460px); margin-inline: auto; }
+.account-toolbar { padding: 14px 16px 11px; background: var(--frosted-glass); border-bottom: 1px solid var(--frosted-edge); }
+.account-heading { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.account-heading h1 { margin: 0; font-size: 20px; }
+.account-picker, .account-modes { display: grid; gap: 6px; }
+.account-picker { grid-template-columns: 44px minmax(0, 1fr) 44px; }
+.account-modes { grid-template-columns: 1fr 1fr; margin-top: 6px; }
+.account-toolbar :is(button, select, a) { min-height: 44px; border: 1px solid var(--frosted-edge); border-radius: 12px; background: var(--frosted-pill); color: var(--frosted-ink); }
+.account-toolbar :is(a, .account-picker button) { display: grid; place-items: center; width: 44px; }
+.account-picker select { min-width: 0; padding: 0 8px; font-weight: 650; }
+.account-modes button { font-size: 13px; font-weight: 650; }
+.account-modes button[aria-pressed="true"] { background: var(--frosted-accent); color: white; }
+.account-toolbar p { margin: 7px 0 0; font-size: 12px; }
+
+html[data-theme] .frosted-preview .account-design .pin-welcome {
+  --auth-ink: #172c3e;
+  --auth-label: #364f64;
+  --auth-button-text: #fff;
+  justify-content: flex-start;
+  min-height: calc(100svh - 181px);
+  padding: 22px 15px 28px;
+  background: radial-gradient(ellipse at 83% 5%, var(--auth-glow), transparent 68%), var(--auth-shade);
+}
+html[data-theme] .frosted-preview .account-design .phone-brand { margin: 0 0 16px; font-size: clamp(25px, 8vw, 33px); }
+html[data-theme] .frosted-preview .account-design .phone-brand span { margin-top: 5px; }
+html[data-theme] .frosted-preview .account-design .phone-welcome-card {
+  padding: 20px;
+  border: 1px solid var(--frosted-edge);
+  border-radius: 25px;
+  background: color-mix(in srgb, var(--auth-surface) 91%, transparent);
+  color: var(--auth-ink);
+  backdrop-filter: blur(18px);
+}
+html[data-theme] .frosted-preview .account-design .phone-icon { width: 42px; height: 42px; margin-bottom: 12px; border-radius: 13px; background: color-mix(in srgb, var(--auth-accent) 18%, var(--auth-surface)); color: var(--auth-accent); }
+html[data-theme] .frosted-preview .account-design .phone-welcome-card h1 { color: var(--auth-ink); margin-bottom: 8px; }
+html[data-theme] .frosted-preview .account-design .phone-welcome-card p { color: var(--auth-label); margin-bottom: 14px; }
+html[data-theme] .frosted-preview .account-design .phone-welcome :is(.phone-input-row, .pin-input-row, .pin-profile-input) { min-height: 46px; margin-block: 5px 11px; background: color-mix(in srgb, var(--auth-surface) 85%, var(--auth-glow)); border-color: color-mix(in srgb, var(--auth-accent) 45%, var(--auth-surface)); }
+html[data-theme] .frosted-preview .account-design .phone-welcome :is(input, .phone-input-row > span, .pin-input-row > button, small) { color: var(--auth-ink); }
+html[data-theme] .frosted-preview .account-design input::placeholder { color: var(--auth-label); opacity: .9; }
+html[data-theme] .frosted-preview .account-design .phone-welcome .primary { min-height: 46px; background: var(--auth-accent); color: var(--auth-button-text); opacity: 1; cursor: default; }
+
+html[data-theme] .frosted-preview .account-design[data-layout="dark"] .pin-welcome { --auth-ink: #f0f7fd; --auth-label: #cbdbe8; --auth-button-text: #172c3e; color-scheme: dark; }
+html[data-theme] .frosted-preview .account-design[data-layout="dark"] .phone-brand,
+html[data-theme] .frosted-preview .account-design[data-layout="dark"] .phone-brand span { color: #f0f7fd; }
+html[data-theme] .frosted-preview .account-design[data-layout="sheet"] .pin-welcome { padding-inline: 0; }
+html[data-theme] .frosted-preview .account-design[data-layout="sheet"] .phone-welcome-card { max-width: none; border-radius: 32px 32px 0 0; flex: 1; }
+html[data-theme] .frosted-preview .account-design[data-layout="photo"] .pin-welcome { background: linear-gradient(180deg, #d2e4f3d9 0, transparent 210px, var(--auth-shade) 340px), url("/images/launch-coffee.webp") center top / 100% auto no-repeat, var(--auth-shade); }
+html[data-theme] .frosted-preview .account-design[data-layout="photo"] .welcome-brand-group { margin-bottom: 38px; }
+html[data-theme] .frosted-preview .account-design[data-layout="paper"] .phone-welcome-card { box-shadow: none; border-radius: 16px; }
+html[data-theme] .frosted-preview .account-design[data-layout="outline"] .phone-welcome-card { border: 2px solid color-mix(in srgb, var(--auth-accent) 38%, white); box-shadow: none; }
+html[data-theme] .frosted-preview .account-design[data-layout="studio"] .pin-welcome { background: linear-gradient(90deg, var(--auth-shade) 0 27%, var(--auth-glow) 27%); }
+html[data-theme] .frosted-preview .account-design[data-layout="studio"] .phone-welcome-card { border-radius: 8px 27px 27px 8px; border-left: 4px solid var(--auth-accent); }

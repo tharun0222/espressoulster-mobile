@@ -1,10 +1,15 @@
-import {stripePaymentRoute} from './stripe-payments';
+import {sandboxPaymentRoute} from './stripe-payments';
 import {env} from 'cloudflare:workers';
 import {db,json,limitedBytes} from './server';
 import {configuration,PaymentError,validateCompleted,verifyWebhookAuthorization,checkoutUrl} from './payment-security';
 import {createPhonePeClient} from './phonepe-client';
 // Reuse OAuth tokens within a Worker isolate. Rotated bindings replace the client.
 let active:{fingerprint:string;client:ReturnType<typeof createPhonePeClient>}|undefined;
+function livePhonePeConfiguration(){
+ const c=configuration(env);
+ if(c.mode!=='live')throw new PaymentError('Online payments are unavailable. You can pay at the café.',503);
+ return c;
+}
 function client(){const c=configuration(env);const fingerprint=JSON.stringify([c.mode,c.origin,c.clientId,c.clientVersion,c.secret]);if(active?.fingerprint!==fingerprint)active={fingerprint,client:createPhonePeClient(env)};return active.client;}
 function belongs(intent:any){const c=configuration(env);if(intent.provider!=='phonepe'||intent.mode!==c.mode||!intent.merchant_order_id)throw new PaymentError('This payment belongs to a different provider or environment. Contact the café.',409);}
 async function orderForUser(id:string,userId:string){
@@ -31,7 +36,7 @@ async function verifyIntent(intent:any){
  return {paid:false,paymentStatus:'unpaid',providerState:remote.state,orderId:intent.order_id,intentState:intent.state};
 }
 export async function paymentWebhook(req:Request){
- const c=configuration(env);
+ const c=livePhonePeConfiguration();
  await verifyWebhookAuthorization(c.webhookUsername,c.webhookPassword,req.headers.get('authorization'));
  const raw=new TextDecoder('utf-8',{fatal:true}).decode(await limitedBytes(req,128000));
  let event:any;try{event=JSON.parse(raw);}catch{throw new PaymentError('Invalid webhook body');}
@@ -44,13 +49,13 @@ export async function paymentWebhook(req:Request){
  return json(await verifyIntent(intent));
 }
 export async function onlinePaymentRoute(path:string,req:Request,user:{userId:string}){
- if((env as any).PAYMENT_PROVIDER==='stripe')return stripePaymentRoute(path,req,user);
+ if(env.PAYMENT_PROVIDER==='stripe'||env.PAYMENT_PROVIDER==='cashfree')return sandboxPaymentRoute(path,req,user);
  if((env as any).PUBLIC_TEST_MODE==='true'){if(path==='payments/config')return json({enabled:false,provider:null});throw new PaymentError('Real payments are disabled during public testing',403);}
  if(path==='payments/config'&&req.method==='GET'){
-  try{const c=configuration(env);return json({enabled:true,provider:'phonepe',mode:c.mode});}catch{return json({enabled:false,provider:null});}
+  try{const c=livePhonePeConfiguration();return json({enabled:true,provider:'phonepe',mode:c.mode});}catch{return json({enabled:false,provider:null});}
  }
  const m=path.match(/^payments\/(CH-[A-F0-9]{8})\/(start|verify|status)$/);if(!m)return null;
- const [,orderId,action]=m,c=configuration(env),d=db(),o=await orderForUser(orderId,user.userId);
+ const [,orderId,action]=m,c=livePhonePeConfiguration(),d=db(),o=await orderForUser(orderId,user.userId);
  let intent=await d.prepare('SELECT * FROM payment_intents WHERE order_id=?').bind(orderId).first<any>();
  if(action==='status'&&req.method==='GET')return json({orderId,paymentStatus:o.payment_status,intentState:intent?.state||null,cancelled:o.status==='cancelled'});
  if(req.method!=='POST')throw new PaymentError('Method not allowed',405);

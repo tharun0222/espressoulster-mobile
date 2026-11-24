@@ -112,8 +112,12 @@ class StoreTests(unittest.TestCase):
   _,o=self.order();self.assertEqual(request('orders/'+o['id'],'PATCH',{'status':'confirmed'},self.a)[0],403)
  def test_24_order_lifecycle(self):
   _,o=self.order()
-  for status in ['confirmed','preparing','ready','completed']:self.assertEqual(request('admin/orders/'+o['id'],'PATCH',{'status':status})[0],200)
-  order=request('orders',user=self.a)[1]['orders'][0];self.assertEqual(order['status'],'completed');self.assertEqual(len(order['events']),5)
+  for status in ['confirmed','preparing','ready']:self.assertEqual(request('admin/orders/'+o['id'],'PATCH',{'status':status})[0],200)
+  self.assertEqual(request('admin/orders/'+o['id'],'PATCH',{'status':'completed'})[0],409)
+  unpaid=request('orders',user=self.a)[1]['orders'][0];self.assertEqual(unpaid['status'],'ready');self.assertEqual(unpaid['payment_status'],'unpaid')
+  self.assertEqual(request('admin/payments/'+o['id'],'POST',{'reference':'QA local receipt'})[0],200)
+  self.assertEqual(request('admin/orders/'+o['id'],'PATCH',{'status':'completed'})[0],200)
+  order=request('orders',user=self.a)[1]['orders'][0];self.assertEqual(order['status'],'completed');self.assertEqual(order['payment_status'],'paid');self.assertEqual(len(order['events']),5)
  def test_25_invalid_transition(self):
   _,o=self.order();self.assertEqual(request('admin/orders/'+o['id'],'PATCH',{'status':'completed'})[0],400)
  def test_26_no_simulated_online_payment(self):

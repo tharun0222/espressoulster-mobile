@@ -39,7 +39,17 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    ".next-selfhost/types/**/*.ts",
+    ".next-selfhost/dev/types/**/*.ts",
+    ".next-phone/types/**/*.ts",
+    ".next-phone/dev/types/**/*.ts",
+    ".next-cashfree/types/**/*.ts",
+    ".next-cashfree/dev/types/**/*.ts",
+    ".selfhost/qa-full-app/next/types/**/*.ts",
+    ".selfhost/qa-full-app/next/dev/types/**/*.ts",
+    ".selfhost/qa-full-app/next-v1.0.16/types/**/*.ts",
+    ".selfhost/qa-full-app/next-v1.0.16/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

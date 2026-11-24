@@ -4,6 +4,10 @@ import {adminCookie,adminToken,passwordHash,equalHash} from './admin-password';
 import {hashTesterToken} from './tester-auth';
 import {db,body,json} from './server';
 import {assert} from './pricing';
+import {androidAdminAccess,androidAdminRequired,localStaffPreview,localStaffPreviewPin,requireAndroidAdmin,staffOtpRequired,staffPhoneAuthRequired,staffOtpDeviceIndependent} from './android-admin-access';
+import {createPinAuth,pinToken,staffPinCookie,staffPinSessionHash,staffOtpSessionHash} from './pin-auth-core';
+import {createPinReset} from './pin-reset';
+import {msg91Ready} from './msg91-otp';
 export async function passwordAdmin() {
   const token = adminToken((await headers()).get('cookie'));
   if (!token) return null;
@@ -17,13 +21,33 @@ export async function adminAuth(path: string, req: Request) {
   const e=env as any, d=db(), now=Math.floor(Date.now()/1000);
   const suffix=`; Path=/; HttpOnly; SameSite=Strict${new URL(req.url).protocol==='https:'?'; Secure':''}`;
   if(path==='auth/admin/logout') {
+    const staffToken=pinToken(req.headers.get('cookie'),staffPinCookie);
+    if(staffToken)await d.prepare('DELETE FROM pin_sessions WHERE token_hash IN (?,?)')
+      .bind(await staffPinSessionHash(staffToken),await staffOtpSessionHash(staffToken)).run();
     const token=adminToken(req.headers.get('cookie'));
     if(token)await d.prepare('DELETE FROM admin_sessions WHERE token_hash=?').bind(await hashTesterToken(token)).run();
-    return Response.json({ok:true},{headers:{'Cache-Control':'no-store','Set-Cookie':`${adminCookie}=; Max-Age=0${suffix}`}});
+    const responseHeaders = new Headers({'Cache-Control':'no-store'});
+    for (const name of [staffPinCookie,adminCookie]) responseHeaders.append('Set-Cookie',`${name}=; Max-Age=0${suffix}`);
+    return Response.json({ok:true},{headers:responseHeaders});
   }
-  assert(path==='auth/admin/login','Not found',404);
-  assert(e.ADMIN_LOGIN_USERNAME && e.ADMIN_PASSWORD_SALT && /^[a-f0-9]{64}$/.test(e.ADMIN_PASSWORD_HASH||''),'Administrator login is not configured',503);
+  const staffOtp = path === 'auth/admin/otp/request' || path === 'auth/admin/otp/confirm';
+  assert(path==='auth/admin/login' || staffOtp,'Not found',404);
+  await requireAndroidAdmin(req.headers.get('cookie'));
   const input=await body(req);
+  const host = new URL(req.url).host;
+  const localStaff = localStaffPreview(host);
+  const otpOnly = staffOtpRequired(host);
+  if(androidAdminRequired() || localStaff || staffPhoneAuthRequired(host) || staffOtp || Object.hasOwn(input,'phone')) {
+    if(!staffOtpDeviceIndependent() && !androidAdminRequired() && !localStaff)assert(await androidAdminAccess(req.headers.get('cookie')),
+      'Open Café Admin in the Espressoulster Android app.',403);
+    if(staffOtp) {
+      assert(msg91Ready(e),'Staff OTP sign-in is unavailable.',503);
+      return createPinReset(d,e)(path,req,input,true);
+    }
+    assert(!otpOnly,'Sign in with a verification code to open Café Admin.',410);
+    return createPinAuth(d,e).route('auth/pin/login',req,input,true,localStaffPreviewPin(host));
+  }
+  assert(e.ADMIN_LOGIN_USERNAME && e.ADMIN_PASSWORD_SALT && /^[a-f0-9]{64}$/.test(e.ADMIN_PASSWORD_HASH||''),'Administrator login is not configured',503);
   assert(typeof input.username==='string' && input.username.length<=80 && typeof input.password==='string' && input.password.length<=256,'Invalid username or password',401);
   const ip=await hashTesterToken(req.headers.get('cf-connecting-ip')||'local');
   await d.batch([d.prepare('DELETE FROM admin_login_attempts WHERE created_at<?').bind(now-3600),d.prepare('DELETE FROM admin_sessions WHERE expires_at<?').bind(now)]);

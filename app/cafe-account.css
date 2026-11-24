@@ -1,0 +1,104 @@
+.after-hours-welcome[data-cafe-welcome] {
+  width: min(100%, 430px);
+  margin-inline: auto;
+  padding: max(24px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+  background: #172b40;
+  color: #f6fbff;
+}
+
+.after-hours-welcome[data-cafe-welcome]::before {
+  inset: 0;
+  mask-image: none;
+  background: url('/images/frosted-welcome-cafe-selected.jpg') center / cover no-repeat;
+}
+
+.after-hours-welcome[data-cafe-welcome] .after-hours-brand {
+  padding-inline: 8px;
+  font-size: 14px;
+  text-shadow: 0 1px 3px #0b1925, 0 0 8px #0b1925;
+}
+
+.after-hours-welcome[data-cafe-welcome] .after-hours-content {
+  margin-top: auto;
+  padding: 24px 0 0;
+}
+
+.after-hours-welcome[data-cafe-welcome] .after-hours-actions { margin-top: 0; gap: 10px; }
+.after-hours-welcome[data-cafe-welcome] .after-hours-actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 54px;
+  border: 1px solid #eff8ffad;
+  border-radius: 19px;
+  background: #edf6fef0;
+  color: #1b3247;
+  box-shadow: 0 6px 20px #10253a30;
+}
+.after-hours-welcome[data-cafe-welcome] .after-hours-actions button + button {
+  background: #1a3145e0;
+  color: #fff;
+  text-decoration: none;
+}
+
+html[data-theme] .phone-welcome.pin-welcome[data-cafe-form] {
+  width: min(100%, 430px);
+  margin-inline: auto;
+  justify-content: flex-start;
+  padding: max(24px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+  background: #172b40 url('/images/frosted-welcome-cafe-selected.jpg') center / cover no-repeat;
+}
+
+html[data-theme] .phone-welcome.pin-welcome[data-cafe-form] .after-hours-brand { color: #f6fbff; }
+
+html[data-theme] .phone-welcome.pin-welcome[data-cafe-form] .phone-welcome-card {
+  margin-top: max(24px, calc(100svh - 690px));
+  padding: 16px 18px 18px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #f6fbff;
+}
+
+html[data-theme] .phone-welcome.pin-welcome[data-cafe-form='register'] .phone-welcome-card { margin-top: 44px; }
+html[data-theme] body .phone-welcome.pin-welcome[data-cafe-form='signin'] .phone-welcome-card {
+  margin-top: auto;
+  padding-top: 16px;
+}
+.pin-welcome[data-cafe-form] .phone-welcome-card > .pin-back { display: flex; width: fit-content; align-items: center; gap: 6px; padding: 0 8px; font-weight: 650; }
+.pin-welcome[data-cafe-form] .phone-welcome-card h1 { margin-block: 6px; }
+.pin-welcome[data-cafe-form] .phone-welcome-card > p { margin-bottom: 12px; }
+.pin-welcome[data-cafe-form] .phone-welcome-card :is(h1, p, label, small, .pin-back) { text-shadow: 0 1px 2px #0c1d30, 0 0 7px #0c1d30; }
+.pin-welcome[data-cafe-form] :is(.phone-input-row, .pin-input-row, .pin-profile-input) { margin-block: 5px 11px; border-radius: 14px; }
+html[data-theme] .phone-welcome.pin-welcome[data-cafe-form] :is(.phone-welcome-card h1, .phone-welcome-card p, .phone-welcome-card small, .pin-back, .pin-input-row > button, .phone-input-row > span, input) { color: #f6fbff; }
+html[data-theme] .phone-welcome.pin-welcome[data-cafe-form] :is(.phone-input-row, .pin-input-row, .pin-profile-input) { background: #152c40d9; border: 1px solid #d5ecff86; }
+html[data-theme] .phone-welcome.pin-welcome[data-cafe-form] input::placeholder { color: #d7e6f4; opacity: 1; }
+html[data-theme] .phone-welcome.pin-welcome[data-cafe-form] input[type='date'] { color-scheme: dark; }
+html[data-theme] .phone-welcome.pin-welcome[data-cafe-form] select.pin-profile-input { color: #f6fbff; color-scheme: dark; }
+html[data-theme] .phone-welcome.pin-welcome[data-cafe-form] input:autofill { box-shadow: 0 0 0 1000px #233c53 inset; -webkit-text-fill-color: #f6fbff; }
+html[data-theme] .phone-welcome.pin-welcome[data-cafe-form] .phone-error { color: #ffdbd6; }
+html[data-theme] .phone-welcome.pin-welcome[data-cafe-form] .phone-service-note { background: #20384e; }
+html[data-theme] .phone-welcome.pin-welcome[data-cafe-form] .primary { border-radius: 16px; background: #284d69; color: #fff; }
+html[data-theme] .phone-welcome.pin-welcome[data-cafe-form] .pin-help { margin: 10px 0; }
+
+.whatsapp-otp-actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; margin-top: 6px; }
+.whatsapp-otp-actions .pin-back { min-height: 44px; }
+.whatsapp-otp-actions .pin-back:disabled { opacity: .72; }
+
+html[data-theme] .phone-welcome.pin-welcome[data-cafe-form] .cafe-account-switch {
+  min-height: 44px;
+  padding: 0 8px;
+  color: #f6fbff;
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+  text-shadow: 0 1px 3px #0c1d30;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .after-hours-welcome[data-cafe-welcome] .after-hours-content {
+    animation: pin-card-enter 420ms ease-out both;
+  }
+}

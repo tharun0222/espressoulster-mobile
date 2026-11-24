@@ -1,11 +1,17 @@
 export function stripeTestConfig(e:any){
+ if(e.PUBLIC_TEST_MODE!=='true')throw Error('Online checkout is unavailable.');
  if(e.PAYMENT_MODE!=='test'||!/^whsec_[A-Za-z0-9]+$/.test(e.STRIPE_TEST_WEBHOOK_SECRET||''))throw Error('Stripe sandbox verification is awaiting secure account setup.');
- if(!/^sk_test_[A-Za-z0-9]+$/.test(e.STRIPE_TEST_SECRET_KEY||''))throw Error('Stripe test checkout is awaiting secure account setup.');
+ if(!/^(?:sk|rk|rkcs)_test_[A-Za-z0-9]+$/.test(e.STRIPE_TEST_SECRET_KEY||''))throw Error('Stripe test checkout is awaiting secure account setup.');
  const u=new URL(e.PAYMENT_APP_ORIGIN||'');
- if(u.protocol!=='https:'||u.username||u.password||u.pathname!=='/'||u.search||u.hash)throw Error('Invalid payment return origin');
+ const localSandbox=u.protocol==='http:'&&['localhost','127.0.0.1','[::1]'].includes(u.hostname);
+ if((u.protocol!=='https:'&&!localSandbox)||u.username||u.password||u.pathname!=='/'||u.search||u.hash)throw Error('Invalid payment return origin');
  const minimumAmount=Number(e.STRIPE_TEST_MIN_AMOUNT||50);
  if(!Number.isSafeInteger(minimumAmount)||minimumAmount<50||minimumAmount>10000000)throw Error('Invalid sandbox minimum');
  return {key:e.STRIPE_TEST_SECRET_KEY as string,origin:u.origin,minimumAmount};
+}
+export function stripeSandboxAvailable(config:{PAYMENT_PROVIDER?:string}) {
+ if(config.PAYMENT_PROVIDER!=='stripe')return false;
+ try{stripeTestConfig(config);return true;}catch{return false;}
 }
 export function stripeCheckoutUrl(value:unknown){const u=new URL(String(value));if(u.protocol!=='https:'||u.hostname!=='checkout.stripe.com'||u.port||u.username||u.password)throw Error('Untrusted Stripe checkout address');return u.href;}
 export function validateStripePayment(s:any,o:{id:string;total:number;currency:string}){

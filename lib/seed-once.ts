@@ -1,13 +1,9 @@
-// Cache only successful initialization, never catalog, stock, prices or user data.
-// Weak keys keep separate D1 bindings isolated and let retired bindings be collected.
-const initializations=new WeakMap<object,Promise<void>>();
-export function ensureSeedOnce(database:object,initialize:()=>Promise<void>):Promise<void>{
- const existing=initializations.get(database);
- if(existing)return existing;
- const initialization=Promise.resolve().then(initialize);
- initializations.set(database,initialization);
- return initialization.catch(error=>{
-  if(initializations.get(database)===initialization)initializations.delete(database);
-  throw error;
- });
+// D1 calls belong to the request that started them. Share only the completed
+// flag so an aborted request cannot strand other requests on its promise.
+const initialized = new WeakSet<object>();
+
+export async function ensureSeedOnce(database: object, initialize: () => Promise<void>): Promise<void> {
+  if (initialized.has(database)) return;
+  await initialize();
+  initialized.add(database);
 }

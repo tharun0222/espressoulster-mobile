@@ -3,10 +3,11 @@ import {syncTestSubscription} from './subscription-test';
 import {env} from 'cloudflare:workers';
 import {db,limitedBytes} from './server';
 import {createStripePayments} from './stripe-payment-core';
-export async function stripePaymentRoute(path:string,req:Request,user:{userId:string}){
+export async function sandboxPaymentRoute(path:string,req:Request,user:{userId:string}){
  const response=await createStripePayments(db(),env).route(path,req,user);
  if(!response?.ok)return response;
  const b:any=await response.clone().json();
+ if(b.prepaidCheckout)return response;
  if(b.paid===true&&!b.refundReviewRequired){
   const orderId=b.orderId||/^payments\/(CH-[A-F0-9]{8})\//.exec(path)?.[1];
   if(!orderId)return response;
@@ -21,3 +22,9 @@ export async function stripePaymentRoute(path:string,req:Request,user:{userId:st
  return response;
 }
 export async function stripeWebhook(req:Request){const raw=new TextDecoder('utf-8',{fatal:true}).decode(await limitedBytes(req,128000));return createStripePayments(db(),env).webhook(req,raw)}
+export async function cashfreeWebhook(req:Request){const raw=new TextDecoder('utf-8',{fatal:true}).decode(await limitedBytes(req,128000));return createStripePayments(db(),env).cashfreeWebhook(req,raw)}
+export function sandboxBookingCheckout(){return createStripePayments(db(),env).booking;}
+export async function reconcileExpiredSandboxCheckouts() {
+ if (env.PAYMENT_PROVIDER !== "stripe" && env.PAYMENT_PROVIDER !== "cashfree") return;
+ await createStripePayments(db(), env).reconcileExpired();
+}

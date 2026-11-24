@@ -1,0 +1,26 @@
+.cafe-map > .cafe-map-feedback {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  background: var(--paper, #e7f0f6);
+  color: var(--ink, #173448);
+  text-align: center;
+}
+.cafe-map-feedback p { max-width: 30ch; margin: 0; }
+.cafe-map-feedback button {
+  min-height: 44px;
+  border: 1px solid #87abc4;
+  border-radius: 999px;
+  padding: 10px 18px;
+  background: #d3e7f5;
+  color: #173f5c;
+  font: inherit;
+  font-weight: 600;
+}
+.cafe-map-feedback button:focus-visible { outline: 2px solid #2467ce; outline-offset: 3px; }

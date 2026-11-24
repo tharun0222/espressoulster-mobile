@@ -3,7 +3,11 @@ let paymentAudio:HTMLAudioElement|null=null;
 let welcomeAudio:HTMLAudioElement|null=null;
 let context:AudioContext|null=null;
 export function unlockCelebrationAudio(){
- try{context??=new AudioContext();void context.resume().catch(()=>{});}catch{}
+ try {
+  context??=new AudioContext();
+  if(context.state!=='running')void context.resume().catch(()=>{});
+  return context;
+ } catch { return null; }
 }
 export function celebrationSound(kind:'welcome'|'order'|'payment'){
  try{

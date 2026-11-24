@@ -54,7 +54,7 @@ export function priceCart(
         categories.some((c) => c.id === p.categoryId && c.enabled),
       "This item is unavailable",
     );
-    assert(!p.testPrice || settings.testMode === true, "Temporary test prices cannot be used for real orders");
+    assert(!p.testPrice || settings.testMode === true, "This item is unavailable. Remove it from your cart and try again.");
     const quantity = whole(line.quantity, 1, 99);
     const variantId = line.variantId || "";
     const addonIds = line.addonIds || [];

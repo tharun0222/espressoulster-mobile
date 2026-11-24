@@ -1,0 +1,73 @@
+.subscription-advertisements { min-width: 0; margin-inline: 17px; }
+.subscription-advertisements .promotions { margin: 0; }
+.subscription-advertisements .promotion-banner {
+  flex-basis: 100%;
+  min-height: 196px;
+  border: 1px solid #f2f9ffb8;
+  background: #203f59;
+}
+.subscription-advertisements .promotion-banner > img { object-position: center; }
+html[data-theme] :is(.dribbble-theme, .admin-app) .subscription-advertisements .promotion-shade {
+  background: linear-gradient(90deg, #132d45f5, #1d3c56d9 55%, #1d3c5638);
+}
+.subscription-advertisements .promotion-copy {
+  width: min(85%, 315px);
+  padding: 19px 17px;
+}
+html[data-theme] :is(.dribbble-theme, .admin-app) .subscription-advertisements .promotion-copy h3 {
+  margin: 0 0 8px;
+  color: #f6fbff;
+  font: 700 clamp(19px, 5.7vw, 25px)/1.16 "DM Sans", sans-serif;
+  overflow-wrap: anywhere;
+}
+html[data-theme] :is(.dribbble-theme, .admin-app) .subscription-advertisements .promotion-copy p {
+  margin-bottom: 12px;
+  color: #e0edf8;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+html[data-theme] :is(.dribbble-theme, .admin-app) .subscription-advertisements .promotion-copy button {
+  min-height: 44px;
+  padding-inline: 15px;
+  background: #e3f1fb;
+  color: #1e3e59;
+  font-size: 13px;
+}
+.subscription-advertisements .promotion-arrows button { min-height: 36px; width: 36px; }
+
+.subscription-advertisement-manager > .error { margin-inline: 0; }
+.subscription-advertisement-fields {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  margin: 14px 0;
+  padding: 0;
+  border: 0;
+}
+.subscription-advertisement-fields .admin-banner-image-picker {
+  min-height: 120px;
+  margin: 0;
+  padding: 16px;
+  border: 1px dashed #7499b5;
+  background: #eaf3fa;
+  color: #1e3e59;
+}
+.subscription-advertisement-fields .admin-banner-image-picker small { color: #3c566e; }
+.subscription-advertisement-fields .admin-banner-image-picker img { max-height: 146px; }
+.subscription-advertisement-fields .subscription-advertisements { margin-inline: 0; }
+.subscription-advertisement-manager .admin-ad-actions { flex-wrap: wrap; gap: 8px; }
+.subscription-advertisement-entry {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 8px 11px;
+  align-items: center;
+  margin-top: 12px;
+  padding: 11px;
+  border-radius: 14px;
+  border: 1px solid #fff9;
+  background: #e5f0f9;
+}
+.subscription-advertisement-entry > img { width: 54px; height: 50px; object-fit: cover; border-radius: 8px; }
+.subscription-advertisement-entry strong { overflow-wrap: anywhere; }
+.subscription-advertisement-entry small { display: block; margin-top: 3px; }
+.subscription-advertisement-entry .admin-ad-actions { grid-column: 1 / -1; }

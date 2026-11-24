@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import ts from 'typescript';
 import {singleFlight} from '../lib/customer-flow.ts';
+import {resolveOrderType, orderTypeStorageKey} from '../lib/order-type.ts';
 
 test('overlapping reads share one request but completed responses are not cached',async()=>{
  let calls=0,release;
@@ -28,6 +29,10 @@ function harness({favoriteFails=false,cartFails=false}={}){
  const context={exports:{},useCallback:f=>f,accountOwner:{current:null},keyRef:{current:''},setQuote:()=>{},initialLoad:{current:null},cartOwner:{current:''},favoritesOwner:{current:''},savedCart:{current:''},pendingCart:{current:null},bootstrapRequest:{current:async()=>({user:{userId:'customer-a',profile:{name:'A',phone:''}}})},
   api:async path=>{state.calls.push(path);if(path==='cart'){if(cartFails)throw Error('cart offline');return {items:[{productId:'latte',quantity:1}]};}if(favoriteFails)throw Error('favorites offline');return {ids:['latte']};},
   setData:()=>{},setCart:value=>{state.cart=JSON.parse(JSON.stringify(value));},setFavoriteIds:value=>{state.favorites=JSON.parse(JSON.stringify(value));},setContact:()=>{},setCartReady:value=>{state.ready=value;},setError:value=>{state.error=value;},
+  setTrackingOrderId:()=>{},setChatOrderId:()=>{},setDetailsOrderId:()=>{},setOrders:()=>{},rememberPinPhone:()=>{},
+  resolveOrderType,orderTypeStorageKey,defaultSettings:{pickupEnabled:true,dineInEnabled:true},setFulfillment:()=>{},
+  sessionStorage:{getItem:()=>null},window:{location:{href:'https://cafe.test/#home'}},URL,
+  homeRevision:{current:'default'},defaultHomeDesignRevision:'default',previewingHome:false,
   flushCart:async()=>{state.saves++;context.pendingCart.current=null;},Promise,String,
  };
  vm.runInNewContext(compiled,context);return {...context.exports,state,context};

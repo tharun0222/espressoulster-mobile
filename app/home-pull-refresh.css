@@ -1,0 +1,212 @@
+html:has(.home-pull-refresh),
+body:has(.home-pull-refresh) {
+  overscroll-behavior-y: none;
+  overflow-anchor: none;
+}
+
+.home-pull-refresh {
+  position: relative;
+  height: 0;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.home-refresh-art {
+  position: absolute;
+  inset: 0 0 auto;
+  height: var(--home-pull-distance, 0px);
+  overflow: hidden;
+}
+
+.home-pull-refresh[data-moving="true"] ~ :is(.home-header, .order-mode, .route-home) {
+  translate: 0 var(--home-pull-distance);
+}
+
+
+.app-shell:has(.home-pull-refresh[data-dragging="true"]) {
+  user-select: none;
+}
+
+.liquid-crema {
+  display: block;
+  width: 144px;
+  height: 100%;
+  margin-inline: auto;
+}
+
+.home-pull-refresh[data-armed="true"] .liquid-crema {
+  filter: drop-shadow(0 2px 5px #f5b67380);
+}
+
+[data-refresh-at-top]:has(> .home-pull-refresh) {
+  /* Reserve the overscroll gesture before touch starts anywhere on Home,
+     including the large coffee showcase. Normal upward scrolling still works. */
+  touch-action: pan-x pan-down pinch-zoom;
+}
+
+html[data-theme] .frosted-preview .app-shell.reel-theme .bottom-nav[data-refresh-active] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateX(-50%) !important;
+}
+
+.home-pull-refresh[data-phase="refreshing"] .liquid-crema {
+  animation: crema-wait 1100ms ease-in-out infinite;
+}
+
+@keyframes crema-wait {
+  0%, 100% { opacity: .7; }
+  50% { opacity: 1; }
+}
+
+
+.crema-drop-track {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  overflow: clip;
+}
+
+.crema-falling-drop {
+  position: absolute;
+  top: var(--crema-release-y);
+  left: 50%;
+  width: 22px;
+  height: 28px;
+  translate: -50% -50%;
+  animation: crema-drop-to-bottom 780ms cubic-bezier(.46, .06, .88, .75) both;
+}
+
+.crema-falling-drop i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 55% 55% 65% 65%;
+  background: radial-gradient(ellipse at 34% 26%, #fff4cd 2%, #e7a565 23%, #a44c28 54%, #542517 88%);
+  box-shadow: inset -1px -2px 3px #40170780, 0 2px 6px #45210f4d;
+  animation: crema-drop-shape 780ms ease-in both;
+}
+
+.crema-impact {
+  position: absolute;
+  top: var(--crema-impact-y);
+  left: var(--crema-impact-x);
+  width: 0;
+  height: 0;
+}
+
+.crema-bottom-ripple {
+  position: absolute;
+  width: 80px;
+  height: 16px;
+  translate: -50% -50%;
+  border: 1.5px solid #9c4e28;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #f3bf88, inset 0 0 4px #ffc48c;
+  animation: crema-bottom-ripple 650ms cubic-bezier(.16, .65, .34, 1) var(--ripple-delay, 720ms) both;
+}
+
+.crema-bottom-ripple:nth-child(2) { --ripple-delay: 780ms; }
+.crema-bottom-ripple:nth-child(3) { --ripple-delay: 840ms; }
+
+.crema-splash i {
+  position: absolute;
+  width: 6px;
+  height: 9px;
+  border-radius: 60% 60% 55% 55%;
+  background: radial-gradient(ellipse at 32% 26%, #fff0bc, #cd7c40 36%, #78391c 78%);
+  animation: crema-splash 470ms cubic-bezier(.2, .65, .4, 1) 725ms both;
+}
+
+.crema-splash i:nth-child(1) { --splash-x: -48px; --splash-y: -25px; }
+.crema-splash i:nth-child(2) { --splash-x: -23px; --splash-y: -39px; }
+.crema-splash i:nth-child(3) { --splash-x: 4px; --splash-y: -49px; }
+.crema-splash i:nth-child(4) { --splash-x: 26px; --splash-y: -36px; }
+.crema-splash i:nth-child(5) { --splash-x: 46px; --splash-y: -23px; }
+
+@keyframes crema-splash {
+  0% { opacity: 0; transform: translate(0) scale(.35); }
+  18% { opacity: 1; }
+  60% { opacity: .9; transform: translate(var(--splash-x), var(--splash-y)) scale(.8); }
+  100% { opacity: 0; transform: translate(calc(var(--splash-x) * 1.26), 0) scale(.32); }
+}
+
+@keyframes crema-drop-to-bottom {
+  0% { transform: translateY(0); }
+  100% { transform: translate(calc(var(--crema-impact-x) - 50vw), calc(var(--crema-impact-y) - var(--crema-release-y))); }
+}
+
+@keyframes crema-drop-shape {
+  0% { transform: scale(1, .94); }
+  32% { transform: scale(.86, 1.2); }
+  86% { opacity: 1; transform: scale(.69, 1.44); }
+  100% { opacity: 0; transform: scale(1.55, .28); }
+}
+
+@keyframes crema-bottom-ripple {
+  0% { transform: scale(.18); opacity: 0; }
+  13% { opacity: 1; }
+  100% { transform: scale(1.75); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crema-drop-track { display: none; }
+  .home-pull-refresh[data-armed="true"] .liquid-crema { filter: none; }
+  .home-pull-refresh[data-phase="refreshing"] .liquid-crema { animation: none; }
+}
+
+.bottom-nav-refresh-wave,
+.bottom-nav-wave-crest {
+  opacity: 0;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: var(--wave-length) 150;
+}
+.bottom-nav-refresh-wave {
+  --wave-length: 33;
+  stroke-width: 8;
+}
+.bottom-nav-wave-crest {
+  --wave-length: 17;
+  stroke: #fff5dc;
+  stroke-width: 1.25;
+  translate: 0 -2px;
+}
+
+.bottom-nav-entry-light {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-refresh-impact] :is(.bottom-nav-refresh-wave, .bottom-nav-wave-crest) {
+    animation: bottom-nav-refresh-wave 820ms cubic-bezier(.2,.55,.45,1) both;
+  }
+  [data-refresh-impact] .bottom-nav-entry-light {
+    animation: bottom-nav-impact-glow 420ms ease-out both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-refresh-impact] .bottom-nav-entry-light {
+    /* Allow the stationary glow through the global reduced-motion reset. */
+    animation: bottom-nav-refresh-glow 420ms ease-out both !important;
+  }
+}
+
+@keyframes bottom-nav-refresh-wave {
+  0% { opacity: 0; stroke-dashoffset: var(--wave-length); }
+  18%, 62% { opacity: .64; }
+  100% { opacity: 0; stroke-dashoffset: -101; }
+}
+
+@keyframes bottom-nav-refresh-glow {
+  0%, 100% { opacity: 0; }
+  25% { opacity: .64; }
+}
+
+@keyframes bottom-nav-impact-glow {
+  from { opacity: .64; }
+  to { opacity: 0; }
+}
+

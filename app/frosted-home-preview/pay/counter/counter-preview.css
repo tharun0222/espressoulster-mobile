@@ -1,0 +1,25 @@
+.counter-preview {
+  width: min(100%, 460px);
+  min-height: 100svh;
+  margin-inline: auto;
+  padding: 24px 16px;
+  background: var(--frosted-sky);
+}
+.counter-preview header { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+.counter-preview header a { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--frosted-pill); color: inherit; }
+.counter-preview h1 { margin: 0; font-size: 22px; }
+.counter-card { padding: 25px 17px; border: 1px solid var(--frosted-edge); border-radius: 27px; background: var(--frosted-glass); box-shadow: var(--frosted-shadow); text-align: center; }
+.counter-brand { margin: 0 0 18px; color: var(--frosted-accent); font-size: 14px; font-weight: 650; }
+.counter-code { display: grid; place-items: center; width: min(100%, 196px); aspect-ratio: 1; margin: 0 auto 18px; border-radius: 21px; background: #f8fcff; color: var(--frosted-ink); }
+.counter-card h2 { margin: 0 0 6px; font-size: 23px; }
+.counter-card [role='status'] p { margin: 0; font-size: 14px; color: var(--frosted-muted); }
+.counter-preview > button { width: 100%; min-height: 48px; margin-top: 14px; border-radius: 15px; background: var(--frosted-accent); color: #fff; font-weight: 650; }
+.counter-preview :focus-visible { outline: 2px solid var(--frosted-accent); outline-offset: 3px; }
+.counter-demo-note { margin: 12px 4px; color: var(--frosted-muted); font-size: 12px; line-height: 1.5; }
+@media (prefers-reduced-motion: no-preference) {
+  .counter-code svg.lucide-circle-check-big { animation: counter-recognized 240ms ease-out both; }
+}
+@keyframes counter-recognized {
+  from { opacity: 0; scale: .84; }
+  to { opacity: 1; scale: 1; }
+}

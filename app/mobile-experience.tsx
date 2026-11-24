@@ -1,9 +1,64 @@
 'use client';
+import {orderReference} from '../lib/order-reference';
+import {collectOrderNotices,orderNotice} from '../lib/order-notifications';
+import {hasNativeOrderAlerts} from '../lib/native-order-alerts';
 import {useEffect,useRef,useState} from 'react';
-import {Coffee,Repeat2,Download,ChevronRight} from 'lucide-react';
+import {Repeat2,Download,ChevronRight,Bell,X} from 'lucide-react';
+import './order-notice-stack.css';
 import {pairingCandidates,paymentLabel,receiptText} from '../lib/mobile-experience';
 const cash=(n:number,c='INR')=>new Intl.NumberFormat('en-IN',{style:'currency',currency:c}).format(n/100);
-export function PersonalHome({user,orders,products,onReorder,onNavigate}:{user:any;orders:any[];products:any[];onReorder:(o:any)=>void;onNavigate:(r:string)=>void}){const last=orders.find(o=>o.status!=='cancelled'&&o.items?.length&&!o.items.every((i:any)=>i.product_id.startsWith('subscription-')));const active=orders.find(o=>!['completed','cancelled','delivered'].includes(o.status));return <section className="personal-home"><span className="eyebrow">YOUR COFFEE, YOUR WAY</span><h2>Hi{user?.profile?.name?', '+user.profile.name.split(' ')[0]:''}. Coffee time?</h2>{active&&<button className="live-order-banner" onClick={()=>onNavigate('orders')}><Coffee/><span><strong>{active.status==='ready'?'Your order is ready':active.status.replaceAll('_',' ')}</strong><small>{active.id} · Track your order</small></span><ChevronRight/></button>}{last&&<article className="usual-card"><div><Repeat2 size={22}/><h3>Your last order, one tap away</h3><p>{last.items.map((i:any)=>`${i.quantity} × ${i.name}`).join(', ')}</p><small>Added to your cart at current menu prices.</small></div><button className="primary" onClick={()=>onReorder(last)}>Order again</button></article>}</section>}
-export function Pairings({products,categories,cart,onSelect}:{products:any[];categories:any[];cart:any[];onSelect:(p:any)=>void}){const choices=pairingCandidates(products,categories,cart.map(i=>i.productId));if(!choices.length)return null;return <section className="coffee-pairings"><h3>Better together</h3><p>A snack for your coffee?</p><div>{choices.map(p=><button key={p.id} onClick={()=>onSelect(p)}>{p.image&&<img src={p.image} alt="" loading="lazy"/>}<span><strong>{p.name}</strong><small>{cash(p.price)}</small></span><span aria-hidden="true">＋</span></button>)}</div></section>}
-export function DigitalReceipt({order:o}:{order:any}){return <details className="digital-receipt"><summary>View receipt & savings</summary><dl>{[['Subtotal',o.subtotal],['Discount',-o.discount],['Tax',o.tax],['Fees',o.fee],['Total',o.total]].map(([label,n])=><div key={String(label)}><dt>{label}</dt><dd>{cash(Number(n),o.currency)}</dd></div>)}</dl><p>Payment: {o.payment_status==='paid'?'Paid':o.payment_status} · {paymentLabel(o.collection_method)}</p>{o.discount>0&&<p className="receipt-savings">You saved {cash(o.discount,o.currency)} on this order.</p>}{o.collection_method==='stripe_test'&&<small>Sandbox receipt · no real money collected.</small>}<button className="secondary" onClick={()=>{const blob=new Blob([receiptText(o)],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=o.id+'-receipt.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}}><Download size={16}/> Download receipt</button></details>}
-export function OrderAlerts({orders,userId,onNavigate}:{orders:any[];userId:string;onNavigate:(r:string)=>void}){const previous=useRef(new Map<string,string>());const owner=useRef('');const [notice,setNotice]=useState('');useEffect(()=>{if(owner.current!==userId){owner.current=userId;previous.current.clear();}for(const o of orders){const prior=previous.current.get(o.id);previous.current.set(o.id,o.status);if(prior&&prior!==o.status&&['ready','completed','out_for_delivery'].includes(o.status)){const text=o.status==='ready'?(o.fulfillment==='dine_in'?'Your coffee is ready to serve!':'Your coffee is ready for collection!'):o.status==='completed'?'Thanks for ordering. Enjoy your coffee!':'Your order is out for delivery.';setNotice(text);if(typeof Notification!=='undefined'&&Notification.permission==='granted')navigator.serviceWorker?.ready.then(sw=>sw.showNotification('Espressoulster Coffee',{body:text,tag:o.id+'-'+o.status,icon:'/icon-192.png',data:{url:'/#orders'}})).catch(()=>{});}}},[orders,userId]);return <>{notice&&<div className="ready-order-toast" role="status"><button onClick={()=>onNavigate('orders')}>{notice} View order →</button><button aria-label="Dismiss notification" onClick={()=>setNotice('')}>×</button></div>}</>}
+export function PersonalHome({orders,onReorder}:{orders:any[];onReorder:(o:any)=>void;onNavigate:(r:string)=>void}){
+ const last=orders.find(o=>o.status!=='cancelled'&&o.items?.length&&!o.items.every((i:any)=>i.product_id.startsWith('subscription-')));
+ if(!last)return null;
+ return <section className="personal-home"><article className="usual-card"><div><Repeat2 size={22}/><h3>Your last order, one tap away</h3><p>{last.items.map((i:any)=>`${i.quantity} × ${i.name}`).join(', ')}</p><small>Added to your cart at current menu prices.</small></div><button className="primary" onClick={()=>onReorder(last)}>Order again</button></article></section>;
+}
+export function Pairings({products,categories,cart,onSelect}:{products:any[];categories:any[];cart:any[];onSelect:(p:any)=>void}) {
+ const choices = pairingCandidates(products, categories, cart.map(item => item.productId));
+ if (!choices.length) return null;
+ return (
+  <section className="coffee-pairings" aria-label="Better together">
+   <h3>Better together</h3>
+   <div>
+    {choices.map(product => (
+     <button type="button" key={product.id} onClick={() => onSelect(product)}>
+      {product.image && <img src={product.image} alt="" loading="lazy" />}
+      <span className="coffee-pairing-copy"><strong>{product.name}</strong><small>{cash(product.price)}</small></span>
+      <span className="coffee-pairing-arrow" aria-hidden="true"><ChevronRight size={16} /></span>
+     </button>
+    ))}
+   </div>
+  </section>
+ );
+}
+export function DigitalReceipt({order:o}:{order:any}){return <details className="digital-receipt"><summary>View receipt & savings</summary><dl>{[['Subtotal',o.subtotal],['Discount',-o.discount],['Tax',o.tax],['Fees',o.fee],['Total',o.total]].map(([label,n])=><div key={String(label)}><dt>{label}</dt><dd>{cash(Number(n),o.currency)}</dd></div>)}</dl><p>Payment: {o.payment_status==='paid'?'Paid':o.payment_status} · {paymentLabel(o.collection_method)}</p>{o.discount>0&&<p className="receipt-savings">You saved {cash(o.discount,o.currency)} on this order.</p>}<button className="secondary" onClick={()=>{const blob=new Blob([receiptText(o)],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=orderReference(o)+'-receipt.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}}><Download size={16}/> Download receipt</button></details>}
+export function OrderAlerts({orders,userId,onNavigate,onOpen}:{orders:any[];userId:string;onNavigate:(r:string)=>void;onOpen?:(id:string)=>void}){
+ const seen=useRef(new Map<string,Set<string>>()),owner=useRef('');
+ const [notices,setNotices]=useState<NonNullable<ReturnType<typeof orderNotice>>[]>([]);
+ useEffect(()=>{
+  if(owner.current!==userId){owner.current=userId;seen.current.clear();setNotices([])}
+  const updates=collectOrderNotices(orders,seen.current)
+   .filter(({status})=>status!=='confirmed'&&status!=='ready');
+  if(updates.length)setNotices(previous=>[...previous,...updates].slice(-12));
+ },[orders,userId]);
+ function dismiss(index:number){
+  setNotices(previous=>previous.filter((_,current)=>current!==index));
+ }
+ if(!notices.length||hasNativeOrderAlerts())return null;
+ const firstVisible=Math.max(0,notices.length-3);
+ return <section className="order-notice-stack" aria-label="Order updates" aria-live="polite">
+  {notices.slice(firstVisible).reverse().map((notice,position)=>{
+   const index=notices.length-1-position;
+   return <article key={notice.tag} className="order-notice-card">
+    <button className="order-notice-open" type="button" onClick={()=>{if(onOpen)onOpen(notice.id);else onNavigate('orders');dismiss(index);}}>
+     <Bell size={17} aria-hidden="true"/>
+     <span className="order-notice-copy">
+      <strong>{notice.title.replace('Espressoulster · ','')}</strong>
+      <small>{notice.reference} · {notice.body}</small>
+     </span>
+     <ChevronRight size={16} aria-hidden="true"/>
+    </button>
+    <button className="order-notice-dismiss" type="button" aria-label={'Dismiss '+notice.title} onClick={()=>dismiss(index)}><X size={17} aria-hidden="true"/></button>
+   </article>;
+  })}
+ </section>;
+}

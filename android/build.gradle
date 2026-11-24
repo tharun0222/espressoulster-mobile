@@ -1,0 +1,41 @@
+plugins { id 'com.android.application' version '8.9.2' }
+
+def buildMode = System.getenv('ESPC_ANDROID_BUILD_MODE')
+def stagingUsb = buildMode == 'staging'
+def stagingBuild = stagingUsb || buildMode == 'staging-https'
+def stagingCustomCa = buildMode == 'staging-https' && System.getenv('ESPC_ANDROID_STAGING_CA')
+layout.buildDirectory = file(stagingBuild ? '../.tools/android-staging-build' : '../.tools/android-build')
+def appManifest = file('AndroidManifest.xml').text
+def appVersionCode = (appManifest =~ /android:versionCode="(\d+)"/)[0][1].toInteger()
+def appVersionName = (appManifest =~ /android:versionName="([^"]+)"/)[0][1]
+android {
+    namespace 'com.espressoulster.coffee'
+    compileSdk 36
+    buildToolsVersion '36.0.0'
+    defaultConfig {
+        applicationId stagingBuild ? 'com.espressoulster.coffee.staging' : 'com.espressoulster.coffee'
+        minSdk 26
+        targetSdk 36
+        versionCode stagingBuild ? (stagingUsb ? 18 : 22) : appVersionCode
+        versionName stagingBuild ? (stagingUsb ? '1.0.17' : '1.0.21') : appVersionName
+        manifestPlaceholders = [cafeAppLabel: stagingBuild ? 'Espressoulster Staging' : 'Espressoulster Coffee']
+    }
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src', 'vendor/whatsapp-otp/src', System.getenv('ESPC_ANDROID_GENERATED')]
+            res.srcDirs = [System.getenv('ESPC_ANDROID_RES')]
+            assets.srcDirs = [System.getenv('ESPC_ANDROID_ASSETS')]
+        }
+        if (stagingUsb || stagingCustomCa) {
+            release.manifest.srcFile 'staging/AndroidManifest.xml'
+            if (stagingUsb) release.res.srcDirs = ['staging/res']
+        }
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_1_8; targetCompatibility JavaVersion.VERSION_1_8 }
+    buildTypes { release { minifyEnabled false } }
+}
+dependencies {
+    implementation 'com.cashfree.pg:api:2.6.1'
+    implementation 'com.google.firebase:firebase-messaging:26.0.2'
+}

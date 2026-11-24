@@ -1,0 +1,11 @@
+[Unit]
+Description=Espressoulster periodic readiness check
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=30s
+AccuracySec=5s
+Unit=espressoulster-health.service
+
+[Install]
+WantedBy=timers.target

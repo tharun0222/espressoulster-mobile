@@ -52,6 +52,7 @@ export const profiles = sqliteTable("profiles", {
   name: text("name").notNull().default(""),
   phone: text("phone").notNull().default(""),
   dateOfBirth: text("date_of_birth").notNull().default(""),
+  gender: text("gender").notNull().default(""),
   disabled: integer("disabled").notNull().default(0),
   createdAt: created(),
 });
@@ -87,8 +88,10 @@ export const orders = sqliteTable(
     id: text("id").primaryKey(),
     userId: text("user_id").notNull(),
     idempotencyKey: text("idempotency_key").notNull().unique(),
+    orderNumber: text("order_number"),
     status: text("status").notNull().default("pending"),
     fulfillment: text("fulfillment").notNull(),
+    checkoutPaymentMethod: text("checkout_payment_method"),
     paymentStatus: text("payment_status").notNull().default("unpaid"),
     subtotal: integer("subtotal").notNull(),
     tax: integer("tax").notNull(),
@@ -102,8 +105,30 @@ export const orders = sqliteTable(
   (t) => [
     index("idx_orders_user").on(t.userId),
     index("idx_orders_status").on(t.status),
+    uniqueIndex("idx_orders_order_number").on(t.orderNumber),
   ],
 );
+export const cafeOrderSequences = sqliteTable("cafe_order_sequences", {
+  businessDay: text("business_day").primaryKey().notNull(),
+  lastNumber: integer("last_number").notNull(),
+}, (t) => [check("positive_cafe_order_sequence", sql`${t.lastNumber} > 0`)]);
+export const orderChatMessages = sqliteTable("order_chat_messages", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  orderId: text("order_id").notNull().references(() => orders.id, { onDelete: "cascade" }),
+  senderId: text("sender_id").notNull(),
+  senderRole: text("sender_role", { enum: ["customer", "staff"] }).notNull(),
+  requestId: text("request_id").notNull(),
+  message: text("message").notNull(),
+  createdAt: created(),
+}, (t) => [
+  index("idx_order_chat_thread").on(t.orderId, t.id),
+  uniqueIndex("idx_order_chat_request").on(t.orderId, t.senderId, t.senderRole, t.requestId),
+]);
+export const adminOrderChatReads = sqliteTable("admin_order_chat_reads", {
+  staffId: text("staff_id").notNull(),
+  orderId: text("order_id").notNull().references(() => orders.id, { onDelete: "cascade" }),
+  lastMessageId: integer("last_message_id").notNull().default(0),
+}, t => [uniqueIndex("admin_order_chat_reads_staff_order").on(t.staffId,t.orderId)]);
 export const orderItems = sqliteTable(
   "order_items",
   {
@@ -189,6 +214,30 @@ export const paymentIntents = sqliteTable("payment_intents", {
  createdAt: created(),
 });
 
+export const prepaidCheckouts = sqliteTable("prepaid_checkouts", {
+  id: text("id").primaryKey().notNull(),
+  orderId: text("order_id").notNull().unique(),
+  userId: text("user_id").notNull(),
+  idempotencyKey: text("idempotency_key").notNull().unique(),
+  fulfillment: text("fulfillment").notNull(),
+  total: integer("total").notNull(),
+  currency: text("currency").notNull(),
+  contact: text("contact").notNull(),
+  quote: text("quote").notNull(),
+  cartSnapshot: text("cart_snapshot").notNull(),
+  stockHolds: text("stock_holds").notNull(),
+  state: text("state", { enum: ["creating", "ready", "paid", "expired"] }).notNull().default("creating"),
+  providerSessionId: text("provider_session_id").unique(),
+  provider: text("provider", {enum:["stripe","cashfree"]}).notNull().default("stripe"),
+  checkoutUrl: text("checkout_url"),
+  expiresAt: integer("expires_at"),
+  createdAt: created(),
+}, (t) => [index("idx_prepaid_checkout_expiry").on(t.state, t.expiresAt),
+  check("prepaid_total_positive", sql`${t.total} > 0`),
+  check("prepaid_currency", sql`${t.currency} = 'INR'`),
+  check("prepaid_state", sql`${t.state} IN ('creating','ready','paid','expired')`),
+]);
+
 export const coffeeSubscriptions = sqliteTable("coffee_subscriptions", {
  id:text("id").primaryKey(), userId:text("user_id").notNull(),
  paymentId:text("payment_id").notNull().unique().references(()=>payments.id),
@@ -207,6 +256,21 @@ export const pinLoginAttempts=sqliteTable("pin_login_attempts",{id:text("id").pr
 export const subscriptionTestPurchases=sqliteTable("subscription_test_purchases",{userId:text("user_id").primaryKey(),orderId:text("order_id").notNull().unique().references(()=>orders.id),createdAt:created()});
 
 export const subscriptionDailyCodes=sqliteTable("subscription_daily_codes",{userId:text("user_id").notNull(),day:text("day").notNull(),subscriptionId:text("subscription_id").notNull().references(()=>coffeeSubscriptions.id),codeHash:text("code_hash").notNull(),expiresAt:integer("expires_at").notNull(),redeemedOrderId:text("redeemed_order_id").unique().references(()=>orders.id)},t=>[uniqueIndex("idx_daily_code_user_day").on(t.userId,t.day)]);
+
+export const subscriptionItemCodes = sqliteTable("subscription_item_codes", {
+ id:text("id").primaryKey(), userId:text("user_id").notNull(),
+ subscriptionId:text("subscription_id").notNull().references(()=>coffeeSubscriptions.id),
+ codeHash:text("code_hash").notNull(), expiresAt:integer("expires_at").notNull(),
+ retired:integer("retired").notNull().default(0), redeemedOrderId:text("redeemed_order_id").unique().references(()=>orders.id),
+}, t=>[
+ uniqueIndex("subscription_item_codes_user_hash").on(t.userId,t.codeHash),
+ uniqueIndex("subscription_item_code_pending").on(t.subscriptionId).where(sql`${t.retired}=0 AND ${t.redeemedOrderId} IS NULL`),
+ index("subscription_item_codes_by_pass").on(t.userId,t.subscriptionId),
+]);
+
+export const subscriptionItemCodeAttempts = sqliteTable("subscription_item_code_attempts", {
+ id:text("id").primaryKey(), userId:text("user_id").notNull(), attemptedAt:integer("attempted_at").notNull(),
+}, t=>[index("subscription_item_code_attempt_budget").on(t.userId,t.attemptedAt)]);
 
 export const subscriptionPlanTestPurchases=sqliteTable("subscription_plan_test_purchases",{userId:text("user_id").notNull(),planId:text("plan_id").notNull(),orderId:text("order_id").notNull().unique().references(()=>orders.id),createdAt:created()},t=>[uniqueIndex("idx_user_plan_test_purchase").on(t.userId,t.planId)]);
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="cafe_admin"
+        android:enabled="true"
+        android:icon="@drawable/app_icon"
+        android:shortcutShortLabel="@string/admin_shortcut_label">
+        <intent
+            android:action="com.espressoulster.coffee.OPEN_ADMIN"
+            android:targetPackage="com.espressoulster.coffee"
+            android:targetClass="com.espressoulster.coffee.MainActivity" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="order_alerts"
+        android:enabled="true"
+        android:icon="@drawable/app_icon"
+        android:shortcutShortLabel="@string/order_alerts_shortcut_label">
+        <intent
+            android:action="com.espressoulster.coffee.ORDER_ALERTS"
+            android:targetPackage="com.espressoulster.coffee"
+            android:targetClass="com.espressoulster.coffee.MainActivity" />
+    </shortcut>
+</shortcuts>

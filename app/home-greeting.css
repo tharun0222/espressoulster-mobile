@@ -1,0 +1,236 @@
+@font-face {
+  font-family: 'Espressoulster Display';
+  src: url('/fonts/dm-serif-display-regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Espressoulster Display';
+  src: url('/fonts/dm-serif-display-italic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+html[data-theme] .frosted-preview .dribbble-theme .home-design-greeting > h1.greeting {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  margin: 9px 0 29px;
+  color: #17384c;
+  font-family: 'Espressoulster Display', Georgia, serif;
+  font-size: clamp(25px, 7.2vw, 31px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -.25px;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+html[data-theme] .frosted-preview .dribbble-theme .home-design-greeting > h1.greeting > .greeting-copy {
+  display: block;
+  position: relative;
+  min-width: 0;
+  color: inherit;
+}
+
+html[data-theme] .frosted-preview .dribbble-theme .home-design-greeting .greeting :is(.greeting-lead, .greeting-rest, .greeting-word-wrap, .greeting-word) {
+  color: inherit;
+}
+
+.home-design-greeting .greeting-lead,
+.home-design-greeting .greeting-rest {
+  display: block;
+}
+
+.home-design-greeting .greeting-lead {
+  font-style: italic;
+}
+
+.home-design-greeting .greeting-rest {
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: .91em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.38;
+  letter-spacing: -.2px;
+}
+
+.home-design-greeting .greeting-lead + .greeting-rest {
+  margin-top: 7px;
+}
+
+html[data-theme] .frosted-preview .dribbble-theme .home-design-greeting .greeting .greeting-word-wrap {
+  display: inline;
+}
+
+html[data-theme] .frosted-preview .dribbble-theme .home-design-greeting .greeting .greeting-word {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.home-design-greeting .greeting-copy::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  bottom: -12px;
+  left: 0;
+  width: 28%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, #edf8ff70, transparent);
+  transform: translateX(-160%) skewX(-16deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .home-design-greeting .greeting[data-greeting-ready='true'] .greeting-copy {
+    animation: greeting-curtain-reveal 1550ms cubic-bezier(.35,.12,.2,1) both;
+  }
+
+  .home-design-greeting .greeting[data-greeting-ready='true'] .greeting-word {
+    animation: greeting-ink-sheen 1800ms 1200ms ease-in-out both;
+  }
+
+  .home-design-greeting .greeting[data-greeting-ready='true'] .greeting-copy::before {
+    animation: greeting-light-sweep 1850ms 850ms cubic-bezier(.3,.1,.2,1) both;
+  }
+
+}
+
+@keyframes greeting-curtain-reveal {
+  from { clip-path: inset(-16px 100% -18px -8px); transform: translateX(-8px); }
+  to { clip-path: inset(-16px -8px -18px -8px); transform: translateX(0); }
+}
+
+@keyframes greeting-light-sweep {
+  0% { opacity: 0; transform: translateX(-160%) skewX(-16deg); }
+  25% { opacity: .8; }
+  70% { opacity: .55; }
+  100% { opacity: 0; transform: translateX(470%) skewX(-16deg); }
+}
+
+@keyframes greeting-ink-sheen {
+  0%, 100% { color: #17384c; text-shadow: 0 0 0 transparent; }
+  45% { color: #284d69; text-shadow: 0 1px 9px #f2faff50; }
+}
+
+@media (forced-colors: active) {
+  .home-design-greeting .greeting .greeting-word {
+    background: none !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+
+  .home-design-greeting .greeting-copy::before { display: none; }
+}
+
+.frosted-preview .app-shell:has(.birthday-greeting) {
+  --frosted-sky:
+    radial-gradient(ellipse 95% 49% at 26% 7%, #eef8ffb8, transparent),
+    linear-gradient(145deg, #adcae0, #a5bed6 55%, #849fb7);
+}
+
+.greeting.birthday-greeting {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--frosted-edge, #ffffffba);
+  border-radius: 19px;
+  background: var(--frosted-glass, linear-gradient(145deg, #f4fbff, #cadfef));
+  box-shadow: var(--frosted-shadow, inset 0 1px 0 #ffffffb0);
+}
+
+.birthday-greeting-emblem {
+  position: relative;
+}
+
+.birthday-greeting .birthday-greeting-confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.birthday-greeting-confetti i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 11px;
+  border-radius: 2px;
+  background: #477899;
+  opacity: 0;
+}
+
+.birthday-greeting-confetti i:nth-child(3n + 1) {
+  width: 8px;
+  height: 8px;
+  border: 1px solid #729dbb;
+  background: #f3fbff;
+}
+
+.birthday-greeting-confetti i:nth-child(3n + 2) {
+  background: #8db8d7;
+}
+
+.greeting.birthday-greeting .birthday-greeting-sparkle {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  border: 1px solid #ffffffc9;
+  border-radius: 11px;
+  color: var(--frosted-accent, #284d69);
+  background: linear-gradient(145deg, #f4fbff, #acc8de);
+  box-shadow: inset 0 1px 2px #fff9, 0 3px 7px #284d6926;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .birthday-greeting-confetti i {
+    animation: birthday-confetti-burst 1600ms 450ms cubic-bezier(.18, .68, .3, 1) both;
+  }
+
+  .birthday-greeting-sparkle svg {
+    animation: birthday-sparkle 760ms ease-out both;
+  }
+
+  .birthday-greeting-sparkle::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 36%, #fffe 50%, transparent 64%);
+    animation: birthday-glass-sheen 840ms ease-out both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .birthday-greeting-confetti i {
+    opacity: .8;
+    transform: translate(calc(var(--burst-x) * .62), calc(var(--burst-y) * .62)) rotate(28deg);
+  }
+}
+
+@keyframes birthday-confetti-burst {
+  0% { transform: scale(.3); opacity: 0; }
+  22%, 58% { opacity: 1; }
+  100% { transform: translate(var(--burst-x), var(--burst-y)) rotate(115deg) scale(.55); opacity: 0; }
+}
+
+@keyframes birthday-sparkle {
+  0% { opacity: .45; transform: scale(.72) rotate(-10deg); }
+  55% { opacity: 1; transform: scale(1.12) rotate(4deg); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes birthday-glass-sheen {
+  from { opacity: 0; transform: translateX(-100%); }
+  40% { opacity: .9; }
+  to { opacity: 0; transform: translateX(100%); }
+}

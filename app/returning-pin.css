@@ -1,0 +1,104 @@
+main.phone-welcome.pin-welcome.returning-pin {
+  background: radial-gradient(ellipse at 50% 20%, #563226, #1b100e 68%);
+  color: #fff2e4;
+}
+
+.returning-pin .welcome-brand-group { margin-bottom: 12px; }
+.returning-pin .phone-welcome-card {
+  position: relative;
+  background: #fff5e9;
+  color: #342018;
+  border: 1px solid #edc7aa;
+  border-radius: 26px;
+  box-shadow: 0 24px 60px #10070466;
+}
+
+.returning-pin .phone-icon {
+  background: #f6dec9;
+  color: #803f26;
+  margin-bottom: 16px;
+}
+
+.returning-pin .phone-welcome-card .returning-pin-kicker {
+  margin: 0 0 8px;
+  color: #884c34;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .15em;
+}
+
+.returning-pin .phone-welcome-card h1 { color: #342018; }
+.returning-pin .phone-welcome-card > p { color: #68483b; }
+
+.returning-pin .pin-input-row {
+  border: 1px solid #b98267;
+  border-radius: 14px;
+  background: #fffcf8;
+}
+
+.returning-pin .pin-input-row:focus-within {
+  outline: 2px solid #a65330;
+  outline-offset: 2px;
+}
+
+.returning-pin .pin-input-row input {
+  background: transparent;
+  color: #342018;
+  font-size: 26px;
+  letter-spacing: .32em;
+}
+
+.returning-pin .phone-welcome-card .primary {
+  background: #743b26;
+  color: #fff7eb;
+  border-radius: 14px;
+  min-height: 52px;
+}
+
+.returning-pin .pin-back { color: #743b26; }
+
+.returning-pin .pin-input-row[data-masked] { position: relative; }
+.returning-pin .pin-input-row[data-masked] input {
+  position: relative;
+  color: transparent;
+  caret-color: transparent;
+}
+.returning-pin .pin-input-row[data-masked] input::placeholder { color: transparent; }
+.returning-pin .pin-input-row button { min-width: 44px; min-height: 44px; }
+
+.pin-slots {
+  position: absolute;
+  inset: 6px 49px 6px 6px;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 4px;
+  pointer-events: none;
+}
+
+.pin-slots > span {
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  background: #f7e8da;
+}
+
+.returning-pin .pin-input-row:focus-within [data-next="true"] {
+  box-shadow: inset 0 0 0 1px #a65330;
+}
+
+.pin-slots i {
+  width: 8px;
+  height: 8px;
+  border: 1px solid #9b6c56;
+  border-radius: 50%;
+}
+
+.pin-slots [data-filled="true"] i {
+  background: #743b26;
+  animation: pin-dot 150ms ease-out;
+}
+
+@keyframes pin-dot { from { transform: scale(.6); } }
+@media (prefers-reduced-motion: reduce) {
+  .pin-slots [data-filled="true"] i { animation: none; }
+}

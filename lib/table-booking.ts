@@ -1,3 +1,8 @@
+export const tableBookingFeePaise=10000;
+export async function bookingFee(database: Pick<D1Database,'prepare'>) {
+ const settings = await database.prepare("SELECT json_extract(data,'$.tableBookingFeePaise') AS fee FROM settings WHERE id='store'").bind().first<{fee:number}>();
+ return Number.isSafeInteger(settings?.fee) && settings!.fee >= 100 ? settings!.fee : tableBookingFeePaise;
+}
 export const bookingSlots=Array.from({length:41},(_,i)=>360+i*30);
 export const bookingHours=[...Array.from({length:18},(_,i)=>i+6),0,1];
 export function slotTime(minutes:number){return `${String(Math.floor(minutes/60)%24).padStart(2,'0')}:${String(minutes%60).padStart(2,'0')}`;}

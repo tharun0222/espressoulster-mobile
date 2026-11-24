@@ -1,0 +1,74 @@
+.glass-tab-selection {
+  position: absolute;
+  inset: 8px auto auto 4px;
+  display: grid;
+  place-items: center;
+  width: calc((100% - 8px) / 5);
+  height: 29px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(calc(var(--glass-tab-index, 0) * 100%));
+  transition: transform 340ms cubic-bezier(.22,.82,.29,1), opacity 180ms ease;
+}
+
+.glass-tab-selection::before {
+  content: "";
+  width: min(48px, calc(100% - 8px));
+  height: 100%;
+  border: 1px solid #f5fbff;
+  border-radius: 999px;
+  background: linear-gradient(176deg, #eef8ff, #bbd6ef 82%);
+  box-shadow: inset 0 1px 0 #fff, 0 2px 4px #385f841c;
+}
+
+.glass-tab-bar:has(> button[aria-current="page"]:not([data-raised-tab], [data-scan-to-order])) .glass-tab-selection {
+  opacity: 1;
+}
+
+.glass-tab-bar :is(.bottom-nav-glass, .admin-nav-glass) {
+  background: linear-gradient(154deg, #fbfdffe8, #e8f3fcc7 53%, #cedfeecc);
+  -webkit-backdrop-filter: blur(24px) saturate(125%);
+  backdrop-filter: blur(24px) saturate(125%);
+}
+
+.glass-tab-bar :is(.bottom-nav-shape, .admin-nav-edge) {
+  stroke: #f5fbff;
+  filter: drop-shadow(0 5px 10px #244b6e36);
+}
+
+.glass-tab-bar > button:focus-visible {
+  outline: 2px solid #23577f;
+  outline-offset: -2px;
+}
+
+.glass-tab-bar > :is([data-scan-to-order], [data-raised-tab]) > :is(.nav-icon, .admin-nav-icon) {
+  isolation: isolate;
+}
+
+.glass-tab-bar > :is([data-scan-to-order], [data-raised-tab]) > :is(.nav-icon, .admin-nav-icon)::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid #d9ecf9;
+  background: linear-gradient(153deg, #568096 0%, #264f6f 51%, #17344c 100%);
+  box-shadow: inset 0 1px 1px #e7f6ff8c, 0 4px 8px #1b40644d;
+}
+
+.glass-tab-bar > [data-raised-tab][aria-current="page"] > .admin-nav-icon::before {
+  background: linear-gradient(155deg, #5989a7, #1c4568 65%, #123248);
+  box-shadow: inset 0 1px 1px #e7f6ff8c, 0 0 0 2px #8eabc4, 0 4px 8px #1b40644d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-tab-selection { transition: none; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass-tab-bar :is(.bottom-nav-glass, .admin-nav-glass) {
+    background: #e6f0fa;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}

@@ -1,4 +1,4 @@
-export type SubscriptionRecord={id:string;planName:string;totalCredits:number;usedCredits:number;amountPaid:number;startsAt:string;expiresAt:string;revoked:boolean};
+export type SubscriptionRecord={id:string;planName:string;itemScope?:string;includedItems?:string|{categoryId?:string}[];totalCredits:number;usedCredits:number;amountPaid:number;startsAt:string;expiresAt:string;revoked:boolean};
 export function subscriptionSummary(records:SubscriptionRecord[],now=Date.now()){
  const subscriptions=records.map(r=>{
   const start=Date.parse(r.startsAt),end=Date.parse(r.expiresAt);

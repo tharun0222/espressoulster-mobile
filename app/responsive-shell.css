@@ -1,0 +1,113 @@
+/* The installed app uses the device viewport; cards keep readable line lengths. */
+:root {
+  --app-readable-width: 1120px;
+  --app-navigation-width: 680px;
+}
+
+html[data-theme] body .app-shell,
+html[data-theme] body .frosted-preview .app-shell,
+html[data-theme] body .phone-welcome,
+html[data-theme] body .after-hours-welcome[data-cafe-welcome],
+html[data-theme] body .phone-welcome.pin-welcome[data-cafe-form] {
+  width: 100%;
+  max-width: none;
+  min-height: 100dvh;
+  margin-inline: 0;
+}
+
+html[data-theme] body .frosted-preview .app-shell.reel-theme .bottom-nav {
+  width: min(calc(100% - 24px), var(--app-navigation-width));
+  max-width: none;
+}
+
+html[data-theme] body .app-shell :is(.main, .page-content, .profile-content, .header-inner),
+.admin-app :is(.admin-main, .admin-panel, .admin-editor) {
+  min-width: 0;
+}
+
+html[data-theme] body .frosted-preview .app-shell :is(.header-inner, .page-content, .profile-content) {
+  width: 100%;
+  max-width: var(--app-readable-width);
+  margin-inline: auto;
+}
+
+html[data-theme] body .frosted-preview .app-shell .route-home .home-content {
+  width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 3vw, 32px);
+}
+
+html[data-theme] body .after-hours-welcome[data-cafe-welcome]::before {
+  inset: 0;
+  mask-image: none;
+}
+
+html[data-theme] body .phone-welcome.pin-welcome[data-cafe-form] .phone-welcome-card {
+  width: 100%;
+  max-width: 440px;
+  flex-shrink: 0;
+}
+
+html[data-theme] body :is(.table-scan-screen, .order-status-screen, .paid-order-flow, .paid-order-intro) {
+  width: 100%;
+  max-width: none;
+}
+
+html[data-theme] body .order-chat {
+  width: min(100%, 720px);
+  max-height: min(82dvh, 760px);
+}
+
+html[data-theme] body .home-live-orders {
+  width: min(calc(100% - 28px), 652px);
+}
+
+/* Field sizing must not force overflow, or trigger iOS input zoom. */
+@media (max-width: 1200px) {
+  html[data-theme] body :is(.app-shell, .phone-welcome, .admin-app) :is(input, select, textarea) {
+    min-width: 0;
+    max-width: 100%;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 600px) {
+  html[data-theme] body .frosted-preview .app-shell .home-design-greeting {
+    max-width: 680px;
+  }
+
+  html[data-theme] body .frosted-preview .app-shell .menu-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  html[data-theme] body .frosted-preview .app-shell .category-rail {
+    width: 120px;
+    flex-shrink: 0;
+  }
+
+  html[data-theme] body .frosted-preview .app-shell .route-menu .menu-layout {
+    grid-template-columns: 120px minmax(0, 1fr);
+  }
+
+  html[data-theme] body .frosted-preview .app-shell .profile-content {
+    max-width: 900px;
+  }
+}
+
+@media (min-width: 768px) {
+  html[data-theme] body .frosted-preview .app-shell .menu-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  html[data-theme] body .order-details-sheet {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 1100px) {
+  html[data-theme] body .frosted-preview .app-shell .menu-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+

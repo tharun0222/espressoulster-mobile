@@ -52,3 +52,12 @@ __pycache__/
 
 /.tools/
 /tsconfig.tsbuildinfo
+/.selfhost/
+/.next-selfhost/
+!.env.selfhost.example
+
+/.next-phone/
+/.next-cashfree/
+/android/.gradle/
+/android/local.properties
+/public/downloads/*.apk

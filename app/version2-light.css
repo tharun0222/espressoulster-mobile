@@ -127,7 +127,7 @@ html[data-theme="light"] .dribbble-theme .promotion-heading,html[data-theme="lig
 html[data-theme="light"] .dribbble-theme .promotion-heading>div>span,html[data-theme="light"] .dribbble-theme .promotion-tag{color:#ffab87}
 html[data-theme="light"] .dribbble-theme .success-message,html[data-theme="light"] .dribbble-theme .status{background:#e9f5ec;color:#285d39;border-color:#bfd7c5}
 html[data-theme="light"] .dribbble-theme .error{background:#fff0eb;color:#9b3022;border-color:#dba697}
-html[data-theme="light"] body:has(.dribbble-theme) :is(.product-modal,.profile-editor-modal,.info-modal,.permission-setup){background:#fff1e6;color:#2b211c;border-color:#ddcfbf;--green:#ff7043;--green-dark:#e65b30;--ink:#2b211c;--muted:#77685c;--cream:#fffaf5;--paper:#fffdf9;--line:#e3d6c9;color-scheme:light}
+html[data-theme="light"] body:has(.dribbble-theme) :is(.product-modal,.profile-editor-modal,.info-modal){background:#fff1e6;color:#2b211c;border-color:#ddcfbf;--green:#ff7043;--green-dark:#e65b30;--ink:#2b211c;--muted:#77685c;--cream:#fffaf5;--paper:#fffdf9;--line:#e3d6c9;color-scheme:light}
 html[data-theme="light"] body:has(.dribbble-theme) .modal-backdrop{background:#26170f70;backdrop-filter:blur(5px)}
 html[data-theme="light"] body:has(.dribbble-theme) .product-modal{border-radius:28px 28px 0 0;border:1px solid #ddcfbf;box-shadow:0 -10px 60px #38271918}
 html[data-theme="light"] body:has(.dribbble-theme) .product-modal .detail-image{background:#fffdf9;min-height:260px}
@@ -374,7 +374,6 @@ html[data-theme="light"] .subscription-slide-card .subscription-badge {
 }
 html[data-theme="light"] .subscription-slide-card .subscription-plan-top > svg { width: 22px; height: 22px; flex-shrink: 0; }
 html[data-theme="light"] .subscription-slide-card .subscription-items-banner {
-  height: clamp(80px, 13svh, 110px) !important;
   width: 100%;
   margin: 0 0 12px;
   border-radius: 14px;
@@ -423,6 +422,4 @@ html[data-theme="light"] .subscription-content .subscription-official-quote h1 {
 
 
 /* Keep active controls readable on the shared orange accent. */
-html[data-theme="light"] .appearance-settings button[aria-pressed="true"]{color:#190b05}
-html[data-theme="light"] .entry-theme-toggle{background:#fffdf9;border-color:#ddcfbf;color:#9b3d1f}
 html[data-theme="light"] .dribbble-theme .product-card:hover{border-color:#d9aa88}

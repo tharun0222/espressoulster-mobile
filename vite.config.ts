@@ -52,7 +52,21 @@ export default defineConfig(async ({ command }) => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
+    // Provider credentials are loaded by the server runtime only.
+    envPrefix: [],
     server: {
+      fs: {
+        deny: [
+          ".env",
+          ".env.*",
+          ".dev.vars",
+          ".dev.vars.*",
+          "*.{crt,pem,key,p12,pfx,jks,keystore}",
+          "**/.git/**",
+          "**/.wrangler/**",
+          "**/.sites-runtime/**",
+        ],
+      },
       ...(managedLinux
         ? { host: "0.0.0.0", allowedHosts: ["terminal.local"] }
         : {}),

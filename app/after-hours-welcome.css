@@ -1,0 +1,94 @@
+.after-hours-welcome {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: max(2rem, env(safe-area-inset-top)) 1.5rem max(1rem, env(safe-area-inset-bottom));
+  color: #fff7e8;
+  background: #180f0b;
+  position: relative;
+  isolation: isolate;
+}
+
+.after-hours-welcome::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, #18100dbb, transparent 28%, #180f0be6 66%, #180f0b 95%),
+    url("/images/launch-coffee.webp") 68% center / cover no-repeat;
+}
+
+.after-hours-brand,
+.after-hours-content {
+  width: min(100%, 26rem);
+}
+
+.after-hours-brand,
+.after-hours-kicker {
+  font-weight: 750;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+
+.after-hours-brand span {
+  display: block;
+  margin-top: .25rem;
+  font-size: .7em;
+  letter-spacing: .34em;
+}
+
+.after-hours-content {
+  margin-top: auto;
+  padding-top: clamp(5rem, 30dvh, 16rem);
+}
+
+.after-hours-kicker {
+  font-size: .75rem;
+}
+
+.after-hours-content h1 {
+  margin: .65rem 0 .8rem;
+  font: italic 600 clamp(2.65rem, 10vw, 4.3rem) / .98 Georgia, serif;
+  letter-spacing: -.05em;
+  text-wrap: balance;
+}
+
+.after-hours-content p {
+  line-height: 1.45;
+}
+
+.after-hours-actions {
+  display: grid;
+  gap: .25rem;
+  margin-top: 1.3rem;
+}
+
+.after-hours-actions button {
+  min-height: 48px;
+  padding: .7rem 1rem;
+  font-weight: 700;
+  border-radius: .65rem;
+  background: #fff1d9;
+  color: #332118;
+}
+
+.after-hours-actions button + button {
+  background: transparent;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.after-hours-actions button:focus-visible {
+  outline: 2px solid #fff7e8;
+  outline-offset: 3px;
+}
+
+@media (min-width: 640px) {
+  .after-hours-welcome::before {
+    inset-inline: max(0px, calc((100% - 36rem) / 2));
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+}

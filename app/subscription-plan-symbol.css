@@ -1,0 +1,6 @@
+.subscription-plan-symbol {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}

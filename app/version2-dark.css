@@ -126,7 +126,7 @@ html[data-theme="dark"] .dribbble-theme .promotion-heading,html[data-theme="dark
 html[data-theme="dark"] .dribbble-theme .promotion-heading>div>span,html[data-theme="dark"] .dribbble-theme .promotion-tag{color:#ffab87}
 html[data-theme="dark"] .dribbble-theme .success-message,html[data-theme="dark"] .dribbble-theme .status{background:#192b22;color:#b6dec3;border-color:#395847}
 html[data-theme="dark"] .dribbble-theme .error{background:#301715;color:#ffc5b6;border-color:#6c362a}
-html[data-theme="dark"] body:has(.dribbble-theme) :is(.product-modal,.profile-editor-modal,.info-modal,.permission-setup){background:#0c0c0c;color:#f5f5f5;border-color:#333;--green:#ff7043;--green-dark:#e65b30;--ink:#f6f6f6;--muted:#aaa;--cream:#080808;--paper:#181818;--line:#303030;color-scheme:dark}
+html[data-theme="dark"] body:has(.dribbble-theme) :is(.product-modal,.profile-editor-modal,.info-modal){background:#0c0c0c;color:#f5f5f5;border-color:#333;--green:#ff7043;--green-dark:#e65b30;--ink:#f6f6f6;--muted:#aaa;--cream:#080808;--paper:#181818;--line:#303030;color-scheme:dark}
 html[data-theme="dark"] body:has(.dribbble-theme) .modal-backdrop{background:#000b;backdrop-filter:blur(5px)}
 html[data-theme="dark"] body:has(.dribbble-theme) .product-modal{border-radius:28px 28px 0 0;border:1px solid #333;box-shadow:0 -10px 60px #0007}
 html[data-theme="dark"] body:has(.dribbble-theme) .product-modal .detail-image{background:#161616;min-height:260px}
@@ -373,7 +373,6 @@ html[data-theme="dark"] .subscription-slide-card .subscription-badge {
 }
 html[data-theme="dark"] .subscription-slide-card .subscription-plan-top > svg { width: 22px; height: 22px; flex-shrink: 0; }
 html[data-theme="dark"] .subscription-slide-card .subscription-items-banner {
-  height: clamp(80px, 13svh, 110px) !important;
   width: 100%;
   margin: 0 0 12px;
   border-radius: 14px;

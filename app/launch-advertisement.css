@@ -1,0 +1,135 @@
+.launch-ad-dialog {
+  width: min(calc(100% - 56px), 288px);
+  max-height: calc(100dvh - 40px);
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #172738;
+  overflow: visible;
+}
+
+.launch-ad-dialog::backdrop {
+  background: #10273b9c;
+  backdrop-filter: blur(3px);
+}
+.launch-ad-content {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  aspect-ratio: 288 / 368;
+  max-height: calc(100dvh - 40px);
+  border-radius: 24px;
+  background: #183449;
+  box-shadow: 0 17px 50px #0c1b2f9b;
+  overflow: hidden;
+}
+.launch-ad-content[data-ready="false"] { visibility: hidden; }
+.launch-ad-slide { position: absolute; inset: 0; }
+.launch-ad-slide .launch-ad-artwork {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.launch-ad-slide img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .launch-ad-dialog[open] .launch-ad-content[data-ready="true"] { animation: blue-hour-entrance 900ms cubic-bezier(.22, 1, .36, 1) both; }
+  .launch-ad-dialog[open]::backdrop { animation: blue-hour-backdrop 420ms ease-out both; }
+  .launch-ad-dialog[open] .launch-ad-content[data-ready="true"] .launch-ad-slide { animation: blue-hour-artwork 1060ms cubic-bezier(.22, 1, .36, 1) both; }
+  .launch-ad-dialog[open] .launch-ad-content[data-ready="true"]::after {
+    position: absolute;
+    z-index: 1;
+    inset: -8%;
+    pointer-events: none;
+    content: "";
+    background: linear-gradient(114deg, transparent 36%, #e0f5ff52 48%, #f1fbff46 51%, transparent 64%);
+    mix-blend-mode: screen;
+    animation: blue-hour-light 1060ms ease-in-out both;
+  }
+
+  @keyframes blue-hour-entrance {
+    from { opacity: 0; transform: translateY(22px) scale(.87); box-shadow: 0 0 44px 10px #99d4f389; }
+    38% { box-shadow: 0 0 26px 5px #99d4f369, 0 17px 50px #0c1b2f68; }
+    to { opacity: 1; transform: translateY(0) scale(1); box-shadow: 0 17px 50px #0c1b2f9b; }
+  }
+  @keyframes blue-hour-backdrop { from { opacity: 0; } }
+  @keyframes blue-hour-artwork { from { transform: scale(1.13); } }
+  @keyframes blue-hour-light {
+    from { opacity: 0; transform: translateX(-99%); }
+    48% { opacity: .62; }
+    to { opacity: 0; transform: translateX(100%); }
+  }
+}
+.launch-ad-close {
+  position: absolute;
+  z-index: 2;
+  top: 6px;
+  right: 6px;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #f0f8ff;
+}
+.launch-ad-close::before {
+  position: absolute;
+  inset: 5px;
+  border: 1px solid #e3f3ff45;
+  border-radius: 50%;
+  background: #152e43c2;
+  backdrop-filter: blur(7px);
+  box-shadow: 0 2px 8px #0c1b2f32;
+  content: "";
+}
+.launch-ad-close svg { position: relative; width: 18px; height: 18px; }
+.launch-ad-dialog button:focus-visible { outline: 2px solid #10263a; outline-offset: 2px; }
+.launch-ad-dialog .launch-ad-close:focus-visible { outline-color: #bde8ff; }
+.launch-ad-dialog .launch-ad-artwork:focus-visible { outline: 3px solid #bde8ff; outline-offset: -6px; }
+
+.advertisement-editor-fields {
+  display: grid;
+  gap: 13px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.admin-app .advertisement-editor-fields .admin-banner-image-picker {
+  min-height: 140px;
+  margin: 0;
+  padding: 15px;
+  border: 1px dashed #7296b1;
+  background: #eaf3fa;
+  color: #203c53;
+}
+.admin-app .advertisement-editor-fields .admin-banner-image-picker:hover { background: #f3f8fc; }
+.admin-app .advertisement-editor-fields .admin-banner-image-picker:focus-within { outline-color: #284d69; }
+.admin-app .advertisement-editor-fields .admin-banner-image-picker img { max-height: 154px; }
+.admin-app .advertisement-editor-fields .admin-banner-image-picker small { color: #375870; }
+.advertisement-editor-fields .admin-ad-actions { display: flex; flex-wrap: wrap; gap: 9px; }
+.admin-advertisement > .error { margin-inline: 0; }
+.advertisement-slide-editor {
+  display: grid;
+  gap: 11px;
+  min-width: 0;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid #9fbfd4;
+  border-radius: 15px;
+}
+.advertisement-slide-editor legend { padding-inline: 5px; font-size: 14px; font-weight: 700; }
+.admin-app .advertisement-position {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(7.5rem, auto);
+  align-items: center;
+  gap: 8px;
+}
+.admin-app .advertisement-position select { min-height: 44px; margin: 0; }

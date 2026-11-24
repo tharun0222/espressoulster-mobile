@@ -1,13 +1,15 @@
-'use client';
-import SubscriptionPlanManager from './subscription-plan-manager';
-import SubscriptionRedemptionForm from './subscription-redemption-form';
-import {useEffect,useState} from 'react';
-import {api,money} from '../store-app';
-export default function AdminSubscriptions(){
- const [data,setData]=useState<any>(null),[error,setError]=useState(''),[page,setPage]=useState(0),[retry,setRetry]=useState(0),[showRemoved,setShowRemoved]=useState(false),[busy,setBusy]=useState('');
- useEffect(()=>{let active=true;setData(null);setError('');api('admin/subscriptions?offset='+page*50+'&includeRemoved='+showRemoved).then(b=>{if(active)setData(b)}).catch(e=>{if(active)setError(e.message)});return()=>{active=false}},[page,retry,showRemoved]);
- async function removeTest(s:any){setBusy(s.id);setError('');try{await api('admin/subscriptions/'+encodeURIComponent(s.id),'PATCH',{removed:!s.removed});setRetry(v=>v+1)}catch(e:any){setError(e.message)}finally{setBusy('')}}
- return <div className="admin-subscriptions"><SubscriptionPlanManager/>
- <section className="admin-panel"><h2>Customer subscriptions</h2><p>Verified purchases only. Usage and remaining credits are calculated from the redemption ledger.</p><label><input type="checkbox" checked={showRemoved} onChange={e=>{setShowRemoved(e.target.checked);setPage(0)}}/> Show removed test passes</label>{error&&<p role="alert">{error}</p>}{!data&&!error&&<p role="status">Loading subscriptions…</p>}{data&&<><p>{data.total} verified subscriptions</p>{data.subscriptions.length?<div className="table-wrap"><table><thead><tr><th>Customer</th><th>Plan</th><th>Paid</th><th>Used / total</th><th>Remaining</th><th>Expiry</th><th>Status</th><th>Manage test pass</th></tr></thead><tbody>{data.subscriptions.map((s:any)=><tr key={s.id}><td>{s.customerName}<small style={{display:'block'}}>{s.customerPhone}</small></td><td>{s.planName}<small style={{display:'block'}}>Includes: {s.itemScope==='menu'?JSON.parse(s.includedItems||'[]').map((p:any)=>p.name).join(', '):'Coffee selection'}</small></td><td>{money(s.amountPaid,'INR')}</td><td>{s.usedCredits} / {s.totalCredits}</td><td>{s.remainingCredits}</td><td>{new Date(s.expiresAt).toLocaleDateString('en-IN',{timeZone:'Asia/Kolkata'})}</td><td>{s.removed?'Removed':s.status}</td><td>{s.canRemoveTest&&<button className="secondary" disabled={!!busy} onClick={()=>removeTest(s)}>{busy===s.id?'Saving…':s.removed?'Restore test pass':'Remove test pass'}</button>}</td></tr>)}</tbody></table></div>:<p>No verified subscription purchases yet.</p>}<div className="admin-ad-actions"><button className="secondary" disabled={!page} onClick={()=>setPage(p=>p-1)}>Previous</button><button className="secondary" disabled={!data.hasMore} onClick={()=>setPage(p=>p+1)}>Next</button></div></>}<button className="secondary" onClick={()=>setRetry(v=>v+1)}>Refresh balances</button></section>
- <SubscriptionRedemptionForm onRedeemed={()=>setRetry(v=>v+1)}/></div>;
+"use client";
+
+import SubscriptionPlanManager from "./subscription-plan-manager";
+import SubscriptionRedemptionForm from "./subscription-redemption-form";
+import SubscriptionAdvertisementManager from "./subscription-advertisement-manager";
+
+export default function AdminSubscriptions({ refreshVersion, checkoutEnabled }: { refreshVersion: number; checkoutEnabled: boolean }) {
+  return (
+    <div className="admin-subscriptions">
+      <SubscriptionAdvertisementManager refreshVersion={refreshVersion} />
+      <SubscriptionPlanManager refreshVersion={refreshVersion} checkoutEnabled={checkoutEnabled} />
+      {checkoutEnabled && <SubscriptionRedemptionForm />}
+    </div>
+  );
 }

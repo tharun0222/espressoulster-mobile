@@ -1,24 +1,46 @@
+"use client";
+import {isSandboxProvider, isSandboxPayment, hostedCheckoutUrl, hostedPaymentMethod, sandboxLabel} from '../lib/sandbox-checkout';
+import {disableOrderNotifications} from '../lib/enable-order-notifications';
+import HomeLiveOrders from './home-live-orders';
+import { activeCafeOrders, liveOrderLabel } from '../lib/live-order-status';
+import HomeGreeting from './home-greeting';
+import OrderTypeSelector from './order-type-selector';
+import {enabledOrderTypes, orderTypeStorageKey, resolveOrderType} from '../lib/order-type';
+import ProfileGenderField from './profile-gender-field';
+import OrderStatusScreen from './order-status-screen';
+import { bottomNavOutline } from "../lib/bottom-nav-glass";
+import OrderChat from './order-chat';
+import {onLiveUpdate, useLiveUpdates} from './use-live-updates';
+import OrderDetailsSheet from './order-details-sheet';
+import CoffeeShowcase from './coffee-showcase';
+import {rememberPinPhone} from '../lib/remembered-pin-phone';
 import MenuRecipeDetails from './menu-recipe-details';
 import AppPermissionSetup from './app-permission-setup';
 import AddressForm from './address-form';
 import BookingNotifications from './booking-notifications';
 import TableBooking from './table-booking';
 import CustomerAvatar from './customer-avatar';
-import {CoffeeMotionHero,MobileMotion} from './coffee-motion';
-import {PersonalHome,Pairings,DigitalReceipt,OrderAlerts} from './mobile-experience';
+import {MobileMotion} from './coffee-motion';
+import BottomNavRefreshWave from "./bottom-nav-refresh-wave";
+import { HomePullRefresh } from './home-pull-refresh';
+import {PersonalHome,Pairings,OrderAlerts} from './mobile-experience';
 import {prepareReorder,mergeOrderUpdates,cartItemKey} from '../lib/mobile-experience';
+import {defaultHomeDesign,defaultHomeDesignRevision,type HomeDesign} from '../lib/home-design';
 import CoffeeClub,{ClubShortcuts} from './coffee-club';
-import UpiScanner from './upi-scanner';
+import TableQrScanner from './table-qr-scanner';
 import {unlockCelebrationAudio,celebrationSound} from '../lib/celebration-audio';
 import MovableCart from "./movable-cart";
 import PromotionBanners from "./promotion-banners";
+import HomeAdvertisement from "./launch-advertisement";
+import type { AdvertisementDestination } from "../lib/launch-advertisement";
 import FavouriteCelebration from "./favourite-celebration";
 import CategoryIcon from "./category-icon";
 import {filterMenu} from "../lib/menu-filters";
-"use client";
-import { useState, useEffect, useCallback, useRef, useLayoutEffect } from "react";
+
+import { useState, useEffect, useCallback, useRef, useLayoutEffect, useMemo, Fragment } from "react";
 import {
   Coffee,
+  CalendarDays,
   Pencil,
   Gift,
   Croissant,
@@ -53,17 +75,21 @@ import {
   Trash2,
   ArrowLeft,
   CheckCircle2,
+  CirclePause,
+  LockKeyhole,
 } from "lucide-react";
 import {singleFlight} from '../lib/customer-flow';
+import {publicMessage} from '../lib/public-message';
 import { signOutSession } from "../lib/sign-out";
 import { useDialogAccessibility } from "../lib/dialog";
-import MobileInstall from "./mobile-install";
-import {ThemeToggle} from "./theme-provider";
 import CoffeeSubscriptions from "./coffee-subscriptions";
-import SubscriptionTracker from "./subscription-tracker";
-import OnlinePayment from "./online-payment";
 import {paymentRequest} from "../lib/payment-request";
 import { defaultSettings } from "../lib/catalog";
+import CafeDetails, { cafeOutletLabel } from "./cafe-details";
+import SearchField from "./search-field";
+import { isKoramangala } from "../lib/cafe-routing";
+import { cafeOffDutyMessage } from "../lib/cafe-order-intake";
+import { orderReference } from "../lib/order-reference";
 type Item = {
   productId: string;
   quantity: number;
@@ -81,21 +107,60 @@ export async function api(
   const cancel = () => controller.abort();
   if (signal?.aborted) controller.abort();
   else signal?.addEventListener("abort", cancel, {once:true});
-  const timer = setTimeout(cancel, 15000);
+  const upload = method === "POST" && (path === "upload" || path === "admin/upload");
+  const timer = setTimeout(cancel, upload ? 120000 : 15000);
   try {
-    const r = await fetch("/api/" + path, {
+    const binaryBody = data instanceof FormData || (typeof Blob !== "undefined" && data instanceof Blob);
+    let body = data === undefined ? undefined : binaryBody ? data : JSON.stringify(data);
+    if (upload && typeof Blob !== "undefined" && data instanceof Blob) {
+      if (!data.size || data.size > 5000000) throw new Error("Choose an image up to 5 MB.");
+      let bytes;
+      try { bytes = new Uint8Array(await data.arrayBuffer()); }
+      catch { throw new Error("This image could not be opened. Choose the image again."); }
+      // Android pickers can return a file without a MIME type or a temporary URI.
+      // Read it once while access is available. The server also validates the bytes.
+      const imageType = bytes[0] === 137 && bytes[1] === 80 && bytes[2] === 78 && bytes[3] === 71
+        ? "image/png" : bytes[0] === 255 && bytes[1] === 216 && bytes[2] === 255
+        ? "image/jpeg" : String.fromCharCode(...bytes.subarray(0, 4)) === "RIFF" &&
+          String.fromCharCode(...bytes.subarray(8, 12)) === "WEBP" ? "image/webp" : "";
+      if (!imageType) throw new Error("Choose a PNG, JPG or WebP image.");
+      body = new Blob([bytes], {type:imageType});
+    }
+    const options: RequestInit = {
       method,
       signal: controller.signal,
-      headers: data instanceof FormData ? undefined : { "Content-Type": "application/json" },
-      body: data === undefined ? undefined : data instanceof FormData ? data : JSON.stringify(data),
-    });
-    const b: any = r.headers.get("Content-Type")?.includes("application/json")
-      ? await r.json() : {error:"The café is temporarily unavailable. Please try again."};
-    if (!r.ok) throw new Error(b.error || "Something went wrong. Please retry.");
-    return b;
+      headers: binaryBody ? undefined : { "Content-Type": "application/json" },
+      body,
+    };
+    const safeRead = method === "GET" && [
+      "bootstrap", "admin/advertisement", "admin/subscription-advertisements",
+    ].includes(path);
+    for (let attempt = 0; ; attempt++) {
+      let response: Response;
+      let result: any;
+      try {
+        response = await fetch("/api/" + path, options);
+        if (response.headers.get("Content-Type")?.includes("application/json")) {
+          result = await response.json();
+        } else {
+          throw new Error(response.status === 413 ? "This file is too large to upload." : "The café is temporarily unavailable. Please try again.");
+        }
+      } catch (error) {
+        if (controller.signal.aborted) throw error;
+        const kind = (error as Error)?.name;
+        if (kind === "SyntaxError") throw new Error("The café sent an incomplete response. Please try again.");
+        if (kind !== "TypeError" && kind !== "NetworkError") throw error;
+        if (safeRead && attempt === 0 && (typeof navigator === "undefined" || navigator.onLine !== false)) continue;
+        if (upload) throw new Error("The image upload could not be confirmed. Check your connection and choose the image again.");
+        if (method === "GET") throw new Error("Couldn’t load this page. Check your connection and try again.");
+        throw new Error("The connection was interrupted. Check whether your change was saved before trying again.");
+      }
+      if (!response.ok) throw new Error(publicMessage(result?.error, "Something went wrong. Please try again."));
+      return result;
+    }
   } catch (error) {
     if (signal?.aborted) {const cancelled=new Error("Request cancelled");cancelled.name="AbortError";throw cancelled;}
-    if (controller.signal.aborted) throw new Error("The request timed out. Check your connection and try again.");
+    if (controller.signal.aborted) throw new Error(upload ? "The image upload timed out. Check your connection and choose the image again." : "The request timed out. Check your connection and try again.");
     throw error;
   } finally {
     clearTimeout(timer);
@@ -143,10 +208,26 @@ const initialItem = (id: string): Item => ({
   instructions: "",
 });
 const itemKey = cartItemKey;
-export default function StoreApp() {
+const bottomTabs = [
+  { r: "home", name: "Home", icon: House },
+  { r: "menu", name: "Menu", icon: BookOpen },
+  { r: "pay", name: "Scan to order", icon: ScanLine },
+  { r: "subscriptions", name: "Subscriptions", icon: ShoppingBag },
+  { r: "profile", name: "Profile", icon: UserRound },
+];
+const customerPages = new Set([
+  'home', 'menu', 'pay', 'packs', 'subscriptions', 'profile', 'cart', 'checkout', 'orders',
+  'favorites', 'suggest', 'addresses', 'offers', 'cafes', 'referrals', 'birthday', 'rewards', 'bookings',
+]);
+export default function StoreApp({ previewDesign, requestBootstrap }: {
+  previewDesign?: HomeDesign;
+  requestBootstrap?: () => Promise<any>;
+} = {}) {
+  const previewingHome = previewDesign !== undefined;
   const [profilePhoto, setProfilePhoto] = useState<string | null>(null);
   const profilePhotoInput = useRef<HTMLInputElement>(null);
   const [profileEditorOpen, setProfileEditorOpen] = useState(false);
+  const [profileGender, setProfileGender] = useState('');
   const profileBusyRef = useRef(false);
   const floatingCartRef = useRef<HTMLButtonElement>(null);
   const headerCartRef = useRef<HTMLButtonElement>(null);
@@ -189,6 +270,7 @@ export default function StoreApp() {
     [editIndex, setEditIndex] = useState(-1),
     [selection, setSelection] = useState<Item>(initialItem("")),
     [orders, setOrders] = useState<any[]>([]),
+    [trackingOrderId, setTrackingOrderId] = useState<string|null>(null),
     [moreOrders, setMoreOrders] = useState(false),
     [addresses, setAddresses] = useState<any[]>([]),
     [suggestions, setSuggestions] = useState<any[]>([]),
@@ -197,9 +279,12 @@ export default function StoreApp() {
     [fulfillment, setFulfillment] = useState("pickup"),
     [confirmation, setConfirmation] = useState(""),
 
-    [info, setInfo] = useState("");
+    [info, setInfo] = useState<string | { kind: "cafe-contact" }>("");
   const [onlineConfig,setOnlineConfig]=useState<any>({enabled:false});
   const [payOnline,setPayOnline]=useState(false);
+  const [acceptingOrders, setAcceptingOrders] = useState(true);
+  const [dineInTable, setDineInTable] = useState("");
+  const [openedFromTableQr, setOpenedFromTableQr] = useState(false);
   useEffect(()=>{if(data?.authentication==="pin"&&!data?.user)window.dispatchEvent(new Event("espresso-pin-signedout"))},[data?.authentication,data?.user]);
   useEffect(()=>{if(!data?.user)return;paymentRequest("config").then(setOnlineConfig).catch(()=>setOnlineConfig({enabled:false}));},[data?.user?.userId]);
   const [signingOut, setSigningOut] = useState(false);
@@ -225,9 +310,9 @@ export default function StoreApp() {
   const favoriteRequests = useRef(new Set<string>());
   const cartOwner = useRef("");
   const favoritesOwner = useRef("");
-  const initialLoad = useRef<Promise<void>|null>(null);
+  const initialLoad = useRef<Promise<boolean>|null>(null);
   const bootstrapRequest = useRef<(()=>Promise<any>)|null>(null);
-  if(!bootstrapRequest.current)bootstrapRequest.current=singleFlight(()=>api("bootstrap"));
+  if(!bootstrapRequest.current)bootstrapRequest.current=singleFlight(requestBootstrap ?? (()=>api("bootstrap")));
   function flushCart(items?: Item[]): Promise<void> {
     if (cartSaveTimer.current) clearTimeout(cartSaveTimer.current);
     if (items) pendingCart.current = items;
@@ -253,10 +338,104 @@ export default function StoreApp() {
     }
     return cartSerial.current;
   }
-  const settings = data?.settings || defaultSettings,
-    user = data?.user,
-    products = data?.products || [],
-    categories = data?.categories?.filter((c: any) => c.enabled && data.products.some((p:any)=>!p.archived && p.categoryId===c.id)) || [];
+  const settings = data?.settings || defaultSettings, user = data?.user;
+  useLiveUpdates("customer", !previewingHome && Boolean(user?.userId));
+  const products = data?.products || [];
+  const categories = useMemo(() => {
+    const stockedCategoryIds = new Set(data?.products?.filter((p: any) => !p.archived).map((p: any) => p.categoryId));
+    return data?.categories?.filter((c: any) => c.enabled && stockedCategoryIds.has(c.id)) || [];
+  }, [data?.categories, data?.products]);
+  const showcaseProducts = useMemo(() => {
+    const visibleCategoryIds = new Set(categories.map((category: any) => category.id));
+    return products.filter((product: any) => visibleCategoryIds.has(product.categoryId));
+  }, [categories, products]);
+  const headerLogo = settings.logo || (route === "home" ? "/icon-192.png" : null);
+  const homeDesign: HomeDesign = previewDesign ?? data?.homeDesign ?? defaultHomeDesign;
+  const homeCopy = homeDesign.copy;
+  const homeShowsBookings = homeDesign.sections.some(section => section.id === "bookings" && section.visible);
+  const homeDataReady = Boolean(data);
+  const homeRevision = useRef(defaultHomeDesignRevision);
+  const seenOpeningAds = useRef(new Set<string>());
+  const openingAdViewer = user?.userId || "guest";
+  const openingAdKey = `${openingAdViewer}:${data?.homeAdvertisement?.id ?? ""}`;
+  const watchesOrderIntake = !previewingHome && (route === "home" || (route === "checkout" && Boolean(user)));
+  useEffect(() => {
+    if (!watchesOrderIntake) return;
+    const controller = new AbortController();
+    let checking = false;
+    async function checkOrderIntake() {
+      if (checking || document.visibilityState === "hidden") return;
+      checking = true;
+      try {
+        const path = route === "home" ? "cafe/order-intake?homeDesignRevision=" + encodeURIComponent(homeRevision.current) : "cafe/order-intake";
+        const result = await api(path, "GET", undefined, controller.signal);
+        if (!controller.signal.aborted && typeof result.acceptingOrders === "boolean") {
+          setAcceptingOrders(result.acceptingOrders);
+          if (result.homeDesign && typeof result.homeDesignRevision === "string" && homeDataReady) {
+            homeRevision.current = result.homeDesignRevision;
+            setData((previous: any) => previous ? { ...previous, homeDesign: result.homeDesign } : previous);
+          }
+        }
+      } catch {
+        // Keep the last known state. The order request also verifies availability.
+      } finally {
+        checking = false;
+      }
+    }
+    void checkOrderIntake();
+    const timer = window.setInterval(checkOrderIntake, 4000);
+    const stopLiveUpdates = onLiveUpdate(["intake"], () => void checkOrderIntake());
+    document.addEventListener("visibilitychange", checkOrderIntake);
+    return () => {
+      controller.abort();
+      stopLiveUpdates();
+      window.clearInterval(timer);
+      document.removeEventListener("visibilitychange", checkOrderIntake);
+    };
+  }, [watchesOrderIntake, route, homeDataReady]);
+  const dineInTables: string[] = data?.dineInTables || [];
+  const validTable = dineInTables.includes(dineInTable);
+  const checkoutTable = fulfillment === "dine_in" && validTable ? dineInTable : undefined;
+  const liveCheckout = onlineConfig.provider === "cashfree" && onlineConfig.mode === "live" && settings.testMode !== true;
+  const checkoutMode = liveCheckout ? "live" : "test";
+  const checkoutProvider = liveCheckout || (onlineConfig.mode === "test" && isSandboxProvider(onlineConfig.provider)) ? onlineConfig.provider : null;
+  const onlineCheckoutEnabled = checkoutProvider !== null && onlineConfig.enabled === true;
+  const useOnlineCheckout = onlineCheckoutEnabled && payOnline;
+  const checkoutLabel = checkoutProvider === "cashfree" && onlineConfig.mode === "live" ? "Cashfree" : sandboxLabel(checkoutProvider);
+  const checkoutPaymentNotice = !acceptingOrders ? "The café has paused new orders."
+    : useOnlineCheckout && quote && quote.total < (onlineConfig.minimumAmount || 50)
+      ? `${checkoutLabel} requires a total of at least ${money(onlineConfig.minimumAmount || 50, settings.currency)}.`
+      : null;
+  const hasCheckoutForm = route === "checkout" && Boolean(user) && cart.length > 0;
+  const clearTableSelection = useCallback(() => {
+    const url = new URL(window.location.href);
+    if (url.searchParams.has("table")) {
+      url.searchParams.delete("table");
+      window.history.replaceState(window.history.state, "", url);
+    }
+    setDineInTable("");
+    setOpenedFromTableQr(false);
+  }, []);
+  const cartHadItems = useRef(false);
+  useEffect(() => {
+    if (cartHadItems.current && cart.length === 0) clearTableSelection();
+    cartHadItems.current = cart.length > 0;
+  }, [cart.length, clearTableSelection]);
+
+  function chooseFulfillment(value: string) {
+    if (!enabledOrderTypes(settings).includes(value as 'dine_in' | 'pickup' | 'delivery')) return;
+    if (value === fulfillment) return;
+    setFulfillment(value);
+    if (!previewingHome) {
+      try { sessionStorage.setItem(orderTypeStorageKey(String(user?.userId || '')), value); } catch { /* The selection still works when browser storage is unavailable. */ }
+    }
+    keyRef.current = "";
+    if (value !== "dine_in") clearTableSelection();
+  }
+  function testerReturnPath() {
+    const query = openedFromTableQr && /^T[0-9]{2}$/.test(dineInTable) ? "?table=" + dineInTable : "";
+    return "/" + query + "#" + route;
+  }
   const menuProductsRef = useRef<HTMLElement>(null);
   const categoryPositions = useRef<Record<string, {top:number}>>({});
   const selectMenuCategory = (next:string) => {
@@ -267,19 +446,135 @@ export default function StoreApp() {
   useLayoutEffect(() => {
     if (menuProductsRef.current) menuProductsRef.current.scrollTop = categoryPositions.current[category]?.top || 0;
   }, [category]);
+  function openHomeMenu(nextCategory: string, replace = false) {
+    setSearch("");
+    setCategory(nextCategory);
+    setDiet("all");
+    setPriceRange("all");
+    navigate("menu", replace);
+  }
   const qty = cart.reduce((s, i) => s + i.quantity, 0);
   const previousRoute = useRef("home");
+  const scanReturnRoute = useRef("home");
+  const bottomNav = useRef<HTMLElement>(null);
+  const cafeReturnRoute = useRef("profile");
+  const cafeDialog = useRef<HTMLDialogElement>(null);
+  const [cafeDialogOpen, setCafeDialogOpen] = useState(false);
+  const outletLabel = cafeOutletLabel(settings);
+  const cafeContactOpen = typeof info !== "string";
+  const cafeContact = String(settings.contact ?? "").trim();
+  const hasKoramangalaContact = isKoramangala(settings.address || "");
+  const cafePhone = cafeContact.match(/(?:\+?91[\s.-]?)?[6-9]\d{4}[\s.-]?\d{5}|(?:\+91[\s.-]?)?0?80[\s.-]?\d{4}[\s.-]?\d{4}/)?.[0]
+    ?? (hasKoramangalaContact ? "+91 89043 97434" : "");
+  const cafeEmail = cafeContact.match(/[\w.+-]+@[\w.-]+\.[a-z]{2,}/i)?.[0]
+    ?? (hasKoramangalaContact ? "minfo@maxburn.in" : "");
+  const profileActiveOrders = route === "profile" ? activeCafeOrders(orders) : [];
+  const homeHasActiveOrders = route === "home" && Boolean(user) && activeCafeOrders(orders).length > 0;
+  const profileOrderDetail = profileActiveOrders.length === 1
+    ? liveOrderLabel(profileActiveOrders[0])
+    : profileActiveOrders.length > 1 ? `${profileActiveOrders.length} active orders` : "Order history";
+  const [chatOrderId, setChatOrderId] = useState<string | null>(null);
+  const [detailsOrderId, setDetailsOrderId] = useState<string | null>(null);
   const [pageDirection, setPageDirection] = useState("forward");
-  const navigate = useCallback((r: string) => {
-    const tabs = ["home", "menu", "pay", "subscriptions", "profile"];
-    setPageDirection(tabs.indexOf(r) < tabs.indexOf(previousRoute.current) ? "backward" : "forward");
+  useEffect(() => {
+    const nav = bottomNav.current;
+    const shell = nav?.closest(".app-shell");
+    if (!nav || !shell) return;
+    let idle: ReturnType<typeof setTimeout>;
+
+    function showNav() {
+      clearTimeout(idle);
+      nav?.removeAttribute("data-scrolling");
+    }
+
+    function hideWhileScrolling(event: Event) {
+      const target = event.target;
+      if (target !== document && (target !== window && !(target instanceof Element && shell?.contains(target) && target.scrollHeight > target.clientHeight))) return;
+      nav?.setAttribute("data-scrolling", "");
+      clearTimeout(idle);
+      idle = setTimeout(showNav, 500);
+    }
+
+    window.addEventListener("scroll", hideWhileScrolling, { capture: true, passive: true });
+    window.addEventListener("keydown", showNav);
+    return () => {
+      showNav();
+      window.removeEventListener("scroll", hideWhileScrolling, true);
+      window.removeEventListener("keydown", showNav);
+    };
+  }, [route]);
+  const applyRoute = useCallback((r: string) => {
+    const nextIndex = bottomTabs.findIndex((tab) => tab.r === r);
+    const previousIndex = bottomTabs.findIndex((tab) => tab.r === previousRoute.current);
+    setPageDirection(nextIndex < previousIndex ? "backward" : "forward");
     previousRoute.current = r;
     setRoute(r);
     setError("");
-    window.history.replaceState(null, "", "#" + r);
     window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
-  useEffect(()=>{if(!user?.userId)return;let stopped=false,timer:ReturnType<typeof setTimeout>;const refresh=async()=>{if(document.visibilityState==='visible'){try{const b=await api('orders');if(!stopped)setOrders(previous=>mergeOrderUpdates(previous,b.orders))}catch{/* Existing orders stay visible until connection returns. */}}if(!stopped)timer=setTimeout(refresh,15000)};timer=setTimeout(refresh,15000);return()=>{stopped=true;clearTimeout(timer)}},[user?.userId]);
+  const navigate = useCallback((r: string, replace = false) => {
+    const from = previousRoute.current;
+    if (r !== from) {
+      if (replace) window.history.replaceState(window.history.state, "", "#" + r);
+      else window.history.pushState({ ...window.history.state, espressoBackRoute: from }, "", "#" + r);
+    }
+    applyRoute(r);
+  }, [applyRoute]);
+  function goBack(fallback: string) {
+    if (window.history.state?.espressoBackRoute) window.history.back();
+    else navigate(fallback, true);
+  }
+  function openProfileEditor() {
+    if (!user || busy) return;
+    setProfilePhoto(null);
+    setProfileGender(user.profile?.gender ?? "");
+    setError("");
+    setContact({ ...contact, name: user.profile?.name || user.fullName || "", phone: user.profile?.phone || "" });
+    setProfileEditorOpen(true);
+  }
+
+  function openAdvertisementDestination(destination: AdvertisementDestination) {
+    switch (destination) {
+      case "menu": return openHomeMenu("all");
+      case "contact": return setInfo({ kind: "cafe-contact" });
+      case "order-alerts": window.dispatchEvent(new Event("espresso-open-permissions")); return;
+      case "edit-profile": navigate("profile"); openProfileEditor(); return;
+      case "pay": scanReturnRoute.current = route; break;
+      case "cafes": cafeReturnRoute.current = route; break;
+    }
+    navigate(destination);
+  }
+  useEffect(() => {
+    if (!user?.userId) return;
+    let stopped = false, running = false, queued = false, timer: ReturnType<typeof setTimeout>;
+    const refresh = async () => {
+      if (stopped) return;
+      if (running) { queued = true; return; }
+      running = true;
+      clearTimeout(timer);
+      if (document.visibilityState === 'visible') {
+        try {
+          const response = await api('orders');
+          if (!stopped) setOrders(previous => mergeOrderUpdates(previous, response.orders));
+        } catch { /* Retain the last verified order status during network failures. */ }
+      }
+      running = false;
+      if (queued && !stopped) { queued = false; void refresh(); }
+      else if (!stopped) timer = setTimeout(refresh, trackingOrderId ? 3000 : route === 'home' ? 5000 : 15000);
+    };
+    const stopLiveUpdates = onLiveUpdate(["orders"], () => void refresh());
+    if (trackingOrderId || route === "home") void refresh();
+    else timer = setTimeout(refresh, 15000);
+    return () => { stopped = true; clearTimeout(timer); stopLiveUpdates(); };
+  }, [user?.userId, trackingOrderId, route]);
+
+  useEffect(()=>{
+    const id=new URLSearchParams(window.location.search).get('trackOrder');
+    if(id&&/^CH-[A-F0-9]{8}$/.test(id)&&orders.some(order=>order.id===id)){
+      setTrackingOrderId(id);
+      const url=new URL(window.location.href);url.searchParams.delete('trackOrder');window.history.replaceState(window.history.state,'',url.toString());
+    }
+  },[orders]);
   const notify = (s: string) => {
     setNotice(s);
     setTimeout(() => setNotice(""), 4000);
@@ -289,18 +584,30 @@ export default function StoreApp() {
     if(accountOwner.current!==owner){
       accountOwner.current=owner;cartOwner.current="";favoritesOwner.current="";
       pendingCart.current=null;savedCart.current="";keyRef.current="";
-      setCart([]);setFavoriteIds([]);setQuote(null);setCartReady(!owner);
+      setCart([]);setFavoriteIds([]);setQuote(null);setCartReady(!owner);setTrackingOrderId(null);setChatOrderId(null);setDetailsOrderId(null);setOrders([]);
+      let savedOrderType: string | null = null;
+      if (!previewingHome) {
+        try { savedOrderType = sessionStorage.getItem(orderTypeStorageKey(owner)); } catch { /* Use the enabled default without browser storage. */ }
+      }
+      const fromTableQr = !previewingHome && new URL(window.location.href).searchParams.has('table');
+      setFulfillment(resolveOrderType(savedOrderType, snapshot.settings || defaultSettings, fromTableQr));
     }
+    homeRevision.current = snapshot.homeDesignRevision ?? defaultHomeDesignRevision;
     setData(snapshot);
     return owner;
   }
-  const load = useCallback(():Promise<void> => {
+  const load = useCallback(():Promise<boolean> => {
     if(initialLoad.current)return initialLoad.current;
     initialLoad.current=(async()=>{
       try {
         setError("");
         const b=await bootstrapRequest.current!();
+        if (previewingHome) {
+          acceptBootstrap({ ...b, user: null, homeAdvertisement: null });
+          return true;
+        }
         const owner=acceptBootstrap(b);
+        if (b.authentication === "pin") rememberPinPhone(b.user?.profile?.phone);
         if(b.user){
           const needsCart=cartOwner.current!==owner;
           const needsFavorites=favoritesOwner.current!==owner;
@@ -309,7 +616,7 @@ export default function StoreApp() {
             needsCart?api("cart"):Promise.resolve(null),
             needsFavorites?api("favorites"):Promise.resolve(null),
           ]);
-          if(accountOwner.current!==owner)return;
+          if(accountOwner.current!==owner)return false;
           const failures:string[]=[];
           if(c.status==='fulfilled'){
             if(c.value){
@@ -323,49 +630,59 @@ export default function StoreApp() {
           if(f.status==='fulfilled'){
             if(f.value){setFavoriteIds(f.value.ids);favoritesOwner.current=owner;}
           }else failures.push("Your favourites could not be loaded.");
-          if(failures.length)setError(failures.join(" "));
+          if(failures.length){setError(failures.join(" "));return false;}
         }else{
           cartOwner.current="";favoritesOwner.current="";
           savedCart.current="";pendingCart.current=null;
           setCart([]);setFavoriteIds([]);setCartReady(true);
         }
-      }catch(e:any){setError(e.message);}
+        return true;
+      }catch(e:any){setError(e.message);return false;}
     })().finally(()=>{initialLoad.current=null;});
     return initialLoad.current;
-  }, []);
+  }, [previewingHome]);
   async function retryLoad(){
     try{
       // A failed save must be retried before fetching a server snapshot.
       if(pendingCart.current)await flushCart();
-      await load();
-    }catch(e:any){setError("Cart could not be saved. "+e.message);}
+      return await load();
+    }catch(e:any){setError("Cart could not be saved. "+e.message);return false;}
   }
 
   useEffect(() => {
     load();
-    const r = window.location.hash.slice(1);
-    if (
-      [
-        "home",
-        "menu",
-        "pay",
-        "packs",
-        "subscriptions",
-        "profile",
-        "cart",
-        "checkout",
-        "orders",
-        "favorites",
-        "suggest",
-        "addresses",
-        "rewards", "offers", "cafes", "wallet", "referrals", "birthday",
-      ].includes(r)
-    )
-      setRoute(r);
+    if (previewingHome) return;
+    const url = new URL(window.location.href);
+    const table = url.searchParams.get("table");
+    if (table !== null) {
+      setOpenedFromTableQr(true);
+      setDineInTable(/^T[0-9]{2}$/.test(table) ? table : "");
+      setFulfillment("dine_in");
+      if (!url.hash) {
+        url.hash = "menu";
+        window.history.replaceState(window.history.state, "", url);
+      }
+    }
+    const r = url.hash.slice(1);
+    if (customerPages.has(r)) applyRoute(r);
     if ("serviceWorker" in navigator)
       navigator.serviceWorker.register("/sw.js").catch(() => {});
-  }, [load]);
+  }, [load, previewingHome, applyRoute]);
   useEffect(() => {
+    if (previewingHome) return;
+    const restoreRoute = () => {
+      const next = location.hash.slice(1) || 'home';
+      if (customerPages.has(next) && next !== previousRoute.current) applyRoute(next);
+    };
+    window.addEventListener('popstate', restoreRoute);
+    window.addEventListener('hashchange', restoreRoute);
+    return () => {
+      window.removeEventListener('popstate', restoreRoute);
+      window.removeEventListener('hashchange', restoreRoute);
+    };
+  }, [applyRoute, previewingHome]);
+  useEffect(() => {
+    if (previewingHome) return;
     let active=true;
     const refresh=singleFlight(async()=>{
       if(document.visibilityState!=="visible")return;
@@ -378,6 +695,7 @@ export default function StoreApp() {
           if(active&&fresh.user)await load();
           return;
         }
+        homeRevision.current = fresh.homeDesignRevision ?? defaultHomeDesignRevision;
         setData(fresh);
         setSelected((current:any)=>current?fresh.products.find((p:any)=>p.id===current.id)||null:null);
       }catch{/* Keep the last loaded catalog during a connection interruption. */}
@@ -385,7 +703,21 @@ export default function StoreApp() {
     const timer=setInterval(refresh,30000);
     window.addEventListener("focus",refresh);
     return()=>{active=false;clearInterval(timer);window.removeEventListener("focus",refresh);};
-  }, []);
+  }, [previewingHome]);
+
+  useEffect(() => {
+    if (data && openedFromTableQr && !settings.dineInEnabled) {
+      setFulfillment(settings.pickupEnabled ? "pickup" : "delivery");
+    }
+  }, [data, openedFromTableQr, settings.dineInEnabled, settings.pickupEnabled]);
+
+  useEffect(() => {
+    if (!data) return;
+    const enabled = enabledOrderTypes(settings);
+    if (enabled.length && !enabled.includes(fulfillment as 'dine_in' | 'pickup' | 'delivery')) {
+      chooseFulfillment(resolveOrderType(null, settings));
+    }
+  }, [data, fulfillment, settings.dineInEnabled, settings.pickupEnabled, settings.deliveryEnabled]);
 
   useEffect(() => {
     if (!user || !cartReady || JSON.stringify(cart) === savedCart.current) return;
@@ -412,9 +744,11 @@ export default function StoreApp() {
   }, [route, cart, code, fulfillment, user?.userId]);
   useEffect(() => {
     if (!user) return;
+    const ordersOwner = String(user.userId);
     if (["home", "orders", "profile"].includes(route))
       api("orders")
         .then((b) => {
+          if (accountOwner.current !== ordersOwner) return;
           setOrders(b.orders);
           setMoreOrders(b.orders.length === 50);
         })
@@ -429,6 +763,7 @@ export default function StoreApp() {
         .catch((e) => setError(e.message));
   }, [route, user?.userId, confirmation]);
   useEffect(() => {
+    if (previewingHome) return;
     const context = (document as any).modelContext;
     if (!context?.registerTool) return;
     const life = new AbortController();
@@ -459,7 +794,7 @@ export default function StoreApp() {
       ),
     ).catch(() => {});
     return () => life.abort();
-  }, [navigate]);
+  }, [navigate, previewingHome]);
   useEffect(() => { categoryPositions.current = {}; if (menuProductsRef.current) menuProductsRef.current.scrollTop = 0; }, [search, diet, sort, priceRange]);
   profileBusyRef.current = busy;
   function closeProfileEditor() {
@@ -473,6 +808,28 @@ export default function StoreApp() {
     setSelected(null);
     setInfo("");
   });
+  useEffect(() => {
+    const back = (event: Event) => {
+      if (chatOrderId) setChatOrderId(null);
+      else if (detailsOrderId) setDetailsOrderId(null);
+      else if (trackingOrderId) setTrackingOrderId(null);
+      else if (cafeDialogOpen) cafeDialog.current?.close();
+      else if (profileEditorOpen) {
+        if (!profileBusyRef.current) {
+          setProfileEditorOpen(false);
+          setProfilePhoto(null);
+          setError('');
+        }
+      }
+      else if (selected) setSelected(null);
+      else if (info) setInfo('');
+      else if (showFilters) setShowFilters(false);
+      else return;
+      event.preventDefault();
+    };
+    window.addEventListener('espresso-android-back', back);
+    return () => window.removeEventListener('espresso-android-back', back);
+  }, [chatOrderId, detailsOrderId, trackingOrderId, cafeDialogOpen, profileEditorOpen, selected, info, showFilters]);
   function authRequired() {
     if (!user) {
       setInfo("Sign in to save your cart, favourites, and orders.");
@@ -543,14 +900,18 @@ export default function StoreApp() {
     });
     keyRef.current = "";
   }
-  function openProduct(p: any) {
+  const openProduct = useCallback((p: any) => {
     setEditIndex(-1);
     setSelected(p);
     setSelection({
       ...initialItem(p.id),
       variantId: p.variants?.[0]?.id || "",
     });
-  }
+  }, []);
+  const openShowcaseProduct = useCallback((id: string) => {
+    const product = products.find((item: any) => item.id === id);
+    if (product) openProduct(product);
+  }, [openProduct, products]);
   async function favorite(id: string) {
     if(authRequired())return;
     const owner=accountOwner.current,key=owner+":"+id;
@@ -579,9 +940,9 @@ export default function StoreApp() {
   }
   async function submitOrder(e: React.FormEvent) {
     e.preventDefault();
-    if (busy || !quote) return;
+    if (busy || !quote || !acceptingOrders) return;
     unlockCelebrationAudio();
-    if(payOnline&&(!onlineConfig.enabled||quote.total<(onlineConfig.minimumAmount||50))){setError("Stripe sandbox needs an order of at least "+money(onlineConfig.minimumAmount||50,settings.currency));return;}
+    if(useOnlineCheckout&&quote.total<(onlineConfig.minimumAmount||50)){setError(checkoutLabel+" needs an order of at least "+money(onlineConfig.minimumAmount||50,settings.currency));return;}
     setBusy(true);
     setError("");
     try {
@@ -591,25 +952,35 @@ export default function StoreApp() {
         items: cart,
         code,
         fulfillment,
-        contact,
-        paymentMethod: payOnline ? "stripe_test" :
+        contact: { ...contact, table: checkoutTable },
+        paymentMethod: useOnlineCheckout && checkoutProvider ? hostedPaymentMethod(checkoutProvider, checkoutMode) :
           fulfillment === "dine_in" ? "pay_at_counter" : fulfillment === "pickup" ? "pay_at_pickup" : "cash_on_delivery",
         expectedTotal: quote.total,
         idempotencyKey: keyRef.current,
       });
+      if (useOnlineCheckout) {
+        const checkout = await paymentRequest(b.id + "/start", {});
+        if (checkout.paid) { window.location.assign("/payment-return?order=" + b.id); return; }
+        if (checkout.providerState === "EXPIRED") {
+          keyRef.current = "";
+          throw Error("This checkout expired. Start a new checkout.");
+        }
+        window.location.assign(hostedCheckoutUrl(checkout.provider, checkout.mode, checkout.redirectUrl));
+        return;
+      }
       celebrationSound("order");
-      setConfirmation(b.id);
+      setConfirmation(orderReference(b));
+      clearTableSelection();
+      keyRef.current = "";
       setCart([]);
       navigate("orders");
-      if(payOnline){
-        const checkout=await paymentRequest(b.id+"/start",{});
-        if(checkout.paid){window.location.assign("/payment-return?order="+b.id);return;}
-        const target=new URL(checkout.redirectUrl);
-        if(target.protocol!=="https:"||target.hostname!=="checkout.stripe.com"||target.port||target.username||target.password)throw Error("Untrusted Stripe checkout address");
-        window.location.assign(target.href);
-      }else notify("Order received. Follow its progress in My orders.");
+      notify("Order received. Follow its progress in My orders.");
     } catch (e: any) {
-      setError(e.message);
+      if (e.message === cafeOffDutyMessage) setAcceptingOrders(false);
+      else {
+        if (e.message === "This checkout expired. Start a new checkout.") keyRef.current = "";
+        setError(e.message);
+      }
     } finally {
       setBusy(false);
     }
@@ -702,7 +1073,7 @@ export default function StoreApp() {
         <a
           className="primary"
           href={
-            "/tester-login?return_to=" + encodeURIComponent("/#" + route)
+            "/tester-login?return_to=" + encodeURIComponent(testerReturnPath())
           }
           target="_self"
           onClick={(event) => {
@@ -749,23 +1120,43 @@ export default function StoreApp() {
       )
     );
   }
+  if (route === "pay" && data) {
+    return (
+      <TableQrScanner onClose={() => goBack(scanReturnRoute.current)} onVerifyTable={async (table, signal) => {
+        if (!settings.dineInEnabled) throw Error("Dine-in ordering is currently unavailable.");
+        if (!dineInTables.includes(table)) throw Error("This table is unavailable. Ask the café team for help.");
+        if (!user) throw Error("Sign in before scanning a table.");
+        await api("table-visits/scan", "POST", { table }, signal);
+      }} onOpenTable={table => {
+        const url = new URL(window.location.href);
+        url.searchParams.set("table", table);
+        window.history.replaceState(window.history.state, "", url);
+        setOpenedFromTableQr(true);
+        setDineInTable(table);
+        setFulfillment("dine_in");
+        keyRef.current = "";
+        openHomeMenu("all", true);
+      }} />
+    );
+  }
   return (
     <>
       <FavouriteCelebration event={favouriteCelebration} />
       <div className="cart-flight-layer" aria-hidden="true">
         {cartFlights.map(flight => <div key={flight.id} className="cart-flight" style={{left: flight.x, top: flight.y, "--flight-x": `${flight.dx}px`, "--flight-y": `${flight.dy}px`, "--arc-x": `${flight.dx * .4}px`, "--arc-y": `${Math.min(flight.dy * .4, 0) - 85}px`} as React.CSSProperties}><ProductImage product={flight.product} /></div>)}
       </div>
-      <div className="app-shell dribbble-theme">
+      <div className="app-shell dribbble-theme reel-theme">
+        {route === "home" && !previewingHome && <HomePullRefresh onRefresh={retryLoad} bottomNav={bottomNav} />}
         <header className={"header " + (route === "home" ? "home-header" : "")}>
           <div className="header-inner">
-            <div className="brand-row">
-              <button className="brand" onClick={() => navigate("home")}>
-                {settings.logo ? (
-                  <img src={settings.logo} className="brand-logo" alt="" />
+            <div className={route === 'home' ? 'brand-row' : 'brand-row brand-row-actions-only'}>
+              {route === 'home' && <button type="button" className="brand" aria-label={settings.brand} onClick={() => navigate("home")}>
+                {headerLogo ? (
+                  <img src={headerLogo} className={route === "home" ? "home-brand-icon" : "brand-logo"} alt="" />
                 ) : null}
                 <span>{settings.brand}</span>
-              </button>
-              <div className="header-actions"><ThemeToggle/>
+              </button>}
+              <div className="header-actions">
                 <button
                   className="icon-button"
                   onClick={() => navigate("favorites")}
@@ -785,38 +1176,48 @@ export default function StoreApp() {
               </div>
             </div>
             {route === "home" && (
-              <h1 className="greeting">
-                Hi {user?.profile?.name?.split(" ")[0] || "coffee lover"}!
-              </h1>
+              <>
+                {!acceptingOrders && (
+                  <div className="home-duty-notice" role="status">
+                    <span className="home-duty-icon"><CirclePause size={20} aria-hidden="true" /></span>
+                    <div>
+                      <strong>Café orders are paused</strong>
+                      <p>You can still browse the menu.</p>
+                    </div>
+                  </div>
+                )}
+                <dialog
+                  ref={cafeDialog}
+                  className="cafe-sheet"
+                  aria-labelledby="cafe-sheet-title"
+                  onClose={() => setCafeDialogOpen(false)}
+                  onClick={(event) => { if (event.target === event.currentTarget) event.currentTarget.close(); }}
+                >
+                  <div className="cafe-sheet-content">
+                    <div className="cafe-sheet-header">
+                      <h2 id="cafe-sheet-title">Our café</h2>
+                      <button type="button" className="icon-button" aria-label="Close café details" onClick={() => cafeDialog.current?.close()}>
+                        <X size={20} aria-hidden="true" />
+                      </button>
+                    </div>
+                    {cafeDialogOpen && <CafeDetails settings={settings} />}
+                  </div>
+                </dialog>
+              </>
             )}
-            <button
-              className="location"
-              onClick={() =>
-                setInfo(
-                  [settings.location, settings.address, settings.openingHours]
-                    .filter(Boolean)
-                    .join("\n"),
-                )
-              }
-            >
-              <MapPin size={17} />
-              <span>{fulfillment === "dine_in" ? "Enjoy at the café" : settings.location}</span>
-              <small>
-                {fulfillment === "dine_in" ? "Dine in" : fulfillment === "pickup" ? "Take away" : "Delivery"}
-              </small>
-              <ChevronRight size={18} />
-            </button>
+
           </div>
         </header>
-        {route === "home" && <div className="order-mode segmented" role="group" aria-label="Order type">
-          {settings.dineInEnabled && <button type="button" aria-pressed={fulfillment === "dine_in"} className={fulfillment === "dine_in" ? "active" : ""} onClick={() => setFulfillment("dine_in")}>Dine in</button>}
-          {settings.pickupEnabled && <button type="button" aria-pressed={fulfillment === "pickup"} className={fulfillment === "pickup" ? "active" : ""} onClick={() => setFulfillment("pickup")}>Take away</button>}
-          {settings.deliveryEnabled && <button type="button" aria-pressed={fulfillment === "delivery"} className={fulfillment === "delivery" ? "active" : ""} onClick={() => setFulfillment("delivery")}>Delivery</button>}
-        </div>}
 
-        <MobileMotion route={route}/>{user&&<AppPermissionSetup/>}
+        {!previewingHome && <MobileMotion route={route}/>}{user&&<AppPermissionSetup/>}
+        {route === "home" && user && !user.admin && data?.homeAdvertisement && !selected && !info && !cafeDialogOpen && !trackingOrderId && !chatOrderId && (
+          <HomeAdvertisement key={openingAdKey}
+            advertisement={data.homeAdvertisement} seen={seenOpeningAds.current.has(openingAdViewer)}
+            onShown={() => { seenOpeningAds.current.add(openingAdViewer); }}
+            onAction={openAdvertisementDestination} />
+        )}
         <main key={`${user?.userId || "guest"}:${route}`} data-direction={pageDirection} className={"main page-enter route-" + route}>
-          {error && (
+          {error && !hasCheckoutForm && (
             <div className="error" role="alert">
               <span>{error}</span>
               <button
@@ -849,110 +1250,142 @@ export default function StoreApp() {
             <>
               {route === "home" && (
                 <>
-                  <div className="home-content"><div className="theme-discovery"><form role="search" className="theme-home-search" onSubmit={event=>{event.preventDefault();setCategory("all");navigate("menu");}}><Search size={18} aria-hidden="true"/><input aria-label="Search coffee and food" placeholder="Search coffee, food & more" value={search} onChange={event=>setSearch(event.target.value)}/><button type="submit" aria-label="Search the menu"><ChevronRight size={18}/></button></form><div className="section-heading discovery-feature-heading"><h2>A little coffee break</h2><button onClick={()=>navigate("menu")}>View menu <ChevronRight size={14}/></button></div></div><CoffeeMotionHero onMenu={()=>navigate("menu")}/><PersonalHome user={user} orders={orders} products={products} onReorder={reorder} onNavigate={navigate}/><ClubShortcuts onNavigate={navigate}/><TableBooking user={user}/>
-                    <PromotionBanners banners={settings.promotionBanners || []} onMenu={(term)=>{setSearch(term);setCategory("all");setDiet("all");setPriceRange("all");navigate("menu");}} onSubscriptions={()=>navigate("subscriptions")} />
-                    <SubscriptionTracker userId={user?.userId} onOpen={() => navigate("subscriptions")} />
-                    <button className="subscription-home-card" onClick={() => navigate("subscriptions")}>
-                      <Coffee size={28} aria-hidden="true" />
-                      <span><small>THE ESPRESSOULSTER COFFEE PASS</small><strong>8 coffees in one pass</strong><span>Explore subscriptions · ₹1,599</span></span>
-                      <ChevronRight size={22} aria-hidden="true" />
-                    </button>
-                    {(settings.offers || []).some((o:any)=>o.enabled) && <section className="offers-section">
-                      <div className="section-heading">
-                        <h2>OFFERS &amp; LITTLE EXTRAS</h2>
-                        <span>
-                          {(settings.offers || []).filter((o: any) => o.enabled)
-                            .length
-                            ? "A little treat"
-                            : "Made for your coffee break"}
-                        </span>
-                      </div>
-                      <div className="offers-row">
-                        {(settings.offers || [])
-                          .filter((o: any) => o.enabled)
-                          .map((o: any) => (
-                            <button
-                              key={o.code}
-                              className="offer-card"
-                              onClick={() => {
+                  <div className="home-content customer-home-design">
+                    {homeDesign.sections.filter(section => section.visible).map(({ id }) => (
+                      <Fragment key={id}>
+                        {id === "greeting" && (
+                          <div className="home-design-greeting">
+                            <HomeGreeting gender={user?.profile?.gender} userId={user?.userId}
+                              dateOfBirth={user?.profile?.date_of_birth} title={homeCopy.greeting} />
+                            {homeCopy.greetingSubtitle && <p>{homeCopy.greetingSubtitle}</p>}
+                          </div>
+                        )}
+                        {id === "outlet" && (
+                          <button
+                            type="button"
+                            className="home-cafe-card"
+                            aria-haspopup="dialog"
+                            onClick={() => {
+                              cafeDialog.current?.showModal();
+                              setCafeDialogOpen(true);
+                            }}
+                          >
+                            <span className="cafe-card-pin"><MapPin size={20} aria-hidden="true" /></span>
+                            <span className="cafe-card-copy"><strong>{outletLabel}</strong><small>{homeCopy.outletAction}</small></span>
+                            <ChevronRight size={20} aria-hidden="true" />
+                          </button>
+                        )}
+                        {id === "showcase" && (
+                          <div className="home-design-showcase">
+                            {homeCopy.heroImage ? (
+                              <button type="button" className="home-design-hero" onClick={() => openHomeMenu("all")}>
+                                <img src={homeCopy.heroImage} alt="" />
+                                <span>{homeCopy.heroTitle && <strong>{homeCopy.heroTitle}</strong>}
+                                  <span>{homeCopy.heroAction} <ChevronRight size={17} aria-hidden="true" /></span>
+                                </span>
+                              </button>
+                            ) : (
+                              <CoffeeShowcase currency={settings.currency}
+                                products={showcaseProducts}
+                                onSelect={openShowcaseProduct} />
+                            )}
+                          </div>
+                        )}
+                        {id === "discovery" && <>
+                          <div className="theme-discovery">
+                            <form role="search" className="theme-home-search" onSubmit={event => {
+                              event.preventDefault();
+                              setCategory("all");
+                              navigate("menu");
+                            }}>
+                              <Search size={18} aria-hidden="true" />
+                              <input aria-label="Search coffee and food" inputMode="search" enterKeyHint="search"
+                                placeholder={homeCopy.searchPlaceholder} value={search} onChange={event => setSearch(event.target.value)} />
+                              <button type="submit" aria-label="Search the menu"><ChevronRight size={18} /></button>
+                            </form>
+                          </div>
+                          <div className="home-category-rail" role="group" aria-label="Menu categories">
+                            {categories.map((entry: any) => {
+                              const example = products.find((product: any) => !product.archived && product.categoryId === entry.id);
+                              return (
+                                <button type="button" key={entry.id} onClick={() => openHomeMenu(entry.id)}>
+                                  <span className="home-category-photo" aria-hidden="true">
+                                    {entry.image ? <img src={entry.image} alt="" loading="lazy" /> : <ProductImage product={example} />}
+                                  </span>
+                                  <span>{entry.name}</span>
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </>}
+                        {id === "recentOrder" && <PersonalHome orders={orders} onReorder={reorder} onNavigate={navigate} />}
+                        {id === "shortcuts" && <ClubShortcuts onNavigate={(destination) => {
+                          if (destination === "cafes") cafeReturnRoute.current = "home";
+                          navigate(destination);
+                        }} />}
+                        {id === "bookings" && <TableBooking user={user} />}
+                        {id === "promotions" && <PromotionBanners banners={settings.promotionBanners || []} onAction={banner => {
+                          if (banner.destination === "subscriptions") { navigate("subscriptions"); return; }
+                          setSearch(banner.search || "");
+                          setCategory("all");
+                          setDiet("all");
+                          setPriceRange("all");
+                          navigate("menu");
+                        }} />}
+                        {id === "offers" && (settings.offers || []).some((o: any) => o.enabled) && <section className="offers-section">
+                          <div className="section-heading">
+                            <h2>OFFERS &amp; LITTLE EXTRAS</h2>
+                            <span>A little treat</span>
+                          </div>
+                          <div className="offers-row">
+                            {(settings.offers || []).filter((o: any) => o.enabled).map((o: any) => (
+                              <button key={o.code} className="offer-card" onClick={() => {
                                 setCode(o.code);
                                 navigate("cart");
-                              }}
-                            >
-                              <strong>{o.title || "Café offer"}</strong>
-                              <span>
-                                CODE <b>{o.code}</b>
-                              </span>
-                              <small>
-                                {o.expires
-                                  ? "Valid until " + o.expires
-                                  : "See offer at checkout"}
-                              </small>
-                            </button>
-                          ))}
-                      </div>
-                    </section>}
-                    <section>
-                      <div className="section-heading">
-                        <h2>CURATED FOR YOU</h2>
-                        <button
-                          onClick={() => {
-                            setCategory("all");
-                            navigate("menu");
-                          }}
-                        >
-                          View menu <ChevronRight size={15} />
-                        </button>
-                      </div>
-                      <div className="curated-grid">
-                        {products
-                          .filter(
-                            (p: any) =>
-                              p.featured &&
-                              !p.archived &&
-                              categories.some(
-                                (c: any) => c.id === p.categoryId,
-                              ),
-                          )
-                          .slice(0, 6)
-                          .map((p: any) => card(p, true))}
-                      </div>
-                    </section>
+                              }}>
+                                <strong>{o.title || "Café offer"}</strong>
+                                <span>CODE <b>{o.code}</b></span>
+                                <small>{o.expires ? "Valid until " + o.expires : "See offer at checkout"}</small>
+                              </button>
+                            ))}
+                          </div>
+                        </section>}
+                      </Fragment>
+                    ))}
                   </div>
                 </>
               )}
+              {route === "bookings" && <div className="page-content">
+                <PageTitle title="Table bookings" onBack={() => goBack("profile")} />
+                <TableBooking user={user} />
+              </div>}
               {route === "menu" && (
                 <>
+                  {(openedFromTableQr || (fulfillment === "dine_in" && cart.length > 0)) && (
+                    <div className="dine-in-menu-note" role="status">
+                      <MapPin size={18} aria-hidden="true" />
+                      <span>{!settings.dineInEnabled ? "Dine-in is currently unavailable." : <>
+                        <strong>Dine in{validTable ? ` · Table ${dineInTable}` : ""}</strong>
+                        {!validTable && <small>The café team will assign your table.</small>}
+                      </>}</span>
+                    </div>
+                  )}
                   <div className="menu-toolbar">
-                    <label className="search-field">
-                      <Search size={19} />
-                      <input
-                        aria-label="Search menu"
-                        placeholder="Search your next favourite"
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                      />
-                      {search && (
-                        <button
-                          onClick={() => setSearch("")}
-                          aria-label="Clear search"
-                        >
-                          <X size={16} />
-                        </button>
-                      )}
-                    </label>
+                    <SearchField label="Search menu" placeholder="Search coffee and food"
+                      value={search} onChange={setSearch} />
                     <button
-                      className={
-                        "filter-button " + (showFilters ? "active" : "")
-                      }
+                      type="button"
+                      className={showFilters ? "filter-button active" : "filter-button"}
                       aria-label="Menu filters"
-                      onClick={() => setShowFilters(!showFilters)}
+                      aria-expanded={showFilters}
+                      aria-controls={showFilters ? "menu-filters" : undefined}
+                      onClick={() => setShowFilters((open) => !open)}
                     >
                       <SlidersHorizontal size={19} />
                     </button>
                   </div>
                   {showFilters && (
-                    <div className="filters">
+                    <div className="filters menu-filters" id="menu-filters">
                       <label>
                         Sort
                         <select
@@ -1059,7 +1492,7 @@ export default function StoreApp() {
                 <div className="page-content">
                   <PageTitle
                     title="Your favourites"
-                    onBack={() => navigate("profile")}
+                    onBack={() => goBack("profile")}
                   />
                   {!user ? (
                     loginPanel()
@@ -1084,7 +1517,7 @@ export default function StoreApp() {
                 <div className="page-content">
                   <PageTitle
                     title="Your cart"
-                    onBack={() => navigate("menu")}
+                    onBack={() => goBack("menu")}
                   />
                   {!user ? (
                     loginPanel()
@@ -1180,16 +1613,17 @@ export default function StoreApp() {
                           );
                         })}
                         <button
-                          className="text-button"
+                          className="text-button cart-add-more"
+                          type="button"
                           onClick={() => navigate("menu")}
                         >
-                          <Plus size={16} />
+                          <Plus size={18} aria-hidden="true" />
                           Add more items
                         </button>
                       </section>
-                      <aside className="order-summary"><Pairings products={products} categories={categories} cart={cart} onSelect={p=>openProduct(p)}/>
-                        <h2>Your order</h2>
-                        <label>
+                      <aside className="order-summary cart-order-summary" aria-labelledby="cart-order-title">
+                        <h2 id="cart-order-title">Your order</h2>
+                        <label className="cart-offer-code">
                           Offer code
                           <input
                             value={code}
@@ -1200,7 +1634,9 @@ export default function StoreApp() {
                             placeholder="Enter a code"
                           />
                         </label>
-                        {quote ? totals() : <p>Checking your order…</p>}
+                        <div className="cart-order-pricing" aria-live="polite">
+                          {quote ? totals() : <p>Checking your order…</p>}
+                        </div>
                         <button
                           className="primary wide"
                           disabled={!quote}
@@ -1208,9 +1644,8 @@ export default function StoreApp() {
                         >
                           Continue to checkout
                         </button>
-                        <p className="fine-print">
-                          Choose Stripe sandbox at checkout to try an online test payment. No real money is collected.
-                        </p>
+
+                        <Pairings products={products} categories={categories} cart={cart} onSelect={p=>openProduct(p)}/>
                       </aside>
                     </div>
                   )}
@@ -1218,7 +1653,10 @@ export default function StoreApp() {
               )}
               {route === "checkout" && (
                 <div className="page-content">
-                  <PageTitle title="Checkout" onBack={() => navigate("cart")} />
+                  <PageTitle title="Checkout" onBack={() => goBack("cart")} />
+                  {user && cart.length > 0 && !acceptingOrders && (
+                    <p className="checkout-duty-notice" role="status">{cafeOffDutyMessage}</p>
+                  )}
                   {!user ? (
                     loginPanel()
                   ) : !cart.length ? (
@@ -1230,37 +1668,16 @@ export default function StoreApp() {
                       onAction={() => navigate("menu")}
                     />
                   ) : (
-                    <form className="checkout-grid" onSubmit={submitOrder}>
+                    <form className="checkout-grid checkout-form" onSubmit={submitOrder}>
                       <section className="form-card">
                         <h2>Confirm your order type</h2>
-                        <p className="fine-print">Check dine-in or take-away before placing your order. You can change your selection here.</p>
-                        <div className="segmented" role="group" aria-label="Confirm order type">
-                          {settings.dineInEnabled && (
-                            <button type="button" className={fulfillment === "dine_in" ? "active" : ""} onClick={() => setFulfillment("dine_in")}>Dine in</button>
-                          )}
-                          {settings.pickupEnabled && (
-                            <button
-                              type="button"
-                              className={
-                                fulfillment === "pickup" ? "active" : ""
-                              }
-                              onClick={() => setFulfillment("pickup")}
-                            >
-                              Take away
-                            </button>
-                          )}
-                          {settings.deliveryEnabled && (
-                            <button
-                              type="button"
-                              className={
-                                fulfillment === "delivery" ? "active" : ""
-                              }
-                              onClick={() => setFulfillment("delivery")}
-                            >
-                              Delivery
-                            </button>
-                          )}
+                        <div className="checkout-cafe">
+                          <MapPin size={19} aria-hidden="true" />
+                          <span><strong>{settings.brand}</strong>{outletLabel !== settings.brand && <small>{outletLabel}</small>}</span>
                         </div>
+                        <p className="fine-print">Check dine-in or take-away before placing your order. You can change your selection here.</p>
+                        <OrderTypeSelector value={fulfillment} settings={settings} onChange={chooseFulfillment} illustrated
+                          label="Confirm order type" dineInLabel={homeCopy.dineInLabel} takeAwayLabel={homeCopy.takeAwayLabel}/>
                         <h3>Contact details</h3>
                         <label>
                           Your name
@@ -1280,7 +1697,7 @@ export default function StoreApp() {
                             required
                             type="tel"
                             autoComplete="tel"
-                            pattern="[+0-9 ()-]{7,25}"
+                            pattern={String.raw`[+0-9 \(\)\-]{7,25}`}
                             value={contact.phone}
                             onChange={(e) =>
                               setContact({ ...contact, phone: e.target.value })
@@ -1343,34 +1760,48 @@ export default function StoreApp() {
                           />
                         </label>
                       </section>
-                      <aside className="order-summary"><Pairings products={products} categories={categories} cart={cart} onSelect={p=>openProduct(p)}/>
-                        <h2>Order summary</h2>
-                        {cart.map((i) => (
-                          <p key={itemKey(i)}>
-                            {i.quantity} ×{" "}
-                            {
-                              products.find((p: any) => p.id === i.productId)
-                                ?.name
-                            }
-                          </p>
-                        ))}
-                        {totals()}
-                        <p className="billing-order-type"><strong>Order type</strong><span>{fulfillment === "dine_in" ? "Dine in" : fulfillment === "pickup" ? "Take away" : "Delivery"}{fulfillment === "dine_in" && contact.table ? ` · Table ${contact.table}` : ""}</span></p>
-                        <fieldset className="sandbox-payment-options"><legend>Payment method</legend>
-                          <label><input type="radio" name="paymentChoice" checked={!payOnline} onChange={()=>setPayOnline(false)}/><span><strong>Pay at the café</strong><small>{fulfillment==="dine_in"?"Pay at the counter":"Pay when you collect your order"}</small></span></label>
-                          <label><input type="radio" name="paymentChoice" checked={payOnline} disabled={!onlineConfig.enabled} onChange={()=>setPayOnline(true)}/><span><strong>Stripe sandbox</strong><small>{onlineConfig.enabled?"Test cards only · no real money":"Sandbox setup is pending"}</small></span></label>
-                          {onlineConfig.enabled&&<p>Stripe sandbox minimum: {money(onlineConfig.minimumAmount||50,settings.currency)}. Item prices stay unchanged.</p>}
+                      <aside className="order-summary" aria-labelledby="checkout-summary-title">
+                        <h2 id="checkout-summary-title">Order summary</h2>
+                        <ul className="checkout-items">
+                          {cart.map((item, index) => {
+                            const priced = quote?.items[index];
+                            const product = products.find((p: any) => p.id === item.productId);
+                            const options = [priced?.selections.variant?.name, ...(priced?.selections.addons ?? []).map((addon: { name: string }) => addon.name)].filter(Boolean);
+                            return (
+                              <li key={itemKey(item)}>
+                                <span className="checkout-item-quantity" aria-label={`Quantity ${item.quantity}`}>{item.quantity}×</span>
+                                <div>
+                                  <strong>{priced?.name ?? product?.name ?? "Unavailable item"}</strong>
+                                  {options.length > 0 && <small>{options.join(" · ")}</small>}
+                                </div>
+                                {priced && <span className="checkout-item-price">{money(priced.unitPrice * priced.quantity, quote.currency)}</span>}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                        {quote ? totals() : <p className="fine-print" role="status">Checking your order…</p>}
+                        <p className="billing-order-type"><strong>Order type</strong><span>{fulfillment === "dine_in" ? "Dine in" : fulfillment === "pickup" ? "Take away" : "Delivery"}{checkoutTable ? ` · Table ${checkoutTable}` : ""}</span></p>
+                        {fulfillment === "dine_in" && !checkoutTable && <p className="fine-print">The café team will assign your table.</p>}
+                        <fieldset className="sandbox-payment-options" disabled={busy}><legend>Payment method</legend>
+                          <label><input type="radio" name="paymentChoice" checked={!useOnlineCheckout} onChange={()=>setPayOnline(false)}/><span><strong>Pay at the café</strong><small>{fulfillment==="dine_in"?"Pay at the counter":"Pay when you collect your order"}</small></span></label>
+                          {checkoutProvider && <label><input type="radio" name="paymentChoice" disabled={!onlineCheckoutEnabled} checked={useOnlineCheckout} onChange={()=>setPayOnline(true)}/><span><strong>Pay now</strong>{!onlineCheckoutEnabled&&<small>Online checkout is being set up</small>}</span></label>}
                         </fieldset>
+                        {error ? (
+                          <div className="error checkout-action-message" id="checkout-action-message" role="alert">
+                            <span>{error}</span>
+                            <button type="button" onClick={() => setError("")} aria-label="Dismiss error"><X size={18} /></button>
+                          </div>
+                        ) : checkoutPaymentNotice && (
+                          <p className="checkout-action-message" id="checkout-action-message" role="status">{checkoutPaymentNotice}</p>
+                        )}
                         <button
                           className="primary wide"
-                          disabled={busy || !quote || (payOnline && (!onlineConfig.enabled || quote.total < (onlineConfig.minimumAmount || 50)))}
+                          disabled={busy || !quote || Boolean(checkoutPaymentNotice)}
+                          aria-describedby={error || checkoutPaymentNotice ? "checkout-action-message" : undefined}
                         >
-                          {busy ? (payOnline?"Opening Stripe sandbox…":"Placing your order…") : payOnline?"Continue to Stripe sandbox":"Place order"}
+                          {busy ? (useOnlineCheckout?"Opening payment…":"Placing your order…") : useOnlineCheckout?"Pay now":"Place order"}
                         </button>
-                        <p className="fine-print">
-                          Your order total and availability are checked by the
-                          café’s server.
-                        </p>
+                        <Pairings products={products} categories={categories} cart={cart} onSelect={p=>openProduct(p)}/>
                       </aside>
                     </form>
                   )}
@@ -1380,7 +1811,7 @@ export default function StoreApp() {
                 <div className="page-content">
                   <PageTitle
                     title="My orders"
-                    onBack={() => navigate("profile")}
+                    onBack={() => goBack("profile")}
                     extra={
                       <button
                         className="icon-button"
@@ -1404,7 +1835,7 @@ export default function StoreApp() {
                       <div>
                         <strong>Order {confirmation} received</strong>
                         <p>
-                          Your order is received. Payment and preparation progress are shown below.
+                          Track your order or message the café.
                         </p>
                       </div>
                     </div>
@@ -1414,10 +1845,10 @@ export default function StoreApp() {
                   ) : orders.length ? (
                     <div className="orders-list">
                       {orders.map((o) => (
-                        <article key={o.id} className="order-card">
+                        <article key={o.id} className="order-card order-ticket-card">
                           <div className="order-top">
                             <div>
-                              <strong>{o.id}</strong>
+                              <strong>{orderReference(o)}</strong>
                               <small>
                                 {new Date(o.created_at + "Z").toLocaleString()}
                               </small>
@@ -1426,90 +1857,13 @@ export default function StoreApp() {
                               {o.status.replaceAll("_", " ")}
                             </span>
                           </div>
-                          <div className="order-progress">
-                            {(o.fulfillment !== "delivery"
-                              ? [
-                                  "pending",
-                                  "confirmed",
-                                  "preparing",
-                                  "ready",
-                                  "completed",
-                                ]
-                              : [
-                                  "pending",
-                                  "confirmed",
-                                  "preparing",
-                                  "out_for_delivery",
-                                  "completed",
-                                ]
-                            ).map((s, i) => (
-                              <div
-                                className={
-                                  o.events.some((e: any) => e.status === s)
-                                    ? "done"
-                                    : ""
-                                }
-                                key={s}
-                              >
-                                <span>
-                                  {o.events.some((e: any) => e.status === s) ? (
-                                    <Check size={13} />
-                                  ) : (
-                                    i + 1
-                                  )}
-                                </span>
-                                <small>{s.replaceAll("_", " ")}</small>
-                              </div>
-                            ))}
+                          <div className="order-card-actions">
+                            {!['completed','cancelled'].includes(o.status) ? <>
+                              <button type="button" className="secondary" onClick={() => setTrackingOrderId(o.id)}>View order status</button>
+                              <button type="button" className="secondary" onClick={() => setChatOrderId(o.id)}>Chat with the café</button>
+                            </> : o.items?.length > 0 && <button type="button" className="secondary" onClick={() => reorder(o)}>Order again</button>}
                           </div>
-                          {o.items.map((i: any) => (
-                            <p key={i.id}>
-                              {i.quantity} × {i.name}
-                              <span>
-                                {money(i.unit_price * i.quantity, o.currency)}
-                              </span>
-                            </p>
-                          ))}
-                          <div className="order-total">
-                            <strong>{money(o.total, o.currency)}</strong>
-                            <span>
-                              {o.fulfillment === "dine_in" ? "Dine in" : o.fulfillment === "pickup" ? "Take away" : "Delivery"} · {o.payment_status === "paid" ? (o.collection_method === "stripe_test" ? "Stripe test payment verified" : "Paid") : o.status === "cancelled" ? "Not paid · cancelled" : "Payment pending"}
-                            </span>
-                          </div>
-                          {o.items?.length>0&&<div className="order-reorder"><button className="secondary" onClick={()=>reorder(o)}>Order again</button></div>}<DigitalReceipt order={o}/><OnlinePayment order={o} onUpdate={() => { api("orders").then(b=>setOrders(b.orders)).catch(e=>setError(e.message)); }} />
-                          <details>
-                            <summary>Order details & timeline</summary>
-                            <p>
-                              {o.contact.name} · {o.contact.phone}
-                            </p>
-                            {o.contact.address && <p>{o.contact.address}</p>}
-                            {o.events.map((e: any, i: number) => (
-                              <small className="timeline-event" key={i}>
-                                {e.status.replaceAll("_", " ")} ·{" "}
-                                {new Date(e.created_at + "Z").toLocaleString()}
-                              </small>
-                            ))}
-                          </details>
-                          {o.status === "pending" &&
-                            o.payment_status === "unpaid" &&
-                            settings.cancelPending && (
-                              <button
-                                className="text-button danger"
-                                onClick={async () => {
-                                  try {
-                                    await api("orders/" + o.id, "PATCH", {
-                                      status: "cancelled",
-                                    });
-                                    setOrders((await api("orders")).orders);
-                                    notify("Order cancelled");
-                                  } catch (e: any) {
-                                    setError(e.message);
-                                  }
-                                }}
-                              >
-                                Cancel order
-                              </button>
-                            )}
+                          <button type="button" className="order-details-ticket" aria-haspopup="dialog" onClick={()=>setDetailsOrderId(o.id)}>Order details<ChevronRight size={16} aria-hidden="true"/></button>
                         </article>
                       ))}
                       {moreOrders && (
@@ -1545,7 +1899,7 @@ export default function StoreApp() {
               {route === "profile" && (
                 <div className="profile-page">
                   <section className="profile-hero">
-                    <button type="button" className="avatar profile-avatar" aria-label="Edit profile" aria-haspopup="dialog" disabled={!user || busy} onClick={()=>{setProfilePhoto(null);setError("");setContact({...contact,name:user?.profile?.name||user?.fullName||"",phone:user?.profile?.phone||""});setProfileEditorOpen(true);}}>
+                    <button type="button" className="avatar profile-avatar" aria-label="Edit profile" aria-haspopup="dialog" disabled={!user || busy} onClick={openProfileEditor}>
                       <CustomerAvatar src={profilePhoto ?? user?.profile?.avatar} name={user?.profile?.name||user?.fullName}/>
                       {user && <span className="avatar-edit"><Pencil size={13}/></span>}
                     </button>
@@ -1554,7 +1908,7 @@ export default function StoreApp() {
                     </h1>
                     <p>{user?.email && !/@(?:tester|phone|pin)\.invalid$/.test(user.email) ? user.email : "Manage your profile"}</p>
                   </section>
-                  <MobileInstall /><button className="permission-settings-link secondary" onClick={()=>window.dispatchEvent(new Event("espresso-open-permissions"))}><Settings size={17}/>Notification settings</button>
+                  <button className="permission-settings-link secondary" onClick={()=>window.dispatchEvent(new Event("espresso-open-permissions"))}><Settings size={17}/>Notification settings</button>
                   {!user ? (
                     loginPanel()
                   ) : (
@@ -1576,63 +1930,54 @@ export default function StoreApp() {
                           <span>In your cart</span>
                         </button>
                       </div>
+                      <h2 className="profile-preview-links-title">Your account</h2>
                       <div className="profile-links">
                         {[
-                          { icon: Package, name: "My orders", r: "orders" },
-                          { icon: Gift, name: "Rewards & benefits", r: "rewards" },
-                          { icon: MapPin, name: "Our café", r: "cafes" },
-                          { icon: Gift, name: "Offers & gift cards", r: "wallet" },
-                          { icon: Coffee, name: "Coffee subscriptions", r: "subscriptions" },
+                          { icon: Package, name: "My orders", r: "orders", detail: profileOrderDetail },
+                          { icon: MapPin, name: "Our café", r: "cafes", detail: outletLabel },
+                          { icon: CalendarDays, name: "Table bookings", r: "bookings" },
+                          { icon: Coffee, name: "Coffee subscriptions", r: "subscriptions", detail: "Plans and credits" },
                           {
                             icon: Heart,
                             name: "My favourites",
                             r: "favorites",
+                            detail: favoriteIds.length ? `${favoriteIds.length} saved` : undefined,
                           },
                           {
                             icon: MapPin,
                             name: "Saved addresses",
                             r: "addresses",
+                            detail: "Delivery locations",
                           },
                           {
                             icon: Lightbulb,
                             name: "Suggest something delicious",
                             r: "suggest",
+                            detail: "Share a menu idea",
                           },
                         ].map((l) => (
-                          <button key={l.r} onClick={() => navigate(l.r)}>
+                          <button key={l.r} aria-label={l.name} aria-describedby={l.detail ? `profile-shortcut-${l.r}` : undefined} onClick={() => {
+                            if (l.r === "cafes") cafeReturnRoute.current = "profile";
+                            navigate(l.r);
+                          }}>
                             <l.icon size={20} />
-                            <span>{l.name}</span>
+                            <span>{l.name}{l.detail && <small className="profile-shortcut-detail" id={`profile-shortcut-${l.r}`}>{l.detail}</small>}</span>
                             <ChevronRight size={19} />
                           </button>
                         ))}
-                        <button
-                          onClick={() =>
-                            setInfo(
-                              [
-                                settings.contact ||
-                                  "Contact details have not been added yet.",
-                                settings.address,
-                                settings.openingHours,
-                              ]
-                                .filter(Boolean)
-                                .join("\n"),
-                            )
-                          }
-                        >
+                        <button type="button" onClick={() => setInfo({ kind: "cafe-contact" })}>
                           <Phone size={20} />
                           <span>Contact the café</span>
                           <ChevronRight size={19} />
                         </button>
-                        {user.admin && (
-                          <a href="/admin">
-                            <Settings size={20} />
-                            <span>Administrator dashboard</span>
-                            <ChevronRight size={19} />
-                          </a>
-                        )}
                       </div>
 
-                      <button type="button" className="signout" disabled={signingOut} onClick={async()=>{setSigningOut(true);try{const destination=await signOutSession(api,user?.authProvider);sessionStorage.removeItem("espresso_guest");if(user?.authProvider==="pin"){window.dispatchEvent(new Event("espresso-pin-signedout"))}else window.location.assign(destination)}catch(e){setError((e as Error).message);setSigningOut(false)}}}><LogOut size={18}/>{signingOut ? "Signing out…" : "Sign out"}</button>
+                      {user.canSeeStaffPanel === true && <a className="profile-staff-link" href="/admin">
+                        <LockKeyhole size={18} aria-hidden="true" />
+                        <span>Admin panel<small>Staff access</small></span>
+                        <ChevronRight size={16} aria-hidden="true" />
+                      </a>}
+                      <button type="button" className="signout" disabled={signingOut} onClick={async()=>{setSigningOut(true);try{await disableOrderNotifications();const destination=await signOutSession(api,user?.authProvider);sessionStorage.removeItem("espresso_guest");if(user?.authProvider==="pin"){window.dispatchEvent(new Event("espresso-pin-signedout"))}else window.location.assign(destination)}catch(e){setError((e as Error).message);setSigningOut(false)}}}><LogOut size={18}/>{signingOut ? "Signing out…" : "Sign out"}</button>
                     </div>
                   )}
                 </div>
@@ -1641,7 +1986,7 @@ export default function StoreApp() {
                 <div className="page-content narrow">
                   <PageTitle
                     title="Saved addresses"
-                    onBack={() => navigate("profile")}
+                    onBack={() => goBack("profile")}
                   />
                   {!user ? (
                     loginPanel()
@@ -1681,7 +2026,7 @@ export default function StoreApp() {
                 <div className="page-content narrow">
                   <PageTitle
                     title="Your ideas, on the menu"
-                    onBack={() => navigate("profile")}
+                    onBack={() => goBack("profile")}
                   />
                   {!user ? (
                     loginPanel()
@@ -1778,9 +2123,7 @@ export default function StoreApp() {
                               const file = e.target.files?.[0];
                               if (!file) return;
                               try {
-                                const f = new FormData();
-                                f.set("file", file);
-                                const b = await api("upload", "POST", f);
+                                const b = await api("upload", "POST", file);
                                 setSuggestion({ ...suggestion, image: b.url });
                                 notify("Reference image uploaded");
                               } catch (e: any) {
@@ -1816,44 +2159,68 @@ export default function StoreApp() {
                   <CoffeeSubscriptions onMenu={() => navigate("menu")} />
                 </div>
               )}
-              {["rewards","offers","cafes","wallet","referrals","birthday"].includes(route) && <div className="page-content narrow"><CoffeeClub view={route} settings={settings} onNavigate={navigate}/></div>}
-              {route === "pay" && (
+              {route === "cafes" && (
                 <div className="page-content narrow">
-                  <PageTitle title="Pay in store" />
-                  <UpiScanner/>
+                  <PageTitle title="Our café" onBack={() => goBack(cafeReturnRoute.current)} />
+                  <CafeDetails settings={settings} />
+                </div>
+              )}
+              {["offers","referrals","birthday"].includes(route) && <div className="page-content narrow"><CoffeeClub view={route} settings={settings} onNavigate={navigate}/></div>}
+              {route === "rewards" && (
+                <div className="page-content narrow">
+                  <PageTitle title="Rewards & Gifts" onBack={() => goBack("home")} />
+                  <div className="empty-state">
+                    <Gift size={36} aria-hidden="true" />
+                    <h2>Coming soon</h2>
+                  </div>
                 </div>
               )}
             </>
           )}
         </main>
-        {!["cart", "checkout"].includes(route) && (
-          <MovableCart ref={floatingCartRef} onOpen={() => navigate("cart")} label={`Open cart, ${qty} ${qty === 1 ? "item" : "items"}`}>
-            <ShoppingCart key={cartArrival} className={cartArrival ? "cart-arrival" : ""} size={25} />
-            {qty > 0 && <span className="cart-count" aria-live="polite">{qty}</span>}
-          </MovableCart>
-        )}
-        {user&&<div className="mobile-order-alerts"><OrderAlerts orders={orders} userId={user.userId} onNavigate={navigate}/></div>}
-        <nav className="bottom-nav" aria-label="Main navigation">
-          {[
-            { r: "home", name: "Home", icon: House },
-            { r: "menu", name: "Menu", icon: BookOpen },
-            { r: "pay", name: "Pay in Store", icon: ScanLine },
-            { r: "subscriptions", name: "Subscriptions", icon: ShoppingBag },
-            { r: "profile", name: "Profile", icon: UserRound },
-          ].map((n) => (
+        <div className={homeHasActiveOrders ? "home-commerce-dock" : undefined}>
+          {qty > 0 && !["cart", "checkout"].includes(route) && (
+            <MovableCart ref={floatingCartRef} avoidOrderRail={homeHasActiveOrders} onOpen={() => navigate("cart")} label={`Open cart, ${qty} ${qty === 1 ? "item" : "items"}`}>
+              <ShoppingCart key={cartArrival} className={cartArrival ? "cart-arrival" : ""} size={25} />
+              <span className="cart-count" aria-live="polite">{qty}</span>
+            </MovableCart>
+          )}
+          {homeHasActiveOrders && <HomeLiveOrders orders={orders} onOpen={setTrackingOrderId} />}
+        </div>
+        {user&&<div className="mobile-order-alerts"><OrderAlerts orders={orders} userId={user.userId} onNavigate={navigate} onOpen={setTrackingOrderId}/></div>}
+        <nav ref={bottomNav} className="bottom-nav glass-tab-bar" aria-label="Main navigation"
+          style={{ "--glass-tab-index": Math.max(0, bottomTabs.findIndex(tab => tab.r === route)) } as React.CSSProperties}>
+          <span className="bottom-nav-glass" aria-hidden="true" />
+          <svg className="bottom-nav-shape" viewBox="0 0 380 64" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <defs>
+              <clipPath id="bottom-nav-glass-clip" clipPathUnits="objectBoundingBox">
+                <use href="#bottom-nav-outline" transform="scale(.002631579 .015625)" />
+              </clipPath>
+            </defs>
+            <path id="bottom-nav-outline" d={bottomNavOutline} vectorEffect="non-scaling-stroke" />
+            <BottomNavRefreshWave outline="bottom-nav-outline"
+              onEnd={() => bottomNav.current?.removeAttribute("data-refresh-impact")} />
+          </svg>
+          <span className="glass-tab-selection" aria-hidden="true" />
+          {bottomTabs.map((n) => (
             <button
               key={n.r}
-              className={
-                (route === n.r ? "active " : "") +
-                (n.r === "pay" ? "pay-nav" : "")
-              }
-              onClick={() => navigate(n.r)}
+              data-scan-to-order={n.r === "pay" ? "" : undefined}
+              className={route === n.r ? "active" : undefined}
+              onClick={() => {
+                if (n.r === "pay") scanReturnRoute.current = route;
+                navigate(n.r);
+              }}
               aria-current={route === n.r ? "page" : undefined}
             >
               <span className="nav-icon">
-                {n.r === "profile" && (profilePhoto ?? user?.profile?.avatar) ? <CustomerAvatar src={profilePhoto ?? user?.profile?.avatar} name={user?.profile?.name||user?.fullName} decorative/> : <n.icon size={23} strokeWidth={route === n.r ? 2.2 : 1.7} aria-hidden="true"/>}
+                {n.r === "profile" && user?.profile?.avatar ? (
+                  <CustomerAvatar src={user.profile.avatar} decorative />
+                ) : (
+                  <n.icon size={23} strokeWidth={route === n.r ? 2.2 : 1.7} aria-hidden="true" />
+                )}
               </span>
-              <span>{n.name}</span>
+              <span className="bottom-nav-label">{n.name}</span>
             </button>
           ))}
         </nav>
@@ -1867,7 +2234,12 @@ export default function StoreApp() {
                           e.preventDefault();
                           setBusy(true);
                           try {
-                            await api("profile", "PUT", {...contact, ...(profilePhoto !== null ? {avatar: profilePhoto} : {})});
+                            await api("profile", "PUT", {...contact, gender: profileGender, ...(profilePhoto !== null ? {avatar: profilePhoto} : {})});
+                            if (profilePhoto !== null) {
+                              setData((current: any) => current?.user?.userId === user.userId
+                                ? { ...current, user: { ...current.user, profile: { ...current.user.profile, avatar: profilePhoto } } }
+                                : current);
+                            }
                             setProfilePhoto(null);
                             await load();
                             setProfileEditorOpen(false);
@@ -1883,7 +2255,7 @@ export default function StoreApp() {
                         {error && <p role="alert" className="error-banner">{error}</p>}
                         <div className="profile-photo-controls">
                           <label>Display picture
-                            <input ref={profilePhotoInput} type="file" accept="image/png,image/jpeg,image/webp" disabled={busy} onChange={async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>5000000){setError("Choose an image smaller than 5 MB.");return;}setBusy(true);try{const form=new FormData();form.set("file",file);const result=await api("upload","POST",form);setProfilePhoto(result.url);notify("Photo ready. Save your profile to apply it.");}catch(error){setError((error as Error).message);}finally{setBusy(false);event.target.value="";}}}/>
+                            <input ref={profilePhotoInput} type="file" accept="image/png,image/jpeg,image/webp" disabled={busy} onChange={async event=>{const file=event.target.files?.[0];if(!file)return;if(file.size>5000000){setError("Choose an image smaller than 5 MB.");return;}setBusy(true);try{const result=await api("upload","POST",file);setProfilePhoto(result.url);notify("Photo ready. Save your profile to apply it.");}catch(error){setError((error as Error).message);}finally{setBusy(false);event.target.value="";}}}/>
                           </label>
                           {(profilePhoto ?? user.profile?.avatar) && <button type="button" className="text-button" disabled={busy} onClick={()=>setProfilePhoto("")}>Remove photo</button>}
                           <small>PNG, JPEG or WebP · up to 5 MB</small>
@@ -1911,6 +2283,7 @@ export default function StoreApp() {
                             }
                           />
                         </label>
+                        <ProfileGenderField value={profileGender} onChange={setProfileGender} disabled={busy} editProfile/>
                         {user.authProvider==='pin'&&<p className="fine-print">Your sign-in number is {user.loginPhone||'the number used to create your account'}. Contact the café to change account access securely.</p>}
                         <button className="secondary" disabled={busy}>
                           Save profile
@@ -1919,6 +2292,11 @@ export default function StoreApp() {
           </section>
         </div>
       )}
+      {trackingOrderId && orders.some(order => order.id === trackingOrderId) && <OrderStatusScreen backLabel={route === "home" ? "Back to Home" : "Back to orders"} order={orders.find(order => order.id === trackingOrderId)!} onClose={() => setTrackingOrderId(null)} onChat={() => setChatOrderId(trackingOrderId)} />}
+      {user && detailsOrderId && orders.some(order=>order.id===detailsOrderId) && <OrderDetailsSheet key={detailsOrderId} order={orders.find(order=>order.id===detailsOrderId)} onClose={()=>setDetailsOrderId(null)}/>}
+      {user && chatOrderId && <OrderChat key={chatOrderId} orderId={chatOrderId}
+        orderNumber={orders.find((order) => order.id === chatOrderId)?.order_number}
+        request={api} onClose={() => setChatOrderId(null)} />}
       {selected && (
         <div className="modal-backdrop" onClick={() => setSelected(null)}>
           <section
@@ -2066,7 +2444,7 @@ export default function StoreApp() {
             className="info-modal"
             role="dialog"
             aria-modal="true"
-            aria-label="Café information"
+            aria-label={cafeContactOpen ? "Contact the café" : "Café information"}
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -2079,7 +2457,15 @@ export default function StoreApp() {
             </button>
             <Coffee size={35} />
             <h2>{settings.brand}</h2>
-            <p>{info}</p>
+            {cafeContactOpen ? (
+              <div className="cafe-contact-actions">
+                <p>{outletLabel}</p>
+                {cafePhone && <a className="primary" href={`tel:${cafePhone.replace(/[^+\d]/g, "")}`}><Phone size={17} aria-hidden="true" /> Call {cafePhone}</a>}
+                {cafeEmail && <a className="secondary" href={`mailto:${cafeEmail}`}><Mail size={17} aria-hidden="true" /> Email the café</a>}
+                {cafeContact && !cafePhone && !cafeEmail && <p>{cafeContact}</p>}
+                {!cafeContact && !cafePhone && !cafeEmail && <p>Contact details are unavailable for this outlet.</p>}
+              </div>
+            ) : <p>{info}</p>}
             {!user && (
               <a
                 className="primary"
@@ -2092,7 +2478,7 @@ export default function StoreApp() {
           }}
                 href={
                   "/tester-login?return_to=" +
-                  encodeURIComponent("/#" + route)
+                  encodeURIComponent(testerReturnPath())
                 }
               >
                 Start testing
@@ -2101,7 +2487,7 @@ export default function StoreApp() {
           </section>
         </div>
       )}
-      {user && <BookingNotifications userId={user.userId} onView={()=>{sessionStorage.setItem('espresso-open-bookings','1');navigate('home');window.dispatchEvent(new Event('espresso-open-bookings'));}}/>}
+      {user && <BookingNotifications userId={user.userId} onView={()=>{sessionStorage.setItem('espresso-open-bookings','1');navigate(homeShowsBookings ? 'home' : 'bookings');window.dispatchEvent(new Event('espresso-open-bookings'));}}/>}
       {notice && (
         <div className="toast" role="status">
           <CheckCircle2 size={19} />

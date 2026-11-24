@@ -1,0 +1,45 @@
+.cafe-travel-mode { margin: 0; padding: 0; border: 0; min-width: 0; }
+.cafe-travel-mode legend { padding: 0 0 5px; font-size: 13px; font-weight: 700; }
+.cafe-travel-options {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 3px;
+  border: 1px solid #a4bcd0;
+  border-radius: 17px;
+  background: #bacfe082;
+}
+.cafe-travel-options > span {
+  position: absolute;
+  z-index: -1;
+  inset: 3px auto 3px 3px;
+  width: calc(50% - 3px);
+  border: 1px solid #fff;
+  border-radius: 13px;
+  background: linear-gradient(145deg, #f6fbff, #daeaf7);
+  box-shadow: 0 2px 6px #34557326;
+  opacity: 0;
+}
+.cafe-travel-options[data-mode="walk"] > span, .cafe-travel-options[data-mode="drive"] > span { opacity: 1; }
+.cafe-travel-options[data-mode="drive"] > span { transform: translateX(100%); }
+html[data-theme] .cafe-travel-options > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 5px;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  color: #244c70;
+  font-size: .875rem;
+}
+.cafe-travel-options > button:disabled { opacity: .55; }
+.cafe-travel-options > button[aria-pressed="true"] { font-weight: 700; }
+@media (prefers-reduced-motion: no-preference) {
+  .cafe-travel-options > span { transition: transform 270ms cubic-bezier(.22,.75,.3,1), opacity 150ms ease; }
+  .cafe-route-summary { animation: cafe-route-arrival 260ms ease-out both; }
+  @keyframes cafe-route-arrival { from { opacity: 0; transform: translateY(4px); } }
+}
