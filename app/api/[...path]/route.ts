@@ -3,7 +3,6 @@ import {adminChatUnread,markAdminChatRead} from '../../../lib/admin-chat-unread'
 import {canonicalServerRequest} from '../../../lib/request-origin';
 import {subscriptionId} from '../../../lib/order-notifications';
 import {customerOrderAlertFeed,staffOrderAlertFeed} from '../../../lib/order-alert-feed';
-import {androidPushConfigured,registerAndroidPush} from '../../../lib/android-push-registration';
 import {isProfileGender} from '../../../lib/daily-greeting';
 import {canSeeStaffPanel,isApprovedStaff} from '../../../lib/staff-panel-access';
 import {isAdvertisementDestination,launchAdvertisementKey,readLaunchAdvertisement,type AdvertisementDraft,type LaunchAdvertisement} from '../../../lib/launch-advertisement';
@@ -185,14 +184,6 @@ async function handle(req: Request) {
     }
     if (method === "GET" && path === "order-notifications/device") {
       return json({ notices: await customerOrderAlertFeed(d, user.userId) });
-    }
-    if (method === "POST" && (path === "order-notifications/android" || path === "admin/order-alerts/android")) {
-      assert(androidPushConfigured(process.env), "Android push is unavailable.", 503);
-      const staff = path.startsWith("admin/");
-      assert(staff ? user.authProvider === "staff-pin" && canManageStaffOrders(user) : user.authProvider === "pin",
-        "Android push requires an eligible account.", 403);
-      await registerAndroidPush(d, req.headers.get("cookie"), user.userId, staff ? "staff" : "customer", await body(req));
-      return json({ok:true});
     }
     if (method !== "GET" && (path.startsWith("admin/orders/") || path.startsWith("admin/payments/"))) {
       assert(canManageStaffOrders(user), "Live order controls are for the café operator.", 403);

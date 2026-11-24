@@ -20,8 +20,7 @@ const appTypes = {
 };
 
 export function openPostgres(settings = process.env) {
-  if (!settings.PGHOST?.startsWith('/') || !(settings.SELFHOST_DATABASE === 'postgres'
-    ? settings.PGDATABASE === 'espressoulster_runtime_staging' : permitted.has(settings.PGDATABASE))) {
+  if (!settings.PGHOST?.startsWith('/') || !permitted.has(settings.PGDATABASE)) {
     throw new Error('PostgreSQL runtime is restricted to an isolated staging database and Unix socket.');
   }
   const max = Number(settings.SELFHOST_POSTGRES_POOL_SIZE || 8);

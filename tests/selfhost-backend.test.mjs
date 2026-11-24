@@ -65,21 +65,6 @@ test('local backend defaults to loopback and refuses insecure public or live set
   assert.equal(selfhostSettings({ ...live, PAYMENT_APP_ORIGIN: 'https://cafe.example', SELFHOST_TLS_CERT: 'cert', SELFHOST_TLS_KEY: 'key' }).live, true);
 });
 
-test('existing PostgreSQL app can use live checkout behind a local TLS proxy without enabling it for staging', () => {
-  const env = {
-    SELFHOST_DATABASE: 'postgres', PGDATABASE: 'espressoulster_runtime_staging', PGHOST: '/run/postgresql',
-    PAYMENT_PROVIDER: 'cashfree', PAYMENT_MODE: 'live', PAYMENT_LIVE_ENABLED: 'true', PUBLIC_TEST_MODE: 'false',
-    PAYMENT_APP_ORIGIN: 'https://cafe.example', SELFHOST_TRUST_PROXY: 'loopback',
-    CASHFREE_LIVE_CLIENT_ID: 'production-fixture', CASHFREE_LIVE_CLIENT_SECRET: 'fixture-secret'
-  };
-  assert.equal(selfhostSettings(env).live, true);
-  for (const override of [
-    { PGDATABASE: 'espressoulster_pg_fixture' }, { PGHOST: 'db.example' }, { SELFHOST_TRUST_PROXY: '' },
-    { SELFHOST_HOST: '0.0.0.0' }, { PUBLIC_TEST_MODE: 'true' }, { PAYMENT_MODE: 'test' },
-    { CASHFREE_STAGING_SANDBOX_ENABLED: 'true' }, { SELFHOST_DATABASE: 'postgres-staging' }
-  ]) assert.throws(() => selfhostSettings({...env, ...override}));
-});
-
 test('PostgreSQL staging requires explicit HTTPS settings for a public listener', () => {
   const privateStaging = { SELFHOST_DATABASE: 'postgres-staging', PGDATABASE: 'espressoulster_pg_fixture' };
   assert.equal(selfhostSettings(privateStaging).host, '127.0.0.1');

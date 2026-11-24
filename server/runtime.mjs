@@ -9,7 +9,7 @@ function runtime() {
   if (typeof window !== 'undefined') throw new Error('Server runtime cannot run in the browser');
   if (!globalThis[stateKey]) {
     const directory = path.resolve(process.env.SELFHOST_DATA_DIR || '.selfhost/data');
-    const usePostgres = ['postgres-staging', 'postgres'].includes(process.env.SELFHOST_DATABASE);
+    const usePostgres = process.env.SELFHOST_DATABASE === 'postgres-staging';
     if (usePostgres) selfhostSettings(process.env);
     globalThis[stateKey] = {
       DB: usePostgres ? openPostgres() : openDatabase(path.join(directory, 'cafe.sqlite')),

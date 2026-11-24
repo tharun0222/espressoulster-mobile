@@ -35,7 +35,7 @@ function listen() {
 }
 
 export async function liveUpdatesResponse(userId, staff, signal) {
-  if (!['postgres-staging', 'postgres'].includes(process.env.SELFHOST_DATABASE) || process.env.SELFHOST_LIVE_UPDATES !== 'true') {
+  if (process.env.SELFHOST_DATABASE !== 'postgres-staging' || process.env.SELFHOST_LIVE_UPDATES !== 'true') {
     return new Response(null,{status:204});
   }
   await listen();

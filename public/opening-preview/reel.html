@@ -1,0 +1,60 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Espressoulster · Logo reveal</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4ebe2;color:#2b211c;font:15px system-ui}main{width:min(100%,430px);min-height:340px;margin:auto;background:#fffaf5;text-align:center;position:relative;isolation:isolate;padding:20px;display:grid;place-content:center;overflow:hidden}h1{font-size:clamp(27px,8vw,43px);letter-spacing:-.05em;margin:0}h1 span{display:block;font-size:11px;letter-spacing:.24em;color:#9b3d1f;margin-top:6px}button{position:absolute;bottom:14px;left:50%;translate:-50% 0;border:1px solid #e7dcd0;background:#fff;color:inherit;border-radius:99px;padding:12px 20px;font:inherit;cursor:pointer;white-space:nowrap}.play h1{animation:reveal .85s ease both}@keyframes reveal{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){.play h1{animation:none}}
+
+.wordmark{display:inline-block}
+.play .wordmark{
+  background:linear-gradient(105deg,#2b211c 38%,#b55432 47%,#e59765 50%,#2b211c 61%);
+  background-size:260% 100%;
+  background-clip:text;
+  color:transparent;
+  animation:copper-sweep 1.2s .25s ease both;
+}
+.ripple{display:block;width:64px;height:10px;margin:20px auto 0;border:1px solid #b55432;border-radius:50%;opacity:0}
+.play .ripple{animation:espresso-ring .85s .56s ease-out both}
+@keyframes copper-sweep{from{background-position:100% 0}to{background-position:0 0}}
+@keyframes espresso-ring{from{opacity:.65;transform:scale(.25)}to{opacity:0;transform:scale(1.45)}}
+@media(prefers-reduced-motion:reduce){.play .wordmark{animation:none;color:inherit;background:none}.play .ripple{animation:none}}
+
+.outlet-cup{width:124px;height:145px;margin:0 auto 18px;filter:drop-shadow(0 10px 10px #61331c24)}
+#selected-cup svg{display:block;transform-origin:50% 80%}
+.play #selected-cup svg{animation:var(--motion) 1.2s ease-in-out both}
+[data-motion="tumbler"]{--motion:rise}
+[data-motion="demitasse"]{--motion:bounce}
+[data-motion="bowl"]{--motion:sway}
+[data-motion="diner"]{--motion:turn}
+[data-motion="latte"]{--motion:stretch}
+[data-motion="iced"]{--motion:shake}
+[data-motion="flask"]{--motion:flip}
+[data-motion="camp"]{--motion:hop}
+[data-motion="mocha"]{--motion:tilt}
+[data-motion="pourover"]{--motion:pour}
+@keyframes rise{0%{transform:translateY(32px);opacity:0}65%{transform:translateY(-8px)}}
+@keyframes bounce{0%{transform:scale(.82)}40%{transform:translateY(-23px)}72%{transform:scale(1.06,.94)}}
+@keyframes sway{25%{transform:rotate(-14deg)}65%{transform:rotate(9deg)}}
+@keyframes turn{0%{transform:perspective(240px) rotateY(-40deg) rotateX(14deg)}65%{transform:perspective(240px) rotateY(24deg) rotateX(-7deg)}}
+@keyframes stretch{0%{transform:scale(1.08,.72)}60%{transform:scale(.96,1.09)}}
+@keyframes shake{22%,60%{transform:translateX(-6px) rotate(-6deg)}40%,76%{transform:translateX(6px) rotate(6deg)}}
+@keyframes flip{0%{transform:translateY(18px) rotate(-25deg)}55%{transform:translateY(-18px) rotate(14deg)}}
+@keyframes hop{35%{transform:translate(13px,-24px) rotate(12deg)}68%{transform:translate(-5px,-8px) rotate(-5deg)}}
+@keyframes tilt{45%{transform:rotate(-22deg)}76%{transform:rotate(6deg)}}
+@keyframes pour{35%,62%{transform:translate(8px,-10px) rotate(34deg)}}
+@media(prefers-reduced-motion:reduce){.play #selected-cup svg{animation:none}}
+[hidden]{display:none!important}
+label{margin:12px 0 5px;font-size:12px;color:#77685c}
+select{justify-self:center;border:1px solid #e7dcd0;border-radius:12px;background:#fff;color:inherit;padding:8px;font:inherit}
+
+main{position:sticky;top:0;z-index:1;border-bottom:1px solid #e7dcd0}
+.cup-gallery{max-width:720px;margin:auto;padding:16px}
+#cup-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:8px}
+#cup-options button{position:static;translate:none;white-space:normal;border-radius:12px;padding:8px;font-size:12px}
+#cup-options button[aria-pressed="true"]{outline:2px solid #9b3d1f;outline-offset:-2px}
+#cup-options svg{display:block;width:66px;height:77px;margin:auto}
+</style>
+<main class="play">
+<div id="selected-cup"></div><h1><strong class="wordmark">Espressoulster</strong><span>COFFEE</span></h1><i class="ripple" aria-hidden="true"></i></main>
+<section class="cup-gallery" aria-labelledby="gallery-title">
+  <h2 id="gallery-title">Choose a cup</h2>
+  <div id="cup-options"></div>
+</section>
+<script type="module" src="cup-gallery.js"></script></html>

@@ -1,1 +1,0 @@
-Final local built-Worker integration run: 36 tests in 3.326 seconds. OK. 0 failures, 0 errors, 0 skipped. See tests/integration.py and integration-results.json.

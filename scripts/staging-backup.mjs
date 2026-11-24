@@ -8,7 +8,7 @@ const data = path.resolve(process.env.SELFHOST_DATA_DIR || '.selfhost/data');
 const root = path.resolve(process.env.SELFHOST_BACKUP_DIR || '.selfhost/backups');
 const name = new Date().toISOString().replace(/[:.]/g, '-');
 const destination = path.join(root, name);
-const postgres = ['postgres-staging', 'postgres'].includes(process.env.SELFHOST_DATABASE);
+const postgres = process.env.SELFHOST_DATABASE === 'postgres-staging';
 const postgresBin = process.env.SELFHOST_POSTGRES_BIN;
 if (postgres && (!process.env.PGHOST?.startsWith('/') || process.env.PGDATABASE !== 'espressoulster_runtime_staging' ||
   !postgresBin || !path.isAbsolute(postgresBin))) {

@@ -32,15 +32,3 @@ test('leaving checkout releases pending native listeners',async t=>{
  const target=mock(t,()=> 'opened');const pending=openNativeCashfreeCheckout(session);
  target.dispatchEvent(new Event('pagehide'));assert.equal(await pending,'closed');
 });
-
-test('release bridge opens a live session and leaves settlement to the backend',async t=>{
- let input;
- const target=mock(t,(_name,value)=>{input=JSON.parse(value);return 'opened';});
- target.espressoCashfreeMode='live';
- assert.equal(openNativeCashfreeCheckout(session),null);
- const pending=openNativeCashfreeCheckout({...session,mode:'live'});
- assert.equal(input.mode,'live');
- assert.equal(input.paymentSessionId,session.paymentSessionId);
- callback(target,input.requestId,'verify');
- assert.equal(await pending,'verify');
-});

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Espressoulster · Home motion previews</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eaddd0;color:#352017;font:15px system-ui}
+main{width:min(100%,430px);margin:auto;min-height:100svh;background:#fff9f1;padding:20px}
+nav{display:grid;grid-template-columns:1fr 1fr;gap:8px}button{min-height:44px;padding:10px;border:1px solid #c6a38b;border-radius:12px;background:#fff5e9;color:inherit;font:inherit;cursor:pointer}
+button[aria-pressed=true]{background:#743b26;color:#fff4e5}header{margin:22px 0 14px;font:25px Georgia}header small{display:block;font:10px system-ui;letter-spacing:.2em;margin-top:4px;color:#915234}
+h1{font:34px Georgia;margin:0}h2{font-size:18px}p{line-height:1.5}#description{min-height:48px;color:#73503f}
+.scene{height:390px;position:relative;overflow:hidden;border-radius:24px;background:#23140f;color:#fff1df;isolation:isolate}
+.scene img{object-fit:cover}#replay{margin-top:12px;width:100%}.hint{font-size:12px;color:#79543f}
+.drink-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,#a1693d,#25130d 70%);transition:background .7s}
+.drink-photo{position:absolute;inset:30px 18% 90px;width:64%;height:260px;border-radius:120px 120px 80px 80px;box-shadow:0 22px 35px #0007;animation:drink-in .85s both}
+.hero-copy{position:absolute;bottom:25px;left:20px;right:20px;text-align:center}
+.hero-copy small{letter-spacing:.15em}.ingredient{position:absolute;font-size:27px;animation:float 3s ease-in-out infinite alternate}
+.bean{width:23px;height:32px;background:#b27448;border-radius:60% 45%;border:2px solid #e3ac7a;transform:rotate(30deg)}
+.bean::after{content:"";display:block;height:22px;width:1px;background:#5b2f1e;margin:3px auto}
+.drink-next{position:absolute;right:14px;top:14px;z-index:5;background:#fff1df;color:#352017;border:0}
+.cards-scene{background:#24150e;transition:color .7s;color:#fff0dd}
+.light-disc{position:absolute;inset:0;background:#f6e9d6;clip-path:circle(0% at 90% 10%);transition:clip-path .85s cubic-bezier(.3,.7,.3,1);z-index:-1}
+.light .light-disc{clip-path:circle(150% at 90% 10%)}.light{color:#352017}
+.card-stack{position:absolute;left:35%;top:43px;width:58%;height:230px;perspective:600px}
+.menu-card{position:absolute;inset:0;border-radius:18px;overflow:hidden;transform:translateY(var(--y)) rotateY(-20deg) rotateZ(var(--angle));box-shadow:0 8px 20px #0005;animation:card-rotate 1.2s var(--delay) both}
+.menu-card img{width:100%;height:100%}.theme-button{color:#352017;position:absolute;top:12px;right:12px;z-index:4}
+.cards-copy{position:absolute;left:20px;bottom:24px;max-width:75%}
+.photo-grid{position:absolute;inset:-20px;display:grid;grid-template-columns:repeat(4,1fr);gap:5px;transform:rotate(-8deg) scale(1.1)}
+.photo-grid button{min-height:0;height:110px;padding:0;overflow:hidden;border:0;border-radius:6px}
+.photo-grid img{width:100%;height:100%;transition:transform .3s}.photo-grid button:hover img{transform:scale(1.1)}
+.gallery-title{position:absolute;left:18px;bottom:18px;text-shadow:0 2px 12px #000;pointer-events:none}
+.feature-photo{position:absolute;inset:25px 35px 70px;border-radius:12px;box-shadow:0 0 0 200px #100a0788,0 18px 40px #000b;width:calc(100% - 70px);height:295px;animation:expand-photo .6s cubic-bezier(.2,.75,.2,1) both;cursor:pointer}
+.spread-title{position:absolute;left:10%;top:40%;width:80%;text-align:center;font:bold 38px system-ui;line-height:1;letter-spacing:-.04em;animation:title-shrink 1.2s .4s both}
+.scatter{position:absolute;width:110px;height:130px;border-radius:8px;left:calc(50% - 55px);top:calc(50% - 65px);animation:spread 1.5s .3s cubic-bezier(.2,.7,.25,1) both;box-shadow:0 10px 25px #0008}
+.spread-note{position:absolute;bottom:14px;left:16px;right:16px;text-align:center;font-size:13px;animation:copy-in 1s 1s both}
+@keyframes drink-in{from{opacity:0;transform:translateY(45px) rotate(12deg) scale(.85)}}
+@keyframes float{to{translate:0 -15px;rotate:12deg}}
+@keyframes card-rotate{from{opacity:0;transform:translateY(160px) rotateY(80deg) rotateZ(22deg)}}
+@keyframes expand-photo{from{opacity:0;transform:scale(.25) rotate(-8deg)}}
+@keyframes spread{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:translate(var(--x),var(--y)) rotate(var(--r))}}
+@keyframes title-shrink{to{transform:scale(.65);opacity:.8}}
+@keyframes copy-in{from{opacity:0;transform:translateY(10px)}}
+@media(prefers-reduced-motion:reduce){*,*::after{animation-duration:1ms!important;animation-delay:0ms!important;transition-duration:1ms!important}}
+</style>
+<main>
+<nav aria-label="Choose a Home motion preview">
+<button data-scene="0">01 · Drinks</button><button data-scene="1">02 · Cards</button>
+<button data-scene="2">03 · Gallery</button><button data-scene="3">04 · Photo spread</button>
+</nav>
+<header>Espressoulster<small>COFFEE</small></header>
+<h2 id="name" aria-live="polite"></h2>
+<div id="stage"></div>
+<p id="description"></p>
+<button id="replay">Replay animation</button>
+<p class="hint">Design previews using your café images. Choose a direction before applying it to Home.</p>
+</main>
+<script>
+const photos = [
+ '/images/menu/items/source-04.webp',
+ '/images/menu/items/recipe-the-classic-schmear.webp',
+ '/images/menu/items/source-03.webp',
+ '/images/menu/items/recipe-chicken-barbeque.webp',
+ '/images/launch-coffee.webp',
+ '/images/reference-banner.webp',
+];
+const options=[
+ ['Changing drinks','Tap “Next drink” to switch the featured drink while ingredients float around it.'],
+ ['Rotating cards','Tap “Change lighting” for the circular cream reveal behind the rotating menu cards.'],
+ ['Expanding gallery','Tap any photo to expand it. Tap the expanded photo to return to the gallery.'],
+ ['Photo spread','Photos travel outward from the café title and settle around the message.'],
+];
+const stage=document.querySelector('#stage');
+const buttons=[...document.querySelectorAll('[data-scene]')];
+let selected=0;
+let drink=0;
+function image(src,attributes=''){return '<img src="'+src+'" '+attributes+'>'}
+function show(index){
+ selected=index;
+ buttons.forEach(button=>button.setAttribute('aria-pressed',Number(button.dataset.scene)===index));
+ document.querySelector('#name').textContent=String(index+1).padStart(2,'0')+' · '+options[index][0];
+ document.querySelector('#description').textContent=options[index][1];
+ const scene=document.createElement('section');scene.className='scene';
+ scene.setAttribute('aria-label',options[index][0]+' preview');
+ stage.replaceChildren(scene);
+ if(index===0){
+  scene.innerHTML='<div class="drink-bg"></div><button class="drink-next">Next drink ↗</button><div class="drink-holder"></div><i class="ingredient bean" style="left:13%;top:27%"></i><i class="ingredient bean" style="right:11%;top:53%;animation-delay:-1s"></i><span class="ingredient" style="left:12%;top:69%">✦</span><span class="ingredient" style="right:12%;top:16%">✦</span><div class="hero-copy"><small>BREWED FOR YOU</small><h1 class="drink-name"></h1></div>';
+  const change=()=>{
+   const names=['Cappuccino','Latte'];
+   scene.querySelector('.drink-holder').innerHTML=image(photos[drink===0?0:2],'class="drink-photo" alt="'+names[drink]+'"');
+   scene.querySelector('.drink-name').textContent=names[drink];
+   scene.querySelector('.drink-bg').style.filter=drink?'hue-rotate(-15deg) brightness(1.2)':'none';
+  };
+  scene.querySelector('button').onclick=()=>{drink=1-drink;change()};
+  change();
+ }
+ if(index===1){
+  scene.classList.add('cards-scene');
+  scene.innerHTML='<div class="light-disc"></div><button class="theme-button">Change lighting</button><div class="card-stack">'+[0,1,2].map((n)=>'<div class="menu-card" style="--y:'+n*23+'px;--angle:'+(n-1)*12+'deg;--delay:'+n*120+'ms">'+image(photos[n],'alt=""')+'</div>').join('')+'</div><div class="cards-copy"><h1>A little café time.</h1><p>Coffee, bites, and good company.</p></div>';
+  scene.querySelector('button').onclick=()=>scene.classList.toggle('light');
+ }
+ if(index===2){
+  scene.innerHTML='<div class="photo-grid">'+Array.from({length:16},(_,n)=>'<button aria-label="Expand café photo '+(n+1)+'">'+image(photos[n%photos.length],'alt=""')+'</button>').join('')+'</div><h1 class="gallery-title">Café moments.</h1>';
+  scene.querySelectorAll('.photo-grid button').forEach((button,n)=>button.onclick=()=>{
+   const expanded=document.createElement('img');expanded.src=photos[n%photos.length];expanded.alt='Expanded café photo';expanded.className='feature-photo';expanded.tabIndex=0;expanded.setAttribute('role','button');expanded.setAttribute('aria-label','Close expanded photo');expanded.onclick=()=>expanded.remove();expanded.onkeydown=e=>{if(['Enter',' ','Escape'].includes(e.key))expanded.remove()};scene.append(expanded);expanded.focus();
+  });
+ }
+ if(index===3){
+  scene.innerHTML='<div class="spread-title">MEET ME<br>FOR COFFEE.</div>'+[
+   [-94,-132,-13],[86,-123,12],[-108,104,9],[102,107,-12]
+  ].map(([x,y,r],n)=>image(photos[n],'class="scatter" alt="" style="--x:'+x+'px;--y:'+y+'px;--r:'+r+'deg"')).join('')+'<p class="spread-note">Your next café moment starts here.</p>';
+ }
+}
+buttons.forEach(button=>button.onclick=()=>show(Number(button.dataset.scene)));
+document.querySelector('#replay').onclick=()=>show(selected);
+show(0);
+</script>
+</html>

@@ -16,26 +16,18 @@ export function selfhostSettings(env, development = false) {
   if (origin.username || origin.password || origin.pathname !== '/' || origin.search || origin.hash) {
     throw new Error('PAYMENT_APP_ORIGIN must contain only the app origin');
   }
-  const trustLoopbackProxy = env.SELFHOST_TRUST_PROXY === 'loopback';
-  if (env.SELFHOST_TRUST_PROXY && !trustLoopbackProxy) throw new Error('SELFHOST_TRUST_PROXY must be loopback or unset');
-  if (trustLoopbackProxy && !loopback) throw new Error('Trusted proxy mode requires a loopback listener');
-  if (env.SELFHOST_DATABASE === 'postgres') {
-    if (env.PGDATABASE !== 'espressoulster_runtime_staging' || !env.PGHOST?.startsWith('/') ||
-      env.PUBLIC_TEST_MODE !== 'false' || development || origin.protocol !== 'https:' ||
-      (!certificate && !trustLoopbackProxy) || env.PAYMENT_MODE === 'test' ||
-      env.CASHFREE_STAGING_SANDBOX_ENABLED === 'true') {
-      throw new Error('PostgreSQL checkout requires the existing app database, private socket, HTTPS and sandbox disabled.');
-    }
-  }
   if (live) {
     const name = origin.hostname.replace(/^\[|\]$/g, '');
     if (origin.protocol !== 'https:' || origin.port || isIP(name) ||
       !name.includes('.') || /\.(?:localhost|local|test|invalid)$/.test(name) ||
-      (!certificate && !trustLoopbackProxy) || env.PUBLIC_TEST_MODE !== 'false' ||
+      !certificate || env.PUBLIC_TEST_MODE !== 'false' ||
       !env.CASHFREE_LIVE_CLIENT_ID || !env.CASHFREE_LIVE_CLIENT_SECRET) {
       throw new Error('Live Cashfree requires production keys, a public HTTPS domain on port 443, and its TLS certificate. Keep live payments disabled until these are ready.');
     }
   }
+  const trustLoopbackProxy = env.SELFHOST_TRUST_PROXY === 'loopback';
+  if (env.SELFHOST_TRUST_PROXY && !trustLoopbackProxy) throw new Error('SELFHOST_TRUST_PROXY must be loopback or unset');
+  if (trustLoopbackProxy && !loopback) throw new Error('Trusted proxy mode requires a loopback listener');
   if (env.SELFHOST_DATABASE === 'postgres-staging') {
     if (env.PAYMENT_LIVE_ENABLED === 'true') throw new Error('PostgreSQL staging cannot enable live payments');
     if (!loopback) {

@@ -1,10 +1,7 @@
 import {request} from 'node:https';
-import {isAbsolute} from 'node:path';
-import {connect} from 'node:tls';
 
 /** Use the existing allowlisted IPv4 address without relaxing TLS or MSG91 IP security. */
-export function createMsg91Ipv4Fetch(httpsRequest: typeof request = request, relaySocket?: string): typeof fetch {
- if (relaySocket && !isAbsolute(relaySocket)) throw new TypeError('MSG91 relay requires an absolute Unix socket path');
+export function createMsg91Ipv4Fetch(httpsRequest: typeof request = request): typeof fetch {
  return async (input, init = {}) => {
   if (typeof input !== 'string' && !(input instanceof URL)) throw new TypeError('MSG91 requires a URL');
   const url = new URL(input);
@@ -15,11 +12,7 @@ export function createMsg91Ipv4Fetch(httpsRequest: typeof request = request, rel
   if (init.signal?.aborted) throw init.signal.reason;
   return new Promise<Response>((resolve, reject) => {
     const headers = Object.fromEntries(new Headers(init.headers).entries());
-    // The relay transports TLS bytes. Staging still validates MSG91's certificate.
-    const route = relaySocket
-      ? {createConnection: () => connect({path:relaySocket, servername:url.hostname, rejectUnauthorized:true})}
-      : {family:4};
-    const req = httpsRequest(url, {...route, method: init.method || 'GET', headers}, res => {
+    const req = httpsRequest(url, {family: 4, method: init.method || 'GET', headers}, res => {
       const chunks: Buffer[] = []; let size = 0;
       res.on('data', (chunk: Buffer) => {
         size += chunk.length;

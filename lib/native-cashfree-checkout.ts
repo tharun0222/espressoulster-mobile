@@ -1,11 +1,9 @@
-type NativeWindow = Window & {espressoCashfreeCheckout?: boolean; espressoCashfreeMode?: 'test' | 'live'};
+type NativeWindow = Window & {espressoCashfreeCheckout?: boolean};
 type Checkout = {orderId: string; paymentSessionId: string; mode: 'test' | 'live'};
 
 /** Both native outcomes require Get Order on the backend; neither means paid. */
 export function openNativeCashfreeCheckout(session: Checkout): Promise<'verify' | 'closed'> | null {
-  if (typeof window === 'undefined') return null;
-  const bridge = window as NativeWindow;
-  if (!bridge.espressoCashfreeCheckout || session.mode !== (bridge.espressoCashfreeMode ?? 'test')) return null;
+  if (typeof window === 'undefined' || !(window as NativeWindow).espressoCashfreeCheckout || session.mode !== 'test') return null;
   return new Promise((resolve, reject) => {
     const requestId = crypto.randomUUID();
     let finished = false;

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Espressoulster Home previews</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#efe4da;color:#302019;font:15px system-ui}
+main{max-width:430px;min-height:100svh;margin:auto;background:#fff9f3;padding:18px}
+nav{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:20px}
+button{min-height:44px;border:1px solid #d7b9a4;border-radius:10px;background:#fff6ec;color:#503122;font:inherit;cursor:pointer}
+button[aria-pressed=true]{background:#743b26;color:#fff5e9}
+header{font:25px Georgia;margin:0 0 12px}header small{display:block;color:#85472f;font:10px system-ui;letter-spacing:.22em;margin-top:4px}
+.hero{border-radius:20px;overflow:hidden;background:#39241c;color:#fff5e9;position:relative;isolation:isolate;min-height:205px;padding:20px;display:flex;flex-direction:column;justify-content:end;align-items:start}
+.hero img{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(0deg,#21130ff5,transparent 110%)}
+h1{font:32px Georgia;margin:0}p{margin:6px 0 14px}
+.hero a{background:#f4c4a3;color:#422418;padding:11px 14px;border-radius:10px;text-decoration:none;font-weight:650}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.tiles section{border:1px solid #e4cdb9;border-radius:16px;background:#fff2e5;padding:14px}
+h2{font:23px Georgia;margin:18px 0 10px}.tiles h2{font-size:19px;margin:0}
+.tiles p{font-size:13px;margin-bottom:0;color:#67483a}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:10px}.items figure{margin:0;background:#fff2e5;border-radius:14px;overflow:hidden}.items img{width:100%;height:108px;object-fit:cover;display:block}.items figcaption{padding:8px}
+[data-layout=split] .hero{padding-right:43%;min-height:220px}[data-layout=split] .hero img{left:48%;width:52%}[data-layout=split] .hero::after{background:linear-gradient(90deg,#39241c 36%,transparent)}
+[data-layout=quiet] .hero{background:#f4e0cf;color:#422418;padding-top:145px}[data-layout=quiet] .hero img{height:130px}[data-layout=quiet] .hero::after{display:none}[data-layout=quiet] .hero a{background:#743b26;color:#fff5e9}
+</style>
+<main data-layout="banner">
+<nav aria-label="Choose a Home preview">
+<button type="button" data-layout="banner" aria-pressed="true">01 · Banner</button>
+<button type="button" data-layout="split" aria-pressed="false">02 · Split</button>
+<button type="button" data-layout="quiet" aria-pressed="false">03 · Café card</button>
+</nav>
+<header>Espressoulster<small>COFFEE</small></header>
+<section class="hero">
+<img src="/images/reference-banner.webp" alt="">
+<h1>Meet me for coffee.</h1>
+<p>Drinks, bites, and a little time for you.</p>
+<a href="#favourites">Explore the menu ↗</a>
+</section>
+<div class="tiles">
+<section><h2>Visit the café</h2><p>Takeaway or a table for two.</p></section>
+<section><h2>Coffee club</h2><p>Make your coffee ritual a regular thing.</p></section>
+</div>
+<section aria-labelledby="favourites">
+<h2 id="favourites">Café favourites</h2>
+<div class="items">
+<figure><img src="/images/menu/a-01.webp" alt=""><figcaption>From the coffee bar</figcaption></figure>
+<figure><img src="/images/menu/b-01.webp" alt=""><figcaption>Something to eat</figcaption></figure>
+</div>
+</section>
+</main>
+<script>
+const buttons = [...document.querySelectorAll('nav button')];
+buttons.forEach(button => button.addEventListener('click', () => {
+  document.querySelector('main').dataset.layout = button.dataset.layout;
+  buttons.forEach(option => option.setAttribute('aria-pressed', option === button));
+}));
+</script>
+</html>

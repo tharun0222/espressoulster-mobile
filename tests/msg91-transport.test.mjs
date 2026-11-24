@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {EventEmitter} from 'node:events';
 import {createMsg91Ipv4Fetch} from '../lib/msg91-transport.ts';
-function fixture(status=200,relaySocket){
+function fixture(status=200){
  const calls=[];
  const transport=createMsg91Ipv4Fetch((url,options,receive)=>{
   const req=new EventEmitter();req.body='';req.setTimeout=()=>req;
@@ -10,7 +10,7 @@ function fixture(status=200,relaySocket){
   req.destroy=error=>{queueMicrotask(()=>{req.emit('error',error);req.emit('close');});return req;};
   req.end=()=>queueMicrotask(()=>{const res=new EventEmitter();res.statusCode=status;res.headers={'content-type':'application/json',...(status===302?{location:'https://untrusted.invalid/'}:{})};receive(res);res.emit('data',Buffer.from('{"status":"success"}'));res.emit('end');req.emit('close');});
   calls.push({url,options,req});return req;
- },relaySocket);
+ });
  return {transport,calls};
 }
 test('MSG91 transport uses IPv4 with TLS and retains the exact request body',async()=>{
@@ -29,14 +29,4 @@ test('MSG91 redirects are returned without forwarding credentials',async()=>{
 test('aborted OTP requests never start an outbound connection',async()=>{
  const f=fixture();const controller=new AbortController();controller.abort();
  await assert.rejects(f.transport('https://control.msg91.com/api/v5/otp',{signal:controller.signal}),error=>error.name==='AbortError');assert.equal(f.calls.length,0);
-});
-test('the optional private relay retains the MSG91 HTTPS destination and fails closed',async()=>{
- const f=fixture(200,'/private/msg91/staging.sock');
- await f.transport('https://control.msg91.com/api/v5/whatsapp/whatsapp-outbound-message/bulk/');
- assert.equal(f.calls[0].url.origin,'https://control.msg91.com');
- assert.equal(typeof f.calls[0].options.createConnection,'function');
- assert.equal(f.calls[0].options.family,undefined);
- await assert.rejects(f.transport('https://untrusted.invalid/'),/Invalid MSG91 endpoint/);
- assert.equal(f.calls.length,1);
- assert.throws(()=>createMsg91Ipv4Fetch(undefined,'relative.sock'),/absolute Unix socket/);
 });

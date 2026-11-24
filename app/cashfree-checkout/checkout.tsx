@@ -22,8 +22,6 @@ export default function CashfreeCheckout() {
   const [failed, setFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
   const opening = useRef(false);
-  const waitingForWebSdk = useRef(false);
-  const webSdkFailed = useRef(false);
   const returnUrl = order.startsWith('BK-')
     ? '/booking-payment-return?booking=' + order
     : '/payment-return?order=' + order;
@@ -69,12 +67,7 @@ export default function CashfreeCheckout() {
         if (native) await native;
         else {
           const cashfree = (window as Window & {Cashfree?: CashfreeSDK}).Cashfree;
-          if (!cashfree) {
-            opening.current = false;
-            if (webSdkFailed.current) throw new Error('Cashfree could not load. Check payment status or reload this page.');
-            waitingForWebSdk.current = true;
-            return;
-          }
+          if (!cashfree) throw new Error('Cashfree could not load. Check payment status or reload this page.');
           const result = await cashfree({mode: session.mode === 'test' ? 'sandbox' : 'production'})
             .checkout({paymentSessionId: session.paymentSessionId, redirectTarget: '_modal'});
           checkoutError = Boolean(result?.error);
@@ -107,23 +100,13 @@ export default function CashfreeCheckout() {
 
   return <main className="payment-return-screen">
     {order && <Script src="https://sdk.cashfree.com/js/v3/cashfree.js"
-      onReady={() => {
-        setSdkReady(true);
-        if (waitingForWebSdk.current) {
-          waitingForWebSdk.current = false;
-          setAttempt(value => value + 1);
-        }
-      }}
-      onError={() => {
-        webSdkFailed.current = true;
-        setSdkReady(true);
-        if (waitingForWebSdk.current) showError('Cashfree could not load. Check payment status or reload this page.');
-      }} />}
+      onReady={() => setSdkReady(true)}
+      onError={() => showError('Cashfree could not load. Check payment status or reload this page.')} />}
     <section className="payment-return-card">
       <h1>Cashfree checkout</h1>
       <p role={failed ? 'alert' : 'status'}>{message}</p>
       {failed && order && <button className="secondary" type="button" onClick={() => {
-        if (!sdkReady || webSdkFailed.current) { location.reload(); return; }
+        if (!sdkReady) { location.reload(); return; }
         setFailed(false);
         setMessage('Opening Cashfree checkout…');
         setAttempt(value => value + 1);

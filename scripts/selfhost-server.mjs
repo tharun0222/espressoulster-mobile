@@ -5,7 +5,6 @@ import next from 'next';
 import { selfhostSettings, sanitizeRequestHeaders } from '../server/settings.mjs';
 import { requestAdmission } from '../server/admission.mjs';
 import { env as runtimeEnv } from '../server/runtime.mjs';
-import { startAndroidOrderPush } from '../server/android-order-push.mjs';
 
 process.env.APP_RUNTIME = 'selfhost';
 process.env.NEXT_TELEMETRY_DISABLED = '1';
@@ -70,12 +69,11 @@ server.maxHeadersCount = 100;
 server.keepAliveTimeout = 5000;
 server.maxRequestsPerSocket = 1000;
 server.maxConnections = 1024;
-const stopAndroidOrderPush = startAndroidOrderPush();
 server.on('error', error => { console.error(`Backend could not listen (${error.code || 'server error'}).`); process.exitCode = 1; });
 server.listen(settings.port, settings.host, () => {
   console.log(`Espressoulster self-hosted app: ${settings.certificate ? 'https' : 'http'}://${settings.host}:${settings.port}`);
   console.log(`Online payments: ${settings.live ? 'live enabled' : process.env.PAYMENT_PROVIDER === 'cashfree' && process.env.PAYMENT_MODE === 'test' ? 'Cashfree sandbox; no real money collected' : 'disabled; Pay at café available'}`);
 });
 for (const signal of ['SIGTERM', 'SIGINT']) process.once(signal, () => {
-  server.close(async () => { await stopAndroidOrderPush(); await app.close(); process.exit(0); });
+  server.close(async () => { await app.close(); process.exit(0); });
 });

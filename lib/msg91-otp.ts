@@ -1,11 +1,10 @@
-import {createMsg91Ipv4Fetch,msg91Ipv4Fetch} from './msg91-transport.ts';
+import {msg91Ipv4Fetch} from './msg91-transport.ts';
 import {equalHash} from './admin-password.ts';
 import {usesWhatsAppOtp,msg91WhatsAppReady,sendMsg91WhatsAppOtp,type Msg91WhatsAppConfig} from './msg91-whatsapp.ts';
 
 export type Msg91Config = Msg91WhatsAppConfig & {
   PIN_AUTH_OTP_ENABLED?: string;
   MSG91_IPV4_ONLY?: string;
-  MSG91_RELAY_SOCKET?: string;
   MSG91_AUTH_KEY?: string;
   MSG91_OTP_TEMPLATE_ID?: string;
   CUSTOMER_OTP_ONLY?: string;
@@ -24,11 +23,7 @@ export function customerOtpOnly(config: Msg91Config) {
 }
 
 export async function sendMsg91Otp(config: Msg91Config, phone: string, code: string, send: typeof fetch = fetch) {
-  let transport = send;
-  if (send === fetch) {
-    if (usesWhatsAppOtp(config) && config.MSG91_RELAY_SOCKET) transport = createMsg91Ipv4Fetch(undefined,config.MSG91_RELAY_SOCKET);
-    else if (config.MSG91_IPV4_ONLY === 'true') transport = msg91Ipv4Fetch;
-  }
+  const transport = config.MSG91_IPV4_ONLY === 'true' && send === fetch ? msg91Ipv4Fetch : send;
   if(usesWhatsAppOtp(config))return sendMsg91WhatsAppOtp(config,phone,code,transport);
   const url = new URL('https://control.msg91.com/api/v5/otp');
   url.search = new URLSearchParams({
